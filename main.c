@@ -5,13 +5,14 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Mon Mar 10 14:34:57 2014 alex-odet
-** Last update Mon Mar 10 14:35:36 2014 alex-odet
+** Last update Mon Mar 10 15:06:48 2014 romaric
 */
 
 #include "struct.h"
 
-int	main(__attribute__((unused))int ac, __attribute__((unused))char **av,
-	     char **env)
+extern char	**environ;
+
+int	main(void)
 {
   return (0);
 }

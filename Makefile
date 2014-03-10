@@ -1,30 +1,36 @@
 ##
 ## Makefile for Makefile in /home/alex-odet/work/42Sh
-## 
+##
 ## Made by alex-odet
 ## Login   <alex-odet@epitech.net>
-## 
+##
 ## Started on  Mon Mar 10 14:33:31 2014 alex-odet
-## Last update Mon Mar 10 14:34:48 2014 alex-odet
+## Last update Mon Mar 10 15:05:50 2014 romaric
 ##
 
-NAME=	42sh
+CC=		clang
 
-SRC=	main.c
+RM=		rm -f
 
-CC=	gcc -W -Wall -I.
+CFLAGS=		-Wextra -Wall -ggdb3 -g3
 
-RM=	rm -f
+NAME=		42sh
 
-T=	*~
+SRCS=		main.c
 
-all:
-	$(CC) -o $(NAME) $(SRC)
+OBJS=		$(SRCS:.c=.o)
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 
 clean:
-	$(RM) $(T)
+		$(RM) $(OBJS)
 
-fclean:	clean
-	$(RM) $(NAME)
+fclean:		clean
+		$(RM) $(NAME)
 
-re:	fclean all
+re:		fclean all
+
+.PHONY:		all fclean re
