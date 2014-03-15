@@ -5,18 +5,19 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Mon Mar 10 14:33:31 2014 alex-odet
-## Last update Mon Mar 10 15:05:50 2014 romaric
+## Last update Sat Mar 15 11:51:55 2014 alex-odet
 ##
 
 CC=		clang
 
 RM=		rm -f
 
-CFLAGS=		-Wextra -Wall -ggdb3 -g3
+CFLAGS=		-Wextra -Wall -ggdb3 -g3 -I.
 
 NAME=		42sh
 
-SRCS=		main.c
+SRCS=		main.c \
+		Lexer/lexer.c
 
 OBJS=		$(SRCS:.c=.o)
 
