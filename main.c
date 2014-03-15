@@ -20,5 +20,5 @@ int	main(void)
 
 void	display_prompt()
 {
-  printf("$>");
+  printf("\033[34m$42sh>\033[0;m");
 }
