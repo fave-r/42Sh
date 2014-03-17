@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Mon Mar 10 14:33:31 2014 alex-odet
-## Last update Sat Mar 15 11:51:55 2014 alex-odet
+## Last update Mon Mar 17 10:44:09 2014 alex-odet
 ##
 
 CC=		clang
@@ -17,7 +17,9 @@ CFLAGS=		-Wextra -Wall -ggdb3 -g3 -I.
 NAME=		42sh
 
 SRCS=		main.c \
-		Lexer/lexer.c
+		lib/basic.c \
+		Lexer/lexer.c \
+		Lexer/get_char.c
 
 OBJS=		$(SRCS:.c=.o)
 

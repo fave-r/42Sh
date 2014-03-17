@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Mon Mar 10 14:29:30 2014 alex-odet
-** Last update Sat Mar 15 11:54:54 2014 alex-odet
+** Last update Mon Mar 17 10:44:49 2014 alex-odet
 */
 
 #ifndef __42Sh__
@@ -18,6 +18,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <strings.h>
+#include <string.h>
 
 #define BUFF_SIZE 4096
 
@@ -36,5 +37,7 @@ typedef struct		s_btree
 void	display_prompt();
 char	*lexer();
 int	init_lexer();
+char	get_char(int fd);
+int	my_putstr(char *str, int fd);
 
 #endif

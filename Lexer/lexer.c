@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Mar  7 16:12:05 2014 alex-odet
-** Last update Sat Mar 15 12:01:23 2014 alex-odet
+** Last update Mon Mar 17 10:47:56 2014 alex-odet
 */
 
 #include "struct.h"
@@ -16,9 +16,9 @@ int	init_lexer()
   char	*tmp;
 
   display_prompt();
-  while ((tmp = lexer()))
+  while ((tmp = lexer()) != NULL)
     {
-      printf("%s\n", tmp);
+      my_putstr(tmp, 1);
       display_prompt();
     }
   return (0);
@@ -33,17 +33,16 @@ char	*lexer()
   static	char	tmp = -1;
   
   i = 0;
-  bzero(buffer, 4096);
-  while ((c = getchar()) != '\n')
+  bzero(buffer, BUFF_SIZE);
+  while ((c = get_char(0)) != '\n')
     {
-      if (((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) && c != '|')
+      if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 	{
 	  state = 1;
 	  buffer[i] = c;
 	  i = i + 1;
 	}
-      else if ((c <= 'A' || c >= 'Z') || (c <= 'a' || c >= 'z')
-	       && (state == 1 && tmp != '|'))
+      else if (((c <= 'A' || c >= 'Z') || (c <= 'a' || c >= 'z')) && (state == 1))
 	return (buffer);
     }
   tmp = -1;

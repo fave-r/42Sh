@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Mon Mar 10 14:34:57 2014 alex-odet
-** Last update Sat Mar 15 12:51:54 2014 alex-odet
+** Last update Mon Mar 17 10:45:10 2014 alex-odet
 */
 
 #include "struct.h"
@@ -20,5 +20,5 @@ int	main(void)
 
 void	display_prompt()
 {
-  printf("$>");
+  my_putstr("$>", 1);
 }
