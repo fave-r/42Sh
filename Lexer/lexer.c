@@ -1,11 +1,11 @@
 /*
 ** main.c for main in /home/alex-odet/work/Tp_42
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Fri Mar  7 16:12:05 2014 alex-odet
-** Last update Mon Mar 17 10:47:56 2014 alex-odet
+** Last update Mon Mar 31 12:09:40 2014 romaric
 */
 
 #include "struct.h"
@@ -31,7 +31,7 @@ char	*lexer()
   static char	buffer[BUFF_SIZE];
   static int	state  = 0;
   static	char	tmp = -1;
-  
+
   i = 0;
   bzero(buffer, BUFF_SIZE);
   while ((c = get_char(0)) != '\n')
