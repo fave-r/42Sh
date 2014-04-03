@@ -4,21 +4,25 @@
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
 ** 
-** Started on  Mon Mar 10 14:34:57 2014 alex-odet
-** Last update Mon Mar 17 10:50:10 2014 alex-odet
+** Started on  Thu Apr  3 14:01:18 2014 alex-odet
+** Last update Thu Apr  3 14:19:31 2014 alex-odet
 */
 
-#include "struct.h"
+#include "my.h"
 
 extern char	**environ;
 
 int	main(void)
 {
-  init_lexer();
+  char	*tmp;
+
+  display_prompt();
+  while ((tmp = get_next_line(0)))
+    lexer(tmp);
   return (0);
 }
 
 void	display_prompt()
 {
-  my_putstr("\033[34m$42sh>\033[0;m", 1);
+  my_putstr("42Sh>", 1);
 }

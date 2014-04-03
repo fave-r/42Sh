@@ -4,13 +4,23 @@
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
 ** 
-** Started on  Mon Mar 17 10:42:37 2014 alex-odet
-** Last update Mon Mar 17 10:43:51 2014 alex-odet
+** Started on  Thu Apr  3 14:06:29 2014 alex-odet
+** Last update Thu Apr  3 14:07:37 2014 alex-odet
 */
 
-#include "struct.h"
+#include "my.h"
+
+int	my_strlen(char *str)
+{
+  int	i;
+
+  i = 0;
+  while (str[i])
+    i++;
+  return (i);
+}
 
 int	my_putstr(char *str, int fd)
 {
-  return(write(fd, str, strlen(str)));
+  return (write(fd, str, my_strlen(str)));
 }
