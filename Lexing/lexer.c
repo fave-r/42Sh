@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Mar  7 16:12:05 2014 alex-odet
-** Last update Thu Apr  3 14:43:40 2014 alex-odet
+** Last update Sat Apr  5 18:56:10 2014 alex-odet
 */
 
 #include "my.h"
@@ -37,24 +37,31 @@ t_token		*lexer(char *str)
   bzero(buffer, strlen(str));
   while (str[j] != '\n' && str[j])
     {
-      while ((str[j] >= 'A' && str[j] <= 'Z') || (str[j] >= 'a' && str[j] <= 'z'))
+      if ((str[j] >= 'A' && str[j] <= 'Z') || (str[j] >= 'a' && str[j] <= 'z'))
 	{
 	  state = 1;
 	  buffer[i] = str[j];
 	  i = i + 1;
-	  j++;
 	}
-      if (state == 1)
+      else
 	{
-	  tmp = str[j];
+	  if (state == 1)
+	    tmp = str[j];
 	  if (tmp == '|')
-	    c = tmp;
+	    {
+	      c = tmp;
+	      list = my_put_in_list(list, strdup(buffer), 1);
+	      bzero(buffer, strlen(strdup(buffer)));
+	      list = my_put_in_list(list, strdup("|"), 2);
+	      i = 0;
+	    }
 	  else
 	    tmp = -1;
-	  list = my_put_in_list(list, buffer, 1);
 	}
       j++;
     }
+  list = my_put_in_list(list, strdup(buffer), 1);
+  //  bzero(buffer, strlen(str));
   tmp = -1;
   state = 0;
   my_show_list(list);
