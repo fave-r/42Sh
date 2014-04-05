@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Fri Apr  4 11:06:02 2014 alex-odet
+** Last update Sat Apr  5 21:27:24 2014 alex-odet
 */
 
 #include "my.h"
@@ -16,6 +16,12 @@ int		main(void)
 {
   char	*tmp;
 
+  display_prompt();
   while ((tmp = get_next_line(0)))
     lexer(tmp);
+}
+
+void	display_prompt()
+{
+  my_putstr("$>", 1);
 }
