@@ -1,11 +1,11 @@
 ##
 ## Makefile for Makefile in /home/alex-odet/work/42Sh
-## 
+##
 ## Made by alex-odet
 ## Login   <alex-odet@epitech.net>
-## 
+##
 ## Started on  Fri Mar 28 09:53:49 2014 alex-odet
-## Last update Thu Apr  3 14:07:53 2014 alex-odet
+## Last update Sun Apr  6 15:07:26 2014 romaric
 ##
 
 CC=		clang
@@ -20,8 +20,8 @@ SRCS=		main.c \
 		lib/xfunction.c \
 		lib/get_next_line.c \
 		lib/basic.c \
-		List/my_put_in_list.c \
-		Lexing/lexer.c
+		list/my_put_in_list.c \
+		lexing/lexer.c
 
 OBJS=		$(SRCS:.c=.o)
 
