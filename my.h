@@ -1,11 +1,11 @@
 /*
 ** my.h for my in /home/alex-odet/work/42Sh
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Fri Mar 28 09:50:29 2014 alex-odet
-** Last update Thu Apr  3 14:19:46 2014 alex-odet
+** Last update Mon Apr  7 18:55:44 2014 romaric
 */
 
 #ifndef __42Sh__
