@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Thu Mar 27 14:05:59 2014 lhomme
-** Last update Mon Apr  7 18:36:25 2014 lhomme
+** Last update Mon Apr  7 18:48:14 2014 lhomme
 */
 
 #include "npi.h"
@@ -26,7 +26,7 @@ void	aff(t_tree *tree, int size)
   if (tree->right)
     aff(tree->right, size + 1);
 }
-
+/*
 void	addNode(t_tree **tree, void *a, void *b)
 {
   t_tree	*tmpNode;
@@ -85,10 +85,10 @@ int	op_token(t_list *stack, t_list *output)
   t = malloc(sizeof(t_tree));
   t->data = strdup(o);
   addNode(&t, a, b);
-  /*  t = malloc(sizeof(t_tree));
+  t = malloc(sizeof(t_tree));
   t->data = strdup(o);
   t->left->data = strdup(a);
-  t->right->data = strdup(b);*/
+  t->right->data = strdup(b);
   printf("tree =\n");
   aff(t, 0);
   output = add_top(output, t);
@@ -138,7 +138,7 @@ void	*npi(t_list *token, t_list *stack, t_list *output)
   while (stack != NULL)
     op_token(stack, output);
   return (output->data);
-}
+  }*/
 
 int	main(int ac, char **av)
 {
@@ -158,6 +158,7 @@ int	main(int ac, char **av)
       token = add_end(token, av[i]);
       i++;
     }
+  print
   t = npi(token, stack, output);
   printf("\n\n\nTree =\n");
   aff(t, 0);
