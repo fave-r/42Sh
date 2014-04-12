@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Sat Apr 12 06:23:42 2014 thibaud
+** Last update Sat Apr 12 18:22:12 2014 thibaud
 */
 
 #include "main.h"
@@ -145,7 +145,7 @@ int		main()
   char		*str;
   t_list	*list;
 
-  str = "     ls-l|cat  --help -r  ./hello >> world    ";
+  str = "ls ||> cat\tto&&to                      ";
   list = fill_token(str);
   fill_type(list);
   print_list(list);
