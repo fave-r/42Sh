@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Mar 28 09:50:29 2014 alex-odet
-** Last update Mon Apr  7 18:55:44 2014 romaric
+** Last update Tue Apr 15 00:05:33 2014 thibaud
 */
 
 #ifndef __42Sh__
@@ -18,28 +18,22 @@
 
 #define BUFF_SIZE 1024
 
-typedef struct	s_get
+typedef struct  s_list
 {
-  char		*s;
-  int		c;
-  int		l;
-}		t_get;
+  char          *token;
+  int           type;
+  struct s_list *next;
 
-typedef struct		s_token
-{
-  char			*buff;
-  int			type;
-  struct s_token	*next;
-}			t_token;
+}
 
-t_token		*new_node(char *token, int type);
-t_token		*my_put_in_list(t_token *list, char *token, int type);
-void		*xmalloc(size_t);
-t_token		*lexer(char *str);
-int		my_strlen(char *str);
-int		my_putstr(char *str, int fd);
-char		*my_get_strdup(char *src);
-char		*get_next_line(const int fd);
-void		display_prompt();
+t_list          *add_token(t_list *, char *);
+void		*my_xdup(void *, int);
+int		get_operator(char *, int , int [2]);
+int		get_other(char *, int , int [2]);
+int		is_spe(char );
+t_list          *fill_token(char *);
+int		fill_type(t_list *);
+list		*lexer(char *);
+
 
 #endif

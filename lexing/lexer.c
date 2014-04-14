@@ -1,115 +1,91 @@
 /*
-** main.c for main in /home/alex-odet/work/Tp_42
-**
-** Made by alex-odet
-** Login   <alex-odet@epitech.net>
-**
-** Started on  Fri Mar  7 16:12:05 2014 alex-odet
-** Last update Mon Apr  7 18:54:09 2014 romaric
+** main.c for lexer in /home/thibaud/rendu/42sh
+** 
+** Made by thibaud
+** Login   <thibaud@epitech.net>
+** 
+** Started on  Sat Apr 12 03:06:33 2014 thibaud
+** Last update Tue Apr 15 00:07:55 2014 thibaud
 */
 
 #include "my.h"
 
-void		my_show_list(t_token *list)
+void		*my_xdup(void *source, int size)
 {
-  while (list)
-    {
-      my_putstr("list->cmd = ", 1);
-      if (list->buff == NULL)
-      	my_putstr("NULL\n", 1);
-      else
-      	my_putstr(list->buff, 1);
-      my_putstr("\n", 1);
-      list = list->next;
-    }
-}
-
-t_token		*state_one(t_token *list, char *buffer)
-{
-  list = my_put_in_list(list, strdup(buffer), 1);
-  bzero(buffer, strlen(buffer));
-  list = my_put_in_list(list, strdup("|"), 2);
-  return (list);
-}
-
-t_token		*state_two(t_token *list, char *buffer)
-{
-  list = my_put_in_list(list, strdup(buffer), 1);
-  bzero(buffer, strlen(buffer));
-  list = my_put_in_list(list, strdup(">"), 3);
-  return (list);
-}
-
-t_token		*state_three(t_token *list, char *buffer)
-{
-  list = my_put_in_list(list, strdup(buffer), 1);
-  bzero(buffer, strlen(buffer));
-  list = my_put_in_list(list, strdup(">>"), 4);
-  return (list);
-}
-
-t_token		*state_four(t_token *list, char *buffer)
-{
-  list = my_put_in_list(list, strdup(buffer), 1);
-  bzero(buffer, strlen(buffer));
-  list = my_put_in_list(list, strdup("||"), 5);
-  return (list);
-}
-
-t_token		*choose_state(char c, t_token *list, char *buffer, char *str)
-{
-  int	i;
-
-  i = 0;
-  while (str[i] != c)
-    i++;
-  if (c == '|' && str[i + 1] != c)
-    list = state_one(list, buffer);
-  else if (c == '|' && str[i + 1] == c)
-    list = state_four(list, buffer);
-  if (c == '>' && str[i + 1] != c)
-    list = state_two(list, buffer);
-  else if (c == '>' && str[i + 1] == c)
-    list = state_three(list, buffer);
-  return (list);
-}
-
-t_token		*lexer(char *str)
-{
-  int		j;
-  t_token      	*list;
+  char		*tmp;
+  char		*src;
   int		i;
-  static char	buffer[4096];
-  i = 0;
-  static int	state  = 0;
 
-  list = NULL;
-  j = 0;
-  bzero(buffer, strlen(buffer));
-  while (str[j] != '\n' && str[j])
+  i = 0;
+  src = source;
+  if ((tmp = malloc(sizeof (char) * size)) == NULL)
+    exit(0);
+  while (i < size)
     {
-      if ((str[j] >= 'A' && str[j] <= 'Z') || (str[j] >= 'a' && str[j] <= 'z')
-	  || (str[j] == ' ' && str[j + 1] == '-') || str[j] == '-'
-	  || (str[j] == ' ' && ((str[j + 1] >= 'a' && str[j + 1] <= 'z')
-				|| (str[j + 1 ] >= 'A' && str[j + 1] <= 'Z'))))
-	{
-	  state = 1;
-	  buffer[i] = str[j];
-	  i++;
-	}
-      else
-	{
-	  list = choose_state(str[j], list, buffer, str);
-	  i = 0;
-	  state = 0;
-	}
-      j++;
+      tmp[i] = src[i];
+      i++;
     }
-  list = my_put_in_list(list, strdup(buffer), 1);
-  bzero(buffer, strlen(buffer));
-  state = 0;
-  my_show_list(list);
-  display_prompt();
+  tmp = (void *)tmp;
+  return (tmp);
+}
+
+t_list		*fill_token(char *str)
+{
+  int		i;
+  int		save[2];
+  t_list	*list;
+
+  i = 0;
+  list = NULL;
+  while (str && str[i] != '\0')
+    {
+      while ((str[i] == '\t' || str[i] == ' ') && str[i] != '\0')
+	i++;
+      save[0] = i;
+      save[1] = save[0];
+      if (is_spe(str[i]))
+	{
+	  i = get_operator(str, i, save);
+	  list = add_token(list, my_xdup(str + save[0],
+					    save[1] - save[0]));
+	}
+      else if (str[i] != '\0')
+	{
+	  i = get_other(str, i, save);
+      	  list = add_token(list, my_xdup(str + save[0], save[1] - save[0]));
+	}
+    }
   return (list);
 }
 
+int		fill_type(t_list *list)
+{
+  t_list	*cur;
+
+  cur = list;
+  if (list)
+    {
+      while (cur != NULL)
+	{
+	  if (cur->token[0] == '|')
+	    cur->type = 0;
+	  else if (cur->token[0] == '<' || cur->token[0] == '>')
+	    cur->type = 1;
+	  else if (is_spe(cur->token[0]))
+	    cur->type = 2;
+	  else
+	    cur->type = 3;
+	  cur = cur->next;
+	}
+    }
+  return (0);
+}
+
+t_list		*lexer(char *)
+{
+  t_list	*list;
+
+  list = fill_token(str);
+  fill_type(list);
+  return (list);
+}

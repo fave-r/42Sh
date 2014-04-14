@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Fri Mar 28 09:53:49 2014 alex-odet
-## Last update Sun Apr  6 15:07:26 2014 romaric
+## Last update Mon Apr 14 23:50:59 2014 thibaud
 ##
 
 CC=		clang
@@ -21,7 +21,8 @@ SRCS=		main.c \
 		lib/get_next_line.c \
 		lib/basic.c \
 		list/my_put_in_list.c \
-		lexing/lexer.c
+		lexing/lexer.c \
+		lexing/lexer_fct.c
 
 OBJS=		$(SRCS:.c=.o)
 
