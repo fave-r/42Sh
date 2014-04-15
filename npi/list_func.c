@@ -5,12 +5,12 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Thu Mar 27 14:15:33 2014 lhomme
-** Last update Thu Mar 27 17:53:05 2014 lhomme
+** Last update Tue Apr 15 18:26:19 2014 romaric
 */
 
 #include "npi.h"
 
-t_list	*add_end(void *list, void *data)
+t_list		*add_end(void *list, void *data)
 {
   t_list       *new_elem;
   t_list       *tmp;
@@ -30,7 +30,7 @@ t_list	*add_end(void *list, void *data)
     }
 }
 
-t_list	*add_top(void *list, void *data)
+t_list		*add_top(void *list, void *data)
 {
   t_list	*new;
 
@@ -40,7 +40,7 @@ t_list	*add_top(void *list, void *data)
   return (new);
 }
 
-t_list	*delete_top(t_list *list)
+t_list		*delete_top(t_list *list)
 {
   t_list	*new;
 
@@ -51,7 +51,7 @@ t_list	*delete_top(t_list *list)
   return (new);
 }
 
-t_list	*delete_list(t_list *list)
+t_list		*delete_list(t_list *list)
 {
   t_list       *tmp;
   t_list       *tmpnxt;
@@ -66,7 +66,7 @@ t_list	*delete_list(t_list *list)
   return (NULL);
 }
 
-void	print_list(t_list *list)
+void		print_list(t_list *list)
 {
   t_list	*tmp;
 

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Tue Apr 15 18:09:19 2014 alex-odet
+** Last update Tue Apr 15 18:22:37 2014 romaric
 */
 
 #include "my.h"
@@ -23,7 +23,7 @@ int		main(void)
   return (0);
 }
 
-void	display_prompt()
+void		display_prompt()
 {
   my_putstr("$>", 1);
 }
