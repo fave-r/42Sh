@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Mon Apr  7 18:55:17 2014 romaric
+** Last update Tue Apr 15 17:20:38 2014 alex-odet
 */
 
 #include "my.h"
@@ -18,7 +18,7 @@ int		main(void)
 
   display_prompt();
   while ((tmp = get_next_line(0)))
-    lexer(tmp);
+    fill_list_token(tmp);
 }
 
 void	display_prompt()

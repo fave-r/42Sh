@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:49:17 2014 romaric
-** Last update Thu Apr  3 14:18:45 2014 alex-odet
+** Last update Tue Apr 15 17:21:39 2014 alex-odet
 */
 
 #include "my.h"
@@ -14,7 +14,7 @@ char		*my_get_strdup(char *src)
 {
   char		*dest;
 
-  dest = malloc((my_strlen(src) + 2) * sizeof(char));
+  dest = xmalloc((my_strlen(src) + 2) * sizeof(char));
   if (dest == NULL)
     exit (EXIT_FAILURE);
   strcpy(dest, src);

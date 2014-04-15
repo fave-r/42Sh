@@ -1,11 +1,11 @@
 /*
-** my.h for my in /home/alex-odet/work/42Sh
-**
+** my.h for my.h in /home/alex-odet/work/42Sh
+** 
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-**
-** Started on  Fri Mar 28 09:50:29 2014 alex-odet
-** Last update Tue Apr 15 00:05:33 2014 thibaud
+** 
+** Started on  Tue Apr 15 17:07:43 2014 alex-odet
+** Last update Tue Apr 15 17:26:29 2014 alex-odet
 */
 
 #ifndef __42Sh__
@@ -18,22 +18,33 @@
 
 #define BUFF_SIZE 1024
 
-typedef struct  s_list
+typedef struct		s_token
 {
-  char          *token;
-  int           type;
-  struct s_list *next;
+  char			*token;
+  int			type;
+  struct s_token	*next;
 
-}
+}			t_token;
 
-t_list          *add_token(t_list *, char *);
-void		*my_xdup(void *, int);
-int		get_operator(char *, int , int [2]);
-int		get_other(char *, int , int [2]);
-int		is_spe(char );
-t_list          *fill_token(char *);
-int		fill_type(t_list *);
-list		*lexer(char *);
+typedef struct s_get
+{
+  char		*s;
+  int		c;
+  int		l;
+}		t_get;
 
+int	print_token(t_token *list);
+t_token	*add_token(t_token *list, char *token);
+char	*my_strxdup(char *source, int len);
+int	get_operator(char *str, int i, int save[2]);
+int	get_other(char *str, int i, int save[2]);
+t_token	*fill_token(char *str);
+int	fill_type(t_token *list);
+void	fill_list_token(char *str);
+int	my_putstr(char *str, int fd);
+void	*xmalloc(size_t n);
+void	display_prompt();
+char	*get_next_line(const int fd);
+int	my_strlen(char *str);
 
 #endif
