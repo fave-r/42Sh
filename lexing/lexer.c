@@ -5,42 +5,10 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Tue Apr 15 17:24:45 2014 alex-odet
+** Last update Tue Apr 15 18:18:46 2014 alex-odet
 */
 
 #include "my.h"
-
-int		print_token(t_token *list)
-{
-  t_token	*cur;
-
-  cur = list;
-  if (list != NULL)
-    while (cur != NULL)
-      {
-	printf("%s\t%d\n",cur->token, cur->type);
-	cur = cur->next;
-      }
-  return (0);
-}
-
-t_token		*add_token(t_token *list, char *token)
-{
-  t_token	*new;
-  t_token	*cur;
-
-  cur = list;
-  new = xmalloc(sizeof(t_token));
-  new->token = token;
-  new->type = 0;
-  new->next = NULL;
-  if (list == NULL)
-    return (new);
-  while (cur->next != NULL)
-    cur = cur->next;
-  cur->next = new;
-  return (list);
-}
 
 char		*my_strxdup(char *source, int len)
 {
@@ -127,14 +95,4 @@ int		fill_type(t_token *list)
 	}
     }
   return (0);
-}
-
-void		fill_list_token(char *str)
-{
-  t_token	*list;
-
-  list = fill_token(str);
-  fill_type(list);
-  print_token(list);
-  display_prompt();
 }

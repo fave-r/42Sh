@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Tue Apr 15 17:26:29 2014 alex-odet
+** Last update Tue Apr 15 18:09:49 2014 alex-odet
 */
 
 #ifndef __42Sh__
@@ -40,7 +40,7 @@ int	get_operator(char *str, int i, int save[2]);
 int	get_other(char *str, int i, int save[2]);
 t_token	*fill_token(char *str);
 int	fill_type(t_token *list);
-void	fill_list_token(char *str);
+t_token	*fill_list_token(char *str);
 int	my_putstr(char *str, int fd);
 void	*xmalloc(size_t n);
 void	display_prompt();

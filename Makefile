@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ## 
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Tue Apr 15 17:06:41 2014 alex-odet
+## Last update Tue Apr 15 18:19:35 2014 alex-odet
 ##
 
 
@@ -21,6 +21,7 @@ SRCS=		main.c \
 		lib/xfunction.c \
 		lib/get_next_line.c \
 		lib/basic.c \
+		list/my_token_list.c \
 		lexing/lexer.c
 
 OBJS=		$(SRCS:.c=.o)
