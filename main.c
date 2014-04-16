@@ -5,12 +5,22 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Tue Apr 15 18:22:37 2014 romaric
+** Last update Wed Apr 16 10:17:37 2014 alex-odet
 */
 
 #include "my.h"
 
 extern char	**environ;
+
+
+void		my_show_list(t_token *list)
+{
+  while (list)
+    {
+      printf("token = %s\ttype = %d\n", list->token, list->type);
+      list = list->next;
+    }
+}
 
 int		main(void)
 {
@@ -35,5 +45,6 @@ t_token		*fill_list_token(char *str)
   list = fill_token(str);
   fill_type(list);
   display_prompt();
+  my_show_list(list);
   return (list);
 }

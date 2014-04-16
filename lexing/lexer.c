@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Tue Apr 15 18:24:33 2014 romaric
+** Last update Wed Apr 16 10:14:12 2014 alex-odet
 */
 
 #include "my.h"
@@ -87,7 +87,8 @@ int		fill_type(t_token *list)
     {
       while (cur != NULL)
 	{
-	  if (cur->token[0] == '|' || cur->token[0] == '&' || cur->token[0] == '>' || cur->token[0] == '<')
+	  if (cur->token[0] == '|' || cur->token[0] == '&' || cur->token[0] == '>'
+	      || cur->token[0] == '<' || cur->token[0] == '&')
 	    cur->type = 1;
 	  else
 	    cur->type = 2;
