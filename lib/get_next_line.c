@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon Mar 24 11:49:17 2014 romaric
-** Last update Tue Apr 15 17:21:39 2014 alex-odet
+** Last update Thu Apr 17 03:05:35 2014 
 */
 
 #include "my.h"
@@ -41,6 +41,12 @@ char		*get_next_line(const int fd)
     {
       if (buff[i] == '\0')
 	return (l.s);
+      if (buff[i] == '\t')
+	{
+	  l.s[l.c] = 0;
+	  printf("OK\n");
+	  return (my_auto_complete(l.s));
+	}
       l.s = my_get_strdup(l.s);
       l.s[l.c] = buff[i];
       i++;

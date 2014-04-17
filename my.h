@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Tue Apr 15 18:09:49 2014 alex-odet
+** Last update Thu Apr 17 03:36:50 2014 
 */
 
 #ifndef __42Sh__
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <glob.h>
 
 #define BUFF_SIZE 1024
 
@@ -46,5 +47,6 @@ void	*xmalloc(size_t n);
 void	display_prompt();
 char	*get_next_line(const int fd);
 int	my_strlen(char *str);
+char	*my_auto_complete(char *path);
 
 #endif

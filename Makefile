@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ## 
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Tue Apr 15 18:19:35 2014 alex-odet
+## Last update Thu Apr 17 03:03:28 2014 
 ##
 
 
@@ -22,7 +22,8 @@ SRCS=		main.c \
 		lib/get_next_line.c \
 		lib/basic.c \
 		list/my_token_list.c \
-		lexing/lexer.c
+		lexing/lexer.c \
+		my_auto_complete.c
 
 OBJS=		$(SRCS:.c=.o)
 
