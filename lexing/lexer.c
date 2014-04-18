@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Wed Apr 16 10:14:12 2014 alex-odet
+** Last update Fri Apr 18 14:58:08 2014 romaric
 */
 
 #include "my.h"
@@ -72,7 +72,8 @@ t_token		*fill_token(char *str)
       else if (str[i] != '\0')
 	{
 	  i = get_other(str, i, save);
-      	  list = add_token(list, my_strxdup(str + save[0], save[1] - save[0] + 1));
+      	  list = add_token(list, my_strxdup(str + save[0]
+					    , save[1] - save[0] + 1));
 	}
     }
   return (list);

@@ -5,13 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Thu Apr 17 03:36:20 2014 
+** Last update Fri Apr 18 14:55:17 2014 romaric
 */
 
 #include "my.h"
 
 extern char	**environ;
-
 
 void		my_show_list(t_token *list)
 {
