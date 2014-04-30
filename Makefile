@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ## 
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Thu Apr 24 14:41:57 2014 bourrel
+## Last update Wed Apr 30 18:08:33 2014 lhomme
 ##
 
 
@@ -21,12 +21,6 @@ SRCS=		main.c \
 		lib/xfunction.c \
 		lib/get_next_line.c \
 		lib/basic.c \
-		lib/my_strcmp.c \
-		lib/my_strcat.c\
-		lib/my_strncmp.c \
-		lib/my_strdup.c \
-		lib/my_strndup.c \
-		lib/my_strcpy.c \
 		list/my_token_list.c \
 		lexing/lexer.c \
 		my_auto_complete.c \

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Thu Apr 24 14:42:19 2014 bourrel
+** Last update Wed Apr 30 18:07:09 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -19,6 +19,11 @@
 
 #define BUFF_SIZE 1024
 
+typedef struct		s_hist
+{
+  char			*cmd;
+  struct s_hist		*next;
+}			t_hist;
 
 typedef struct		s_env
 {

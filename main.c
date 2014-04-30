@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Thu Apr 24 16:15:12 2014 bourrel
+** Last update Wed Apr 30 18:08:02 2014 lhomme
 */
 
 #include "my.h"
@@ -21,10 +21,12 @@ void		my_show_list(t_token *list)
 
 int		main(int ac, char **av, char **envp)
 {
+  t_hist	*history;
   t_token	*list;
   t_env         *env;
   char		*tmp;
 
+  history = NULL;
   env = my_env_inlist(envp);
   display_prompt();
   while ((tmp = get_next_line(0)))
