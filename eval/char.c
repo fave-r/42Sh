@@ -5,8 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:44:49 2014 romaric
-** Last update Fri Apr 25 17:45:09 2014 romaric
+** Last update Wed Apr 30 19:57:37 2014 romaric
 */
+
+#include "eval.h"
 
 int     my_strlen_n(char *str)
 {

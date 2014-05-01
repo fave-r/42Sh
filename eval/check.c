@@ -1,100 +1,126 @@
 /*
-** check.c for 42sh in /home/blackbird/work/42Sh/eval
+** check.c for 42Sh in /home/blackbird/work/42Sh/eval
 **
 ** Made by romaric
 ** Login   <fave_r@epitech.net>
 **
-** Started on  Fri Apr 25 15:31:10 2014 romaric
-** Last update Fri Apr 25 18:35:53 2014 romaric
+** Started on  Wed Apr 30 17:30:19 2014 romaric
+** Last update Wed Apr 30 20:28:19 2014 romaric
 */
 
 #include "eval.h"
 
 extern char **environ;
 
-void	save_env(void)
-{
-  char	**pathsep = NULL;
-  char	*path = NULL;
-  char	**envcpy;
-  int	pathi;
-  char	**pathsep;
-
-  if (*environ != NULL)
-    {
-      envcpy = envcy(environ);
-      pathi = checkpath(envcpy);
-      path = pathcpy(envcpy, pathi);
-      pathsep = my_str_to_wordtab(path, ':');
-    }
-}
-
-int     checkenv(char **env)
-{
-  int   i;
-
-  i = 0;
-  while (env[i] != NULL)
-    i++;
-  return (i);
-}
-
-char    **envcy(char **env)
-{
-  char **envcpy;
-  int   i;
-  int   check;
-
-  i = 0;
-  check = checkenv(env);
-  envcpy = xmalloc(sizeof(char*) * (check + 1));
-  while (i < check)
-    {
-      envcpy[i] = xmalloc(sizeof(char) * (my_strlen_n(env[i]) + 1));
-      my_strcpy(envcpy[i], env[i]);
-      i++;
-    }
-  return (envcpy);
-}
-
-int      checkpath(char **env)
+char    *my_strcpyfinal(char *dest, char *cmd)
 {
   int   i;
   int   x;
+  char  *tmp;
 
-  i = 0;
-  x = 1;
-  while (i < checkenv(env))
-    {
-      x = strncmp("PATH=", env[i], 5);
-      if (x == 0)
-        return (i);
-      i++;
-    }
-  return (0);
-}
-
-char    *pathcpy(char **env, int i)
-{
-  char  *path;
-
-  path = xmalloc(my_strlen_n(env[i]) * sizeof(char) - 5);
-  rmpath(path, env[i]);
-  return (path);
-}
-
-char    *rmpath(char *dest, char * src)
-{
-  int   i;
-  int   x;
-
-  i = 5;
   x = 0;
-  while (src[i] != '\0')
+  i = my_strlen_n(dest);
+  tmp = xmalloc((my_strlen_n(dest) + my_strlen_n(cmd) + 1) * sizeof(char));
+  while (x < (my_strlen_n(dest)))
     {
-      dest[x] = src[i];
+      tmp[x] = dest[x];
+      x++;
+    }
+  x = 0;
+  tmp[i] = '/';
+  i++;
+  while (cmd[x] != '\0')
+    {
+      tmp[i] = cmd[x];
       i++;
       x++;
     }
-  return (dest);
+  tmp[i] = '\0';
+  return (tmp);
+}
+
+void	execute(char *pathutil, char *cmd, char **arv)
+{
+  int   pid;
+  char  *pathforexec;
+
+  if (*environ != NULL)
+    {
+      pathforexec = my_strcpyfinal(pathutil, cmd);
+      pid = fork();
+      if (pid == 0)
+	execve(pathforexec, arv, environ);
+      wait(NULL);
+    }
+}
+
+char    *find_lib(char **path, char *cmd)
+{
+  DIR   *ptr;
+  struct dirent *entry;
+  int   i;
+
+  i = 0;
+  while (path[i] != NULL)
+    {
+      if ((ptr = opendir(path[i])) == NULL)
+        i++;
+      else
+        if (ptr != NULL)
+          {
+	    while ((entry = readdir(ptr)))
+              if (strcmp(cmd, entry->d_name) == 0)
+		return (strdup(path[i]));
+          }
+      i++;
+    }
+  if (cmd != '\0' && strcmp(cmd, "exit") != 0)
+    fprintf(stderr, "%s: command not found\n", cmd);
+  return (NULL);
+}
+
+void	check_path(char **pathsep, char *cmd, char **str)
+{
+  char  *filepath;
+
+  filepath = NULL;
+  if (*environ != NULL)
+    filepath = find_lib(pathsep, cmd);
+  if (filepath != NULL)
+      execute(filepath, cmd, str);
+}
+
+void	exec(char *cmd)
+{
+  char	**tab;
+  char	**pathsep;
+
+  tab = NULL;
+  if (strchr(cmd, ' ') != NULL)
+    tab = my_str_to_wordtab(cmd, ' ');
+  else
+    {
+      tab = xmalloc(2 * sizeof(char *));
+      tab[0] = xmalloc(strlen(cmd) * sizeof(char));
+      tab[0] = cmd;
+      tab[1] = NULL;
+    }
+  pathsep = save_env();
+  check_path(pathsep, tab[0], tab);
+}
+
+void	check_fn(t_tree *tree)
+{
+  /*  if (strcmp(tree->data, ">") == 0)
+    redir_right(tree);
+  else if (strcmp(tree->data, ">>") == 0)
+    doble_right(tree);
+  else if (strcmp(tree->data, "<") == 0)
+    redir_left(tree);
+  else if (strcmp(tree->data, "<<") == 0)
+    doble_left(tree);
+  else if (strcmp(tree->data, "|") == 0)
+    pipe(tree);
+    else*/
+  exec(tree->data);
 }

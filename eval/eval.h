@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:28:32 2014 romaric
-** Last update Tue Apr 29 12:44:05 2014 romaric
+** Last update Wed Apr 30 20:17:54 2014 romaric
 */
 
 #ifndef __EVAL__
@@ -15,6 +15,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <dirent.h>
 
 typedef struct          s_tree
 {
@@ -23,10 +26,28 @@ typedef struct          s_tree
   struct s_tree         *right;
 }                       t_tree;
 
+typedef struct  s_word
+{
+  int   nbwords;
+  int   i;
+  char  **strpar;
+  char  *ptr;
+}               t_word;
+
 void    aff(t_tree *tree, int pos);
 t_tree  *createNode(t_tree *elem, void *data);
 void    Node_add(t_tree *tmpTree, t_tree *elem, int pos);
 void    addNode(t_tree **tree, void *data, int pos);
 void    go_left(t_tree *tree);
+void    check_fn(t_tree *tree);
+void    *xmalloc(size_t n);
+int     my_strlen_n(char *str);
+char    **my_str_to_wordtab(char *str, char sep);
+char    **save_env(void);
+int     checkenv(char **env);
+char    **envcy(char **env);
+int      checkpath(char **env);
+char    *pathcpy(char **env, int i);
+char    *rmpath(char *dest, char * src);
 
 #endif

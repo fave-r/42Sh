@@ -5,10 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Dec 18 13:38:53 2013 romaric
-** Last update Mon Jan  6 17:15:22 2014 romaric
+** Last update Wed Apr 30 20:18:50 2014 romaric
 */
 
-#include "minishell.h"
+#include "eval.h"
 
 int	countword(char *str, char sep)
 {
@@ -35,10 +35,10 @@ char	**my_str_to_wordtab(char *str, char sep)
 
   w.i = 0;
   w.nbwords = countword(str, sep);
-  w.strpar = xmalloc(sizeof(char*) * (w.nbwords + 1) + my_strlen(str) + 1);
+  w.strpar = xmalloc(sizeof(char*) * (w.nbwords + 1) + strlen(str) + 1);
   w.ptr = (char*)w.strpar;
   w.ptr += sizeof(char*) * (w.nbwords + 1);
-  w.ptr = my_strcpy(str, w.ptr);
+  w.ptr = strcpy(str, w.ptr);
   while (*(w.ptr) != '\0')
     {
       while ((*(w.ptr) == sep || *(w.ptr) == '\t') && *(w.ptr) != '\0')
