@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:34:41 2014 romaric
-** Last update Wed Apr 30 19:53:28 2014 romaric
+** Last update Thu May  1 17:07:02 2014 romaric
 */
 
 #include "eval.h"
@@ -96,7 +96,7 @@ int	main()
   addNode(&tree, "ls", 1);
   addNode(&tree, "cat", 3);
   //aff(tree, 0);
-  go_left(tree);*/
+  go_left(tree); */
   check_fn(tree);
   return (0);
 }
