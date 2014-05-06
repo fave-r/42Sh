@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:34:41 2014 romaric
-** Last update Mon May  5 17:07:29 2014 romaric
+** Last update Tue May  6 16:48:29 2014 romaric
 */
 
 #include "eval.h"
@@ -90,7 +90,7 @@ int	main()
   t_tree	*tree;
 
   tree = NULL;
-  addNode(&tree, "ls -l --color", 0);
+  addNode(&tree, "coucou", 0);
   /*  addNode(&tree, "toto", 2);
   addNode(&tree, "|", 1);
   addNode(&tree, "ls", 1);

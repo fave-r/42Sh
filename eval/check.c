@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Mon May  5 16:18:41 2014 romaric
+** Last update Tue May  6 17:50:25 2014 romaric
 */
 
 #include "eval.h"
@@ -94,7 +94,7 @@ void	check_path(char **pathsep, char *cmd, char **str)
   free(pathsep);
 }
 
-void	exec(char *cmd)
+void	my_exec(char *cmd)
 {
   char	**tab;
   char	**pathsep;
