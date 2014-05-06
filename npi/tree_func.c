@@ -5,9 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Apr 23 15:44:31 2014 lhomme
-** Last update Tue Apr 29 15:37:38 2014 lhomme
+** Last update Tue May  6 18:03:29 2014 lhomme
 */
 
+#include "../my.h"
 #include "npi.h"
 
 void	free_tree(t_tree *tree)
@@ -48,18 +49,12 @@ void	aff(t_tree *tree, int pos)
 
 t_tree	*createNode(t_tree *elem, void *data)
 {
-  static int	test = 1;
-
   elem = malloc(sizeof(t_tree));
   if (elem == NULL)
     return (NULL);
   elem->data = data;
   elem->left = NULL;
   elem->right = NULL;
-  //  printf("%s\n", elem->data);
-  //  if (test == 6 || test == 8)
-  //  aff(elem->data, 0);
-  test++;
   return (elem);
 }
 

@@ -5,10 +5,11 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Wed Apr 30 18:08:02 2014 lhomme
+** Last update Tue May  6 18:03:07 2014 lhomme
 */
 
 #include "my.h"
+#include "npi/npi.h"
 
 void		my_show_list(t_token *list)
 {
@@ -26,12 +27,17 @@ int		main(int ac, char **av, char **envp)
   t_env         *env;
   char		*tmp;
 
+  if (ac > 1 || av[1] != NULL)
+    return (0);
   history = NULL;
+  list = NULL;
   env = my_env_inlist(envp);
   display_prompt();
   while ((tmp = get_next_line(0)))
     {
       list = fill_list_token(tmp);
+      aff(npi(list), 0);
+      //      history = my_history(history, tmp);
       /*      if (my_strncmp(tmp, "cd", my_strlen("cd")) == 0)
 	env = my_cd(env, tmp);
       else if (tmp[0] == 's')
@@ -40,14 +46,15 @@ int		main(int ac, char **av, char **envp)
 	env = my_unsetenv(env, tmp);
       else if (tmp[0] == 'e')
         env = my_echo(env, tmp);
-      */display_prompt();
+      */
+      display_prompt();
     }
   return (0);
 }
 
 void		display_prompt()
 {
-  my_putstr("$>", 1);
+  write(1, "$> ", 3);
 }
 
 t_token		*fill_list_token(char *str)

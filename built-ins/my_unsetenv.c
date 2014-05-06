@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 17:56:42 2014 lhomme
-** Last update Wed Apr 23 17:39:17 2014 bourrel
+** Last update Wed Apr 30 18:18:20 2014 lhomme
 */
 
 #include "../my.h"
@@ -18,7 +18,7 @@ char	*unset_arg(char *str, int nbr)
 
   i = nbr - 1;
   j = 0;
-  arg = malloc(sizeof(*arg) * my_strlen(str));
+  arg = malloc(sizeof(*arg) * strlen(str));
   while (str[++i] != ' ')
     if (str[i] == '\0')
       return (NULL);
@@ -45,7 +45,7 @@ t_env	*my_unsetenv(t_env *env, char *str)
   t_env	*tmp;
   char	*arg;
 
-  if (my_strncmp(str, "unsetenv", 8))
+  if (strncmp(str, "unsetenv", 8))
     arg = unset_arg(str, 10);
   else
     arg = unset_arg(str, 0);
@@ -54,7 +54,7 @@ t_env	*my_unsetenv(t_env *env, char *str)
     printf("Error: no argument\n");
   else
     {
-      while (tmp != env && (my_strncmp(tmp->str, arg, my_strlen(arg)) != 0))
+      while (tmp != env && (strncmp(tmp->str, arg, strlen(arg)) != 0))
 	tmp = tmp->next;
       if (tmp == env)
 	printf("Error: %s does not exist in the environment\n", arg);

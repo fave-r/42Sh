@@ -5,14 +5,14 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Dec 13 13:03:54 2013 lhomme
-** Last update Wed Apr 23 17:10:42 2014 bourrel
+** Last update Wed Apr 30 18:17:24 2014 lhomme
 */
 
 #include "../my.h"
 
 void	my_env_vh(char *str)
 {
-  if (my_strcmp(str, "--version") == 0)
+  if (strcmp(str, "--version") == 0)
     {
       printf("env (GNU coreutils) 8.17\nCopyright (C) 2012 Free Software ");
       printf("Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or late");
@@ -21,7 +21,7 @@ void	my_env_vh(char *str)
       printf("WARRANTY, to the extent permitted by law.\n\n");
       printf("Written by Richard Mlynarik and David MacKenzie.\n");
     }
-  else if (my_strcmp(str, "--help") == 0)
+  else if (strcmp(str, "--help") == 0)
     {
       printf("Usage: env [OPTION]... [-] [NAME=VALUE]... [COMMAND [ARG]..");
       printf(".]\nSet each NAME to VALUE in the environment and run COMMA");
@@ -68,7 +68,7 @@ char	*env_arg(char *str)
     return (NULL);
   i = 0;
   j = 0;
-  arg = malloc(sizeof(*arg) * my_strlen(str));
+  arg = malloc(sizeof(*arg) * strlen(str));
   while (i < 6)
     i++;
   if (str[i] == '\0')
@@ -89,19 +89,19 @@ t_env	*my_env(t_env *env, char *str)
   char	*arg;
 
   arg = env_arg(str);
-  if (my_strlen(str) == 6)
+  if (strlen(str) == 6)
     my_print_envlist(env);
-  else if ((my_strcmp(arg, "-0") == 1)
-	   || (my_strcmp(arg, "--null") == 1))
+  else if ((strcmp(arg, "-0") == 1)
+	   || (strcmp(arg, "--null") == 1))
     my_env_null(env);
-  else if ((my_strcmp(arg, "--version") == 1)
-	   || (my_strcmp(arg, "--help") == 1))
+  else if ((strcmp(arg, "--version") == 1)
+	   || (strcmp(arg, "--help") == 1))
     my_env_vh(str);
-  else if  ((my_strcmp(arg, "-i") == 1)
-	    || (my_strcmp(arg, "--ignore-environment") == 1))
+  else if  ((strcmp(arg, "-i") == 1)
+	    || (strcmp(arg, "--ignore-environment") == 1))
     env = my_env_i(env);
-  else if ((my_strncmp(arg, "-u", 2) == 0)
-	   || (my_strcmp(arg, "--unset") == 1))
+  else if ((strncmp(arg, "-u", 2) == 0)
+	   || (strcmp(arg, "--unset") == 1))
     env = my_unsetenv(env, arg);
   else
     printf("env: invalid option: %s\n", str);

@@ -5,9 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Wed Apr 30 15:05:27 2014 lhomme
+** Last update Tue May  6 18:00:47 2014 lhomme
 */
 
+#include "../my.h"
 #include "npi.h"
 
 void	my_stack(char *token, t_list **stack, t_list **output)
@@ -18,15 +19,15 @@ void	my_stack(char *token, t_list **stack, t_list **output)
       while (*stack != NULL && (my_priority(token, (*stack)->data) == 1))
 	{
 	  make_tree(output, (*stack)->data);
-	  delete_top(stack);
+	  npi_delete_top(stack);
 	}
-      add_top(stack, token, NULL);
+      npi_add_top(stack, token, NULL);
     }
   else
-    add_top(output, token, NULL);
+    npi_add_top(output, token, NULL);
 }
 
-t_tree	*npi(t_list *token)
+t_tree	*npi(t_token *token)
 {
   t_list	*stack;
   t_list	*output;
@@ -35,9 +36,11 @@ t_tree	*npi(t_list *token)
   output = NULL;
   if (!token)
     return (NULL);
+  if (!token->next)
+    return (createNode(NULL, token->token));
   while (token)
     {
-      my_stack(token->data, &stack, &output);
+      my_stack(token->token, &stack, &output);
       token = token->next;
     }
   while (stack)

@@ -5,9 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Apr 23 16:23:56 2014 lhomme
-** Last update Wed Apr 23 16:24:29 2014 lhomme
+** Last update Tue May  6 18:03:44 2014 lhomme
 */
 
+#include "../my.h"
 #include "npi.h"
 
 int	my_priority(char *d1, char *d2)

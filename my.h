@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed Apr 30 18:07:09 2014 lhomme
+** Last update Tue May  6 18:01:46 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -16,6 +16,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <glob.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #define BUFF_SIZE 1024
 
@@ -37,7 +39,6 @@ typedef struct		s_token
   char			*token;
   int			type;
   struct s_token	*next;
-
 }			t_token;
 
 typedef struct		s_get
@@ -77,5 +78,7 @@ t_env   *my_setenv(t_env*, char**);
 t_env   *my_add_env(t_env*, char*);
 t_env	*my_env(t_env*, char*);
 t_env	*my_echo(t_env*, char*);
+t_hist  *my_history(t_hist *history, char *str);
+int     my_put_nbr(int nb, int fd);
 
 #endif

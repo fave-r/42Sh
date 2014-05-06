@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Mar 21 14:22:18 2014 lhomme
-** Last update Wed Apr 23 14:28:55 2014 bourrel
+** Last update Wed Apr 30 18:15:42 2014 lhomme
 */
 
 #include <unistd.h>
@@ -18,10 +18,10 @@ void	change_oldpwd(t_env *env, char *pwd)
   t_env	*tmp;
 
   tmp = env->next;
-  while (my_strncmp(tmp->str, "OLDPWD", 6) != 0)
+  while (strncmp(tmp->str, "OLDPWD", 6) != 0)
     tmp = tmp->next;
   tmp->str[7] = 0;
-  tmp->str = my_strcat(tmp->str, pwd);
+  tmp->str = strcat(tmp->str, pwd);
 }
 
 t_env	*my_oldpwd(t_env *env)
@@ -33,17 +33,17 @@ t_env	*my_oldpwd(t_env *env)
 
   oldpwd = env->next;
   pwd = env->next;
-  while (my_strncmp(oldpwd->str, "OLDPWD", 6) != 0)
+  while (strncmp(oldpwd->str, "OLDPWD", 6) != 0)
     oldpwd = oldpwd->next;
   chdir(oldpwd->str + 7);
-  str = my_strdup(oldpwd->str + 6);
-  while (my_strncmp(pwd->str, "PWD", 3) != 0)
+  str = strdup(oldpwd->str + 6);
+  while (strncmp(pwd->str, "PWD", 3) != 0)
     pwd = pwd->next;
-  str2 = my_strdup(pwd->str + 3);
+  str2 = strdup(pwd->str + 3);
   oldpwd->str[6] = 0;
   pwd->str[3] = 0;
-  oldpwd->str = my_strcat(oldpwd->str, str2);
-  pwd->str = my_strcat(pwd->str, str);
+  oldpwd->str = strcat(oldpwd->str, str2);
+  pwd->str = strcat(pwd->str, str);
   return (env);
 }
 
@@ -55,7 +55,7 @@ char	*my_dup_pwd(char *pwd)
 
   i = 2;
   j = 0;
-  tmp = malloc(sizeof(char) * (my_strlen(pwd) - 1));
+  tmp = malloc(sizeof(char) * (strlen(pwd) - 1));
   while (pwd[i] != 0)
     {
       tmp[j] = pwd[i];
@@ -71,10 +71,10 @@ t_env	*my_change_pwd(t_env *env, char *pwd, int i)
   t_env	*tmp;
 
   tmp = env->next;
-  while (my_strncmp(tmp->str, "PWD=", 4) != 0)
+  while (strncmp(tmp->str, "PWD=", 4) != 0)
     tmp = tmp->next;
   change_oldpwd(env, tmp->str + 4);
-  if ((my_strcmp(pwd, "..") == 0) || (my_strncmp(pwd, "..", 2) == 0))
+  if ((strcmp(pwd, "..") == 0) || (strncmp(pwd, "..", 2) == 0))
     {
       while (tmp->str[i] != 0)
 	i++;
@@ -85,11 +85,11 @@ t_env	*my_change_pwd(t_env *env, char *pwd, int i)
 	my_change_pwd(tmp, my_dup_pwd(pwd), 0);
     }
   else if (pwd[0] == '/')
-    tmp->str = my_strcat("PWD=", pwd);
+    tmp->str = strcat("PWD=", pwd);
   else
     {
-      tmp->str = my_strcat(tmp->str, "/");
-      tmp->str = my_strcat(tmp->str, pwd);
+      tmp->str = strcat(tmp->str, "/");
+      tmp->str = strcat(tmp->str, pwd);
     }
   return (env);
 }

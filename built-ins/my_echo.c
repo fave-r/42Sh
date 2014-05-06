@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Thu Apr 24 14:50:53 2014 bourrel
+** Last update Wed Apr 30 18:16:14 2014 lhomme
 */
 
 #include "../my.h"
@@ -20,7 +20,7 @@ char    *echo_arg(char *str)
     return (NULL);
   i = 0;
   j = 0;
-  arg = malloc(sizeof(*arg) * my_strlen(str));
+  arg = malloc(sizeof(*arg) * strlen(str));
   while (i < 4)
     i++;
   if (str[i] == '\0')

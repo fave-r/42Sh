@@ -5,16 +5,13 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Thu Mar 27 14:15:33 2014 lhomme
-<<<<<<< HEAD
-** Last update Wed Apr 30 18:13:51 2014 lhomme
-=======
-** Last update Tue Apr 15 18:26:19 2014 romaric
->>>>>>> 994c751f1e558733ec8eb2745749d5cd4f75c6d1
+** Last update Tue May  6 18:02:13 2014 lhomme
 */
 
+#include "../my.h"
 #include "npi.h"
 
-int	add_end(t_list **list, void *data)
+int	npi_add_end(t_list **list, void *data)
 {
   t_list       *elem;
   t_list       *tmp;
@@ -36,7 +33,7 @@ int	add_end(t_list **list, void *data)
   return (0);
 }
 
-int	add_top(t_list **list, void *data, t_tree *tree)
+int	npi_add_top(t_list **list, void *data, t_tree *tree)
 {
   t_list	*new;
   t_list	*tmp;
@@ -52,7 +49,7 @@ int	add_top(t_list **list, void *data, t_tree *tree)
   return (0);
 }
 
-void	delete_list(t_list **list)
+void	npi_delete_list(t_list **list)
 {
   t_list       *tmp;
   t_list       *tmpnxt;
@@ -67,7 +64,7 @@ void	delete_list(t_list **list)
   *list = tmp;
 }
 
-int	delete_last(t_list **list)
+int	npi_delete_last(t_list **list)
 {
   t_list	*tmp;
   t_list	*ptmp;
@@ -92,7 +89,7 @@ int	delete_last(t_list **list)
   return (0);
 }
 
-int	delete_top(t_list **list)
+int	npi_delete_top(t_list **list)
 {
   t_list	*new;
   t_list	*tmp;
