@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:44:49 2014 romaric
-** Last update Thu May  1 16:18:32 2014 romaric
+** Last update Mon May  5 15:53:35 2014 romaric
 */
 
 #include "eval.h"
@@ -32,4 +32,13 @@ char    *my_strcpy(char *dest, char *src)
       i++;
     }
   return (dest);
+}
+
+void	free_doble(char **kill)
+{
+  int	i;
+
+  i = -1;
+  while (kill[++i] != NULL)
+      free(kill[i]);
 }

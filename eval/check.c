@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Thu May  1 16:09:17 2014 romaric
+** Last update Mon May  5 16:18:41 2014 romaric
 */
 
 #include "eval.h"
@@ -20,7 +20,7 @@ char    *my_strcpyfinal(char *dest, char *cmd)
 
   x = 0;
   i = my_strlen_n(dest);
-  tmp = xmalloc((my_strlen_n(dest) + my_strlen_n(cmd) + 1) * sizeof(char));
+  tmp = xmalloc((my_strlen_n(dest) + my_strlen_n(cmd) + 2) * sizeof(char));
   while (x < (my_strlen_n(dest)))
     {
       tmp[x] = dest[x];
@@ -51,6 +51,7 @@ void	execute(char *pathutil, char *cmd, char **arv)
       if (pid == 0)
 	execve(pathforexec, arv, environ);
       wait(NULL);
+      free(pathforexec);
     }
 }
 
@@ -88,6 +89,9 @@ void	check_path(char **pathsep, char *cmd, char **str)
     filepath = find_lib(pathsep, cmd);
   if (filepath != NULL)
       execute(filepath, cmd, str);
+  free(str);
+  free(filepath);
+  free(pathsep);
 }
 
 void	exec(char *cmd)
@@ -123,4 +127,5 @@ void	check_fn(t_tree *tree)
     pipe(tree);
     else*/
   exec(tree->data);
+  free(tree);
 }

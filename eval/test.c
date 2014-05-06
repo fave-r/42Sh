@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:34:41 2014 romaric
-** Last update Thu May  1 17:07:02 2014 romaric
+** Last update Mon May  5 17:07:29 2014 romaric
 */
 
 #include "eval.h"
@@ -35,7 +35,7 @@ void    aff(t_tree *tree, int pos)
 
 t_tree  *createNode(t_tree *elem, void *data)
 {
-  elem = malloc(sizeof(t_tree));
+  elem = xmalloc(sizeof(t_tree));
   if (elem == NULL)
     return (NULL);
   elem->data = data;
@@ -90,7 +90,7 @@ int	main()
   t_tree	*tree;
 
   tree = NULL;
-  addNode(&tree, "ls", 0);
+  addNode(&tree, "ls -l --color", 0);
   /*  addNode(&tree, "toto", 2);
   addNode(&tree, "|", 1);
   addNode(&tree, "ls", 1);

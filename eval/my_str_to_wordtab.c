@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Dec 18 13:38:53 2013 romaric
-** Last update Thu May  1 16:07:59 2014 romaric
+** Last update Mon May  5 16:17:36 2014 romaric
 */
 
 #include "eval.h"
@@ -20,11 +20,11 @@ int	countword(char *str, char sep)
   while (str[i] != '\0')
     {
       while ((str[i] == sep || str[i] == '\t') && str[i] != '\0')
-	i += 1;
+	i++;
       if (str[i] != sep && str[i] != '\t' && str[i] != '\0')
-	word += 1;
+	word++;
       while (str[i] != sep && str[i] != '\t' && str[i] != '\0')
-	i += 1;
+	i++;
     }
   return (word);
 }
@@ -38,7 +38,7 @@ char	**my_str_to_wordtab(char *str, char sep)
   w.strpar = xmalloc(sizeof(char*) * (w.nbwords + 1) + my_strlen_n(str) + 1);
   w.ptr = (char*)w.strpar;
   w.ptr += sizeof(char*) * (w.nbwords + 1);
-  w.ptr = my_strcpy(str, w.ptr);
+  w.ptr = strdup(str);
   while (*(w.ptr) != '\0')
     {
       while ((*(w.ptr) == sep || *(w.ptr) == '\t') && *(w.ptr) != '\0')

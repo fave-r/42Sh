@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:28:32 2014 romaric
-** Last update Thu May  1 16:04:51 2014 romaric
+** Last update Mon May  5 15:36:55 2014 romaric
 */
 
 #ifndef __EVAL__
@@ -50,5 +50,6 @@ int      checkpath(char **env);
 char    *pathcpy(char **env, int i);
 char    *rmpath(char *dest, char * src);
 char    *my_strcpy(char *dest, char *src);
+void    free_doble(char **kill);
 
 #endif

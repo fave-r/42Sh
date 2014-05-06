@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:29:35 2014 romaric
-** Last update Thu May  1 16:08:35 2014 romaric
+** Last update Mon May  5 16:04:33 2014 romaric
 */
 
 #include "eval.h"
@@ -28,6 +28,7 @@ char	**save_env(void)
       path = pathcpy(envcpy, pathi);
       pathsep = my_str_to_wordtab(path, ':');
     }
+  free(path);
   return (pathsep);
 }
 
@@ -56,6 +57,7 @@ char    **envcy(char **env)
       strcpy(envcpy[i], env[i]);
       i++;
     }
+  envcpy[i] = NULL;
   return (envcpy);
 }
 
@@ -80,8 +82,9 @@ char    *pathcpy(char **env, int i)
 {
   char  *path;
 
-  path = xmalloc(my_strlen_n(env[i]) * sizeof(char) - 5);
+  path = xmalloc(my_strlen_n(env[i]) * sizeof(char) - 4);
   rmpath(path, env[i]);
+  free_doble(env);
   return (path);
 }
 
@@ -98,5 +101,6 @@ char    *rmpath(char *dest, char * src)
       i++;
       x++;
     }
+  dest[x] = '\0';
   return (dest);
 }
