@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Wed Apr 30 16:02:49 2014 lhomme
+** Last update Thu May  8 18:09:05 2014 thibaud
 */
 
 #include "my.h"
@@ -38,7 +38,8 @@ int		get_operator(char *str, int i, int save[2])
 
 int		get_other(char *str, int i, int save[2])
 {
-  while ((str[i] == '-' || (save[1] == save[0])) && str[i] != '\0')
+  while ((str[i] == '-' || save[1] == save[0] || is_alpha(str[i]))
+	 && str[i] != '\0')
     {
       while (str[i] != '\t' && str[i] != ' ' && str[i] != '\0'
 	     && str[i] != '|' && str[i] != '&' && str[i] != '>' && str[i] != '<')
@@ -64,7 +65,8 @@ t_token		*fill_token(char *str)
 	i++;
       save[0] = i;
       save[1] = save[0];
-      if (str[i] == '|' || str[i] == '&' || str[i] == '>' || str[i] == '<')
+      if (str[i] == '|' || str[i] == '&' || str[i] == '>'
+	  || str[i] == '<' || str[i] == ';')
 	{
 	  i = get_operator(str, i, save);
 	  list = add_token(list, my_strxdup(str + save[0], save[1] - save[0] + 1));
