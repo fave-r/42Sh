@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ## 
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Thu May  8 18:13:13 2014 thibaud
+## Last update Fri May  9 19:19:50 2014 lhomme
 ##
 
 
@@ -21,6 +21,7 @@ SRCS=		main.c \
 		lib/xfunction.c \
 		lib/get_next_line.c \
 		lib/basic.c \
+		lib/my_epur_str.c \
 		list/my_token_list.c \
 		lexing/lexer.c \
 		lexing/lexer_fct.c \

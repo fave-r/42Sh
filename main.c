@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Tue May  6 18:03:07 2014 lhomme
+** Last update Fri May  9 19:20:35 2014 lhomme
 */
 
 #include "my.h"
@@ -35,18 +35,13 @@ int		main(int ac, char **av, char **envp)
   display_prompt();
   while ((tmp = get_next_line(0)))
     {
-      list = fill_list_token(tmp);
-      aff(npi(list), 0);
-      //      history = my_history(history, tmp);
-      /*      if (my_strncmp(tmp, "cd", my_strlen("cd")) == 0)
-	env = my_cd(env, tmp);
-      else if (tmp[0] == 's')
-	env = my_env(env, tmp);
-      else if (tmp[0] == 'u')
-	env = my_unsetenv(env, tmp);
-      else if (tmp[0] == 'e')
-        env = my_echo(env, tmp);
-      */
+      tmp = my_epur_str(tmp);
+      if (tmp && tmp[0] != 0)
+        {
+          list = fill_list_token(tmp);
+          aff(npi(list), 0);
+          //      history = my_history(history, tmp);                                                                                                                                                   free(tmp);
+        }
       display_prompt();
     }
   return (0);
