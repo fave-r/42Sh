@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Fri May  9 19:20:35 2014 lhomme
+** Last update Sun May 11 00:14:17 2014 bourrel
 */
 
 #include "my.h"
@@ -40,9 +40,10 @@ int		main(int ac, char **av, char **envp)
         {
           list = fill_list_token(tmp);
           aff(npi(list), 0);
-          //      history = my_history(history, tmp);                                                                                                                                                   free(tmp);
+          //  history = my_history(history, tmp);
+	  free(tmp);
         }
-      display_prompt();
+	display_prompt();
     }
   return (0);
 }

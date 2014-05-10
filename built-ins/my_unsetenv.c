@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 17:56:42 2014 lhomme
-** Last update Wed Apr 30 18:18:20 2014 lhomme
+** Last update Mon May  5 15:07:01 2014 bourrel
 */
 
 #include "../my.h"
@@ -18,7 +18,7 @@ char	*unset_arg(char *str, int nbr)
 
   i = nbr - 1;
   j = 0;
-  arg = malloc(sizeof(*arg) * strlen(str));
+  arg = malloc(sizeof(*arg) * my_strlen(str));
   while (str[++i] != ' ')
     if (str[i] == '\0')
       return (NULL);

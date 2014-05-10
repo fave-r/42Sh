@@ -5,9 +5,8 @@
 ## Login   <alex-odet@epitech.net>
 ## 
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Fri May  9 19:19:50 2014 lhomme
+## Last update Sun May 11 00:04:50 2014 bourrel
 ##
-
 
 CC=		clang
 
@@ -33,6 +32,7 @@ SRCS=		main.c \
 		built-ins/my_setenv.c \
 		built-ins/my_unsetenv.c \
 		built-ins/my_echo.c \
+		built-ins/my_echo_arg.c \
 		npi/npi.c \
 		npi/list_func.c \
 		npi/tree_func.c \

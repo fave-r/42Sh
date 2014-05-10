@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May  9 19:20:26 2014 lhomme
+** Last update Sat May 10 23:17:35 2014 bourrel
 */
 
 #ifndef __42Sh__
@@ -66,7 +66,7 @@ void	display_prompt();
 char	*get_next_line(const int fd);
 int	my_strlen(char *str);
 char	*my_auto_complete(char *path);
-int	my_cd(t_env*, char*);
+t_env	*my_cd(t_env*, char*);
 t_env	*my_change_pwd(t_env*, char*, int);
 t_env   *my_oldpwd(t_env*);
 int     my_strcmp(char*, char*);
@@ -82,6 +82,7 @@ t_env   *my_setenv(t_env*, char**);
 t_env   *my_add_env(t_env*, char*);
 t_env	*my_env(t_env*, char*);
 t_env	*my_echo(t_env*, char*);
+int	my_echo_arg(char*);
 t_hist  *my_history(t_hist *history, char *str);
 char    *my_epur_str(char *str);
 int     is_spe(char c);
