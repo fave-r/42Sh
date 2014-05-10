@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May  6 17:54:16 2014 romaric
+** Last update Sat May 10 12:02:04 2014 romaric
 */
 
 #include "eval.h"
@@ -39,20 +39,23 @@ char    *my_strcpyfinal(char *dest, char *cmd)
   return (tmp);
 }
 
-void	execute(char *pathutil, char *cmd, char **arv)
+int	execute(char *pathutil, char *cmd, char **arv)
 {
   int   pid;
+  int	ret;
   char  *pathforexec;
 
+  ret = 1;
   if (*environ != NULL)
     {
       pathforexec = my_strcpyfinal(pathutil, cmd);
       pid = fork();
       if (pid == 0)
 	execve(pathforexec, arv, environ);
-      wait(NULL);
+      wait(&ret);
       free(pathforexec);
     }
+  return (ret);
 }
 
 char    *find_lib(char **path, char *cmd)
@@ -80,25 +83,30 @@ char    *find_lib(char **path, char *cmd)
   return (NULL);
 }
 
-void	check_path(char **pathsep, char *cmd, char **str)
+int	check_path(char **pathsep, char *cmd, char **str)
 {
+  int	ret;
   char  *filepath;
 
+  ret = 1;
   filepath = NULL;
   if (*environ != NULL)
     filepath = find_lib(pathsep, cmd);
   if (filepath != NULL)
-      execute(filepath, cmd, str);
+    ret = execute(filepath, cmd, str);
   free(str);
   free(filepath);
   free(pathsep);
+  return (ret);
 }
 
-void	my_exec(char *cmd)
+int	my_exec(char *cmd)
 {
+  int	ret;
   char	**tab;
   char	**pathsep;
 
+  ret = 0;
   tab = NULL;
   if (strchr(cmd, ' ') != NULL)
     tab = my_str_to_wordtab(cmd, ' ');
@@ -110,22 +118,29 @@ void	my_exec(char *cmd)
       tab[1] = NULL;
     }
   pathsep = save_env();
-  check_path(pathsep, tab[0], tab);
+  return (check_path(pathsep, tab[0], tab));
 }
 
-void	check_fn(t_tree *tree)
+void	check_fn(t_tree *tree, int in, int out)
 {
-  /*  if (strcmp(tree->data, ">") == 0)
-    redir_right(tree);
+  if (strcmp(tree->data, ">") == 0)
+    return (redir_right(tree, in, out));
   else if (strcmp(tree->data, ">>") == 0)
-    doble_right(tree);
+    return (doble_right(tree, in, out));
   else if (strcmp(tree->data, "<") == 0)
-    redir_left(tree);
-  else if (strcmp(tree->data, "<<") == 0)
-    doble_left(tree);
-  else if (strcmp(tree->data, "|") == 0)
-    pipe(tree);
-    else*/
-  my_exec(tree->data);
-  free(tree);
+    return (redir_left(tree, in, out));
+  /*
+    else if (strcmp(tree->data, "<<") == 0)
+    return (doble_left(tree, in, out));
+    else if (strcmp(tree->data, "|") == 0)
+    return (my_pipe(tree, in, out));
+  */
+  else if (strcmp(tree->data, "&&") == 0)
+    return (my_and(tree, in, out));
+  else if (strcmp(tree->data, "||") == 0)
+    return (my_or(tree, in, out));
+  else if (strcmp(tree->data, ";") == 0)
+    return (my_semi_col(tree, in, out));
+  else
+    return (my_exec(tree->data));
 }
