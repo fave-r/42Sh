@@ -5,10 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 17:56:42 2014 lhomme
-** Last update Mon May  5 15:07:01 2014 bourrel
+** Last update Sun May 11 18:01:28 2014 romaric
 */
 
-#include "../my.h"
+#include "my.h"
 
 char	*unset_arg(char *str, int nbr)
 {

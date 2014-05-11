@@ -5,11 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Tue May  6 18:00:47 2014 lhomme
+** Last update Sun May 11 18:03:27 2014 romaric
 */
 
-#include "../my.h"
-#include "npi.h"
+#include "my.h"
 
 void	my_stack(char *token, t_list **stack, t_list **output)
 {

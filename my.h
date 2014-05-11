@@ -1,11 +1,11 @@
 /*
 ** my.h for my.h in /home/alex-odet/work/42Sh
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sat May 10 23:17:35 2014 bourrel
+** Last update Sun May 11 18:35:14 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -51,6 +51,28 @@ typedef struct		s_get
   int			l;
 }			t_get;
 
+typedef struct          s_tree
+{
+  void                  *data;
+  struct s_tree         *left;
+  struct s_tree         *right;
+}                       t_tree;
+
+typedef struct          s_list
+{
+  void                  *data;
+  t_tree                *tree;
+  struct s_list         *next;
+}                       t_list;
+
+typedef struct		s_word
+{
+  int   nbwords;
+  int   i;
+  char  **strpar;
+  char  *ptr;
+}			t_word;
+
 int	print_token(t_token *list);
 t_token	*add_token(t_token *list, char *token);
 char	*my_strxdup(char *source, int len);
@@ -87,5 +109,33 @@ t_hist  *my_history(t_hist *history, char *str);
 char    *my_epur_str(char *str);
 int     is_spe(char c);
 int     is_alpha(char c);
+t_tree	*npi(t_token *token);
+t_tree  *createNode(t_tree *elem, void *data);
+int     npi_add_end(t_list **list, void *data);
+int     npi_add_top(t_list **list, void *data, t_tree *tree);
+int     npi_delete_top(t_list **list);
+int     npi_delete_last(t_list **list);
+int     my_priority(char *d1, char *d2);
+void    aff(t_tree *tree, int pos);
+void    addNode(t_tree **tree, void *data, int pos);
+void    make_tree(t_list **output, void *op);
+int     check_fn(t_tree *tree, int in, int out);
+int     my_strlen_n(char *str);
+char    **my_str_to_wordtab(char *str, char sep);
+char    **save_env(void);
+int     checkenv(char **env);
+char    **envcy(char **env);
+int      checkpath(char **env);
+char    *pathcpy(char **env, int i);
+char    *rmpath(char *dest, char * src);
+char    *my_strcpy(char *dest, char *src);
+void    free_doble(char **kill);
+int     my_semi_col(t_tree *tree, int in, int out);
+int     my_and(t_tree *tree, int in, int out);
+int     my_or(t_tree *tree, int in, int out);
+int     redir_right(t_tree *tree, int in, int out);
+int     doble_right(t_tree *tree, int in, int out);
+int     redir_left(t_tree *tree, int in, int out);
+int     xopen(const char *pathname, int flags, mode_t mode);
 
 #endif

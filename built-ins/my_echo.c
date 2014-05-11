@@ -5,10 +5,10 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Mon May  5 16:15:38 2014 bourrel
+** Last update Sun May 11 18:00:00 2014 romaric
 */
 
-#include "../my.h"
+#include "my.h"
 
 char	*is_text(char *str)
 {

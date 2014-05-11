@@ -1,20 +1,20 @@
 ##
 ## Makefile for Makefile in /home/alex-odet/work/42Sh
-## 
+##
 ## Made by alex-odet
 ## Login   <alex-odet@epitech.net>
-## 
+##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sun May 11 00:04:50 2014 bourrel
+## Last update Sun May 11 18:39:43 2014 romaric
 ##
 
 CC=		clang
 
 RM=		rm -f
 
-CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I.
+CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I. -I./npi/ -I./eval/
 
-NAME=		42sh
+NAME=		mysh
 
 SRCS=		main.c \
 		lib/xfunction.c \
@@ -37,7 +37,13 @@ SRCS=		main.c \
 		npi/list_func.c \
 		npi/tree_func.c \
 		npi/make_tree.c \
-		npi/priority.c
+		npi/priority.c \
+		eval/my_str_to_wordtab.c \
+		eval/env.c \
+		eval/check.c \
+		eval/char.c \
+		eval/xfunction.c \
+		eval/mys.c
 
 OBJS=		$(SRCS:.c=.o)
 

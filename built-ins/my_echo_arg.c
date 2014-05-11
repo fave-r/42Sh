@@ -5,10 +5,10 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Fri Apr 25 15:26:05 2014 bourrel
-** Last update Sun May 11 00:11:46 2014 bourrel
+** Last update Sun May 11 17:59:49 2014 romaric
 */
 
-#include "../my.h"
+#include "my.h"
 
 int     convert_base(char *nbr, int base)
 {

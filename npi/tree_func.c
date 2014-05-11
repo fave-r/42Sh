@@ -5,11 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Apr 23 15:44:31 2014 lhomme
-** Last update Tue May  6 18:03:29 2014 lhomme
+** Last update Sun May 11 18:03:55 2014 romaric
 */
 
-#include "../my.h"
-#include "npi.h"
+#include "my.h"
 
 void	free_tree(t_tree *tree)
 {

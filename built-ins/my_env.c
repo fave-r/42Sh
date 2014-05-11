@@ -5,10 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Dec 13 13:03:54 2013 lhomme
-** Last update Mon May  5 15:04:25 2014 bourrel
+** Last update Sun May 11 18:00:50 2014 romaric
 */
 
-#include "../my.h"
+#include "my.h"
 
 void	my_env_vh(char *str)
 {

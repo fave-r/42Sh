@@ -5,11 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Sun May 11 00:14:17 2014 bourrel
+** Last update Sun May 11 18:12:26 2014 romaric
 */
 
 #include "my.h"
-#include "npi/npi.h"
 
 void		my_show_list(t_token *list)
 {
@@ -39,7 +38,8 @@ int		main(int ac, char **av, char **envp)
       if (tmp && tmp[0] != 0)
         {
           list = fill_list_token(tmp);
-          aff(npi(list), 0);
+          //aff(npi(list), 0);
+	  check_fn(npi(list), 0, 1);
           //  history = my_history(history, tmp);
 	  free(tmp);
         }

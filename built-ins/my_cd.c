@@ -5,13 +5,13 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Mon May  5 14:59:48 2014 bourrel
+** Last update Sun May 11 17:59:27 2014 romaric
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <dirent.h>
-#include "../my.h"
+#include "my.h"
 
 char    *find_arg(char *str)
 {

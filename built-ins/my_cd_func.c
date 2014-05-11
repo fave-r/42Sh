@@ -5,13 +5,13 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Mar 21 14:22:18 2014 lhomme
-** Last update Mon May  5 14:58:30 2014 bourrel
+** Last update Sun May 11 17:59:38 2014 romaric
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <dirent.h>
-#include "../my.h"
+#include "my.h"
 
 void	change_oldpwd(t_env *env, char *pwd)
 {

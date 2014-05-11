@@ -5,10 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat May 10 10:32:33 2014 romaric
-** Last update Sun May 11 17:22:20 2014 romaric
+** Last update Sun May 11 18:50:15 2014 romaric
 */
 
-#include "eval.h"
+#include "my.h"
 
 int	my_semi_col(t_tree *tree, int in, int out)
 {
@@ -41,8 +41,10 @@ int	redir_right(t_tree *tree, int in, int out)
   int	ret;
   int	fd;
   int	i;
+  int	save;
 
   i = 0;
+  save = out;
   fd = xopen(tree->right->data, O_WRONLY | O_CREAT | O_TRUNC, 0666);
   if (fd == -1)
     return (-1);

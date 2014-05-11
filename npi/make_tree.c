@@ -5,11 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Apr 23 16:33:30 2014 lhomme
-** Last update Tue May  6 18:02:29 2014 lhomme
+** Last update Sun May 11 18:03:16 2014 romaric
 */
 
-#include "../my.h"
-#include "npi.h"
+#include "my.h"
 
 void	make_tree(t_list **output, void *op)
 {

@@ -5,11 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Thu Mar 27 14:15:33 2014 lhomme
-** Last update Tue May  6 18:02:13 2014 lhomme
+** Last update Sun May 11 18:03:05 2014 romaric
 */
 
-#include "../my.h"
-#include "npi.h"
+#include "my.h"
 
 int	npi_add_end(t_list **list, void *data)
 {

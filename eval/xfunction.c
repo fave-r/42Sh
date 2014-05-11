@@ -5,10 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Dec 18 14:03:00 2013 romaric
-** Last update Sun May 11 14:54:19 2014 romaric
+** Last update Sun May 11 18:05:14 2014 romaric
 */
 
-#include "eval.h"
+#include "my.h"
 
 int	xopen(const char *pathname, int flags, mode_t mode)
 {
@@ -31,17 +31,4 @@ ssize_t	xread(int fd, void *buf, size_t count)
       exit(EXIT_FAILURE);
     }
   return (len);
-}
-
-void	*xmalloc(size_t n)
-{
-  void	*mal;
-
-  mal = malloc(n);
-  if (mal == NULL)
-    {
-      fprintf(stderr, "malloc fail.\n");
-      exit(EXIT_FAILURE);
-    }
-  return (mal);
 }

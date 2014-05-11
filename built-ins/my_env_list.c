@@ -5,10 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:56:42 2014 lhomme
-** Last update Thu Apr 17 15:36:40 2014 bourrel
+** Last update Sun May 11 18:01:05 2014 romaric
 */
 
-#include "../my.h"
+#include "my.h"
 
 t_env		*my_add_env(t_env *root, char *str)
 {
