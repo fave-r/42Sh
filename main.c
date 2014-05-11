@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Sun May 11 18:12:26 2014 romaric
+** Last update Sun May 11 19:17:09 2014 romaric
 */
 
 #include "my.h"
@@ -26,22 +26,25 @@ int		main(int ac, char **av, char **envp)
   t_env         *env;
   char		*tmp;
 
+  tmp = xmalloc(4096 * sizeof(char));
   if (ac > 1 || av[1] != NULL)
     return (0);
   history = NULL;
   list = NULL;
   env = my_env_inlist(envp);
   display_prompt();
-  while ((tmp = get_next_line(0)))
+  while ((xread(0, tmp, 4096)) > 0)
     {
+      printf("tmp avant: %s\n", tmp);
       tmp = my_epur_str(tmp);
+      printf("tmp apres: %s\n", tmp);
       if (tmp && tmp[0] != 0)
         {
           list = fill_list_token(tmp);
           //aff(npi(list), 0);
 	  check_fn(npi(list), 0, 1);
           //  history = my_history(history, tmp);
-	  free(tmp);
+	  bzero(tmp, 4096);
         }
 	display_prompt();
     }

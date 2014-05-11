@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sun May 11 18:35:14 2014 romaric
+** Last update Sun May 11 19:16:52 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -137,5 +137,6 @@ int     redir_right(t_tree *tree, int in, int out);
 int     doble_right(t_tree *tree, int in, int out);
 int     redir_left(t_tree *tree, int in, int out);
 int     xopen(const char *pathname, int flags, mode_t mode);
+ssize_t xread(int fd, void *buf, size_t count);
 
 #endif
