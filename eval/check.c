@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Sun May 11 14:41:09 2014 romaric
+** Last update Sun May 11 16:43:39 2014 romaric
 */
 
 #include "eval.h"
@@ -120,6 +120,10 @@ int	my_exec(char *cmd)
   pathsep = save_env();
   return (check_path(pathsep, tab[0], tab));
 }
+
+/*
+** fonction eval
+*/
 
 int	check_fn(t_tree *tree, int in, int out)
 {

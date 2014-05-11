@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat May 10 10:32:33 2014 romaric
-** Last update Sun May 11 15:08:14 2014 romaric
+** Last update Sun May 11 17:22:20 2014 romaric
 */
 
 #include "eval.h"
@@ -13,7 +13,7 @@
 int	my_semi_col(t_tree *tree, int in, int out)
 {
   check_fn(tree->left, in, out);
-  return(check_fn(tree->right, in, out));
+  return (check_fn(tree->right, in, out));
 }
 
 int	my_and(t_tree *tree, int in, int out)
@@ -52,6 +52,7 @@ int	redir_right(t_tree *tree, int in, int out)
       fd = out;
       i = 1;
     }
+  dup2(fd, out);
   ret = check_fn(tree->left, in, fd);
   if (i != 1)
     close(fd);
@@ -74,6 +75,7 @@ int	doble_right(t_tree *tree, int in, int out)
       fd = out;
       i = 1;
     }
+  dup2(fd, out);
   ret = check_fn(tree->left, in, fd);
   if (i != 1)
   close(fd);
@@ -96,6 +98,7 @@ int	redir_left(t_tree *tree, int in, int out)
       fd = in;
       i = 1;
     }
+  dup2(fd, out);
   ret = check_fn(tree->left, fd, out);
   if (i != 1)
   close(fd);
