@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Mar 24 12:19:30 2014 romaric
-## Last update Wed Apr 30 20:23:04 2014 romaric
+## Last update Sun May 11 14:45:30 2014 romaric
 ##
 
 CC=		clang
@@ -21,7 +21,8 @@ SRCS=		test.c \
 		my_str_to_wordtab.c \
 		env.c \
 		char.c \
-		xfunction.c
+		xfunction.c \
+		mys.c
 
 OBJS=		$(SRCS:.c=.o)
 

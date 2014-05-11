@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:28:32 2014 romaric
-** Last update Mon May  5 15:36:55 2014 romaric
+** Last update Sun May 11 14:51:39 2014 romaric
 */
 
 #ifndef __EVAL__
@@ -18,6 +18,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <dirent.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 typedef struct          s_tree
 {
@@ -39,7 +41,7 @@ t_tree  *createNode(t_tree *elem, void *data);
 void    Node_add(t_tree *tmpTree, t_tree *elem, int pos);
 void    addNode(t_tree **tree, void *data, int pos);
 void    go_left(t_tree *tree);
-void    check_fn(t_tree *tree);
+int	check_fn(t_tree *tree, int in, int out);
 void    *xmalloc(size_t n);
 int     my_strlen_n(char *str);
 char    **my_str_to_wordtab(char *str, char sep);
@@ -51,5 +53,12 @@ char    *pathcpy(char **env, int i);
 char    *rmpath(char *dest, char * src);
 char    *my_strcpy(char *dest, char *src);
 void    free_doble(char **kill);
+int     my_semi_col(t_tree *tree, int in, int out);
+int     my_and(t_tree *tree, int in, int out);
+int     my_or(t_tree *tree, int in, int out);
+int     redir_right(t_tree *tree, int in, int out);
+int     doble_right(t_tree *tree, int in, int out);
+int     redir_left(t_tree *tree, int in, int out);
+int     xopen(const char *pathname, int flags, mode_t mode);
 
 #endif

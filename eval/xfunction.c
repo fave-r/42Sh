@@ -5,24 +5,18 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Dec 18 14:03:00 2013 romaric
-** Last update Wed Apr 30 20:22:11 2014 romaric
+** Last update Sun May 11 14:54:19 2014 romaric
 */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "eval.h"
 
-int	xopen(const char *pathname, int flags)
+int	xopen(const char *pathname, int flags, mode_t mode)
 {
   int	len;
 
-  len = open(pathname, flags);
+  len = open(pathname, flags, mode);
   if (len == -1)
-    {
-      fprintf(stderr, "open fail.\n");
-      exit(EXIT_FAILURE);
-    }
+    fprintf(stderr, "open fail.\n");
   return (len);
 }
 

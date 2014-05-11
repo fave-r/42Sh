@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:34:41 2014 romaric
-** Last update Tue May  6 16:48:29 2014 romaric
+** Last update Sun May 11 15:07:39 2014 romaric
 */
 
 #include "eval.h"
@@ -90,13 +90,13 @@ int	main()
   t_tree	*tree;
 
   tree = NULL;
-  addNode(&tree, "coucou", 0);
-  /*  addNode(&tree, "toto", 2);
-  addNode(&tree, "|", 1);
+  //addNode(&tree, "coucou", 0);
+  addNode(&tree, ">", 1);
   addNode(&tree, "ls", 1);
-  addNode(&tree, "cat", 3);
+  addNode(&tree, "toto", 2);
+  //addNode(&tree, "cat", 3);
   //aff(tree, 0);
-  go_left(tree); */
-  check_fn(tree);
+  //go_left(tree);
+  check_fn(tree, 0, 1);
   return (0);
 }

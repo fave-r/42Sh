@@ -5,13 +5,15 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat May 10 10:32:33 2014 romaric
-** Last update Sat May 10 13:40:39 2014 romaric
+** Last update Sun May 11 15:08:14 2014 romaric
 */
+
+#include "eval.h"
 
 int	my_semi_col(t_tree *tree, int in, int out)
 {
   check_fn(tree->left, in, out);
-  return(check_fn(tree->right, in, out))
+  return(check_fn(tree->right, in, out));
 }
 
 int	my_and(t_tree *tree, int in, int out)
@@ -41,7 +43,7 @@ int	redir_right(t_tree *tree, int in, int out)
   int	i;
 
   i = 0;
-  fd = xopen(tree->right, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+  fd = xopen(tree->right->data, O_WRONLY | O_CREAT | O_TRUNC, 0666);
   if (fd == -1)
     return (-1);
   if (out != 1)
@@ -52,7 +54,7 @@ int	redir_right(t_tree *tree, int in, int out)
     }
   ret = check_fn(tree->left, in, fd);
   if (i != 1)
-  close(fd);
+    close(fd);
   return (ret);
 }
 
@@ -63,7 +65,7 @@ int	doble_right(t_tree *tree, int in, int out)
   int	i;
 
   i = 0;
-  fd = xopen(tree->right, O_WRONLY | O_CREAT | O_APPEND, 0666);
+  fd = xopen(tree->right->data, O_WRONLY | O_CREAT | O_APPEND, 0666);
   if (fd == -1)
     return (-1);
   if (out != 1)
@@ -85,7 +87,7 @@ int	redir_left(t_tree *tree, int in, int out)
   int	i;
 
   i = 0;
-  fd = xopen(tree->right, O_RDONLY);
+  fd = xopen(tree->right->data, O_RDONLY, 0666);
   if (fd == -1)
     return (-1);
   if (in != 0)

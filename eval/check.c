@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Sat May 10 12:02:04 2014 romaric
+** Last update Sun May 11 14:41:09 2014 romaric
 */
 
 #include "eval.h"
@@ -121,7 +121,7 @@ int	my_exec(char *cmd)
   return (check_path(pathsep, tab[0], tab));
 }
 
-void	check_fn(t_tree *tree, int in, int out)
+int	check_fn(t_tree *tree, int in, int out)
 {
   if (strcmp(tree->data, ">") == 0)
     return (redir_right(tree, in, out));
