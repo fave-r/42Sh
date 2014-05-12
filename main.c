@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Mon May 12 11:30:32 2014 lhomme
+** Last update Mon May 12 11:39:20 2014 romaric
 */
 
 #include "my.h"
@@ -48,6 +48,7 @@ int		main(int ac, char **av, char **envp)
         }
 	display_prompt();
     }
+  write(1, "\n", 1);
   return (0);
 }
 
