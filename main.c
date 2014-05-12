@@ -5,11 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-<<<<<<< HEAD
-** Last update Mon May 12 16:50:42 2014 romaric
-=======
-** Last update Mon May 12 14:52:34 2014 lhomme
->>>>>>> c2346d5f2f1c4249414822963af76110705c8c65
+** Last update Mon May 12 17:08:17 2014 romaric
 */
 
 #include "my.h"
@@ -43,7 +39,7 @@ int		main(int ac, char **av, char **envp)
       if (tmp && tmp[0] != 0)
         {
           list = fill_list_token(tmp);
-          aff(npi(list), 0);
+          //aff(npi(list), 0);
 	  check_fn(npi(list), 0, 1);
           //  history = my_history(history, tmp);
 	  bzero(tmp, 4096);
