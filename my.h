@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Mon May 12 11:30:15 2014 lhomme
+** Last update Mon May 12 14:21:30 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -34,7 +34,6 @@ typedef struct		s_env
 typedef struct		s_token
 {
   char			*token;
-  int			type;
   struct s_token	*next;
 }			t_token;
 

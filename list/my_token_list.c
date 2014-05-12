@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Tue Apr 15 18:14:13 2014 alex-odet
-** Last update Tue Apr 15 18:18:36 2014 alex-odet
+** Last update Mon May 12 14:22:11 2014 lhomme
 */
 
 #include "my.h"
@@ -18,7 +18,6 @@ t_token		*add_token(t_token *list, char *token)
   tmp = list;
   new = xmalloc(sizeof(t_token));
   new->token = token;
-  new->type = 0;
   new->next = NULL;
   if (list == NULL)
     return (new);

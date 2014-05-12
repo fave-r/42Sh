@@ -5,14 +5,17 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat May 10 10:32:33 2014 romaric
-** Last update Sun May 11 18:50:15 2014 romaric
+** Last update Mon May 12 14:06:10 2014 lhomme
 */
 
 #include "my.h"
 
 int	my_semi_col(t_tree *tree, int in, int out)
 {
-  check_fn(tree->left, in, out);
+  if (!tree->right)
+    return (check_fn(tree->left, in, out));
+  if (tree->left)
+    check_fn(tree->left, in, out);
   return (check_fn(tree->right, in, out));
 }
 

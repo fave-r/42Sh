@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Mon Apr 14 23:48:28 2014 thibaud
-** Last update Thu May  8 18:16:09 2014 thibaud
+** Last update Mon May 12 14:50:07 2014 lhomme
 */
 
 #include "my.h"
@@ -20,7 +20,8 @@ int		is_spe(char c)
 
 int     is_alpha(char c)
 {
-  if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+  if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+      || (c >= '0' && c <= '9'))
     return (1);
   return (0);
 }

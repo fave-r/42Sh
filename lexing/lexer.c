@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Thu May  8 18:09:05 2014 thibaud
+** Last update Mon May 12 14:20:59 2014 lhomme
 */
 
 #include "my.h"
@@ -79,24 +79,4 @@ t_token		*fill_token(char *str)
 	}
     }
   return (list);
-}
-
-int		fill_type(t_token *list)
-{
-  t_token	*cur;
-
-  cur = list;
-  if (list)
-    {
-      while (cur != NULL)
-	{
-	  if (cur->token[0] == '|' || cur->token[0] == '&' || cur->token[0] == '>'
-	      || cur->token[0] == '<' || cur->token[0] == '&')
-	    cur->type = 1;
-	  else
-	    cur->type = 2;
-	  cur = cur->next;
-	}
-    }
-  return (0);
 }
