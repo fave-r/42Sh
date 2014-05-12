@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Mon May 12 14:20:59 2014 lhomme
+** Last update Mon May 12 17:25:48 2014 romaric
 */
 
 #include "my.h"
@@ -41,7 +41,7 @@ int		get_other(char *str, int i, int save[2])
   while ((str[i] == '-' || save[1] == save[0] || is_alpha(str[i]))
 	 && str[i] != '\0')
     {
-      while (str[i] != '\t' && str[i] != ' ' && str[i] != '\0'
+      while (str[i] != '\t' && str[i] != ' ' && str[i] != '\0' && str[i] != ';'
 	     && str[i] != '|' && str[i] != '&' && str[i] != '>' && str[i] != '<')
 	i++;
       save[1] = i;
