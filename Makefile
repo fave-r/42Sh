@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Mon May 12 11:47:51 2014 romaric
+## Last update Mon May 12 11:49:34 2014 romaric
 ##
 
 CC=		clang
@@ -48,7 +48,6 @@ SRCS=		main.c \
 OBJS=		$(SRCS:.c=.o)
 
 all:		$(NAME)
-		@./.boobs.sh
 
 $(NAME):	$(OBJS)
 		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
