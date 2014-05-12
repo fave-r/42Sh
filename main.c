@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Mon May 12 11:39:20 2014 romaric
+** Last update Mon May 12 14:46:36 2014 romaric
 */
 
 #include "my.h"
@@ -35,9 +35,7 @@ int		main(int ac, char **av, char **envp)
   display_prompt();
   while ((xread(0, tmp, 4096)) > 0)
     {
-      printf("tmp avant: %s\n", tmp);
       tmp = my_epur_str(tmp);
-      printf("tmp apres: %s\n", tmp);
       if (tmp && tmp[0] != 0)
         {
           list = fill_list_token(tmp);
