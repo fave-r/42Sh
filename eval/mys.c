@@ -1,11 +1,16 @@
 /*
-** semi_col.c for 42Sh in /home/blackbird/work/42Sh/eval
+** mys.c for 42Sh in /home/blackbird/work/42Sh/eval
 **
 ** Made by romaric
 ** Login   <fave_r@epitech.net>
 **
+<<<<<<< HEAD
+** Started on  Mon May 12 15:48:41 2014 romaric
+** Last update Mon May 12 15:51:24 2014 romaric
+=======
 ** Started on  Sat May 10 10:32:33 2014 romaric
 ** Last update Mon May 12 14:06:10 2014 lhomme
+>>>>>>> c2346d5f2f1c4249414822963af76110705c8c65
 */
 
 #include "my.h"
@@ -57,7 +62,6 @@ int	redir_right(t_tree *tree, int in, int out)
       fd = out;
       i = 1;
     }
-  dup2(fd, out);
   ret = check_fn(tree->left, in, fd);
   if (i != 1)
     close(fd);
@@ -80,7 +84,6 @@ int	doble_right(t_tree *tree, int in, int out)
       fd = out;
       i = 1;
     }
-  dup2(fd, out);
   ret = check_fn(tree->left, in, fd);
   if (i != 1)
   close(fd);
@@ -103,7 +106,6 @@ int	redir_left(t_tree *tree, int in, int out)
       fd = in;
       i = 1;
     }
-  dup2(fd, out);
   ret = check_fn(tree->left, fd, out);
   if (i != 1)
   close(fd);
