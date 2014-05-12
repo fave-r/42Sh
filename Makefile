@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sun May 11 18:39:43 2014 romaric
+## Last update Mon May 12 11:22:27 2014 lhomme
 ##
 
 CC=		clang
@@ -14,7 +14,7 @@ RM=		rm -f
 
 CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I. -I./npi/ -I./eval/
 
-NAME=		mysh
+NAME=		42sh
 
 SRCS=		main.c \
 		lib/xfunction.c \

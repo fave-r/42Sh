@@ -5,13 +5,15 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Sun May 11 17:59:27 2014 romaric
+** Last update Fri May  9 15:19:54 2014 lhomme
 */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <dirent.h>
-#include "my.h"
+#include "../my.h"
+
+void    my_putchar(char c)
+{
+  write(1, &c, 1);
+}
 
 char    *find_arg(char *str)
 {
@@ -34,7 +36,7 @@ char    *find_arg(char *str)
   return (NULL);
 }
 
-t_env		*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
+t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
 {
   if (strcmp(arg, "..") == 1)
     {
@@ -47,27 +49,30 @@ t_env		*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
   return (my_change_pwd(env, tmp->str + 5, 0));
 }
 
-t_env	*my_cd(t_env *env, char *str)
+int	my_cd(t_env *env, char *str)
 {
-  t_env	*tmp;
+  t_env		*tmp;
   char          *arg;
 
   arg = find_arg(str);
+  arg = my_epur_str(arg);
   tmp = env->next;
   if (arg != NULL)
     {
       if (strcmp(arg, "-") == 0)
-	return (my_oldpwd(env));
+	{
+	  env = my_oldpwd(env);
+	  return (0);
+	}
       if (opendir(arg) == NULL)
 	{
 	  printf("cd: %s: Not a directory\n", arg);
-	  return (env);
+	  return (-1);
 	}
-      else
-	{
-	  chdir(arg);
-	  return (my_change_pwd(env, arg, 0));
-	}
+      chdir(arg);
+      env = my_change_pwd(env, arg, 0);
+      return (0);
     }
-  return (my_cd_thereturn(env, tmp, arg));
+  env = my_cd_thereturn(env, tmp, arg);
+  return (0);
 }

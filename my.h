@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sun May 11 19:16:52 2014 romaric
+** Last update Mon May 12 11:25:24 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -23,12 +23,6 @@
 #include <dirent.h>
 
 #define BUFF_SIZE 1024
-
-typedef struct		s_hist
-{
-  char			*cmd;
-  struct s_hist		*next;
-}			t_hist;
 
 typedef struct		s_env
 {
@@ -88,7 +82,7 @@ void	display_prompt();
 char	*get_next_line(const int fd);
 int	my_strlen(char *str);
 char	*my_auto_complete(char *path);
-t_env	*my_cd(t_env*, char*);
+int	my_cd(t_env*, char*);
 t_env	*my_change_pwd(t_env*, char*, int);
 t_env   *my_oldpwd(t_env*);
 int     my_strcmp(char*, char*);
