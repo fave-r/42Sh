@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Mon May 12 11:25:24 2014 lhomme
+** Last update Mon May 12 11:30:15 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -99,7 +99,7 @@ t_env   *my_add_env(t_env*, char*);
 t_env	*my_env(t_env*, char*);
 t_env	*my_echo(t_env*, char*);
 int	my_echo_arg(char*);
-t_hist  *my_history(t_hist *history, char *str);
+t_env	*my_history(t_env *history, char *str);
 char    *my_epur_str(char *str);
 int     is_spe(char c);
 int     is_alpha(char c);

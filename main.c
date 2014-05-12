@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Sun May 11 19:17:09 2014 romaric
+** Last update Mon May 12 11:30:32 2014 lhomme
 */
 
 #include "my.h"
@@ -21,7 +21,7 @@ void		my_show_list(t_token *list)
 
 int		main(int ac, char **av, char **envp)
 {
-  t_hist	*history;
+  t_env		*history;
   t_token	*list;
   t_env         *env;
   char		*tmp;
