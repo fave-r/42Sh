@@ -5,10 +5,35 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Sun May 11 18:03:27 2014 romaric
+** Last update Tue May 13 18:37:37 2014 
 */
 
 #include "my.h"
+
+t_token	*check_exotic(t_token *token)
+{
+  t_token	*tmp;
+  char		**tab;
+  int		i;
+
+  tmp = NULL;
+  while (token)
+    {
+      i = 0;
+      if ((token->token[0] == '>' || token->token[0] == '<') && i == 0)
+	{
+	  tab = my_str_to_wordtab(token->next->token, ' ');
+	  if (tab[1])
+	    tmp = add_token(tmp, tab[1]);
+	  while (token->next->token[i] && token->next->token[i] != ' ')
+	    i++;
+	  token->next->token[i] = 0;
+	}
+      tmp = add_token(tmp, token->token);
+      token = token->next;
+    }
+  return (tmp);
+}
 
 void	my_stack(char *token, t_list **stack, t_list **output)
 {
@@ -37,6 +62,7 @@ t_tree	*npi(t_token *token)
     return (NULL);
   if (!token->next)
     return (createNode(NULL, token->token));
+  token = check_exotic(token);
   while (token)
     {
       my_stack(token->token, &stack, &output);
