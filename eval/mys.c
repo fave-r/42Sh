@@ -4,47 +4,42 @@
 ** Made by romaric
 ** Login   <fave_r@epitech.net>
 **
-<<<<<<< HEAD
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Mon May 12 15:51:24 2014 romaric
-=======
-** Started on  Sat May 10 10:32:33 2014 romaric
-** Last update Mon May 12 14:06:10 2014 lhomme
->>>>>>> c2346d5f2f1c4249414822963af76110705c8c65
+** Last update Tue May 13 19:11:02 2014 romaric
 */
 
 #include "my.h"
 
-int	my_semi_col(t_tree *tree, int in, int out)
+int	my_semi_col(t_tree *tree, int in, int out, t_env **env)
 {
   if (!tree->right)
-    return (check_fn(tree->left, in, out));
+    return (check_fn(tree->left, in, out, &(*env)));
   if (tree->left)
-    check_fn(tree->left, in, out);
-  return (check_fn(tree->right, in, out));
+    check_fn(tree->left, in, out, &(*env));
+  return (check_fn(tree->right, in, out, &(*env)));
 }
 
-int	my_and(t_tree *tree, int in, int out)
+int	my_and(t_tree *tree, int in, int out, t_env **env)
 {
   int	ret;
 
-  ret = check_fn(tree->left, in, out);
+  ret = check_fn(tree->left, in, out, &(*env));
   if (ret == 0)
-    ret = check_fn(tree->right, in, out);
+    ret = check_fn(tree->right, in, out, &(*env));
   return (ret);
 }
 
-int	my_or(t_tree *tree, int in, int out)
+int	my_or(t_tree *tree, int in, int out, t_env **env)
 {
   int	ret;
 
-  ret = check_fn(tree->left, in, out);
+  ret = check_fn(tree->left, in, out, &(*env));
   if (ret != 0)
-    ret = check_fn(tree->right, in, out);
+    ret = check_fn(tree->right, in, out, &(*env));
   return (ret);
 }
 
-int	redir_right(t_tree *tree, int in, int out)
+int	redir_right(t_tree *tree, int in, int out, t_env **env)
 {
   int	ret;
   int	fd;
@@ -62,35 +57,35 @@ int	redir_right(t_tree *tree, int in, int out)
       fd = out;
       i = 1;
     }
-  ret = check_fn(tree->left, in, fd);
+  ret = check_fn(tree->left, in, fd, &(*env));
   if (i != 1)
     close(fd);
   return (ret);
 }
 
-int	doble_right(t_tree *tree, int in, int out)
-{
-  int	ret;
-  int	fd;
-  int	i;
+  int	doble_right(t_tree *tree, int in, int out, t_env **env)
+  {
+    int	ret;
+    int	fd;
+    int	i;
 
-  i = 0;
-  fd = xopen(tree->right->data, O_WRONLY | O_CREAT | O_APPEND, 0666);
-  if (fd == -1)
-    return (-1);
-  if (out != 1)
-    {
+    i = 0;
+    fd = xopen(tree->right->data, O_WRONLY | O_CREAT | O_APPEND, 0666);
+    if (fd == -1)
+      return (-1);
+    if (out != 1)
+      {
+	close(fd);
+	fd = out;
+	i = 1;
+      }
+    ret = check_fn(tree->left, in, fd, &(*env));
+    if (i != 1)
       close(fd);
-      fd = out;
-      i = 1;
-    }
-  ret = check_fn(tree->left, in, fd);
-  if (i != 1)
-  close(fd);
-  return (ret);
-}
+    return (ret);
+  }
 
-int	redir_left(t_tree *tree, int in, int out)
+int	redir_left(t_tree *tree, int in, int out, t_env **env)
 {
   int	ret;
   int	fd;
@@ -106,8 +101,8 @@ int	redir_left(t_tree *tree, int in, int out)
       fd = in;
       i = 1;
     }
-  ret = check_fn(tree->left, fd, out);
+  ret = check_fn(tree->left, fd, out, &(*env));
   if (i != 1)
-  close(fd);
+    close(fd);
   return (ret);
 }

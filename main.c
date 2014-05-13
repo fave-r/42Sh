@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Mon May 12 17:27:05 2014 romaric
+** Last update Tue May 13 17:57:39 2014 romaric
 */
 
 #include "my.h"
@@ -40,7 +40,7 @@ int		main(int ac, char **av, char **envp)
         {
           list = fill_list_token(tmp);
           //aff(npi(list), 0);
-	  check_fn(npi(list), 0, 1);
+	  check_fn(npi(list), 0, 1, &env);
           //  history = my_history(history, tmp);
 	  bzero(tmp, 4096);
         }

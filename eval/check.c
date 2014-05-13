@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 13 16:50:17 2014 romaric
+** Last update Tue May 13 19:05:31 2014 romaric
 */
 
 #include "my.h"
@@ -98,15 +98,14 @@ int	check_path(char **pathsep, char *cmd, char **str, int in, int out)
   filepath = NULL;
   if (*environ != NULL)
     filepath = find_lib(pathsep, cmd);
-  //if (filepath != NULL)
-    ret = execute(filepath, cmd, str, in, out);
+  ret = execute(filepath, cmd, str, in, out);
   free(str);
   free(filepath);
   free(pathsep);
   return (ret);
 }
 
-int	my_exec(char *cmd, int in, int out)
+int	my_exec(char *cmd, int in, int out, t_env **env)
 {
   int	ret;
   char	**tab;
@@ -123,7 +122,7 @@ int	my_exec(char *cmd, int in, int out)
       tab[0] = cmd;
       tab[1] = NULL;
     }
-  pathsep = save_env();
+  pathsep = save_env(&(*env));
   return (check_path(pathsep, tab[0], tab, in, out));
 }
 
@@ -131,14 +130,14 @@ int	my_exec(char *cmd, int in, int out)
 ** fonction eval
 */
 
-int	check_fn(t_tree *tree, int in, int out)
+int	check_fn(t_tree *tree, int in, int out, t_env **env)
 {
   if (strcmp(tree->data, ">") == 0)
-    return (redir_right(tree, in, out));
+    return (redir_right(tree, in, out, &(*env)));
   else if (strcmp(tree->data, ">>") == 0)
-    return (doble_right(tree, in, out));
+    return (doble_right(tree, in, out, &(*env)));
   else if (strcmp(tree->data, "<") == 0)
-    return (redir_left(tree, in, out));
+    return (redir_left(tree, in, out, &(*env)));
   /*
     else if (strcmp(tree->data, "<<") == 0)
     return (doble_left(tree, in, out));
@@ -146,11 +145,11 @@ int	check_fn(t_tree *tree, int in, int out)
     return (my_pipe(tree, in, out));
   */
   else if (strcmp(tree->data, "&&") == 0)
-    return (my_and(tree, in, out));
+    return (my_and(tree, in, out, &(*env)));
   else if (strcmp(tree->data, "||") == 0)
-    return (my_or(tree, in, out));
+    return (my_or(tree, in, out, &(*env)));
   else if (strcmp(tree->data, ";") == 0)
-    return (my_semi_col(tree, in, out));
+    return (my_semi_col(tree, in, out, &(*env)));
   else
-    return (my_exec(tree->data, in, out));
+    return (my_exec(tree->data, in, out, &(*env)));
 }

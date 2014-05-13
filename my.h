@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Mon May 12 14:21:30 2014 lhomme
+** Last update Tue May 13 19:06:21 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -112,23 +112,23 @@ int     my_priority(char *d1, char *d2);
 void    aff(t_tree *tree, int pos);
 void    addNode(t_tree **tree, void *data, int pos);
 void    make_tree(t_list **output, void *op);
-int     check_fn(t_tree *tree, int in, int out);
+int     check_fn(t_tree *tree, int in, int out, t_env **env);
 int     my_strlen_n(char *str);
 char    **my_str_to_wordtab(char *str, char sep);
-char    **save_env(void);
+char    **save_env(t_env **env);
 int     checkenv(char **env);
 char    **envcy(char **env);
-int      checkpath(char **env);
-char    *pathcpy(char **env, int i);
+int      checkpath(t_env **env);
+char    *pathcpy(t_env **env);
 char    *rmpath(char *dest, char * src);
 char    *my_strcpy(char *dest, char *src);
 void    free_doble(char **kill);
-int     my_semi_col(t_tree *tree, int in, int out);
-int     my_and(t_tree *tree, int in, int out);
-int     my_or(t_tree *tree, int in, int out);
-int     redir_right(t_tree *tree, int in, int out);
-int     doble_right(t_tree *tree, int in, int out);
-int     redir_left(t_tree *tree, int in, int out);
+int     my_semi_col(t_tree *tree, int in, int out, t_env **env);
+int     my_and(t_tree *tree, int in, int out, t_env **env);
+int     my_or(t_tree *tree, int in, int out, t_env **env);
+int     redir_right(t_tree *tree, int in, int out, t_env **env);
+int     doble_right(t_tree *tree, int in, int out, t_env **env);
+int     redir_left(t_tree *tree, int in, int out, t_env **env);
 int     xopen(const char *pathname, int flags, mode_t mode);
 ssize_t xread(int fd, void *buf, size_t count);
 
