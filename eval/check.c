@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Sun May 11 18:04:24 2014 romaric
+** Last update Tue May 13 16:46:39 2014 romaric
 */
 
 #include "my.h"
@@ -39,7 +39,7 @@ char    *my_strcpyfinal(char *dest, char *cmd)
   return (tmp);
 }
 
-int	execute(char *pathutil, char *cmd, char **arv)
+int	execute(char *pathutil, char *cmd, char **arv, int in, int out)
 {
   int   pid;
   int	ret;
@@ -48,10 +48,18 @@ int	execute(char *pathutil, char *cmd, char **arv)
   ret = 1;
   if (*environ != NULL)
     {
-      pathforexec = my_strcpyfinal(pathutil, cmd);
+      pathforexec = ((pathutil == NULL) ? cmd : my_strcpyfinal(pathutil, cmd));
       pid = fork();
       if (pid == 0)
-	execve(pathforexec, arv, environ);
+	{
+	  if(out != 1)
+	    dup2(1, out);
+	  if(in != 0)
+	    dup2(0, in);
+	  execve(pathforexec, arv, environ);
+	  fprintf(stderr, "%s: command not found\n", pathforexec);
+	  exit(1);
+	}
       wait(&ret);
       free(pathforexec);
     }
@@ -78,12 +86,10 @@ char    *find_lib(char **path, char *cmd)
           }
       i++;
     }
-  if (cmd != '\0' && strcmp(cmd, "exit") != 0)
-    fprintf(stderr, "%s: command not found\n", cmd);
   return (NULL);
 }
 
-int	check_path(char **pathsep, char *cmd, char **str)
+int	check_path(char **pathsep, char *cmd, char **str, int in, int out)
 {
   int	ret;
   char  *filepath;
@@ -92,15 +98,15 @@ int	check_path(char **pathsep, char *cmd, char **str)
   filepath = NULL;
   if (*environ != NULL)
     filepath = find_lib(pathsep, cmd);
-  if (filepath != NULL)
-    ret = execute(filepath, cmd, str);
+  //if (filepath != NULL)
+    ret = execute(filepath, cmd, str, in, out);
   free(str);
   free(filepath);
   free(pathsep);
   return (ret);
 }
 
-int	my_exec(char *cmd)
+int	my_exec(char *cmd, int in, int out)
 {
   int	ret;
   char	**tab;
@@ -118,7 +124,7 @@ int	my_exec(char *cmd)
       tab[1] = NULL;
     }
   pathsep = save_env();
-  return (check_path(pathsep, tab[0], tab));
+  return (check_path(pathsep, tab[0], tab, in, out));
 }
 
 /*
@@ -146,5 +152,5 @@ int	check_fn(t_tree *tree, int in, int out)
   else if (strcmp(tree->data, ";") == 0)
     return (my_semi_col(tree, in, out));
   else
-    return (my_exec(tree->data));
+    return (my_exec(tree->data, in, out));
 }
