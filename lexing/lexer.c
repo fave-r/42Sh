@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Mon May 12 17:25:48 2014 romaric
+** Last update Tue May 13 19:57:22 2014 romaric
 */
 
 #include "my.h"
@@ -54,7 +54,7 @@ int		get_other(char *str, int i, int save[2])
 t_token		*fill_token(char *str)
 {
   int		i;
-  int		save[2];
+  int		s[2];
   t_token	*list;
 
   i = 0;
@@ -63,19 +63,18 @@ t_token		*fill_token(char *str)
     {
       while ((str[i] == '\t' || str[i] == ' ') && str[i] != '\0')
 	i++;
-      save[0] = i;
-      save[1] = save[0];
+      s[0] = i;
+      s[1] = s[0];
       if (str[i] == '|' || str[i] == '&' || str[i] == '>'
 	  || str[i] == '<' || str[i] == ';')
 	{
-	  i = get_operator(str, i, save);
-	  list = add_token(list, my_strxdup(str + save[0], save[1] - save[0] + 1));
+	  i = get_operator(str, i, s);
+	  list = add_token(list, my_strxdup(str + s[0], s[1] - s[0] + 1));
 	}
       else if (str[i] != '\0')
 	{
-	  i = get_other(str, i, save);
-      	  list = add_token(list, my_strxdup(str + save[0]
-					    , save[1] - save[0] + 1));
+	  i = get_other(str, i, s);
+      	  list = add_token(list, my_strxdup(str + s[0], s[1] - s[0] + 1));
 	}
     }
   return (list);

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Tue May 13 17:57:39 2014 romaric
+** Last update Tue May 13 20:47:18 2014 romaric
 */
 
 #include "my.h"
@@ -39,12 +39,10 @@ int		main(int ac, char **av, char **envp)
       if (tmp && tmp[0] != 0)
         {
           list = fill_list_token(tmp);
-          //aff(npi(list), 0);
 	  check_fn(npi(list), 0, 1, &env);
-          //  history = my_history(history, tmp);
 	  bzero(tmp, 4096);
         }
-	display_prompt();
+      display_prompt();
     }
   write(1, "\n", 1);
   return (0);
@@ -60,6 +58,5 @@ t_token		*fill_list_token(char *str)
   t_token	*list;
 
   list = fill_token(str);
-  my_show_list(list);
   return (list);
 }

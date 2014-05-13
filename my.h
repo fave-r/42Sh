@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Tue May 13 19:06:21 2014 romaric
+** Last update Tue May 13 20:20:48 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -60,11 +60,17 @@ typedef struct          s_list
 
 typedef struct		s_word
 {
-  int   nbwords;
-  int   i;
-  char  **strpar;
-  char  *ptr;
+  int			nbwords;
+  int			i;
+  char			**strpar;
+  char			*ptr;
 }			t_word;
+
+typedef struct		s_inp
+{
+  int			in;
+  int			out;
+}			t_inp;
 
 int	print_token(t_token *list);
 t_token	*add_token(t_token *list, char *token);
@@ -131,5 +137,6 @@ int     doble_right(t_tree *tree, int in, int out, t_env **env);
 int     redir_left(t_tree *tree, int in, int out, t_env **env);
 int     xopen(const char *pathname, int flags, mode_t mode);
 ssize_t xread(int fd, void *buf, size_t count);
+char    *my_strcpyfinal(char *dest, char *cmd);
 
 #endif

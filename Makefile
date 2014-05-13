@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Tue May 13 16:51:33 2014 romaric
+## Last update Tue May 13 20:08:28 2014 romaric
 ##
 
 CC=		clang
@@ -18,7 +18,6 @@ NAME=		42sh
 
 SRCS=		main.c \
 		lib/xfunction.c \
-		lib/get_next_line.c \
 		lib/basic.c \
 		lib/my_epur_str.c \
 		list/my_token_list.c \
@@ -43,7 +42,8 @@ SRCS=		main.c \
 		eval/check.c \
 		eval/char.c \
 		eval/xfunction.c \
-		eval/mys.c
+		eval/mys.c \
+		eval/check_next.c
 
 OBJS=		$(SRCS:.c=.o)
 

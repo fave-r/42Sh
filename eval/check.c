@@ -5,41 +5,14 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 13 19:05:31 2014 romaric
+** Last update Tue May 13 20:52:01 2014 romaric
 */
 
 #include "my.h"
 
 extern char **environ;
 
-char    *my_strcpyfinal(char *dest, char *cmd)
-{
-  int   i;
-  int   x;
-  char  *tmp;
-
-  x = 0;
-  i = my_strlen_n(dest);
-  tmp = xmalloc((my_strlen_n(dest) + my_strlen_n(cmd) + 2) * sizeof(char));
-  while (x < (my_strlen_n(dest)))
-    {
-      tmp[x] = dest[x];
-      x++;
-    }
-  x = 0;
-  tmp[i] = '/';
-  i++;
-  while (cmd[x] != '\0')
-    {
-      tmp[i] = cmd[x];
-      i++;
-      x++;
-    }
-  tmp[i] = '\0';
-  return (tmp);
-}
-
-int	execute(char *pathutil, char *cmd, char **arv, int in, int out)
+int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
 {
   int   pid;
   int	ret;
@@ -52,10 +25,10 @@ int	execute(char *pathutil, char *cmd, char **arv, int in, int out)
       pid = fork();
       if (pid == 0)
 	{
-	  if(out != 1)
-	    dup2(out, 1);
-	  if(in != 0)
-	    dup2(in, 0);
+	  if (p.out != 1)
+	    dup2(p.out, 1);
+	  if (p.in != 0)
+	    dup2(p.in, 0);
 	  execve(pathforexec, arv, environ);
 	  fprintf(stderr, "%s: command not found\n", pathforexec);
 	  exit(1);
@@ -89,16 +62,16 @@ char    *find_lib(char **path, char *cmd)
   return (NULL);
 }
 
-int	check_path(char **pathsep, char *cmd, char **str, int in, int out)
+int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
 {
   int	ret;
-  char  *filepath;
+  char	*filepath;
 
   ret = 1;
   filepath = NULL;
   if (*environ != NULL)
     filepath = find_lib(pathsep, cmd);
-  ret = execute(filepath, cmd, str, in, out);
+  ret = execute(filepath, cmd, str, p);
   free(str);
   free(filepath);
   free(pathsep);
@@ -110,7 +83,10 @@ int	my_exec(char *cmd, int in, int out, t_env **env)
   int	ret;
   char	**tab;
   char	**pathsep;
+  t_inp	p;
 
+  p.in = in;
+  p.out = out;
   ret = 0;
   tab = NULL;
   if (strchr(cmd, ' ') != NULL)
@@ -123,7 +99,7 @@ int	my_exec(char *cmd, int in, int out, t_env **env)
       tab[1] = NULL;
     }
   pathsep = save_env(&(*env));
-  return (check_path(pathsep, tab[0], tab, in, out));
+  return (check_path(pathsep, tab[0], tab, p));
 }
 
 /*
@@ -138,12 +114,6 @@ int	check_fn(t_tree *tree, int in, int out, t_env **env)
     return (doble_right(tree, in, out, &(*env)));
   else if (strcmp(tree->data, "<") == 0)
     return (redir_left(tree, in, out, &(*env)));
-  /*
-    else if (strcmp(tree->data, "<<") == 0)
-    return (doble_left(tree, in, out));
-    else if (strcmp(tree->data, "|") == 0)
-    return (my_pipe(tree, in, out));
-  */
   else if (strcmp(tree->data, "&&") == 0)
     return (my_and(tree, in, out, &(*env)));
   else if (strcmp(tree->data, "||") == 0)
