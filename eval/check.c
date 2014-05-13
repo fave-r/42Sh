@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 13 16:46:39 2014 romaric
+** Last update Tue May 13 16:50:17 2014 romaric
 */
 
 #include "my.h"
@@ -53,9 +53,9 @@ int	execute(char *pathutil, char *cmd, char **arv, int in, int out)
       if (pid == 0)
 	{
 	  if(out != 1)
-	    dup2(1, out);
+	    dup2(out, 1);
 	  if(in != 0)
-	    dup2(0, in);
+	    dup2(in, 0);
 	  execve(pathforexec, arv, environ);
 	  fprintf(stderr, "%s: command not found\n", pathforexec);
 	  exit(1);

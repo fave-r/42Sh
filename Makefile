@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Mon May 12 11:49:34 2014 romaric
+## Last update Tue May 13 16:51:33 2014 romaric
 ##
 
 CC=		clang
@@ -14,7 +14,7 @@ RM=		rm -f
 
 CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I.
 
-NAME=		bourrelabsent
+NAME=		42sh
 
 SRCS=		main.c \
 		lib/xfunction.c \
