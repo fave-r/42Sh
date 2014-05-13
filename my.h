@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Tue May 13 20:20:48 2014 romaric
+** Last update Tue May 13 21:10:30 2014 
 */
 
 #ifndef __42Sh__
@@ -124,8 +124,8 @@ char    **my_str_to_wordtab(char *str, char sep);
 char    **save_env(t_env **env);
 int     checkenv(char **env);
 char    **envcy(char **env);
-int      checkpath(t_env **env);
-char    *pathcpy(t_env **env);
+char	*checkpath(t_env **env);
+char    *pathcpy(char *tmp);
 char    *rmpath(char *dest, char * src);
 char    *my_strcpy(char *dest, char *src);
 void    free_doble(char **kill);

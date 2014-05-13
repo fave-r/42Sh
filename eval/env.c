@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:29:35 2014 romaric
-** Last update Tue May 13 20:53:12 2014 romaric
+** Last update Tue May 13 21:10:56 2014 
 */
 
 #include "my.h"
@@ -17,11 +17,11 @@ char	**save_env(t_env **env)
 
   pathsep = NULL;
   path = NULL;
-  if (*env != NULL)
+  if ((*env)->next != *env)
     {
-      if (checkpath(&(*env)) == 0)
+      if ((path = checkpath(&(*env))) != NULL)
 	{
-	  path = pathcpy(&(*env));
+	  path = pathcpy(path);
 	  pathsep = my_str_to_wordtab(path, ':');
 	}
     }
@@ -29,32 +29,30 @@ char	**save_env(t_env **env)
   return (pathsep);
 }
 
-int	checkpath(t_env **env)
+char	*checkpath(t_env **env)
 {
   int   x;
   t_env *tmp;
 
-  tmp = (*env);
+  tmp = (*env)->next;
   x = 1;
-  (*env) = (*env)->next;
-  (*env) = (*env)->next;
   while ((*env) != tmp)
     {
-      if ((*env)->str != NULL)
-	x = strncmp("PATH=", (*env)->str, 5);
+      if (tmp->str != NULL)
+	x = strncmp("PATH=", tmp->str, 5);
       if (x == 0)
-        return (0);
-      (*env) = (*env)->next;
+        return (strdup(tmp->str));
+      tmp = tmp->next;
     }
-  return (1);
+  return (NULL);
 }
 
-char    *pathcpy(t_env **env)
+char    *pathcpy(char *tmp)
 {
   char  *path;
 
-  path = xmalloc(my_strlen_n((*env)->str) * sizeof(char) - 4);
-  rmpath(path, (*env)->str);
+  path = xmalloc(my_strlen_n(tmp) * sizeof(char) - 4);
+  rmpath(path, tmp);
   return (path);
 }
 
