@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Mon Feb 10 17:00:57 2014 lhomme
-** Last update Sun May 11 19:18:16 2014 romaric
+** Last update Wed May 14 17:38:47 2014 
 */
 
 #include "my.h"
@@ -34,7 +34,7 @@ char	*my_epur_str(char *str)
       i++;
     }
   str[j] = '\0';
-  if (str[j - 1] == ' ')
+  if (j > 0 && str[j - 1] == ' ')
     str[j - 1] = '\0';
   return (str);
 }
