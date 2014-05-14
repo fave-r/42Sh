@@ -1,35 +1,51 @@
 /*
 ** npi.c for npi in /home/lhomme_a/rendu/42Sh/npi
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Tue May 13 18:37:37 2014 
+** Last update Wed May 14 15:24:05 2014 
 */
 
 #include "my.h"
 
+int	exotic(t_token **token, t_token **tmp)
+{
+  char **tab;
+  int	i;
+
+  i = 0;
+  tab = my_str_to_wordtab((*token)->next->token, ' ');
+  if (tab[1])
+    (*tmp) = add_token((*tmp), strdup(tab[1]));
+  while ((*token)->next->token[i] && (*token)->next->token[i] != ' ')
+    i++;
+  (*token)->next->token[i] = 0;
+  (*tmp) = add_token((*tmp), (*token)->token);
+  (*token) = (*token)->next;
+  free(tab);
+  return (0);
+}
+
 t_token	*check_exotic(t_token *token)
 {
   t_token	*tmp;
-  char		**tab;
-  int		i;
 
   tmp = NULL;
+  if ((token->token[0] == '>' || token->token[0] == '<'))
+    exotic(&token, &tmp);
   while (token)
     {
-      i = 0;
-      if ((token->token[0] == '>' || token->token[0] == '<') && i == 0)
+      if (token->next &&
+	  (token->next->token[0] == '>' || token->next->token[0] == '<') &&
+	  (token->token[0] == ';' || token->token[0] == '|' || token->token[0] == '&'))
 	{
-	  tab = my_str_to_wordtab(token->next->token, ' ');
-	  if (tab[1])
-	    tmp = add_token(tmp, tab[1]);
-	  while (token->next->token[i] && token->next->token[i] != ' ')
-	    i++;
-	  token->next->token[i] = 0;
+	  tmp = add_token(tmp, token->token);
+	  exotic(&token->next, &tmp);
 	}
-      tmp = add_token(tmp, token->token);
+      else
+	tmp = add_token(tmp, token->token);
       token = token->next;
     }
   return (tmp);
