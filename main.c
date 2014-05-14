@@ -5,11 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-<<<<<<< HEAD
-** Last update Wed May 14 14:53:16 2014 
-=======
-** Last update Tue May 13 21:13:42 2014 romaric
->>>>>>> 19f58a2ef4e503f9ea80eecb63775c9fc4a9c238
+** Last update Wed May 14 14:54:34 2014 
 */
 
 #include "my.h"
