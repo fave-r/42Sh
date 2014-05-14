@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 13 21:14:09 2014 romaric
+** Last update Wed May 14 17:58:47 2014 romaric
 */
 
 #include "my.h"
@@ -22,19 +22,22 @@ int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
   if (*environ != NULL)
     {
       pathforexec = ((pathutil == NULL) ? cmd : my_strcpyfinal(pathutil, cmd));
-      pid = fork();
-      if (pid == 0)
+      else
 	{
-	  if (p.out != 1)
-	    dup2(p.out, 1);
-	  if (p.in != 0)
-	    dup2(p.in, 0);
-	  execve(pathforexec, arv, environ);
-	  fprintf(stderr, "%s: command not found\n", pathforexec);
-	  exit(1);
+	  pid = fork();
+	  if (pid == 0)
+	    {
+	      if (p.out != 1)
+		dup2(p.out, 1);
+	      if (p.in != 0)
+		dup2(p.in, 0);
+	      execve(pathforexec, arv, environ);
+	      fprintf(stderr, "42sh: %s: command not found\n", pathforexec);
+	      exit(1);
+	    }
+	  wait(&ret);
+	  free(pathforexec);
 	}
-      wait(&ret);
-      free(pathforexec);
     }
   return (ret);
 }
@@ -98,8 +101,15 @@ int	my_exec(char *cmd, int in, int out, t_env **env)
       tab[0] = cmd;
       tab[1] = NULL;
     }
-  pathsep = save_env(&(*env));
-  return (check_path(pathsep, tab[0], tab, p));
+  if (strcmp(cmd, "setenv") == 0 || strcmp(cmd, "cd") == 0
+      || strcmp(cmd, "unsetenv") == 0
+      || strcmp(cmd, "env") == 0 || strcmp(cmd, "echo") == 0)
+    built(cmd, tab, &(*env));
+  else
+    {
+      pathsep = save_env(&(*env));
+      return (check_path(pathsep, tab[0], tab, p));
+    }
 }
 
 /*
