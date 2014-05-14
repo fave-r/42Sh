@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 14 15:30:18 2014 
+** Last update Wed May 14 15:57:25 2014 
 */
 
 #ifndef __42Sh__
@@ -140,5 +140,7 @@ ssize_t xread(int fd, void *buf, size_t count);
 char    *my_strcpyfinal(char *dest, char *cmd);
 void    free_tree(t_tree *tree);
 void    delete_list(t_token **list);
+void    npi_delete_list(t_list **list);
+void    my_delete_envlist(t_env **list);
 
 #endif

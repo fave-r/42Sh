@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Wed May 14 15:24:05 2014 
+** Last update Wed May 14 15:53:28 2014 
 */
 
 #include "my.h"
@@ -89,5 +89,6 @@ t_tree	*npi(t_token *token)
       make_tree(&output, stack->data);
       stack = stack->next;
     }
+  npi_delete_list(&stack);
   return (output->tree);
 }
