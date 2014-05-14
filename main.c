@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Tue May 13 20:56:34 2014 
+** Last update Wed May 14 14:48:02 2014 
 */
 
 #include "my.h"
@@ -58,5 +58,6 @@ t_token		*fill_list_token(char *str)
   t_token	*list;
 
   list = fill_token(str);
+  my_show_list(list);
   return (list);
 }

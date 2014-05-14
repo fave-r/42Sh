@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Tue May 13 19:57:22 2014 romaric
+** Last update Wed May 14 14:50:06 2014 
 */
 
 #include "my.h"
@@ -38,7 +38,7 @@ int		get_operator(char *str, int i, int save[2])
 
 int		get_other(char *str, int i, int save[2])
 {
-  while ((str[i] == '-' || save[1] == save[0] || is_alpha(str[i]))
+  while ((str[i] == '-' || save[1] == save[0] || !is_spe(str[i]))
 	 && str[i] != '\0')
     {
       while (str[i] != '\t' && str[i] != ' ' && str[i] != '\0' && str[i] != ';'
