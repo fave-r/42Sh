@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Dec 13 13:03:54 2013 lhomme
-** Last update Sun May 11 18:00:50 2014 romaric
+** Last update Wed May 14 18:44:43 2014 bourrel
 */
 
 #include "my.h"
@@ -58,52 +58,23 @@ t_env	*my_env_i(t_env *env)
   return (env);
 }
 
-char	*env_arg(char *str)
+t_env	*my_env(t_env *env, char **tab)
 {
-  char	*arg;
-  int	i;
-  int	j;
-
-  if (!str)
-    return (NULL);
-  i = 0;
-  j = 0;
-  arg = malloc(sizeof(*arg) * strlen(str));
-  while (i < 6)
-    i++;
-  if (str[i] == '\0')
-    return (NULL);
-  i++;
-  while (str[i] != '\0')
-    {
-      arg[j] = str[i];
-      j++;
-      i++;
-    }
-  arg[j] = '\0';
-  return (arg);
-}
-
-t_env	*my_env(t_env *env, char *str)
-{
-  char	*arg;
-
-  arg = env_arg(str);
-  if (strlen(str) == 6)
+  if (!tab[1])
     my_print_envlist(env);
-  else if ((strcmp(arg, "-0") == 1)
-	   || (strcmp(arg, "--null") == 1))
+  else if ((strcmp(tab[1], "-0") == 0)
+	   || (strcmp(tab[1], "--null") == 0))
     my_env_null(env);
-  else if ((strcmp(arg, "--version") == 1)
-	   || (strcmp(arg, "--help") == 1))
-    my_env_vh(str);
-  else if ((strcmp(arg, "-i") == 1)
-	   || (strcmp(arg, "--ignore-environment") == 1))
+  else if ((strcmp(tab[1], "--version") == 0)
+	   || (strcmp(tab[1], "--help") == 0))
+    my_env_vh(tab[0]);
+  else if ((strcmp(tab[1], "-i") == 0)
+	   || (strcmp(tab[1], "--ignore-environment") == 0))
     env = my_env_i(env);
-  else if ((strncmp(arg, "-u", 2) == 0)
-	   || (strcmp(arg, "--unset") == 1))
-    env = my_unsetenv(env, arg);
+  else if ((strncmp(tab[1], "-u", 2) == 0)
+	   || (strcmp(tab[1], "--unset") == 0))
+    env = my_unsetenv(env, tab);
   else
-    printf("env: invalid option: %s\n", str);
+    printf("env: invalid option: %s\n", tab[0]);
   return (env);
 }

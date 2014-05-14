@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 14 17:17:26 2014 
+** Last update Wed May 14 18:29:33 2014 bourrel
 */
 
 #ifndef __42Sh__
@@ -82,7 +82,7 @@ int	fill_type(t_token *list);
 int	is_alpha(char c);
 void	*xmalloc(size_t n);
 char	*my_auto_complete(char *path);
-int	my_cd(t_env*, char*);
+t_env	*my_cd(t_env*, char**);
 t_env	*my_change_pwd(t_env*, char*, int);
 t_env   *my_oldpwd(t_env*);
 int     my_strcmp(char*, char*);
@@ -94,11 +94,11 @@ char    *my_strcpy(char*, char*);
 int	my_putstr(char *str, int fd);
 t_env   *my_env_inlist(char **);
 void    my_print_envlist(t_env *);
-t_env   *my_unsetenv(t_env*, char*);
+t_env   *my_unsetenv(t_env*, char**);
 t_env   *my_setenv(t_env*, char**);
 t_env   *my_add_env(t_env*, char*);
-t_env	*my_env(t_env*, char*);
-t_env	*my_echo(t_env*, char*);
+t_env	*my_env(t_env*, char**);
+t_env	*my_echo(t_env*, char**);
 int	my_echo_arg(char*);
 t_env	*my_history(t_env *history, char *str);
 char    *my_epur_str(char *str);

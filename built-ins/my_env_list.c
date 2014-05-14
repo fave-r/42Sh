@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:56:42 2014 lhomme
-** Last update Wed May 14 17:19:42 2014 
+** Last update Wed May 14 19:54:30 2014 bourrel
 */
 
 #include "my.h"
@@ -37,7 +37,7 @@ t_env		*my_create_envlist()
   return (root);
 }
 
-void    my_delete_envlist(t_env **list)
+void		my_delete_envlist(t_env **list)
 {
   t_env		*tmp;
   t_env		*tmpnxt;
@@ -63,7 +63,6 @@ void		my_print_envlist(t_env *list)
       printf("%s\n", tmp->str);
       tmp = tmp->next;
     }
-
 }
 
 t_env		*my_env_inlist(char **env)

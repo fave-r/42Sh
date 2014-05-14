@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Wed May 14 17:58:47 2014 romaric
+** Last update Wed May 14 19:55:31 2014 bourrel
 */
 
 #include "my.h"
@@ -19,25 +19,24 @@ int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
   char  *pathforexec;
 
   ret = 1;
+  pathforexec = NULL;
   if (*environ != NULL)
+    pathforexec = ((pathutil == NULL) ? cmd : my_strcpyfinal(pathutil, cmd));
+  else
     {
-      pathforexec = ((pathutil == NULL) ? cmd : my_strcpyfinal(pathutil, cmd));
-      else
+      pid = fork();
+      if (pid == 0)
 	{
-	  pid = fork();
-	  if (pid == 0)
-	    {
-	      if (p.out != 1)
-		dup2(p.out, 1);
-	      if (p.in != 0)
-		dup2(p.in, 0);
-	      execve(pathforexec, arv, environ);
-	      fprintf(stderr, "42sh: %s: command not found\n", pathforexec);
-	      exit(1);
-	    }
-	  wait(&ret);
-	  free(pathforexec);
+	  if (p.out != 1)
+	    dup2(p.out, 1);
+	  if (p.in != 0)
+	    dup2(p.in, 0);
+	  execve(pathforexec, arv, environ);
+	  fprintf(stderr, "42sh: %s: command not found\n", pathforexec);
+	  exit(1);
 	}
+      wait(&ret);
+      free(pathforexec);
     }
   return (ret);
 }
@@ -81,9 +80,24 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
   return (ret);
 }
 
+t_env	*built(char **tab, t_env *env)
+{
+  if (strncmp(tab[0], "setenv", 6) == 0)
+    env = my_setenv(env, tab);
+  else if (strncmp(tab[0], "cd", 2) == 0)
+    env = my_cd(env, tab);
+  else if (strncmp(tab[0], "unsetenv", 8) == 0)
+    env = my_unsetenv(env, tab);
+  else if (strncmp(tab[0], "env", 3) == 0)
+    env = my_env(env, tab);
+  else if (strncmp(tab[0], "echo", 4) == 0)
+    env = my_echo(env, tab);
+  return (env);
+}
+
 int	my_exec(char *cmd, int in, int out, t_env **env)
 {
-  int	ret;
+ int	ret;
   char	**tab;
   char	**pathsep;
   t_inp	p;
@@ -101,10 +115,10 @@ int	my_exec(char *cmd, int in, int out, t_env **env)
       tab[0] = cmd;
       tab[1] = NULL;
     }
-  if (strcmp(cmd, "setenv") == 0 || strcmp(cmd, "cd") == 0
-      || strcmp(cmd, "unsetenv") == 0
-      || strcmp(cmd, "env") == 0 || strcmp(cmd, "echo") == 0)
-    built(cmd, tab, &(*env));
+  if (strncmp(cmd, "setenv", 6) == 0 || strncmp(cmd, "cd", 2) == 0
+      || strncmp(cmd, "unsetenv", 8) == 0 || strncmp(cmd, "env", 3) == 0
+      || strncmp(cmd, "echo", 4) == 0)
+    *env = built(tab, *env);
   else
     {
       pathsep = save_env(&(*env));

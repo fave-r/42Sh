@@ -5,33 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 17:56:42 2014 lhomme
-** Last update Wed May 14 17:16:23 2014 
+** Last update Wed May 14 19:56:33 2014 bourrel
 */
 
 #include "my.h"
-
-char	*unset_arg(char *str, int nbr)
-{
-  char	*arg;
-  int	i;
-  int	j;
-
-  i = nbr - 1;
-  j = 0;
-  arg = malloc(sizeof(*arg) * strlen(str));
-  while (str[++i] != ' ')
-    if (str[i] == '\0')
-      return (NULL);
-  i++;
-  while (str[i] != '\0')
-    {
-      arg[j] = str[i];
-      j++;
-      i++;
-    }
-  arg[j] = '\0';
-  return (arg);
-}
 
 void	my_delete_elem(t_env* elem)
 {
@@ -40,24 +17,19 @@ void	my_delete_elem(t_env* elem)
   free(elem);
 }
 
-t_env	*my_unsetenv(t_env *env, char *str)
+t_env	*my_unsetenv(t_env *env, char **tab)
 {
   t_env	*tmp;
-  char	*arg;
 
-  if (strncmp(str, "unsetenv", 8))
-    arg = unset_arg(str, 10);
-  else
-    arg = unset_arg(str, 0);
   tmp = env->next;
-  if (arg == NULL)
+  if (!tab[1])
     printf("Error: no argument\n");
   else
     {
-      while (tmp != env && (strncmp(tmp->str, arg, strlen(arg)) != 0))
+      while (tmp != env && (strncmp(tmp->str, tab[1], strlen(tab[1])) != 0))
 	tmp = tmp->next;
       if (tmp == env)
-	printf("Error: %s does not exist in the environment\n", arg);
+	printf("Error: %s does not exist in the environment\n", tab[1]);
       else
 	my_delete_elem(tmp);
     }
