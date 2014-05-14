@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Wed May 14 17:15:31 2014 
+** Last update Wed May 14 17:40:23 2014 
 */
 
 #include "my.h"
@@ -59,6 +59,7 @@ int		main(int ac, char **av, char **envp)
         }
       display_prompt();
     }
+  write(1, "\n", 1);
   free(tmp);
   my_delete_envlist(&env);
   return (0);
