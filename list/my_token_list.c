@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Tue Apr 15 18:14:13 2014 alex-odet
-** Last update Mon May 12 14:22:11 2014 lhomme
+** Last update Wed May 14 15:31:06 2014 
 */
 
 #include "my.h"
@@ -25,4 +25,19 @@ t_token		*add_token(t_token *list, char *token)
     tmp = tmp->next;
   tmp->next = new;
   return (list);
+}
+
+void    delete_list(t_token **list)
+{
+  t_token	*tmp;
+  t_token	*tmpnxt;
+
+  tmp = *list;
+  while (tmp != NULL)
+    {
+      tmpnxt = tmp->next;
+      free(tmp);
+      tmp = tmpnxt;
+    }
+  *list = tmp;
 }

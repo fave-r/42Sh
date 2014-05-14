@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Tue May 13 21:13:34 2014 romaric
+** Last update Wed May 14 15:30:18 2014 
 */
 
 #ifndef __42Sh__
@@ -138,5 +138,7 @@ int     redir_left(t_tree *tree, int in, int out, t_env **env);
 int     xopen(const char *pathname, int flags, mode_t mode);
 ssize_t xread(int fd, void *buf, size_t count);
 char    *my_strcpyfinal(char *dest, char *cmd);
+void    free_tree(t_tree *tree);
+void    delete_list(t_token **list);
 
 #endif
