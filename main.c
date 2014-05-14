@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Wed May 14 15:58:20 2014 
+** Last update Wed May 14 17:15:31 2014 
 */
 
 #include "my.h"
@@ -17,6 +17,12 @@ void		my_show_list(t_token *list)
       printf("token = %s\n", list->token);
       list = list->next;
     }
+}
+
+
+void		display_prompt()
+{
+  write(1, "$> ", 3);
 }
 
 void		display_sigint()
@@ -44,7 +50,7 @@ int		main(int ac, char **av, char **envp)
       tmp = my_epur_str(tmp);
       if (tmp && tmp[0] != 0)
         {
-          list = fill_list_token(tmp);
+          list = fill_token(tmp);
 	  tree = npi(list);
 	  check_fn(tree, 0, 1, &env);
 	  bzero(tmp, 4096);
@@ -53,19 +59,7 @@ int		main(int ac, char **av, char **envp)
         }
       display_prompt();
     }
-  //  my_delete_envlist(&env);
+  free(tmp);
+  my_delete_envlist(&env);
   return (0);
-}
-
-void		display_prompt()
-{
-  write(1, "$> ", 3);
-}
-
-t_token		*fill_list_token(char *str)
-{
-  t_token	*list;
-
-  list = fill_token(str);
-  return (list);
 }

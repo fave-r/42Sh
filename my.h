@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 14 15:57:25 2014 
+** Last update Wed May 14 17:17:26 2014 
 */
 
 #ifndef __42Sh__
@@ -79,13 +79,8 @@ int	get_operator(char *str, int i, int save[2]);
 int	get_other(char *str, int i, int save[2]);
 t_token	*fill_token(char *str);
 int	fill_type(t_token *list);
-t_token	*fill_list_token(char *str);
 int	is_alpha(char c);
-int	my_putstr(char *str, int fd);
 void	*xmalloc(size_t n);
-void	display_prompt();
-char	*get_next_line(const int fd);
-int	my_strlen(char *str);
 char	*my_auto_complete(char *path);
 int	my_cd(t_env*, char*);
 t_env	*my_change_pwd(t_env*, char*, int);
@@ -96,6 +91,7 @@ char    *my_strcat(char*, char*);
 char    *my_strdup(char*);
 char    *my_strndup(char*, int);
 char    *my_strcpy(char*, char*);
+int	my_putstr(char *str, int fd);
 t_env   *my_env_inlist(char **);
 void    my_print_envlist(t_env *);
 t_env   *my_unsetenv(t_env*, char*);

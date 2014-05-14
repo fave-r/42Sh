@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:56:42 2014 lhomme
-** Last update Wed May 14 15:59:19 2014 
+** Last update Wed May 14 17:10:55 2014 
 */
 
 #include "my.h"
@@ -42,14 +42,15 @@ void    my_delete_envlist(t_env **list)
   t_env		*tmp;
   t_env		*tmpnxt;
 
-  tmp = *list;
+  tmp = (*list)->next;
   while (tmp != (*list))
     {
       tmpnxt = tmp->next;
       free(tmp);
-      tmp = tmpnxt;
+      tmp = tmp->next;
     }
-  *list = tmp;
+  free(*list);
+  *list = NULL;
 }
 
 void		my_print_envlist(t_env *list)
