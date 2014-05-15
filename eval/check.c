@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Wed May 14 19:55:31 2014 bourrel
+** Last update Thu May 15 19:26:05 2014 bourrel
 */
 
 #include "my.h"
@@ -80,24 +80,23 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
   return (ret);
 }
 
-t_env	*built(char **tab, t_env *env)
+void	built(char **tab, t_env **env)
 {
   if (strncmp(tab[0], "setenv", 6) == 0)
-    env = my_setenv(env, tab);
+    *env = my_setenv(*env, tab);
   else if (strncmp(tab[0], "cd", 2) == 0)
-    env = my_cd(env, tab);
+    *env = my_cd(*env, tab);
   else if (strncmp(tab[0], "unsetenv", 8) == 0)
-    env = my_unsetenv(env, tab);
+    *env = my_unsetenv(*env, tab);
   else if (strncmp(tab[0], "env", 3) == 0)
-    env = my_env(env, tab);
+    *env = my_env(*env, tab);
   else if (strncmp(tab[0], "echo", 4) == 0)
-    env = my_echo(env, tab);
-  return (env);
+    *env = my_echo(*env, tab);
 }
 
 int	my_exec(char *cmd, int in, int out, t_env **env)
 {
- int	ret;
+  int	ret;
   char	**tab;
   char	**pathsep;
   t_inp	p;
@@ -118,7 +117,7 @@ int	my_exec(char *cmd, int in, int out, t_env **env)
   if (strncmp(cmd, "setenv", 6) == 0 || strncmp(cmd, "cd", 2) == 0
       || strncmp(cmd, "unsetenv", 8) == 0 || strncmp(cmd, "env", 3) == 0
       || strncmp(cmd, "echo", 4) == 0)
-    *env = built(tab, *env);
+    built(tab, &(*env));
   else
     {
       pathsep = save_env(&(*env));

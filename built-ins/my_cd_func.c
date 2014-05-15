@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Mar 21 14:22:18 2014 lhomme
-** Last update Sun May 11 17:59:38 2014 romaric
+** Last update Thu May 15 19:18:33 2014 bourrel
 */
 
 #include <unistd.h>
@@ -84,12 +84,11 @@ t_env	*my_change_pwd(t_env *env, char *pwd, int i)
       if (pwd[2] != 0)
 	my_change_pwd(tmp, my_dup_pwd(pwd), 0);
     }
-  else if (pwd[0] == '/')
-    tmp->str = strcat("PWD=", pwd);
   else
     {
-      tmp->str = strcat(tmp->str, "/");
+      tmp->str[4] = '\0';
       tmp->str = strcat(tmp->str, pwd);
+      printf("%s\n", tmp->str);
     }
   return (env);
 }
