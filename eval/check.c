@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Fri May 16 13:08:23 2014 
+** Last update Fri May 16 17:39:31 2014 romaric
 */
 
 #include "my.h"
@@ -19,11 +19,9 @@ int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
   char  *pathforexec;
 
   ret = 1;
-  pathforexec = NULL;
   if (*environ != NULL)
-    pathforexec = ((pathutil == NULL) ? cmd : my_strcpyfinal(pathutil, cmd));
-  else
     {
+      pathforexec = ((pathutil == NULL) ? cmd : my_strcpyfinal(pathutil, cmd));
       pid = fork();
       if (pid == 0)
 	{
@@ -93,8 +91,6 @@ void	built(char **tab, t_env **env, int out)
     *env = my_env(*env, tab);
   else if (strncmp(tab[0], "echo", 4) == 0 && !tab[0][4])
     my_echo(tab, out);
-  else
-    printf("%s: Command not found.\n", tab[0]);
 }
 
 int	my_exec(char *cmd, int in, int out, t_env **env)
@@ -120,7 +116,10 @@ int	my_exec(char *cmd, int in, int out, t_env **env)
   if (strncmp(cmd, "setenv", 6) == 0 || strncmp(cmd, "cd", 2) == 0
       || strncmp(cmd, "unsetenv", 8) == 0 || strncmp(cmd, "env", 3) == 0
       || strncmp(cmd, "echo", 4) == 0)
-    built(tab, &(*env), out);
+    {
+      built(tab, &(*env), out);
+      return (0);
+    }
   else
     {
       pathsep = save_env(&(*env));
