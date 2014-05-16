@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Fri May 16 10:49:53 2014 
+** Last update Fri May 16 11:28:50 2014 
 */
 
 #include "my.h"
@@ -82,16 +82,18 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
 
 void	built(char **tab, t_env **env, int out)
 {
-  if (strncmp(tab[0], "setenv", 6) == 0)
+  if (strncmp(tab[0], "setenv", 6) == 0 && !tab[0][6])
     *env = my_setenv(*env, tab);
-  else if (strncmp(tab[0], "cd", 2) == 0)
+  else if (strncmp(tab[0], "cd", 2) == 0 && !tab[0][2])
     my_cd(*env, tab);
-  else if (strncmp(tab[0], "unsetenv", 8) == 0)
+  else if (strncmp(tab[0], "unsetenv", 8) == 0 && !tab[0][8])
     *env = my_unsetenv(*env, tab);
-  else if (strncmp(tab[0], "env", 3) == 0)
+  else if (strncmp(tab[0], "env", 3) == 0 && !tab[0][3])
     *env = my_env(*env, tab);
-  else if (strncmp(tab[0], "echo", 4) == 0)
-    *env = my_echo(*env, tab, out);
+  else if (strncmp(tab[0], "echo", 4) == 0 && !tab[0][4])
+    my_echo(tab, out);
+  else
+    printf("%s: Command not found.\n", tab[0]);
 }
 
 int	my_exec(char *cmd, int in, int out, t_env **env)
