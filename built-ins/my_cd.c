@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Wed May 14 19:27:00 2014 bourrel
+** Last update Fri May 16 10:39:12 2014 
 */
 
 #include "../my.h"
@@ -26,7 +26,7 @@ t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
   return (my_change_pwd(env, tmp->str + 5, 0));
 }
 
-t_env	*my_cd(t_env *env, char **tab)
+int	my_cd(t_env *env, char **tab)
 {
   t_env		*tmp;
 
@@ -36,16 +36,17 @@ t_env	*my_cd(t_env *env, char **tab)
       if (tab[1][0] == '-')
 	{
 	  env = my_oldpwd(env);
-	  return (env);
+	  return (0);
 	}
       if (opendir(tab[1]) == NULL)
 	{
 	  printf("cd: %s: Not a directory\n", tab[1]);
-	  return (env);
+	  return (-1);
 	}
       chdir(tab[1]);
       env = my_change_pwd(env, tab[1], 0);
-      return (env);
+      return (0);
     }
-  return (my_cd_thereturn(env, tmp, tab[1]));
+  env = my_cd_thereturn(env, tmp, tab[1]);
+  return (0);
 }

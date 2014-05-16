@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Mar 21 14:22:18 2014 lhomme
-** Last update Thu May 15 19:18:33 2014 bourrel
+** Last update Fri May 16 10:44:03 2014 
 */
 
 #include <unistd.h>
@@ -18,10 +18,13 @@ void	change_oldpwd(t_env *env, char *pwd)
   t_env	*tmp;
 
   tmp = env->next;
-  while (strncmp(tmp->str, "OLDPWD", 6) != 0)
+  while (tmp != env && strncmp(tmp->str, "OLDPWD", 6) != 0)
     tmp = tmp->next;
-  tmp->str[7] = 0;
-  tmp->str = strcat(tmp->str, pwd);
+  if (tmp != env)
+    {
+      tmp->str[7] = 0;
+      tmp->str = strcat(tmp->str, pwd);
+    }
 }
 
 t_env	*my_oldpwd(t_env *env)
@@ -33,8 +36,10 @@ t_env	*my_oldpwd(t_env *env)
 
   oldpwd = env->next;
   pwd = env->next;
-  while (strncmp(oldpwd->str, "OLDPWD", 6) != 0)
+  while (oldpwd != env && strncmp(oldpwd->str, "OLDPWD", 6) != 0)
     oldpwd = oldpwd->next;
+  if (oldpwd == env)
+    return (env);
   chdir(oldpwd->str + 7);
   str = strdup(oldpwd->str + 6);
   while (strncmp(pwd->str, "PWD", 3) != 0)
@@ -71,8 +76,10 @@ t_env	*my_change_pwd(t_env *env, char *pwd, int i)
   t_env	*tmp;
 
   tmp = env->next;
-  while (strncmp(tmp->str, "PWD=", 4) != 0)
+  while (tmp != env && strncmp(tmp->str, "PWD=", 4) != 0)
     tmp = tmp->next;
+  if (tmp == env)
+    return (env);
   change_oldpwd(env, tmp->str + 4);
   if ((strcmp(pwd, "..") == 0) || (strncmp(pwd, "..", 2) == 0))
     {

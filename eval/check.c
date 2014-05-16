@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Thu May 15 19:26:05 2014 bourrel
+** Last update Fri May 16 10:26:54 2014 
 */
 
 #include "my.h"
@@ -85,7 +85,7 @@ void	built(char **tab, t_env **env)
   if (strncmp(tab[0], "setenv", 6) == 0)
     *env = my_setenv(*env, tab);
   else if (strncmp(tab[0], "cd", 2) == 0)
-    *env = my_cd(*env, tab);
+    my_cd(*env, tab);
   else if (strncmp(tab[0], "unsetenv", 8) == 0)
     *env = my_unsetenv(*env, tab);
   else if (strncmp(tab[0], "env", 3) == 0)

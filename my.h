@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Thu May 15 18:55:22 2014 bourrel
+** Last update Fri May 16 10:37:35 2014 
 */
 
 #ifndef __42Sh__
@@ -82,7 +82,7 @@ int	fill_type(t_token *list);
 int	is_alpha(char c);
 void	*xmalloc(size_t n);
 char	*my_auto_complete(char *path);
-t_env	*my_cd(t_env*, char**);
+int	my_cd(t_env*, char**);
 t_env	*my_change_pwd(t_env*, char*, int);
 t_env   *my_oldpwd(t_env*);
 int     my_strcmp(char*, char*);
