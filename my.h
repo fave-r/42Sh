@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 16 11:23:44 2014 
+** Last update Fri May 16 11:39:32 2014 
 */
 
 #ifndef __42Sh__
@@ -91,6 +91,7 @@ char    *my_strcat(char*, char*);
 char    *my_strdup(char*);
 char    *my_strndup(char*, int);
 char    *my_strcpy(char*, char*);
+void	my_putchar(char c, int fd);
 int	my_putstr(char *str, int fd);
 t_env   *my_env_inlist(char **);
 void    my_print_envlist(t_env *);
@@ -99,7 +100,7 @@ t_env   *my_setenv(t_env*, char**);
 t_env   *my_add_env(t_env*, char*);
 t_env	*my_env(t_env*, char**);
 void	my_echo(char**, int);
-int	my_echo_arg(char*);
+int	my_echo_arg(char*, int);
 t_env	*my_history(t_env *history, char *str);
 char    *my_epur_str(char *str);
 int     is_spe(char c);

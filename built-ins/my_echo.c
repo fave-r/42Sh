@@ -5,10 +5,35 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Fri May 16 11:30:08 2014 
+** Last update Fri May 16 11:59:06 2014 
 */
 
 #include "my.h"
+
+void	print_echo_str(char *str, int fd)
+{
+  int	i;
+  int	j;
+
+  i = 0;
+  j = 0;
+  while (str[i])
+    {
+      if (str[i] == 34 || str[i] == 39)
+	j++;
+      i++;
+    }
+  if ((j % 2) == 0)
+    {
+      i = 0;
+      while (str[i])
+	{
+	  if (str[i] != 34 && str[i] != 39)
+	    my_putchar(str[i], fd);
+	  i++;
+	}
+    }
+}
 
 void	print_text(char **tab, int fd)
 {
@@ -17,7 +42,7 @@ void	print_text(char **tab, int fd)
   i = 0;
   while (tab[++i])
     {
-      my_putstr(tab[i], fd);
+      print_echo_str(tab[1], fd);
       my_putstr(" ", fd);
     }
   my_putstr("\n", fd);
@@ -27,11 +52,11 @@ void	unknown_arg(char *text, char *arg, int i, int fd)
 {
   while (arg[i] != '\0')
     {
-      my_putstr(&arg[i], fd);
+      print_echo_str(&arg[i], fd);
       i++;
     }
   my_putstr(" ", fd);
-  my_putstr(text, fd);
+  print_echo_str(text, fd);
 }
 
 void	check_echo_args(char **tab, int fd)
@@ -42,14 +67,14 @@ void	check_echo_args(char **tab, int fd)
   while (tab[1][i] != '\0')
     {
       if (tab[2] && tab[1][i + 1] == 'e')
-	my_echo_arg(tab[2]);
+	my_echo_arg(tab[2], fd);
       else if (tab[2] && tab[1][i + 1] == 'E')
 	{
-	  my_putstr(tab[2], fd);
+	  print_echo_str(tab[2], fd);
 	  my_putstr("\n", fd);
 	}
       else if (tab[2] && tab[1][i + 1] == 'n')
-	my_putstr(tab[2], fd);
+	  print_echo_str(tab[2], fd);
       else if (tab[2])
 	unknown_arg(tab[2], tab[1], i, fd);
       else if (tab[1][i + 1] != 'n')

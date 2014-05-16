@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr  3 14:06:29 2014 alex-odet
-** Last update Thu Apr  3 14:07:37 2014 alex-odet
+** Last update Fri May 16 11:39:00 2014 
 */
 
 #include "my.h"
@@ -18,6 +18,11 @@ int	my_strlen(char *str)
   while (str[i])
     i++;
   return (i);
+}
+
+void	my_putchar(char c, int fd)
+{
+  write(fd, &c, 1);
 }
 
 int	my_putstr(char *str, int fd)

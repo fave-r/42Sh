@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Fri Apr 25 15:26:05 2014 bourrel
-** Last update Sun May 11 17:59:49 2014 romaric
+** Last update Fri May 16 11:42:44 2014 
 */
 
 #include "my.h"
@@ -28,7 +28,7 @@ int     convert_base(char *nbr, int base)
   return (result);
 }
 
-int	convert_hex(char *str, int i)
+int	convert_hex(char *str, int i, int fd)
 {
   char	*cpy;
   int	j;
@@ -43,12 +43,13 @@ int	convert_hex(char *str, int i)
       i++;
     }
   cpy[j] = '\0';
-  printf("%c", convert_base(cpy, 16));
-  free (cpy);
+  my_putchar(convert_base(cpy, 16), fd);
+  //  my_putstr(&convert_base(cpy, 16), fd);
+  free(cpy);
   return (i);
 }
 
-int     convert_octal(char *str, int i)
+int     convert_octal(char *str, int i, int fd)
 {
   char  *cpy;
   int   j;
@@ -63,37 +64,38 @@ int     convert_octal(char *str, int i)
       i++;
     }
   cpy[j] = '\0';
-  printf("%c", convert_base(cpy, 8));
-  free (cpy);
+  my_putchar(convert_base(cpy, 8), fd);
+  //  my_putstr(&convert_base(cpy, 8), fd);
+  free(cpy);
   return (i);
 }
 
-int	check_args(char *str, int i)
+int	check_args(char *str, int i, int fd)
 {
   if (str[i] == 'b')
-    printf("\b");
+    my_putstr("\b", fd);
   else if (str[i] == 'e')
     i += 2;
   else if (str[i] == 'n')
-    printf("\n");
+    my_putstr("\n", fd);
   else if (str[i] == 'r')
-    printf("\r");
+    my_putstr("\r", fd);
   else if (str[i] == 't')
-    printf("\t");
+    my_putstr("\t", fd);
   else if (str[i] == 'v' || str[i] == 'f')
-    printf("\v");
+    my_putstr("\v", fd);
   else if (str[i] == '\\')
-    printf("\\");
+    my_putstr("\\", fd);
   else if (str[i] == 'x')
-    i = convert_hex(str, i) - 1;
+    i = convert_hex(str, i, fd) - 1;
   else if (str[i] == '0')
-    i = convert_octal(str, i) - 1;
+    i = convert_octal(str, i, fd) - 1;
   else
-    printf("%c", str[i]);
+    my_putstr(&str[i], fd);
   return (i);
 }
 
-int	my_echo_arg(char *str)
+int	my_echo_arg(char *str, int fd)
 {
   int	i;
 
@@ -105,11 +107,11 @@ int	my_echo_arg(char *str)
       else if (str[i] == '\\' && str[i + 1] == 'c')
 	return (1);
       else if (str[i] == '\\')
-	i = check_args(str, i + 1);
+	i = check_args(str, i + 1, fd);
       else
-	printf("%c", str[i]);
+	my_putstr(&str[i], fd);
       i++;
     }
-  printf("\n");
+  my_putstr("\n", fd);
   return (1);
 }
