@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Fri May 16 13:03:25 2014 
+** Last update Fri May 16 13:08:23 2014 
 */
 
 #include "my.h"
@@ -86,10 +86,7 @@ void	built(char **tab, t_env **env, int out)
     *env = my_setenv(*env, tab);
   else if (strncmp(tab[0], "cd", 2) == 0
 	   && (!tab[0][2] || tab[0][2] == '-' || (tab[0][2] == '.' && !tab[0][4])))
-    {
-      printf("lo\n");
-      my_cd(*env, tab);
-    }
+    my_cd(*env, tab);
   else if (strncmp(tab[0], "unsetenv", 8) == 0 && !tab[0][8])
     *env = my_unsetenv(*env, tab);
   else if (strncmp(tab[0], "env", 3) == 0 && !tab[0][3])
