@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Fri May 16 10:26:54 2014 
+** Last update Fri May 16 10:49:53 2014 
 */
 
 #include "my.h"
@@ -80,7 +80,7 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
   return (ret);
 }
 
-void	built(char **tab, t_env **env)
+void	built(char **tab, t_env **env, int out)
 {
   if (strncmp(tab[0], "setenv", 6) == 0)
     *env = my_setenv(*env, tab);
@@ -91,7 +91,7 @@ void	built(char **tab, t_env **env)
   else if (strncmp(tab[0], "env", 3) == 0)
     *env = my_env(*env, tab);
   else if (strncmp(tab[0], "echo", 4) == 0)
-    *env = my_echo(*env, tab);
+    *env = my_echo(*env, tab, out);
 }
 
 int	my_exec(char *cmd, int in, int out, t_env **env)
@@ -117,7 +117,7 @@ int	my_exec(char *cmd, int in, int out, t_env **env)
   if (strncmp(cmd, "setenv", 6) == 0 || strncmp(cmd, "cd", 2) == 0
       || strncmp(cmd, "unsetenv", 8) == 0 || strncmp(cmd, "env", 3) == 0
       || strncmp(cmd, "echo", 4) == 0)
-    built(tab, &(*env));
+    built(tab, &(*env), out);
   else
     {
       pathsep = save_env(&(*env));
