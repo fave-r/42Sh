@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Fri Apr 25 15:26:05 2014 bourrel
-** Last update Fri May 16 11:42:44 2014 
+** Last update Fri May 16 15:27:52 2014 bourrel
 */
 
 #include "my.h"
@@ -44,7 +44,6 @@ int	convert_hex(char *str, int i, int fd)
     }
   cpy[j] = '\0';
   my_putchar(convert_base(cpy, 16), fd);
-  //  my_putstr(&convert_base(cpy, 16), fd);
   free(cpy);
   return (i);
 }
@@ -65,7 +64,6 @@ int     convert_octal(char *str, int i, int fd)
     }
   cpy[j] = '\0';
   my_putchar(convert_base(cpy, 8), fd);
-  //  my_putstr(&convert_base(cpy, 8), fd);
   free(cpy);
   return (i);
 }
@@ -109,9 +107,8 @@ int	my_echo_arg(char *str, int fd)
       else if (str[i] == '\\')
 	i = check_args(str, i + 1, fd);
       else
-	my_putstr(&str[i], fd);
+	my_putchar(str[i], fd);
       i++;
     }
-  my_putstr("\n", fd);
   return (1);
 }

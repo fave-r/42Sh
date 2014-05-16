@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Fri May 16 12:49:47 2014 
+** Last update Fri May 16 15:23:48 2014 bourrel
 */
 
 #include "my.h"
@@ -47,39 +47,47 @@ void	unknown_arg(char *text, char *arg, int i, int fd)
   print_echo_str(text, fd);
 }
 
-void	check_echo_args(char **tab, int fd)
+int	check_echo_args(char **tab, int fd, int x)
 {
   int	i;
 
-  i = 0;
+  i = 1;
   while (tab[1][i] != '\0')
     {
-      if (tab[2] && tab[1][i + 1] == 'e')
+      if (tab[2] && tab[1][i] == 'e')
 	my_echo_arg(tab[2], fd);
-      else if (tab[2] && tab[1][i + 1] == 'E')
+      else if (tab[2] && tab[1][i] == 'E')
 	{
 	  print_echo_str(tab[2], fd);
 	  my_putstr("\n", fd);
 	}
-      else if (tab[2] && tab[1][i + 1] == 'n')
-	  print_echo_str(tab[2], fd);
+      else if (tab[2] && strlen(tab[1]) == 2 && tab[1][i] == 'n')
+	{
+	  my_putstr(tab[2], fd);
+	  x = 1;
+	}
+      else if (tab[1][i] == 'n')
+	x = 1;
       else if (tab[2])
 	unknown_arg(tab[2], tab[1], i, fd);
-      else if (tab[1][i + 1] != 'n')
-	my_putstr("\n", fd);
-      i += 2;
+      i++;
     }
+  return (x);
 }
 
 void	my_echo(char **tab, int fd)
 {
   int	i;
+  int	x;
 
   i = 0;
+  x = 0;
   if (tab[1] == NULL)
-    my_putstr("\n", fd);
+    my_putchar('\n', fd);
   else if (tab[1][0] != '-')
     print_text(tab, fd);
   else
-    check_echo_args(tab, fd);
+    x = check_echo_args(tab, fd, x);
+  if (x == 0)
+    my_putchar('\n', fd);
 }
