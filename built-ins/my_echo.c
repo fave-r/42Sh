@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Fri May 16 11:59:06 2014 
+** Last update Fri May 16 12:49:47 2014 
 */
 
 #include "my.h"
@@ -13,25 +13,13 @@
 void	print_echo_str(char *str, int fd)
 {
   int	i;
-  int	j;
 
   i = 0;
-  j = 0;
   while (str[i])
     {
-      if (str[i] == 34 || str[i] == 39)
-	j++;
+      if (str[i] != 34 && str[i] != 39)
+	my_putchar(str[i], fd);
       i++;
-    }
-  if ((j % 2) == 0)
-    {
-      i = 0;
-      while (str[i])
-	{
-	  if (str[i] != 34 && str[i] != 39)
-	    my_putchar(str[i], fd);
-	  i++;
-	}
     }
 }
 
@@ -42,7 +30,7 @@ void	print_text(char **tab, int fd)
   i = 0;
   while (tab[++i])
     {
-      print_echo_str(tab[1], fd);
+      print_echo_str(tab[i], fd);
       my_putstr(" ", fd);
     }
   my_putstr("\n", fd);
