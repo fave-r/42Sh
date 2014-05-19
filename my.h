@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Mon May 19 17:23:14 2014 
+** Last update Mon May 19 17:48:04 2014 
 */
 
 #ifndef __42Sh__
@@ -141,5 +141,6 @@ void    npi_delete_list(t_list **list);
 void    my_delete_envlist(t_env **list);
 char    *my_strcat(char *dest, char *src);
 t_env   *my_swap_old(t_env *env);
+void    change_oldpwd(t_env *env, char *pwd);
 
 #endif
