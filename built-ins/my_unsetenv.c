@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 17:56:42 2014 lhomme
-** Last update Wed May 14 19:56:33 2014 bourrel
+** Last update Mon May 19 14:40:58 2014 
 */
 
 #include "my.h"
@@ -31,7 +31,13 @@ t_env	*my_unsetenv(t_env *env, char **tab)
       if (tmp == env)
 	printf("Error: %s does not exist in the environment\n", tab[1]);
       else
-	my_delete_elem(tmp);
+	{
+	  if (tmp->str[strlen(tab[1])] == '=')
+	    my_delete_elem(tmp);
+	  else
+	    printf("Error: %s does not exist in the environment\n", tab[1]);
+	}
     }
   return (env);
 }
+

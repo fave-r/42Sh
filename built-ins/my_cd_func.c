@@ -5,12 +5,9 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Mar 21 14:22:18 2014 lhomme
-** Last update Fri May 16 10:44:03 2014 
+** Last update Mon May 19 14:33:53 2014 
 */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <dirent.h>
 #include "my.h"
 
 void	change_oldpwd(t_env *env, char *pwd)
@@ -39,7 +36,10 @@ t_env	*my_oldpwd(t_env *env)
   while (oldpwd != env && strncmp(oldpwd->str, "OLDPWD", 6) != 0)
     oldpwd = oldpwd->next;
   if (oldpwd == env)
-    return (env);
+    {
+      printf("cd : 'OLDPWD' non défini\n");
+      return (env);
+    }
   chdir(oldpwd->str + 7);
   str = strdup(oldpwd->str + 6);
   while (strncmp(pwd->str, "PWD", 3) != 0)
@@ -95,7 +95,6 @@ t_env	*my_change_pwd(t_env *env, char *pwd, int i)
     {
       tmp->str[4] = '\0';
       tmp->str = strcat(tmp->str, pwd);
-      printf("%s\n", tmp->str);
     }
   return (env);
 }

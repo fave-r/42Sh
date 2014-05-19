@@ -5,22 +5,25 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 17:48:44 2014 lhomme
-** Last update Sun May 11 18:01:17 2014 romaric
+** Last update Mon May 19 15:24:24 2014 
 */
 
 #include "my.h"
 
 t_env	*my_setenv(t_env *env, char **tab)
 {
+  char	*str;
+
+  str = strdup(tab[1]);
   if (tab[1] == NULL)
     printf("Error setenv: no argument\n");
   else
     {
-      tab[1] = strcat(tab[1], "=");
+      str = strcat(str, "=");
       if (tab[2] != NULL)
-	env = my_add_env(env, strcat(tab[1], tab[2]));
+	env = my_add_env(env, strcat(str, tab[2]));
       else
-	env = my_add_env(env, tab[1]);
+	env = my_add_env(env, str);
     }
   return (env);
 }

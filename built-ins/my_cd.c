@@ -5,25 +5,30 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Fri May 16 10:39:12 2014 
+** Last update Mon May 19 14:32:32 2014 
 */
 
-#include "../my.h"
+#include "my.h"
 
 t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
 {
   if (arg)
     {
-      if (strcmp(arg, "..") == 1)
+      if (strcmp(arg, "..") == 0)
 	{
 	  chdir("..");
 	  return (my_change_pwd(env, "..", 0));
 	}
     }
-  while (strncmp(tmp->str, "HOME=", 5) != 0)
+  while (tmp != env && strncmp(tmp->str, "HOME=", 5) != 0)
     tmp = tmp->next;
-  chdir(tmp->str + 5);
-  return (my_change_pwd(env, tmp->str + 5, 0));
+  if (tmp != env)
+    {
+      chdir(tmp->str + 5);
+      return (my_change_pwd(env, tmp->str + 5, 0));
+    }
+  printf("cd : 'HOME' non défini\n");
+  return (env);
 }
 
 int	my_cd(t_env *env, char **tab)

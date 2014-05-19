@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Mon Mar 31 15:38:57 2014 thibaud
-** Last update Fri May 16 16:42:55 2014 thibaud
+** Last update Mon May 19 14:53:53 2014 
 */
 
 #include <unistd.h>
@@ -220,7 +220,7 @@ int		main(void)
   add_word(arbre, "Nikoumouk");
   // print_arbre(arbre);
 
-  test = "H";
+  test = "K";
   result = auto_completion(arbre, test);
 
   if (result == NULL)
