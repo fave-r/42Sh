@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Thu May 15 18:55:31 2014 bourrel
+## Last update Mon May 19 15:52:12 2014 
 ##
 
 CC=		clang
@@ -20,6 +20,7 @@ SRCS=		main.c \
 		lib/xfunction.c \
 		lib/basic.c \
 		lib/my_epur_str.c \
+		lib/my_strcat.c \
 		list/my_token_list.c \
 		lexing/lexer.c \
 		lexing/lexer_fct.c \

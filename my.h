@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 16 11:39:32 2014 
+** Last update Mon May 19 17:23:14 2014 
 */
 
 #ifndef __42Sh__
@@ -84,7 +84,7 @@ void	*xmalloc(size_t n);
 char	*my_auto_complete(char *path);
 int	my_cd(t_env*, char**);
 t_env	*my_change_pwd(t_env*, char*, int);
-t_env   *my_oldpwd(t_env*);
+int	my_oldpwd(t_env*);
 int     my_strcmp(char*, char*);
 int     my_strncmp(char*, char*, int);
 char    *my_strcat(char*, char*);
@@ -139,5 +139,7 @@ void    free_tree(t_tree *tree);
 void    delete_list(t_token **list);
 void    npi_delete_list(t_list **list);
 void    my_delete_envlist(t_env **list);
+char    *my_strcat(char *dest, char *src);
+t_env   *my_swap_old(t_env *env);
 
 #endif
