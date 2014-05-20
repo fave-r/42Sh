@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 20 14:24:32 2014 lhomme
+** Last update Tue May 20 14:28:05 2014 romaric
 */
 
 #include "my.h"
@@ -69,7 +69,7 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
 
   ret = 1;
   filepath = NULL;
-  if (*environ != NULL)
+  if (*environ != NULL && pathsep != NULL)
     filepath = find_lib(pathsep, cmd);
   if (filepath != NULL)
     ret = execute(filepath, cmd, str, p);
