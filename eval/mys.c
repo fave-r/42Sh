@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Tue May 13 19:11:02 2014 romaric
+** Last update Tue May 20 11:27:11 2014 romaric
 */
 
 #include "my.h"
@@ -63,27 +63,27 @@ int	redir_right(t_tree *tree, int in, int out, t_env **env)
   return (ret);
 }
 
-  int	doble_right(t_tree *tree, int in, int out, t_env **env)
-  {
-    int	ret;
-    int	fd;
-    int	i;
+int	doble_right(t_tree *tree, int in, int out, t_env **env)
+{
+  int	ret;
+  int	fd;
+  int	i;
 
-    i = 0;
-    fd = xopen(tree->right->data, O_WRONLY | O_CREAT | O_APPEND, 0666);
-    if (fd == -1)
-      return (-1);
-    if (out != 1)
-      {
-	close(fd);
-	fd = out;
-	i = 1;
-      }
-    ret = check_fn(tree->left, in, fd, &(*env));
-    if (i != 1)
+  i = 0;
+  fd = xopen(tree->right->data, O_WRONLY | O_CREAT | O_APPEND, 0666);
+  if (fd == -1)
+    return (-1);
+  if (out != 1)
+    {
       close(fd);
-    return (ret);
-  }
+      fd = out;
+      i = 1;
+    }
+  ret = check_fn(tree->left, in, fd, &(*env));
+  if (i != 1)
+    close(fd);
+  return (ret);
+}
 
 int	redir_left(t_tree *tree, int in, int out, t_env **env)
 {
@@ -104,5 +104,22 @@ int	redir_left(t_tree *tree, int in, int out, t_env **env)
   ret = check_fn(tree->left, fd, out, &(*env));
   if (i != 1)
     close(fd);
+  return (ret);
+}
+
+int	doble_left(t_tree *tree, int in, int out, t_env **env)
+{
+  int	ret;
+  int	fd;
+  int	i;
+  int	save;
+
+  i = 0;
+  save = out;
+  fd = xopen(".dobleleft", O_WRONLY | O_RDONLY |O_CREAT | O_TRUNC, 0666);
+  if (fd == -1)
+    return (-1);
+
+  ret = check_fn(tree->left, in, fd, &(*env));
   return (ret);
 }

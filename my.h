@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Mon May 19 17:48:04 2014 
+** Last update Tue May 20 11:26:56 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -138,9 +138,10 @@ char    *my_strcpyfinal(char *dest, char *cmd);
 void    free_tree(t_tree *tree);
 void    delete_list(t_token **list);
 void    npi_delete_list(t_list **list);
-void    my_delete_envlist(t_env **list);
-char    *my_strcat(char *dest, char *src);
-t_env   *my_swap_old(t_env *env);
-void    change_oldpwd(t_env *env, char *pwd);
+void	my_delete_envlist(t_env **list);
+char	*my_strcat(char *dest, char *src);
+t_env	*my_swap_old(t_env *env);
+void	change_oldpwd(t_env *env, char *pwd);
+int	doble_left(t_tree *tree, int in, int out, t_env **env);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 20 10:37:24 2014 romaric
+** Last update Tue May 20 11:02:31 2014 romaric
 */
 
 #include "my.h"
@@ -147,6 +147,8 @@ int	check_fn(t_tree *tree, int in, int out, t_env **env)
     return (my_or(tree, in, out, &(*env)));
   else if (strcmp(tree->data, ";") == 0)
     return (my_semi_col(tree, in, out, &(*env)));
+  else if (strcmp(tree->data, "<<") == 0)
+    return (doble_left(tree, in, out, &(*env)));
   else
     return (my_exec(tree->data, in, out, &(*env)));
 }
