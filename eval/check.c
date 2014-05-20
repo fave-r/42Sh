@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 20 11:02:31 2014 romaric
+** Last update Tue May 20 14:19:27 2014 romaric
 */
 
 #include "my.h"
@@ -71,7 +71,13 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
   filepath = NULL;
   if (*environ != NULL)
     filepath = find_lib(pathsep, cmd);
-  ret = execute(filepath, cmd, str, p);
+  if (filepath != NULL)
+    ret = execute(filepath, cmd, str, p);
+  else
+    {
+      fprintf(stderr, "42sh: %s: command not found\n", pathforexec);
+      return (-1);
+    }
   free(str);
   free(filepath);
   free(pathsep);
