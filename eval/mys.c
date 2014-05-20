@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Tue May 20 13:35:18 2014 romaric
+** Last update Tue May 20 15:14:57 2014 romaric
 */
 
 #include "my.h"
@@ -135,5 +135,17 @@ int	doble_left(t_tree *tree, __attribute__((unused))int in, int out, t_env **env
   close(fd);
   fd = xopen(".dobleleft", O_RDONLY, 0666);
   ret = check_fn(tree->left, fd, out, &(*env));
+  return (ret);
+}
+
+int	my_pipe(t_tree *tree, int in, int out, t_env **env)
+{
+  int	p[2];
+  int	ret;
+
+  if (pipe(p) == -1)
+      return (-1);
+  ret = check_fn(tree->left, in, p[1], &(*env));
+  ret = check_fn(tree->right, p[0], out, &(*env));
   return (ret);
 }

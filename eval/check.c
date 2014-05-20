@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 20 14:28:05 2014 romaric
+** Last update Tue May 20 15:13:34 2014 romaric
 */
 
 #include "my.h"
@@ -97,8 +97,8 @@ void	built(char **tab, t_env **env, int out)
     *env = my_env(*env, tab);
   else if (strncmp(tab[0], "echo", 4) == 0 && !tab[0][4])
     my_echo(tab, out);
-  //  else
-  //  fprintf(stderr, "%s : command not found\n", tab[0]);
+  else
+    fprintf(stderr, "42sh: %s: command not found\n", tab[0]);
 }
 
 int	my_exec(char *cmd, int in, int out, t_env **env)
@@ -155,6 +155,8 @@ int	check_fn(t_tree *tree, int in, int out, t_env **env)
     return (my_semi_col(tree, in, out, &(*env)));
   else if (strcmp(tree->data, "<<") == 0)
     return (doble_left(tree, in, out, &(*env)));
+  else if (strcmp(tree->data, "|") == 0)
+    return (my_pipe(tree, in, out, &(*env)));
   else
     return (my_exec(tree->data, in, out, &(*env)));
 }
