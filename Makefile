@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Mon May 19 15:52:12 2014 
+## Last update Tue May 20 10:33:53 2014 romaric
 ##
 
 CC=		clang
@@ -24,7 +24,6 @@ SRCS=		main.c \
 		list/my_token_list.c \
 		lexing/lexer.c \
 		lexing/lexer_fct.c \
-		my_auto_complete.c \
 		built-ins/my_cd.c \
 		built-ins/my_cd_func.c \
 		built-ins/my_env_list.c \
