@@ -5,10 +5,42 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Tue May 20 17:01:06 2014 bourrel
+** Last update Tue May 20 18:56:45 2014 lhomme
 */
 
 #include "my.h"
+
+int	check_exit_value(char *str)
+{
+  int	i;
+
+  i = 0;
+  while (str[i])
+    {
+      if (str[i] == '-' && i == 0 && str[i + 1] != 0)
+	i++;
+      if (str[i] < '0' || str[i] > '9')
+	return (-1);
+      i++;
+    }
+  return (0);
+}
+
+int	my_exit(char **tab, t_env *env)
+{
+  t_env	*tmp;
+
+  tmp = env->next;
+  if (strncmp(tmp->str, "EXIT_VALUE", 10) != 0)
+    return (-1);
+  if (tab[1] && (check_exit_value(tab[1]) == -1))
+    return (-1);
+  if (tab[1] && (my_getnbr(tab[1]) != 0))
+    tmp->str = my_strcat(tmp->str, tab[1]);
+  else
+    tmp->str = my_strcat(tmp->str, "256");
+  return (1);
+}
 
 int     built(char **tab, t_env **env, int out)
 {
@@ -23,6 +55,13 @@ int     built(char **tab, t_env **env, int out)
     *env = my_env(*env, tab);
   else if (strncmp(tab[0], "echo", 4) == 0 && !tab[0][4])
     my_echo(tab, out);
+  else if (strncmp(tab[0], "exit", 4) == 0 && !tab[0][4])
+    return (my_exit(tab, *env));
+  else
+    {
+      fprintf(stderr, "%s : command not found\n", tab[0]);
+      return (-1);
+    }
   return (1);
 }
 
@@ -32,7 +71,7 @@ int	exec_builtins(char *cmd, char **tab, t_env **env, t_inp p)
 
   if (strncmp(cmd, "setenv", 6) == 0 || strncmp(cmd, "cd", 2) == 0
       || strncmp(cmd, "unsetenv", 8) == 0 || strncmp(cmd, "env", 3) == 0
-      || strncmp(cmd, "echo", 4) == 0)
+      || strncmp(cmd, "echo", 4) == 0 || strncmp(cmd, "exit", 4) == 0)
     return (built(tab, &(*env), p.out));
   else
     {
@@ -60,11 +99,5 @@ int     my_exec(char *cmd, int in, int out, t_env **env)
       tab[0] = cmd;
       tab[1] = NULL;
     }
-  if (strncmp(tab[0], "exit", 4) == 0 && !tab[0][4])
-    if (tab[1])
-      return (my_getnbr(tab[1]));
-    else
-      return (462);
-  else
-    return (exec_builtins(cmd, tab, env, p));
+  return (exec_builtins(cmd, tab, env, p));
 }

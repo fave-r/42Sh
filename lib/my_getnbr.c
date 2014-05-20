@@ -1,27 +1,55 @@
 /*
-** my_getnbr.c for getnbr in /home/brahic_a/rendu/fdf
+** my_getnbr.c for my_getnbr in /home/lhomme_a/rendu/minishell2
 ** 
-** Made by brahic
-** Login   <brahic_a@epitech.net>
+** Made by lhomme
+** Login   <lhomme_a@epitech.net>
 ** 
-** Started on  Wed Dec  4 09:27:15 2013 brahic
-** Last update Thu May 15 16:28:41 2014 bourrel
+** Started on  Thu Mar  6 22:11:23 2014 lhomme
+** Last update Tue May 20 18:59:40 2014 lhomme
 */
-
-#include "my.h"
-
-int	my_getnbr(char *str)
+ 
+int		is_neg(char *str)
 {
-  int	nb;
-  int	i;
-
-  nb = 0;
-  i = 1;
-  while (str[0] && str[0] >= '0' && str[0] <= '9')
+  int		i;
+  int		counter;
+ 
+  i = 0;
+  counter = 0;
+  while (str[i] > '9' || str[i] < '0')
     {
-      nb = (str[0] - 48) + (nb * i );
-      i = 10;
-      str++;
+      if (str[i] == '-')
+        counter++;
+      i++;
     }
-  return (nb);
+  if (counter % 2 != 0)
+    return (1);
+  else
+    return (0);
+}
+ 
+int		is_num(char l)
+{
+  if (l >= '0' && l <= '9')
+    return (1);
+  else
+    return (0);
+}
+ 
+int		my_getnbr(char *str)
+{
+  int		i;
+  int		nbr;
+ 
+  nbr = 0;
+  i = 0;
+  while (is_num(str[i]) == 0)
+    i++;
+  while (is_num(str[i]) == 1)
+    {
+      nbr = ((nbr * 10) + (str[i] - 48));
+      i++;
+    }
+  if (is_neg(str) == 1)
+    nbr = -nbr;
+  return (nbr);
 }
