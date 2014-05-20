@@ -5,10 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Tue May 20 16:10:20 2014 bourrel
+** Last update Tue May 20 17:13:47 2014 bourrel
 */
 
 #include "my.h"
+
+int	X;
 
 void		my_show_list(t_token *list)
 {
@@ -18,7 +20,6 @@ void		my_show_list(t_token *list)
       list = list->next;
     }
 }
-
 
 void		display_prompt()
 {
@@ -52,7 +53,9 @@ int		main(int ac, char **av, char **envp)
         {
           list = fill_token(tmp);
 	  tree = npi(list);
-	  check_fn(tree, 0, 1, &env);
+	  X = check_fn(tree, 0, 1, &env);
+	  if (X != 0)
+	    return (X);
 	  //return (check_fn(tree, 0, 1, &env) != 0);
 	  bzero(tmp, 4096);
 	  free_tree(tree);

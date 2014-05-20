@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Tue May 20 16:01:46 2014 bourrel
+** Last update Tue May 20 17:01:06 2014 bourrel
 */
 
 #include "my.h"
@@ -64,7 +64,7 @@ int     my_exec(char *cmd, int in, int out, t_env **env)
     if (tab[1])
       return (my_getnbr(tab[1]));
     else
-      return (-1);
+      return (462);
   else
     return (exec_builtins(cmd, tab, env, p));
 }
