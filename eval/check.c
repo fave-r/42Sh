@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 20 14:19:27 2014 romaric
+** Last update Tue May 20 14:22:30 2014 romaric
 */
 
 #include "my.h"
@@ -75,7 +75,7 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
     ret = execute(filepath, cmd, str, p);
   else
     {
-      fprintf(stderr, "42sh: %s: command not found\n", pathforexec);
+      fprintf(stderr, "42sh: %s: command not found\n", cmd);
       return (-1);
     }
   free(str);
@@ -121,9 +121,9 @@ int	my_exec(char *cmd, int in, int out, t_env **env)
       tab[0] = cmd;
       tab[1] = NULL;
     }
-  if (strncmp(cmd, "setenv", 6) == 0 || strncmp(cmd, "cd", 2) == 0
-      || strncmp(cmd, "unsetenv", 8) == 0 || strncmp(cmd, "env", 3) == 0
-      || strncmp(cmd, "echo", 4) == 0)
+  if (strcmp(cmd, "setenv") == 0 || strcmp(cmd, "cd") == 0
+      || strcmp(cmd, "unsetenv") == 0 || strcmp(cmd, "env") == 0
+      || strcmp(cmd, "echo") == 0)
     {
       built(tab, &(*env), out);
       return (0);
