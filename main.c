@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Wed May 14 17:40:23 2014 
+** Last update Tue May 20 16:10:20 2014 bourrel
 */
 
 #include "my.h"
@@ -53,6 +53,7 @@ int		main(int ac, char **av, char **envp)
           list = fill_token(tmp);
 	  tree = npi(list);
 	  check_fn(tree, 0, 1, &env);
+	  //return (check_fn(tree, 0, 1, &env) != 0);
 	  bzero(tmp, 4096);
 	  free_tree(tree);
 	  delete_list(&list);

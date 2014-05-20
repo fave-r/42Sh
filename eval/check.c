@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 20 15:13:34 2014 romaric
+** Last update Tue May 20 16:44:23 2014 bourrel
 */
 
 #include "my.h"
@@ -82,57 +82,6 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
   free(filepath);
   free(pathsep);
   return (ret);
-}
-
-void	built(char **tab, t_env **env, int out)
-{
-  if (strncmp(tab[0], "setenv", 6) == 0 && !tab[0][6])
-    *env = my_setenv(*env, tab);
-  else if (strncmp(tab[0], "cd", 2) == 0
-	   && (!tab[0][2] || tab[0][2] == '-' || (tab[0][2] == '.' && !tab[0][4])))
-    my_cd(*env, tab);
-  else if (strncmp(tab[0], "unsetenv", 8) == 0 && !tab[0][8])
-    *env = my_unsetenv(*env, tab);
-  else if (strncmp(tab[0], "env", 3) == 0 && !tab[0][3])
-    *env = my_env(*env, tab);
-  else if (strncmp(tab[0], "echo", 4) == 0 && !tab[0][4])
-    my_echo(tab, out);
-  else
-    fprintf(stderr, "42sh: %s: command not found\n", tab[0]);
-}
-
-int	my_exec(char *cmd, int in, int out, t_env **env)
-{
-  int	ret;
-  char	**tab;
-  char	**pathsep;
-  t_inp	p;
-
-  p.in = in;
-  p.out = out;
-  ret = 0;
-  tab = NULL;
-  if (strchr(cmd, ' ') != NULL)
-    tab = my_str_to_wordtab(cmd, ' ');
-  else
-    {
-      tab = xmalloc(2 * sizeof(char *));
-      tab[0] = xmalloc(strlen(cmd) * sizeof(char));
-      tab[0] = cmd;
-      tab[1] = NULL;
-    }
-  if (strncmp(cmd, "setenv", 6) == 0 || strncmp(cmd, "cd", 2) == 0
-      || strncmp(cmd, "unsetenv", 8) == 0 || strncmp(cmd, "env", 3) == 0
-      || strncmp(cmd, "echo", 4) == 0)
-    {
-      built(tab, &(*env), out);
-      return (0);
-    }
-  else
-    {
-      pathsep = save_env(&(*env));
-      return (check_path(pathsep, tab[0], tab, p));
-    }
 }
 
 /*

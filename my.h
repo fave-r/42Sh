@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Tue May 20 15:12:05 2014 romaric
+** Last update Tue May 20 16:45:12 2014 bourrel
 */
 
 #ifndef __42Sh__
@@ -146,5 +146,8 @@ int	doble_left(t_tree *tree, int in, int out, t_env **env);
 char	*get_next_line(const int fd);
 char	*my_strdup_new(char *src);
 int	my_pipe(t_tree *tree, int in, int out, t_env **env);
+int     my_exec(char *cmd, int in, int out, t_env **env);
+int     my_getnbr(char*);
+int     check_path(char **pathsep, char *cmd, char **str, t_inp p);
 
 #endif

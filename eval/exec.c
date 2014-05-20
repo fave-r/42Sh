@@ -1,0 +1,70 @@
+/*
+** exec.c for 42Sh in /home/leo/rendu/42Sh/eval
+** 
+** Made by bourrel
+** Login   <leo@epitech.net>
+** 
+** Started on  Tue May 20 15:24:47 2014 bourrel
+** Last update Tue May 20 16:01:46 2014 bourrel
+*/
+
+#include "my.h"
+
+int     built(char **tab, t_env **env, int out)
+{
+  if (strncmp(tab[0], "setenv", 6) == 0 && !tab[0][6])
+    *env = my_setenv(*env, tab);
+  else if (strncmp(tab[0], "cd", 2) == 0
+           && (!tab[0][2] || tab[0][2] == '-' || (tab[0][2] == '.' && !tab[0][4])))
+    return (my_cd(*env, tab));
+  else if (strncmp(tab[0], "unsetenv", 8) == 0 && !tab[0][8])
+    *env = my_unsetenv(*env, tab);
+  else if (strncmp(tab[0], "env", 3) == 0 && !tab[0][3])
+    *env = my_env(*env, tab);
+  else if (strncmp(tab[0], "echo", 4) == 0 && !tab[0][4])
+    my_echo(tab, out);
+  return (1);
+}
+
+int	exec_builtins(char *cmd, char **tab, t_env **env, t_inp p)
+{
+  char  **pathsep;
+
+  if (strncmp(cmd, "setenv", 6) == 0 || strncmp(cmd, "cd", 2) == 0
+      || strncmp(cmd, "unsetenv", 8) == 0 || strncmp(cmd, "env", 3) == 0
+      || strncmp(cmd, "echo", 4) == 0)
+    return (built(tab, &(*env), p.out));
+  else
+    {
+      pathsep = save_env(&(*env));
+      return (check_path(pathsep, tab[0], tab, p));
+    }
+}
+
+int     my_exec(char *cmd, int in, int out, t_env **env)
+{
+  int   ret;
+  char  **tab;
+  t_inp p;
+
+  p.in = in;
+  p.out = out;
+  ret = 0;
+  tab = NULL;
+  if (strchr(cmd, ' ') != NULL)
+    tab = my_str_to_wordtab(cmd, ' ');
+  else
+    {
+      tab = xmalloc(2 * sizeof(char *));
+      tab[0] = xmalloc(strlen(cmd) * sizeof(char));
+      tab[0] = cmd;
+      tab[1] = NULL;
+    }
+  if (strncmp(tab[0], "exit", 4) == 0 && !tab[0][4])
+    if (tab[1])
+      return (my_getnbr(tab[1]));
+    else
+      return (-1);
+  else
+    return (exec_builtins(cmd, tab, env, p));
+}

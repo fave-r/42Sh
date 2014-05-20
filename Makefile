@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Tue May 20 11:57:23 2014 romaric
+## Last update Tue May 20 15:35:11 2014 bourrel
 ##
 
 CC=		clang
@@ -21,6 +21,7 @@ SRCS=		main.c \
 		lib/basic.c \
 		lib/my_epur_str.c \
 		lib/my_strcat.c \
+		lib/my_getnbr.c\
 		list/my_token_list.c \
 		lexing/lexer.c \
 		lexing/lexer_fct.c \
@@ -44,7 +45,8 @@ SRCS=		main.c \
 		eval/xfunction.c \
 		eval/mys.c \
 		eval/check_next.c \
-		eval/get_next_line.c
+		eval/get_next_line.c \
+		eval/exec.c
 
 OBJS=		$(SRCS:.c=.o)
 
