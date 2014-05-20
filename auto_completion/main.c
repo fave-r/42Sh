@@ -5,13 +5,16 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Mon Mar 31 15:38:57 2014 thibaud
-** Last update Mon May 19 14:53:53 2014 
+** Last update Tue May 20 16:47:16 2014 odet
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "my.h"
+
+int	count_word(char *str, char sep);
+char	**my_str_to_wordtab(char *str, char sep);
 
 void	my_putchar(char c)
 {
@@ -176,7 +179,7 @@ int	calc_len(t_arbre *cur)
   return (i);
 }
 
-char		*auto_completion(t_arbre *arbre, char *str)
+char		*run_auto_completion(t_arbre *arbre, char *str)
 {
   char		*result;
   t_arbre	*cur;
@@ -204,32 +207,69 @@ char		*auto_completion(t_arbre *arbre, char *str)
   return (result);
 }
 
-int		main(void)
+#include <string.h>
+#include <stdio.h>
+extern char **environ;
+
+char		*getpath(char **env)
+{
+  int	i;
+  char	*new;
+
+  i = 0;
+  if (*env != NULL)
+    {
+      while (strncmp("PATH=", env[i], 5) != 0)
+	i++;
+      new = strdup(env[i] + 5);
+      return (new);
+    }
+  return (NULL);
+}
+
+#include <dirent.h>
+#include <sys/types.h>
+
+int		fill_tree_bin(char **path, t_arbre *arbre)
+{
+  DIR		*ptr;
+  struct dirent	*entry;
+  int		i;
+
+  i = 0;
+
+  while (path[i] != NULL)
+    {
+      if ((ptr = opendir(path[i])) == NULL)
+	i++;
+      else
+	{
+	  if (ptr != NULL)
+	    while ((entry = readdir(ptr)) != NULL)
+	      add_word(arbre, strdup(entry->d_name));
+	}
+      i++;
+    }
+  return (1);
+}
+
+char		*auto_completion(char *test)
 {
   t_arbre	*arbre;
   char		*result;
-  char		*test;
+  char		*path;
+  char		**path_tab;
 
   arbre = make_root();
-  add_word(arbre, "Pomme");
-  add_word(arbre, "Hello");
-  add_word(arbre, "Hella");
-  add_word(arbre, "Hell");
-  add_word(arbre, "Hell");
-  add_word(arbre, "Kurdistan");
-  add_word(arbre, "Nikoumouk");
-  // print_arbre(arbre);
-
-  test = "K";
-  result = auto_completion(arbre, test);
-
-  if (result == NULL)
-    my_putstr("Pas d'auto-completion possible\n");
-  else
-    {
-      my_putstr("Auto_completion :");
-      my_putstr(result);
-      my_putstr("\n");
-    }
-  return (0);
+  add_word(arbre, "unsetenv");
+  add_word(arbre, "setenv");
+  add_word(arbre, "cd");
+  add_word(arbre, "echo");
+  add_word(arbre, "env");
+  add_word(arbre, "exit");
+  path = getpath(environ);
+  path_tab = my_str_to_wordtab(path, ':');
+  fill_tree_bin(path_tab, arbre);
+  result = run_auto_completion(arbre, test);
+  return (result);
 }

@@ -5,56 +5,70 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Tue May 20 10:52:38 2014 romaric
+** Last update Tue May 20 19:34:47 2014 odet
 */
 
-#include <term.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <termios.h>
-#include <curses.h>
-#include <strings.h>
-#include <string.h>
+#include "struct.h"
 
-int	main(void)
+char		*my_tab(char *tmp, char *new, char *result, int *x)
 {
-  struct termios	p;
-  char	buffer[1024];
-  int	x;
-  char	*tmp;
+  tmp[*x] = 0;
+  new = dup_last_word(tmp);
+  if ((result = auto_completion(new)))
+    tmp = strcat(tmp, result);
+  if (result != NULL)
+    *x += write(1, result, strlen(result));
+  else if (x > 0)
+    *x = *x - 1;
+  return (tmp);
+}
 
-  tcgetattr(1, &p);
-  p.c_lflag &= ~ICANON;
-  p.c_lflag &= ~ECHO;
-  tcsetattr(1, 0, &p);
-  x = tgetent(NULL, "xterm");
-  if (x != 1)
+char		*my_entry(char *tmp, char *new, char *result, int *x)
+{
+  (void)result;
+  tmp[*x] = 0;
+  *x = 0;
+  new = my_dupstr(tmp, BUFF_SIZE);
+  bzero(tmp, BUFF_SIZE);
+  write(1, "\n", 1);
+  return (new);
+}
+
+void		my_char(char *tmp, char to_copy, int *x)
+{
+  write(1, &to_copy, 1);
+  tmp[*x] = to_copy;
+  *x += 1;
+}
+
+void		my_delete(char *tmp, int *x)
+{
+  tmp[*x] = '\b';
+  write(1, "\b \b", 3);
+  *x -= 1;
+}
+
+char		*get_next_line_icanon(const int fd)
+{
+  t_gnl_icanon	p;
+
+  init();
+  init_value(&p);
+  while ((read(fd, p.buffer, BUFF_SIZE)))
     {
-      printf("termcaps error\n");
-      exit(EXIT_FAILURE);
-    }
-  x = 0;
-  tmp = malloc(sizeof(char) * 1024);
-  while ((read(0, buffer, 1024)))
-    {
-      if (buffer[0] == '\t')
-	printf("AUTOCOMPLETE\n");
-      if (buffer[0] >= 32 && buffer[0] < 127)
+      if (p.buffer[0] == '\t')
+	p.tmp = my_tab(p.tmp, NULL, NULL, &(p.x));
+      if (p.buffer[0] >= 32 && p.buffer[0] < 127)
+	my_char(p.tmp, p.buffer[0], &(p.x));
+      if (p.buffer[0] == '\n')
 	{
-	  write(1, &buffer[0], 1);
-	  tmp[x] = buffer[0];
-	  x++;
+	  p.new = my_entry(p.tmp, NULL, NULL, &(p.x));
+	  return (p.new);
 	}
-      if (buffer[0] == '\n')
-	{
-	  tmp[x] = 0;
-	  printf("\nbuffer = %s$\n", tmp);
-	  x = 0;
-	  bzero(tmp, 1024);
-	}
-      bzero(buffer, 1024);
+      if (p.buffer[0] == 127)
+	my_delete(p.tmp, &(p.x));
+      bzero(p.buffer, BUFF_SIZE);
     }
-  free (tmp);
-  return (0);
+  free(p.tmp);
+  return (NULL);
 }

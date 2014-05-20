@@ -5,7 +5,7 @@
 ## Login   <thibaud@epitech.net>
 ## 
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Sun Apr 13 01:59:40 2014 thibaud
+## Last update Tue May 20 15:24:52 2014 odet
 ##
 
 RM	= rm -f
@@ -16,7 +16,8 @@ CC	= gcc -W -Wall -Werror
 
 NAME	= test
 
-SRCS	= main.c
+SRCS	= 	main.c \
+		my_str_to_wordtab.c
 
 OBJS	= $(SRCS:.c=.o)
 
