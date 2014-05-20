@@ -1,11 +1,11 @@
-B1;2802;0c/*
+/*
 ** main.c for main in /home/odet_a/work/42Sh/termcap
 ** 
 ** Made by 
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Tue May 20 00:12:12 2014 
+** Last update Tue May 20 10:52:38 2014 romaric
 */
 
 #include <term.h>
@@ -13,11 +13,11 @@ B1;2802;0c/*
 #include <unistd.h>
 #include <stdlib.h>
 #include <termios.h>
-#include <ncurses/curses.h>
+#include <curses.h>
 #include <strings.h>
 #include <string.h>
 
-int	main(int ac, char **av, char **env)
+int	main(void)
 {
   struct termios	p;
   char	buffer[1024];

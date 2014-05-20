@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Mon May 19 14:16:23 2014 
+** Last update Tue May 20 10:37:24 2014 romaric
 */
 
 #include "my.h"
@@ -91,8 +91,8 @@ void	built(char **tab, t_env **env, int out)
     *env = my_env(*env, tab);
   else if (strncmp(tab[0], "echo", 4) == 0 && !tab[0][4])
     my_echo(tab, out);
-  else
-    printf("%s : command not found\n", tab[0]);
+  //  else
+  //  fprintf(stderr, "%s : command not found\n", tab[0]);
 }
 
 int	my_exec(char *cmd, int in, int out, t_env **env)
