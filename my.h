@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Tue May 20 11:26:56 2014 romaric
+** Last update Tue May 20 11:57:51 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -44,19 +44,19 @@ typedef struct		s_get
   int			l;
 }			t_get;
 
-typedef struct          s_tree
+typedef struct		s_tree
 {
-  void                  *data;
-  struct s_tree         *left;
-  struct s_tree         *right;
-}                       t_tree;
+  void			*data;
+  struct s_tree		*left;
+  struct s_tree		*right;
+}			t_tree;
 
-typedef struct          s_list
+typedef struct		s_list
 {
-  void                  *data;
-  t_tree                *tree;
-  struct s_list         *next;
-}                       t_list;
+  void			*data;
+  t_tree		*tree;
+  struct s_list		*next;
+}			t_list;
 
 typedef struct		s_word
 {
@@ -143,5 +143,7 @@ char	*my_strcat(char *dest, char *src);
 t_env	*my_swap_old(t_env *env);
 void	change_oldpwd(t_env *env, char *pwd);
 int	doble_left(t_tree *tree, int in, int out, t_env **env);
+char	*get_next_line(const int fd);
+char	*my_strdup_new(char *src);
 
 #endif

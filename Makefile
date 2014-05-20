@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Tue May 20 10:33:53 2014 romaric
+## Last update Tue May 20 11:57:23 2014 romaric
 ##
 
 CC=		clang
@@ -43,7 +43,8 @@ SRCS=		main.c \
 		eval/char.c \
 		eval/xfunction.c \
 		eval/mys.c \
-		eval/check_next.c
+		eval/check_next.c \
+		eval/get_next_line.c
 
 OBJS=		$(SRCS:.c=.o)
 

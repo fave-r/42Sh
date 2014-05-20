@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Tue May 20 11:27:11 2014 romaric
+** Last update Tue May 20 12:23:06 2014 romaric
 */
 
 #include "my.h"
@@ -113,13 +113,23 @@ int	doble_left(t_tree *tree, int in, int out, t_env **env)
   int	fd;
   int	i;
   int	save;
+  char	*str;
 
   i = 0;
   save = out;
-  fd = xopen(".dobleleft", O_WRONLY | O_RDONLY |O_CREAT | O_TRUNC, 0666);
+  fd = xopen(".dobleleft", O_WRONLY | O_RDONLY | O_CREAT | O_TRUNC, 0666);
   if (fd == -1)
     return (-1);
-
+  while ((str = get_next_line(0)) && strcmp(str, tree->right->data) != 0)
+    {
+      my_putstr(str, fd);
+      i++;
+    }
+  if (str == NULL)
+    {
+      fprintf(stderr, "42sh: warning: here-document at line %d delimited by end-of-file (wanted `%s')\n", i+1, tree->right->data);
+    }
+  //close(fd);
   ret = check_fn(tree->left, in, fd, &(*env));
   return (ret);
 }
