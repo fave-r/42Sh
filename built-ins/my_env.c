@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Dec 13 13:03:54 2013 lhomme
-** Last update Wed May 21 11:36:12 2014 lhomme
+** Last update Wed May 21 12:02:24 2014 lhomme
 */
 
 #include "my.h"
@@ -66,7 +66,7 @@ t_env	*my_env(t_env *env, char **tab)
     my_env_null(env);
   else if ((strcmp(tab[1], "--version") == 0)
 	   || (strcmp(tab[1], "--help") == 0))
-    my_env_vh(tab[0]);
+    my_env_vh(tab[1]);
   else if ((strcmp(tab[1], "-i") == 0)
 	   || (strcmp(tab[1], "--ignore-environment") == 0))
     env = my_env_i(env);
