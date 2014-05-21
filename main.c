@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Wed May 21 16:23:07 2014 Alex
+** Last update Wed May 21 19:35:38 2014 bourrel
 */
 
 #include "my.h"
@@ -64,7 +64,7 @@ int		main(int ac, char **av, char **envp)
   env.wat = 1;
   env.var_close = -1;
   signal(SIGINT, &display_sigint);
-  while ((tmp = get_next_line_icanon(0)))
+  while ((tmp = get_next_line_icanon(0)) != NULL)
     {
       tmp = my_epur_str(tmp);
       if (tmp && tmp[0] != 0)
@@ -72,7 +72,6 @@ int		main(int ac, char **av, char **envp)
 	  list = fill_token(tmp);
 	  tree = npi(list, tmp);
 	  check_fn(tree, 0, 1, &env);
-	  bzero(tmp, 4096);
 	  free_tree(tree);
 	  delete_list(&list);
 	  if ((ret = check_exit(env.env)) != -1)

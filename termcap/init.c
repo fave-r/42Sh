@@ -5,10 +5,10 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Wed May 21 16:37:31 2014 Alex
+** Last update Wed May 21 19:20:56 2014 bourrel
 */
 
-#include "my.h"
+#include "../my.h"
 #include "struct.h"
 
 void			init()
@@ -40,7 +40,7 @@ char	*my_dupstr(char *src, int len)
 {
   char	*new;
 
-  new = xmalloc(sizeof(char) * (len + 1));
+  new = malloc(sizeof(char) * (len + 1));
   bzero(new, len);
   strcpy(new, src);
   return (new);
@@ -69,5 +69,8 @@ void		init_value(t_gnl_icanon *ptr)
   ptr->x = xtgetent(NULL, "xterm");
   ptr->x = 0;
   ptr->tmp = malloc(sizeof(char) * BUFF_SIZE);
+  ptr->new = NULL;
+  ptr->result = NULL;
   bzero(ptr->buffer, BUFF_SIZE);
+  bzero(ptr->tmp, BUFF_SIZE);
 }

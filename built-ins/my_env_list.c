@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:56:42 2014 lhomme
-** Last update Tue May 20 18:27:06 2014 lhomme
+** Last update Wed May 21 16:25:53 2014 bourrel
 */
 
 #include "my.h"
@@ -53,14 +53,15 @@ void		my_delete_envlist(t_env **list)
   *list = NULL;
 }
 
-void		my_print_envlist(t_env *list)
+void		my_print_envlist(t_env *list, int fd)
 {
   t_env		*tmp;
 
   tmp = list->next;
   while (tmp != list)
     {
-      printf("%s\n", tmp->str);
+      my_putstr(tmp->str, fd);
+      my_putchar('\n', fd);
       tmp = tmp->next;
     }
 }

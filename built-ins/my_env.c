@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Dec 13 13:03:54 2013 lhomme
-** Last update Wed May 21 15:09:34 2014 bourrel
+** Last update Wed May 21 16:26:01 2014 bourrel
 */
 
 #include "my.h"
@@ -53,7 +53,7 @@ void	my_env_null(t_env *env)
 t_env	*my_env(t_env *env, char **tab, int fd)
 {
   if (!tab[1])
-    my_print_envlist(env);
+    my_print_envlist(env, fd);
   else if ((strcmp(tab[1], "-0") == 0)
 	   || (strcmp(tab[1], "--null") == 0))
     my_env_null(env);

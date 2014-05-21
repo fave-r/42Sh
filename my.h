@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 21 16:21:26 2014 Alex
+** Last update Wed May 21 17:52:38 2014 bourrel
 */
 
 #ifndef __42Sh__
@@ -122,7 +122,7 @@ char    *my_strcpy(char*, char*);
 void	my_putchar(char c, int fd);
 int	my_putstr(char *str, int fd);
 t_env   *my_env_inlist(char **);
-void    my_print_envlist(t_env *);
+void    my_print_envlist(t_env *, int);
 t_env   *my_unsetenv(t_env*, char**);
 t_env   *my_setenv(t_env*, char**);
 t_env   *my_add_env(t_env*, char*);
@@ -181,7 +181,6 @@ int     check_path(char **pathsep, char *cmd, char **str, t_inp p);
 void	echo_vh(char **cmd, int fd);
 char	*my_tab(char *tmp, char *new, char *result, int *x);
 char	*my_entry(char *tmp, char *new, char *result, int *x);
-void	my_char(char *tmp, char to_copy, int *x);
 void	my_delete(char *tmp, int *x);
 char	*get_next_line_icanon(const int fd);
 void	init();
