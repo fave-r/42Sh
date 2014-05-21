@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Wed May 21 15:16:22 2014 lhomme
+** Last update Wed May 21 15:48:09 2014 lhomme
 */
 
 #include "my.h"
@@ -70,7 +70,7 @@ int		main(int ac, char **av, char **envp)
       if (tmp && tmp[0] != 0)
 	{
 	  list = fill_token(tmp);
-	  tree = npi(list);
+	  tree = npi(list, tmp);
 	  check_fn(tree, 0, 1, &env);
 	  bzero(tmp, 4096);
 	  free_tree(tree);

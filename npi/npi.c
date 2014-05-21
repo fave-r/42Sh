@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Wed May 21 15:29:28 2014 lhomme
+** Last update Wed May 21 15:49:41 2014 lhomme
 */
 
 #include "my.h"
@@ -68,7 +68,7 @@ void	my_stack(char *token, t_list **stack, t_list **output)
     npi_add_top(output, token, NULL);
 }
 
-t_tree	*npi(t_token *token)
+t_tree	*npi(t_token *token, char *str)
 {
   t_list	*stack;
   t_list	*output;
@@ -93,6 +93,6 @@ t_tree	*npi(t_token *token)
   npi_delete_list(&stack);
   if (check_full_tree(output->tree) == 1)
     return (output->tree);
-  printf("arbre pas complet\n");
+  fprintf(stderr, "'%s': syntax error\n", str);
   return (NULL);
 }
