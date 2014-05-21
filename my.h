@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 21 14:09:12 2014 romaric
+** Last update Wed May 21 14:35:22 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -35,6 +35,7 @@ typedef struct		s_env_var
 {
   t_env			*env;
   int			wat;
+  int			var_close;
 }			t_env_var;
 
 typedef struct		s_token
@@ -76,6 +77,7 @@ typedef struct		s_inp
 {
   int			in;
   int			out;
+  int			wat;
 }			t_inp;
 
 int	print_token(t_token *list);

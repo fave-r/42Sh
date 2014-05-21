@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Wed May 21 14:13:09 2014 romaric
+** Last update Wed May 21 14:32:31 2014 romaric
 */
 
 #include "my.h"
@@ -60,6 +60,7 @@ int		main(int ac, char **av, char **envp)
   list = NULL;
   env.env = my_env_inlist(envp);
   display_prompt();
+  env.wat = 1;
   signal(SIGINT, &display_sigint);
   while ((xread(0, tmp, 4096)) > 0)
     {

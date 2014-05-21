@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Wed May 21 14:11:04 2014 romaric
+** Last update Wed May 21 14:29:38 2014 romaric
 */
 
 #include "my.h"
@@ -65,7 +65,7 @@ int     built(char **tab, t_env **env, int out)
   return (1);
 }
 
-int	exec_builtins(char *cmd, char **tab, t_env **env, t_inp p)
+int	exec_builtins(char *cmd, char **tab, t_env  **env, t_inp p)
 {
   char  **pathsep;
 
@@ -88,6 +88,7 @@ int     my_exec(char *cmd, int in, int out, t_env_var *env)
 
   p.in = in;
   p.out = out;
+  p.wat = env->wat;
   ret = 0;
   tab = NULL;
   if (strchr(cmd, ' ') != NULL)

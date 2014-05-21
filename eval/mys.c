@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Wed May 21 13:53:12 2014 romaric
+** Last update Wed May 21 14:33:02 2014 romaric
 */
 
 #include "my.h"
@@ -150,7 +150,10 @@ int	my_pipe(t_tree *tree, int in, int out, t_env_var *env)
 
   if (pipe(p) == -1)
     return (-1);
+  env->wat = 0;
   ret = check_fn(tree->left, in, p[1], env);
+  env->wat = 1;
   ret = check_fn(tree->right, p[0], out, env);
+  env->wat = 1;
   return (ret);
 }

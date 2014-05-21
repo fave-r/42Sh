@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Wed May 21 13:49:14 2014 romaric
+** Last update Wed May 21 14:31:40 2014 romaric
 */
 
 #include "my.h"
@@ -33,7 +33,8 @@ int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
 	  fprintf(stderr, "42sh: %s: command not found\n", pathforexec);
 	  exit(1);
 	}
-      wait(&ret);
+      if (p.wat == 1)
+	wait(&ret);
       free(pathforexec);
     }
   return (ret);
@@ -71,13 +72,13 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
   filepath = NULL;
   if (*environ != NULL && pathsep != NULL)
     filepath = find_lib(pathsep, cmd);
-  if (filepath != NULL)
+  //  if (filepath != NULL)
     ret = execute(filepath, cmd, str, p);
-  else
-    {
-      fprintf(stderr, "42sh: %s: command not found\n", cmd);
-      return (-1);
-    }
+    //  else
+    //{
+    // fprintf(stderr, "42sh: %s: command not found\n", cmd);
+    // return (-1);
+    //}
   free(str);
   free(filepath);
   free(pathsep);
