@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Dec 13 13:03:54 2013 lhomme
-** Last update Wed May 14 18:44:43 2014 bourrel
+** Last update Wed May 21 11:36:12 2014 lhomme
 */
 
 #include "my.h"
@@ -54,7 +54,6 @@ void	my_env_null(t_env *env)
 
 t_env	*my_env_i(t_env *env)
 {
-  env->next = env;
   return (env);
 }
 
@@ -73,7 +72,7 @@ t_env	*my_env(t_env *env, char **tab)
     env = my_env_i(env);
   else if ((strncmp(tab[1], "-u", 2) == 0)
 	   || (strcmp(tab[1], "--unset") == 0))
-    env = my_unsetenv(env, tab);
+    env = my_unsetenv(env, tab + 1);
   else
     printf("env: invalid option: %s\n", tab[0]);
   return (env);
