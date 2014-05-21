@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Tue May 20 16:05:27 2014 romaric
+** Last update Wed May 21 11:26:35 2014 romaric
 */
 
 #include "my.h"
@@ -134,7 +134,7 @@ int	doble_left(t_tree *tree, __attribute__((unused))int in, int out, t_env **env
       fprintf(stderr, "by end-of-file (wanted `%s')\n", tree->right->data);
     }
   close(fd);
-  fd = xopen(".dobleleft", O_RDONLY, 0666);
+  fd = xopen(".dobleleft", O_RDONLY | O_CREAT, 0666);
   if (tree->left)
     {
       ret = check_fn(tree->left, fd, out, &(*env));
