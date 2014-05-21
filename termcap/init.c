@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Wed May 21 16:34:56 2014 Alex
+** Last update Wed May 21 16:37:31 2014 Alex
 */
 
 #include "my.h"
@@ -40,7 +40,7 @@ char	*my_dupstr(char *src, int len)
 {
   char	*new;
 
-  new = malloc(sizeof(char) * (len + 1));
+  new = xmalloc(sizeof(char) * (len + 1));
   bzero(new, len);
   strcpy(new, src);
   return (new);
