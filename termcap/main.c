@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Wed May 21 16:23:06 2014 Alex
+** Last update Wed May 21 16:34:08 2014 Alex
 */
 
 #include "my.h"
@@ -45,8 +45,12 @@ void		my_char(char *tmp, char to_copy, int *x)
 void		my_delete(char *tmp, int *x)
 {
   tmp[*x] = '\b';
-  write(1, "\b \b", 3);
-  *x -= 1;
+  if (*x == 0)
+    write(1, "\a", 1);
+  else
+    write(1, "\b \b", 3);
+  if (*x > 0)
+    *x -= 1;
 }
 
 char		*get_next_line_icanon(const int fd)
@@ -70,6 +74,5 @@ char		*get_next_line_icanon(const int fd)
 	my_delete(p.tmp, &(p.x));
       bzero(p.buffer, BUFF_SIZE);
     }
-  free(p.tmp);
   return (NULL);
 }
