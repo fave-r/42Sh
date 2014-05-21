@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Dec 18 14:03:00 2013 romaric
-** Last update Sun May 11 18:05:14 2014 romaric
+** Last update Wed May 21 14:46:05 2014 lhomme
 */
 
 #include "my.h"
@@ -16,7 +16,7 @@ int	xopen(const char *pathname, int flags, mode_t mode)
 
   len = open(pathname, flags, mode);
   if (len == -1)
-    fprintf(stderr, "open fail.\n");
+    fprintf(stderr, "Error: %s: no such file or directory\n", pathname);
   return (len);
 }
 
@@ -26,9 +26,6 @@ ssize_t	xread(int fd, void *buf, size_t count)
 
   len = read(fd, buf, count);
   if (len == -1)
-    {
-      fprintf(stderr, "read fail.\n");
-      exit(EXIT_FAILURE);
-    }
+    fprintf(stderr, "read failed.\n");
   return (len);
 }
