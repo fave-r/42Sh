@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 21 14:44:40 2014 romaric
+** Last update Wed May 21 15:11:13 2014 bourrel
 */
 
 #ifndef __42Sh__
@@ -107,7 +107,7 @@ void    my_print_envlist(t_env *);
 t_env   *my_unsetenv(t_env*, char**);
 t_env   *my_setenv(t_env*, char**);
 t_env   *my_add_env(t_env*, char*);
-t_env	*my_env(t_env*, char**);
+t_env	*my_env(t_env*, char**, int);
 void	my_echo(char**, int);
 int	my_echo_arg(char*, int);
 t_env	*my_history(t_env *history, char *str);

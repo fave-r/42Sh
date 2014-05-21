@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Wed May 21 14:45:23 2014 romaric
+** Last update Wed May 21 15:10:02 2014 bourrel
 */
 
 #include "my.h"
@@ -52,7 +52,7 @@ int     built(char **tab, t_env **env, int out)
   else if (strncmp(tab[0], "unsetenv", 8) == 0 && !tab[0][8])
     *env = my_unsetenv(*env, tab);
   else if (strncmp(tab[0], "env", 3) == 0 && !tab[0][3])
-    *env = my_env(*env, tab);
+    *env = my_env(*env, tab, out);
   else if (strncmp(tab[0], "echo", 4) == 0 && !tab[0][4])
     my_echo(tab, out);
   else if (strncmp(tab[0], "exit", 4) == 0 && !tab[0][4])
