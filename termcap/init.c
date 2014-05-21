@@ -5,10 +5,10 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Tue May 20 19:21:19 2014 odet
+** Last update Wed May 21 15:46:49 2014 Alex
 */
 
-#include "struct.h"
+#include "my.h"
 
 void			init()
 {
@@ -30,7 +30,7 @@ int			xtgetent(char *bp, const char *name)
   if (x != 1)
     {
       printf("error termcaps.\n");
-      exit(EXIT_FAILURE);
+      return (-1);
     }
   return (x);
 }

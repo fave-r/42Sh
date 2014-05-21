@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 21 15:21:54 2014 lhomme
+** Last update Wed May 21 16:01:47 2014 Alex
 */
 
 #ifndef __42Sh__
@@ -20,9 +20,13 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <curses.h>
+#include <termios.h>
+#include <term.h>
 #include <dirent.h>
 
 #define BUFF_SIZE 1024
+#define TERM "xterm"
 
 typedef struct		s_env
 {
@@ -80,6 +84,22 @@ typedef struct		s_inp
   int			wat;
   int			var_close;
 }			t_inp;
+
+typedef struct		s_gnl_icanon
+{
+  char			buffer[BUFF_SIZE];
+  int			x;
+  char			*tmp;
+  char			*result;
+  char			*new;
+}			t_gnl_icanon;
+
+typedef struct		s_arbre
+{
+  char			c;
+  struct s_arbre	*next;
+  struct s_arbre	*deep;
+}			t_arbre;
 
 int	print_token(t_token *list);
 t_token	*add_token(t_token *list, char *token);
@@ -160,5 +180,24 @@ int     my_exec(char *cmd, int in, int out, t_env_var *env);
 int     my_getnbr(char*);
 int     check_path(char **pathsep, char *cmd, char **str, t_inp p);
 void	echo_vh(char **tab, int fd);
+char	*my_tab(char *tmp, char *new, char *result, int *x);
+char	*my_entry(char *tmp, char *new, char *result, int *x);
+void	my_char(char *tmp, char to_copy, int *x);
+void	my_delete(char *tmp, int *x);
+char	*get_next_line_icanon(const int fd);
+void	init();
+int	xtgetent(char *bp, const char *name);
+char	*my_dupstr(char *src, int len);
+char	*dup_last_word(char *src);
+void	init_value(t_gnl_icanon *ptr);
+t_arbre	*make_root(void);
+t_arbre	*add_char(char c);
+t_arbre	*creat_word(char *str);
+int	add_word(t_arbre *arbre, char *str);
+int	go_to(t_arbre *arbre, char *str, t_arbre **ret);
+int	calc_len(t_arbre *cur);
+char	*run_auto_completion(t_arbre *arbre, char *str);
+int	fill_tree_bin(char **path, t_arbre *arbre);
+char	*auto_completion(char *test);
 
 #endif

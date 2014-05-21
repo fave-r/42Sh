@@ -5,46 +5,10 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Mon Mar 31 15:38:57 2014 thibaud
-** Last update Tue May 20 16:47:16 2014 odet
+** Last update Wed May 21 16:01:13 2014 Alex
 */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include "my.h"
-
-int	count_word(char *str, char sep);
-char	**my_str_to_wordtab(char *str, char sep);
-
-void	my_putchar(char c)
-{
-  write(1, &c, 1);
-}
-
-int	my_putstr(char *str)
-{
-  int	i;
-
-  i = 0;
-  if (str == NULL)
-    return (0);
-  while (str[i] != '\0')
-    {
-      my_putchar(str[i]);
-      i++;
-    }
-  return (0);
-}
-
-int	my_strlen(char *str)
-{
-  int	i;
-
-  i = 0;
-  while (str[i])
-    i++;
-  return (i);
-}
 
 t_arbre		*make_root(void)
 {
@@ -52,8 +16,8 @@ t_arbre		*make_root(void)
 
   if ((root = malloc(sizeof(t_arbre))) == NULL)
     {
-      my_putstr("Malloc error\n");
-      exit(-1);
+      printf("Malloc error\n");
+      return (NULL);
     }
   root->next = NULL;
   root->deep = NULL;
@@ -67,8 +31,8 @@ t_arbre		*add_char(char c)
 
   if ((new = malloc(sizeof(t_arbre))) == NULL)
     {
-      my_putstr("Malloc error\n");
-      exit(-1);
+      printf("Malloc error\n");
+      return (NULL);
     }
   new->c = c;
   new->next = NULL;
@@ -122,23 +86,6 @@ int		add_word(t_arbre *arbre, char *str)
 	i++;
       }
   return (-1);
-}
-
-int		print_arbre(t_arbre *arbre)
-{
-  if (arbre == NULL || arbre->c == ' ')
-    {
-      if (arbre && arbre->c == ' ')
-	my_putchar('\n');
-      return (0);
-    }
-  if (arbre->deep)
-    {
-      my_putchar(arbre->c);
-      print_arbre(arbre->deep);
-    }
-  print_arbre(arbre->next);
-  return (0);
 }
 
 int		go_to(t_arbre *arbre, char *str, t_arbre **ret)
@@ -206,29 +153,6 @@ char		*run_auto_completion(t_arbre *arbre, char *str)
     }
   return (result);
 }
-
-#include <string.h>
-#include <stdio.h>
-extern char **environ;
-
-char		*getpath(char **env)
-{
-  int	i;
-  char	*new;
-
-  i = 0;
-  if (*env != NULL)
-    {
-      while (strncmp("PATH=", env[i], 5) != 0)
-	i++;
-      new = strdup(env[i] + 5);
-      return (new);
-    }
-  return (NULL);
-}
-
-#include <dirent.h>
-#include <sys/types.h>
 
 int		fill_tree_bin(char **path, t_arbre *arbre)
 {

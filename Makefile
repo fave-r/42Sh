@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Wed May 21 15:20:55 2014 lhomme
+## Last update Wed May 21 16:02:05 2014 Alex
 ##
 
 CC=		clang
@@ -34,6 +34,8 @@ SRCS=		main.c \
 		built-ins/my_echo.c \
 		built-ins/my_echo_arg.c \
 		built-ins/echo_vh.c \
+		termcap/main.c \
+		termcap/init.c \
 		npi/npi.c \
 		npi/list_func.c \
 		npi/tree_func.c \
@@ -48,7 +50,8 @@ SRCS=		main.c \
 		eval/mys.c \
 		eval/check_next.c \
 		eval/get_next_line.c \
-		eval/exec.c
+		eval/exec.c \
+		auto_completion/main.c
 
 OBJS=		$(SRCS:.c=.o)
 
