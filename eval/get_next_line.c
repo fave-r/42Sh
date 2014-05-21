@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 20 11:54:44 2014 romaric
-** Last update Tue May 20 16:47:20 2014 romaric
+** Last update Wed May 21 11:48:04 2014 romaric
 */
 
 #include "my.h"
@@ -36,11 +36,13 @@ char		*get_next_line(const int fd)
       i = 0;
     }
   if (a <= 0)
-      return (NULL);
+    return (NULL);
   while (buff[i] != '\n')
     {
       if (buff[i] == '\0')
 	{
+	  i = 0;
+	  a = 0;
 	  bzero(buff, BUFF_SIZE);
 	  return (l.s);
 	}
