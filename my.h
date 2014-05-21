@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Tue May 20 18:28:15 2014 lhomme
+** Last update Wed May 21 14:09:12 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -30,6 +30,12 @@ typedef struct		s_env
   struct s_env		*prev;
   struct s_env		*next;
 }			t_env;
+
+typedef struct		s_env_var
+{
+  t_env			*env;
+  int			wat;
+}			t_env_var;
 
 typedef struct		s_token
 {
@@ -115,7 +121,7 @@ int     my_priority(char *d1, char *d2);
 void    aff(t_tree *tree, int pos);
 void    addNode(t_tree **tree, void *data, int pos);
 void    make_tree(t_list **output, void *op);
-int     check_fn(t_tree *tree, int in, int out, t_env **env);
+int     check_fn(t_tree *tree, int in, int out, t_env_var *env);
 int     my_strlen_n(char *str);
 char    **my_str_to_wordtab(char *str, char sep);
 char    **save_env(t_env **env);
@@ -126,12 +132,12 @@ char    *pathcpy(char *tmp);
 char    *rmpath(char *dest, char * src);
 char    *my_strcpy(char *dest, char *src);
 void    free_doble(char **kill);
-int     my_semi_col(t_tree *tree, int in, int out, t_env **env);
-int     my_and(t_tree *tree, int in, int out, t_env **env);
-int     my_or(t_tree *tree, int in, int out, t_env **env);
-int     redir_right(t_tree *tree, int in, int out, t_env **env);
-int     doble_right(t_tree *tree, int in, int out, t_env **env);
-int     redir_left(t_tree *tree, int in, int out, t_env **env);
+int     my_semi_col(t_tree *tree, int in, int out, t_env_var *env);
+int     my_and(t_tree *tree, int in, int out, t_env_var *env);
+int     my_or(t_tree *tree, int in, int out, t_env_var *env);
+int     redir_right(t_tree *tree, int in, int out, t_env_var *env);
+int     doble_right(t_tree *tree, int in, int out, t_env_var *env);
+int     redir_left(t_tree *tree, int in, int out, t_env_var *env);
 int     xopen(const char *pathname, int flags, mode_t mode);
 ssize_t xread(int fd, void *buf, size_t count);
 char    *my_strcpyfinal(char *dest, char *cmd);
@@ -142,11 +148,11 @@ void	my_delete_envlist(t_env **list);
 char	*my_strcat(char *dest, char *src);
 t_env	*my_swap_old(t_env *env);
 void	change_oldpwd(t_env *env, char *pwd);
-int	doble_left(t_tree *tree, int in, int out, t_env **env);
+int	doble_left(t_tree *tree, int in, int out, t_env_var *env);
 char	*get_next_line(const int fd);
 char	*my_strdup_new(char *src);
-int	my_pipe(t_tree *tree, int in, int out, t_env **env);
-int     my_exec(char *cmd, int in, int out, t_env **env);
+int	my_pipe(t_tree *tree, int in, int out, t_env_var *env);
+int     my_exec(char *cmd, int in, int out, t_env_var *env);
 int     my_getnbr(char*);
 int     check_path(char **pathsep, char *cmd, char **str, t_inp p);
 

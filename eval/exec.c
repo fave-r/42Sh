@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Tue May 20 18:56:45 2014 lhomme
+** Last update Wed May 21 14:11:04 2014 romaric
 */
 
 #include "my.h"
@@ -80,7 +80,7 @@ int	exec_builtins(char *cmd, char **tab, t_env **env, t_inp p)
     }
 }
 
-int     my_exec(char *cmd, int in, int out, t_env **env)
+int     my_exec(char *cmd, int in, int out, t_env_var *env)
 {
   int   ret;
   char  **tab;
@@ -99,5 +99,5 @@ int     my_exec(char *cmd, int in, int out, t_env **env)
       tab[0] = cmd;
       tab[1] = NULL;
     }
-  return (exec_builtins(cmd, tab, env, p));
+  return (exec_builtins(cmd, tab, &(env->env), p));
 }

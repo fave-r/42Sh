@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Tue May 20 19:20:40 2014 lhomme
+** Last update Wed May 21 14:13:09 2014 romaric
 */
 
 #include "my.h"
@@ -48,7 +48,7 @@ int	check_exit(t_env *env)
 int		main(int ac, char **av, char **envp)
 {
   t_token	*list;
-  t_env         *env;
+  t_env_var	env;
   t_tree	*tree;
   char		*tmp;
   int		ret;
@@ -58,7 +58,7 @@ int		main(int ac, char **av, char **envp)
   if (ac > 1 || av[1] != NULL)
     return (0);
   list = NULL;
-  env = my_env_inlist(envp);
+  env.env = my_env_inlist(envp);
   display_prompt();
   signal(SIGINT, &display_sigint);
   while ((xread(0, tmp, 4096)) > 0)
@@ -72,10 +72,10 @@ int		main(int ac, char **av, char **envp)
 	  bzero(tmp, 4096);
 	  free_tree(tree);
 	  delete_list(&list);
-	  if ((ret = check_exit(env)) != -1)
+	  if ((ret = check_exit(env.env)) != -1)
 	    {
 	      free(tmp);
-	      my_delete_envlist(&env);
+	      my_delete_envlist(&(env.env));
 	      return (ret);
 	    }
 	}
@@ -83,6 +83,6 @@ int		main(int ac, char **av, char **envp)
     }
   write(1, "\n", 1);
   free(tmp);
-  my_delete_envlist(&env);
+  my_delete_envlist(&(env.env));
   return (0);
 }

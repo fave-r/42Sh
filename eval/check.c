@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Tue May 20 16:44:23 2014 bourrel
+** Last update Wed May 21 13:49:14 2014 romaric
 */
 
 #include "my.h"
@@ -88,24 +88,24 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
 ** fonction eval
 */
 
-int	check_fn(t_tree *tree, int in, int out, t_env **env)
+int	check_fn(t_tree *tree, int in, int out, t_env_var *env)
 {
   if (strcmp(tree->data, ">") == 0)
-    return (redir_right(tree, in, out, &(*env)));
+    return (redir_right(tree, in, out, env));
   else if (strcmp(tree->data, ">>") == 0)
-    return (doble_right(tree, in, out, &(*env)));
+    return (doble_right(tree, in, out, env));
   else if (strcmp(tree->data, "<") == 0)
-    return (redir_left(tree, in, out, &(*env)));
+    return (redir_left(tree, in, out, env));
   else if (strcmp(tree->data, "&&") == 0)
-    return (my_and(tree, in, out, &(*env)));
+    return (my_and(tree, in, out, env));
   else if (strcmp(tree->data, "||") == 0)
-    return (my_or(tree, in, out, &(*env)));
+    return (my_or(tree, in, out, env));
   else if (strcmp(tree->data, ";") == 0)
-    return (my_semi_col(tree, in, out, &(*env)));
+    return (my_semi_col(tree, in, out, env));
   else if (strcmp(tree->data, "<<") == 0)
-    return (doble_left(tree, in, out, &(*env)));
+    return (doble_left(tree, in, out, env));
   else if (strcmp(tree->data, "|") == 0)
-    return (my_pipe(tree, in, out, &(*env)));
+    return (my_pipe(tree, in, out, env));
   else
-    return (my_exec(tree->data, in, out, &(*env)));
+    return (my_exec(tree->data, in, out, env));
 }
