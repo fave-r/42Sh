@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Wed May 21 14:41:07 2014 romaric
+** Last update Wed May 21 15:15:46 2014 romaric
 */
 
 #include "my.h"
@@ -23,8 +23,10 @@ int	my_and(t_tree *tree, int in, int out, t_env_var *env)
 {
   int	ret;
 
+  ret = 1;
+  if (tree->left)
   ret = check_fn(tree->left, in, out, env);
-  if (ret == 0)
+  if (ret == 0 && tree->right)
     ret = check_fn(tree->right, in, out, env);
   return (ret);
 }
@@ -33,8 +35,10 @@ int	my_or(t_tree *tree, int in, int out, t_env_var *env)
 {
   int	ret;
 
+  ret = 0;
+  if (tree->left)
   ret = check_fn(tree->left, in, out, env);
-  if (ret != 0)
+  if (ret != 0 && tree->right)
     ret = check_fn(tree->right, in, out, env);
   return (ret);
 }
@@ -47,7 +51,10 @@ int	redir_right(t_tree *tree, int in, int out, t_env_var *env)
   int	save;
 
   i = 0;
+  ret = 0;
   save = out;
+  fd = -1;
+  if (tree->right)
   fd = xopen(tree->right->data, O_WRONLY | O_CREAT | O_TRUNC, 0666);
   if (fd == -1)
     return (-1);
@@ -57,6 +64,7 @@ int	redir_right(t_tree *tree, int in, int out, t_env_var *env)
       fd = out;
       i = 1;
     }
+  if (tree->left)
   ret = check_fn(tree->left, in, fd, env);
   if (i != 1)
     close(fd);
@@ -70,6 +78,9 @@ int	doble_right(t_tree *tree, int in, int out, t_env_var *env)
   int	i;
 
   i = 0;
+  ret = 0;
+  fd = -1;
+  if (tree->right)
   fd = xopen(tree->right->data, O_WRONLY | O_CREAT | O_APPEND, 0666);
   if (fd == -1)
     return (-1);
@@ -79,6 +90,7 @@ int	doble_right(t_tree *tree, int in, int out, t_env_var *env)
       fd = out;
       i = 1;
     }
+  if (tree->left)
   ret = check_fn(tree->left, in, fd, env);
   if (i != 1)
     close(fd);
@@ -92,6 +104,9 @@ int	redir_left(t_tree *tree, int in, int out, t_env_var *env)
   int	i;
 
   i = 0;
+  ret = 0;
+  fd = -1;
+  if (tree->right)
   fd = xopen(tree->right->data, O_RDONLY, 0666);
   if (fd == -1)
     return (-1);
@@ -101,6 +116,7 @@ int	redir_left(t_tree *tree, int in, int out, t_env_var *env)
       fd = in;
       i = 1;
     }
+  if (tree->left)
   ret = check_fn(tree->left, fd, out, env);
   if (i != 1)
     close(fd);
@@ -116,6 +132,7 @@ int	doble_left(t_tree *tree, __attribute__((unused))int in, int out, t_env_var *
   char	*str;
 
   i = 0;
+  ret = 0;
   save = out;
   fd = xopen(".dobleleft", O_RDWR | O_CREAT | O_TRUNC, 0666);
   if (fd == -1)
@@ -136,11 +153,8 @@ int	doble_left(t_tree *tree, __attribute__((unused))int in, int out, t_env_var *
   close(fd);
   fd = xopen(".dobleleft", O_RDONLY | O_CREAT, 0666);
   if (tree->left)
-    {
-      ret = check_fn(tree->left, fd, out, env);
-      return (ret);
-    }
-  return (0);
+    ret = check_fn(tree->left, fd, out, env);
+  return (ret);
 }
 
 int	my_pipe(t_tree *tree, int in, int out, t_env_var *env)
@@ -150,12 +164,15 @@ int	my_pipe(t_tree *tree, int in, int out, t_env_var *env)
 
   if (pipe(p) == -1)
     return (-1);
+  ret = 0;
   env->wat = 0;
   env->var_close = p[0];
+  if (tree->left)
   ret = check_fn(tree->left, in, p[1], env);
   env->wat = 1;
   close(p[1]);
   env->var_close = -1;
+  if (tree->right)
   ret = check_fn(tree->right, p[0], out, env);
   env->wat = 1;
   return (ret);
