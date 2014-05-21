@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Tue May 20 16:06:14 2014 lhomme
+** Last update Wed May 21 14:53:26 2014 romaric
 */
 
 #include "my.h"
@@ -39,7 +39,8 @@ t_token	*check_exotic(t_token *token)
     {
       if (token->next &&
 	  (token->next->token[0] == '>' || token->next->token[0] == '<') &&
-	  (token->token[0] == ';' || token->token[0] == '|' || token->token[0] == '&'))
+	  (token->token[0] == ';' || token->token[0] == '|'
+	   || token->token[0] == '&'))
 	{
 	  tmp = add_token(tmp, token->token);
 	  exotic(&token->next, &tmp);
