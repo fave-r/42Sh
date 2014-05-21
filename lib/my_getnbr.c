@@ -5,14 +5,16 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Thu Mar  6 22:11:23 2014 lhomme
-** Last update Tue May 20 18:59:40 2014 lhomme
+** Last update Wed May 21 15:00:24 2014 bourrel
 */
- 
+
+#include "my.h"
+
 int		is_neg(char *str)
 {
   int		i;
   int		counter;
- 
+
   i = 0;
   counter = 0;
   while (str[i] > '9' || str[i] < '0')
@@ -26,7 +28,7 @@ int		is_neg(char *str)
   else
     return (0);
 }
- 
+
 int		is_num(char l)
 {
   if (l >= '0' && l <= '9')
@@ -34,12 +36,12 @@ int		is_num(char l)
   else
     return (0);
 }
- 
+
 int		my_getnbr(char *str)
 {
   int		i;
   int		nbr;
- 
+
   nbr = 0;
   i = 0;
   while (is_num(str[i]) == 0)

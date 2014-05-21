@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Wed May 21 14:17:27 2014 bourrel
+** Last update Wed May 21 14:49:12 2014 bourrel
 */
 
 #include "my.h"
@@ -51,7 +51,7 @@ int	check_echo_args(char **tab, int fd, int x)
   int	i;
 
   i = 0;
-  if (tab[1][1] == '-' && tab[1][2] == '-')
+  if (tab[1][1] == '-')
     echo_vh(tab, fd);
   while (tab[1][++i] != '\0')
     {
