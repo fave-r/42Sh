@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Fri Apr 25 15:26:05 2014 bourrel
-** Last update Fri May 16 15:27:52 2014 bourrel
+** Last update Wed May 21 14:06:59 2014 bourrel
 */
 
 #include "my.h"
@@ -106,7 +106,7 @@ int	my_echo_arg(char *str, int fd)
 	return (1);
       else if (str[i] == '\\')
 	i = check_args(str, i + 1, fd);
-      else
+      else if (str[i] != 34 && str[i] != 39)
 	my_putchar(str[i], fd);
       i++;
     }

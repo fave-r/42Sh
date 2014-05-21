@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Fri May 16 15:23:48 2014 bourrel
+** Last update Wed May 21 14:17:27 2014 bourrel
 */
 
 #include "my.h"
@@ -33,7 +33,6 @@ void	print_text(char **tab, int fd)
       print_echo_str(tab[i], fd);
       my_putstr(" ", fd);
     }
-  my_putstr("\n", fd);
 }
 
 void	unknown_arg(char *text, char *arg, int i, int fd)
@@ -43,7 +42,7 @@ void	unknown_arg(char *text, char *arg, int i, int fd)
       print_echo_str(&arg[i], fd);
       i++;
     }
-  my_putstr(" ", fd);
+  my_putchar(' ', fd);
   print_echo_str(text, fd);
 }
 
@@ -51,15 +50,17 @@ int	check_echo_args(char **tab, int fd, int x)
 {
   int	i;
 
-  i = 1;
-  while (tab[1][i] != '\0')
+  i = 0;
+  if (tab[1][1] == '-' && tab[1][2] == '-')
+    echo_vh(tab, fd);
+  while (tab[1][++i] != '\0')
     {
       if (tab[2] && tab[1][i] == 'e')
 	my_echo_arg(tab[2], fd);
       else if (tab[2] && tab[1][i] == 'E')
 	{
 	  print_echo_str(tab[2], fd);
-	  my_putstr("\n", fd);
+	  x = 1;
 	}
       else if (tab[2] && strlen(tab[1]) == 2 && tab[1][i] == 'n')
 	{
@@ -70,7 +71,6 @@ int	check_echo_args(char **tab, int fd, int x)
 	x = 1;
       else if (tab[2])
 	unknown_arg(tab[2], tab[1], i, fd);
-      i++;
     }
   return (x);
 }

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 21 14:35:22 2014 romaric
+** Last update Wed May 21 14:37:10 2014 bourrel
 */
 
 #ifndef __42Sh__
@@ -157,5 +157,6 @@ int	my_pipe(t_tree *tree, int in, int out, t_env_var *env);
 int     my_exec(char *cmd, int in, int out, t_env_var *env);
 int     my_getnbr(char*);
 int     check_path(char **pathsep, char *cmd, char **str, t_inp p);
+void	echo_vh(char **tab, int fd);
 
 #endif

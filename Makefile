@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Tue May 20 15:35:11 2014 bourrel
+## Last update Wed May 21 14:37:31 2014 bourrel
 ##
 
 CC=		clang
@@ -33,6 +33,7 @@ SRCS=		main.c \
 		built-ins/my_unsetenv.c \
 		built-ins/my_echo.c \
 		built-ins/my_echo_arg.c \
+		built-ins/echo_vh.c \
 		npi/npi.c \
 		npi/list_func.c \
 		npi/tree_func.c \
@@ -54,7 +55,6 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
-
 
 clean:
 		$(RM) $(OBJS)
