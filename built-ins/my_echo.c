@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Wed May 21 14:49:12 2014 bourrel
+** Last update Wed May 21 15:18:44 2014 bourrel
 */
 
 #include "my.h"
@@ -83,7 +83,7 @@ void	my_echo(char **tab, int fd)
   i = 0;
   x = 0;
   if (tab[1] == NULL)
-    my_putchar('\n', fd);
+    x = 0;
   else if (tab[1][0] != '-')
     print_text(tab, fd);
   else
