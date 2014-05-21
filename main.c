@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Wed May 21 15:48:09 2014 lhomme
+** Last update Wed May 21 16:23:07 2014 Alex
 */
 
 #include "my.h"
@@ -64,7 +64,7 @@ int		main(int ac, char **av, char **envp)
   env.wat = 1;
   env.var_close = -1;
   signal(SIGINT, &display_sigint);
-  while ((xread(0, tmp, 4096)) > 0)
+  while ((tmp = get_next_line_icanon(0)))
     {
       tmp = my_epur_str(tmp);
       if (tmp && tmp[0] != 0)

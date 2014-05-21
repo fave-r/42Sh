@@ -5,10 +5,11 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Wed May 21 15:46:49 2014 Alex
+** Last update Wed May 21 16:10:57 2014 Alex
 */
 
 #include "my.h"
+#include "struct.h"
 
 void			init()
 {

@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Wed May 21 16:02:05 2014 Alex
+## Last update Wed May 21 16:20:21 2014 Alex
 ##
 
 CC=		clang
@@ -58,7 +58,7 @@ OBJS=		$(SRCS:.c=.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
+		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS) -lncurses
 
 clean:
 		$(RM) $(OBJS)

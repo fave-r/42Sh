@@ -5,10 +5,12 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Mon Mar 31 15:38:57 2014 thibaud
-** Last update Wed May 21 16:01:13 2014 Alex
+** Last update Wed May 21 16:21:00 2014 Alex
 */
 
 #include "my.h"
+
+extern char	**environ;
 
 t_arbre		*make_root(void)
 {
@@ -175,6 +177,23 @@ int		fill_tree_bin(char **path, t_arbre *arbre)
       i++;
     }
   return (1);
+}
+
+char		*getpath(char **environ)
+{
+  int		i;
+
+  i = 0;
+  if (*environ != NULL)
+    {
+      while (environ[i])
+	{
+	  if (strncmp("PATH=", environ[i], 5) == 0)
+	    return (strdup(environ[i] + 5));
+	  i++;
+	}
+    }
+  return (PATH);
 }
 
 char		*auto_completion(char *test)

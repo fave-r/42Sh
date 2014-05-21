@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 21 16:07:15 2014 Alex
+** Last update Wed May 21 16:21:26 2014 Alex
 */
 
 #ifndef __42Sh__
@@ -20,13 +20,11 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <curses.h>
-#include <termios.h>
-#include <term.h>
 #include <dirent.h>
 
 #define BUFF_SIZE 1024
 #define TERM "xterm"
+#define PATH "/usr/lib64/mpi/gcc/openmpi/bin:/home/leo/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/X11R6/bin:/usr/games:/usr/netsoul/sbin:/usr/netsoul/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/arla/sbin:/usr/arla/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/site/sbin:/usr/site/bin:/usr/netsoul/sbin:/usr/netsoul/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/arla/sbin:/usr/arla/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/site/sbin:/usr/site/bin"
 
 typedef struct		s_env
 {
@@ -115,6 +113,7 @@ int	my_cd(t_env*, char**);
 t_env	*my_change_pwd(t_env*, char*, int);
 int	my_oldpwd(t_env*);
 int     my_strcmp(char*, char*);
+int	my_strlen(char *str);
 int     my_strncmp(char*, char*, int);
 char    *my_strcat(char*, char*);
 char    *my_strdup(char*);
@@ -179,7 +178,7 @@ int	my_pipe(t_tree *tree, int in, int out, t_env_var *env);
 int     my_exec(char *cmd, int in, int out, t_env_var *env);
 int     my_getnbr(char*);
 int     check_path(char **pathsep, char *cmd, char **str, t_inp p);
-void	echo_vh(char **tab, int fd);
+void	echo_vh(char **cmd, int fd);
 char	*my_tab(char *tmp, char *new, char *result, int *x);
 char	*my_entry(char *tmp, char *new, char *result, int *x);
 void	my_char(char *tmp, char to_copy, int *x);

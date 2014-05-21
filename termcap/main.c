@@ -5,10 +5,11 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Wed May 21 15:46:37 2014 Alex
+** Last update Wed May 21 16:23:06 2014 Alex
 */
 
 #include "my.h"
+#include "struct.h"
 
 char		*my_tab(char *tmp, char *new, char *result, int *x)
 {
