@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Wed May 21 14:15:06 2014 bourrel
-** Last update Wed May 21 14:58:55 2014 bourrel
+** Last update Wed May 21 16:03:00 2014 bourrel
 */
 
 #include "my.h"
@@ -48,11 +48,11 @@ void	echo_version(int fd)
   my_putstr("Written by Brian Fox and Chet Ramey.\n", fd);
 }
 
-void	echo_vh(char **tab, int fd)
+void	echo_vh(char **cmd, int fd)
 {
-  if (strcmp(tab[1], "--version") == 0 && !tab[1][10])
+  if (strcmp(cmd[1], "--version") == 0 && !cmd[1][10])
     echo_version(fd);
-  else if (strcmp(tab[1], "--help") == 0 && !tab[1][7])
+  else if (strcmp(cmd[1], "--help") == 0 && !cmd[1][7])
     echo_help(fd);
   else
     my_putchar('\n', fd);

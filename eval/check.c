@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Wed May 21 14:49:30 2014 romaric
+** Last update Wed May 21 15:47:58 2014 lhomme
 */
 
 #include "my.h"
@@ -93,7 +93,9 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
 
 int	check_fn(t_tree *tree, int in, int out, t_env_var *env)
 {
-  if (strcmp(tree->data, ">") == 0)
+  if (!tree)
+    return (-1);
+  else if (strcmp(tree->data, ">") == 0)
     return (redir_right(tree, in, out, env));
   else if (strcmp(tree->data, ">>") == 0)
     return (doble_right(tree, in, out, env));

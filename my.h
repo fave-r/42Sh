@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 21 16:01:47 2014 Alex
+** Last update Wed May 21 16:07:15 2014 Alex
 */
 
 #ifndef __42Sh__
@@ -134,7 +134,7 @@ t_env	*my_history(t_env *history, char *str);
 char    *my_epur_str(char *str);
 int     is_spe(char c);
 int     is_alpha(char c);
-t_tree	*npi(t_token *token);
+t_tree	*npi(t_token *token, char *str);
 t_tree  *createNode(t_tree *elem, void *data);
 int     npi_add_end(t_list **list, void *data);
 int     npi_add_top(t_list **list, void *data, t_tree *tree);
