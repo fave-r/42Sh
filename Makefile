@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Wed May 21 14:37:31 2014 bourrel
+## Last update Wed May 21 15:20:55 2014 lhomme
 ##
 
 CC=		clang
@@ -39,6 +39,7 @@ SRCS=		main.c \
 		npi/tree_func.c \
 		npi/make_tree.c \
 		npi/priority.c \
+		npi/check_full_tree.c \
 		eval/my_str_to_wordtab.c \
 		eval/env.c \
 		eval/check.c \

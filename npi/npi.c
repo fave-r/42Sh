@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Wed May 21 14:54:06 2014 lhomme
+** Last update Wed May 21 15:29:28 2014 lhomme
 */
 
 #include "my.h"
@@ -91,5 +91,8 @@ t_tree	*npi(t_token *token)
       stack = stack->next;
     }
   npi_delete_list(&stack);
-  return (output->tree);
+  if (check_full_tree(output->tree) == 1)
+    return (output->tree);
+  printf("arbre pas complet\n");
+  return (NULL);
 }
