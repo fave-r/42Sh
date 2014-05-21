@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Wed May 21 14:29:38 2014 romaric
+** Last update Wed May 21 14:45:23 2014 romaric
 */
 
 #include "my.h"
@@ -89,6 +89,7 @@ int     my_exec(char *cmd, int in, int out, t_env_var *env)
   p.in = in;
   p.out = out;
   p.wat = env->wat;
+  p.var_close = env->var_close;
   ret = 0;
   tab = NULL;
   if (strchr(cmd, ' ') != NULL)

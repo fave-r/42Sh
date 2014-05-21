@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Wed May 21 14:31:40 2014 romaric
+** Last update Wed May 21 14:49:30 2014 romaric
 */
 
 #include "my.h"
@@ -29,12 +29,14 @@ int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
 	    dup2(p.out, 1);
 	  if (p.in != 0)
 	    dup2(p.in, 0);
+	  if (p.var_close != -1)
+	    close(p.var_close);
 	  execve(pathforexec, arv, environ);
 	  fprintf(stderr, "42sh: %s: command not found\n", pathforexec);
 	  exit(1);
 	}
       if (p.wat == 1)
-	wait(&ret);
+	waitpid(pid, &ret, 0);
       free(pathforexec);
     }
   return (ret);

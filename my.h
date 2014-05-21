@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Wed May 21 14:37:10 2014 bourrel
+** Last update Wed May 21 14:44:40 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -78,6 +78,7 @@ typedef struct		s_inp
   int			in;
   int			out;
   int			wat;
+  int			var_close;
 }			t_inp;
 
 int	print_token(t_token *list);
