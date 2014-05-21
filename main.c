@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Wed May 21 14:38:18 2014 romaric
+** Last update Wed May 21 15:16:22 2014 lhomme
 */
 
 #include "my.h"
@@ -33,7 +33,8 @@ int	check_exit(t_env *env)
 {
   int	ret;
 
-  if (env->next->str[12] == 0)
+  if (env->next->str[12] == 0
+      || strncmp(env->next->str, "EXIT_VALUE", 10) != 0)
     return (-1);
   ret = my_getnbr(env->next->str + 12);
   if (ret > 0)
