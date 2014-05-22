@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Thu May 22 17:14:15 2014 lhomme
+** Last update Thu May 22 18:14:48 2014 romaric
 */
 
 #include "my.h"
@@ -36,11 +36,8 @@ int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
 	  exit(1);
 	}
       if (p.wat == 1)
-	{
-	  printf("je wait pour : %s\n", pathforexec);
-	  waitpid(pid, &ret, 0);
-	}
-      //      free(pathforexec);
+	waitpid(pid, &ret, 0);
+      free(pathforexec);
     }
   return (ret);
 }
