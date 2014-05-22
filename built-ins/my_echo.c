@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Wed May 21 15:18:44 2014 bourrel
+** Last update Thu May 22 14:00:22 2014 lhomme
 */
 
 #include "my.h"
@@ -77,10 +77,8 @@ int	check_echo_args(char **tab, int fd, int x)
 
 void	my_echo(char **tab, int fd)
 {
-  int	i;
   int	x;
 
-  i = 0;
   x = 0;
   if (tab[1] == NULL)
     x = 0;

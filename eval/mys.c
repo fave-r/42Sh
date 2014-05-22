@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Wed May 21 15:15:46 2014 romaric
+** Last update Thu May 22 14:04:18 2014 lhomme
 */
 
 #include "my.h"
@@ -48,11 +48,9 @@ int	redir_right(t_tree *tree, int in, int out, t_env_var *env)
   int	ret;
   int	fd;
   int	i;
-  int	save;
 
   i = 0;
   ret = 0;
-  save = out;
   fd = -1;
   if (tree->right)
   fd = xopen(tree->right->data, O_WRONLY | O_CREAT | O_TRUNC, 0666);
@@ -128,12 +126,10 @@ int	doble_left(t_tree *tree, __attribute__((unused))int in, int out, t_env_var *
   int	ret;
   int	fd;
   int	i;
-  int	save;
   char	*str;
 
   i = 0;
   ret = 0;
-  save = out;
   fd = xopen(".dobleleft", O_RDWR | O_CREAT | O_TRUNC, 0666);
   if (fd == -1)
     return (-1);
@@ -148,7 +144,8 @@ int	doble_left(t_tree *tree, __attribute__((unused))int in, int out, t_env_var *
   if (str == NULL)
     {
       fprintf(stderr, "42sh: warning: here-document at line %d delimited ", i+1);
-      fprintf(stderr, "by end-of-file (wanted `%s')\n", tree->right->data);
+      fprintf(stderr, "by end-of-file (wanted `%s')\n"
+	      , strdup(tree->right->data));
     }
   close(fd);
   fd = xopen(".dobleleft", O_RDONLY | O_CREAT, 0666);

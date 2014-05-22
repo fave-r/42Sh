@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Wed May 21 19:20:56 2014 bourrel
+** Last update Thu May 22 14:00:59 2014 lhomme
 */
 
 #include "my.h"
@@ -48,11 +48,9 @@ char	*my_dupstr(char *src, int len)
 
 char	*dup_last_word(char *src)
 {
-  int	i;
   int	len;
   char	*new;
 
-  i = 0;
   if (src == NULL)
     return (NULL);
   len = strlen(src);

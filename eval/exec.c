@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Wed May 21 15:10:02 2014 bourrel
+** Last update Thu May 22 14:02:48 2014 lhomme
 */
 
 #include "my.h"
@@ -82,7 +82,6 @@ int	exec_builtins(char *cmd, char **tab, t_env  **env, t_inp p)
 
 int     my_exec(char *cmd, int in, int out, t_env_var *env)
 {
-  int   ret;
   char  **tab;
   t_inp p;
 
@@ -90,7 +89,6 @@ int     my_exec(char *cmd, int in, int out, t_env_var *env)
   p.out = out;
   p.wat = env->wat;
   p.var_close = env->var_close;
-  ret = 0;
   tab = NULL;
   if (strchr(cmd, ' ') != NULL)
     tab = my_str_to_wordtab(cmd, ' ');
