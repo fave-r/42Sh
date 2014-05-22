@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Thu May 22 15:03:16 2014 lhomme
+** Last update Thu May 22 16:00:54 2014 bourrel
 */
 
 #ifndef __42Sh__
@@ -202,5 +202,7 @@ void	display_sigint();
 void	unset_term();
 t_token	*check_exotic(t_token *token);
 t_token *check_varenv(t_token *list, t_env *env);
+int	my_char(char *tmp, char to_copy, int *x);
+char	*glob_complete(char *new, char *tmp);
 
 #endif
