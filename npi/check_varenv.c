@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Thu May 22 15:02:29 2014 lhomme
-** Last update Thu May 22 17:32:10 2014 lhomme
+** Last update Thu May 22 17:49:42 2014 lhomme
 */
 
 #include "my.h"
@@ -45,6 +45,20 @@ char	*is_in_env(char *var, t_env *env)
   return (NULL);
 }
 
+char	*swap_var2(char *str, char *token, int i, int k)
+{
+  k += strlen(str);
+  while (token[i])
+    {
+      str[k] = token[i];
+      i++;
+      k++;
+    }
+  str[k] = 0;
+  free(token);
+  return (str);
+}
+
 char	*swap_var(char *token, char *var, char *var_env)
 {
   int	i;
@@ -68,16 +82,7 @@ char	*swap_var(char *token, char *var, char *var_env)
       j++;
     }
   str = my_strcat(str, var_env);
-  k += strlen(str);
-  while (token[i])
-    {
-      str[k] = token[i];
-      i++;
-      k++;
-    }
-  str[k] = 0;
-  free(token);
-  return (str);
+  return (swap_var2(str, token, i, k));
 }
 
 t_token	*check_varenv(t_token *list, t_env *env)
