@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Thu May 22 15:02:21 2014 lhomme
+** Last update Thu May 22 17:33:45 2014 lhomme
 */
 
 #include "my.h"
@@ -40,11 +40,11 @@ t_tree	*npi(t_token *token, char *str, t_env *env)
 
   stack = NULL;
   output = NULL;
+  token = exotic_and_var(token, env);
   if (!token)
     return (NULL);
   if (!token->next)
     return (createNode(NULL, token->token));
-  token = exotic_and_var(token, env);
   while (token)
     {
       my_stack(token->token, &stack, &output);

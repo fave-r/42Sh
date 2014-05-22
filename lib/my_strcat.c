@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Mon Dec  9 11:54:04 2013 lhomme
-** Last update Mon May 19 18:42:20 2014 bourrel
+** Last update Thu May 22 16:27:18 2014 lhomme
 */
 
 #include "my.h"
@@ -21,7 +21,7 @@ char	*my_strcat(char *dest, char *src)
   if (dest != NULL)
     tmp = malloc(sizeof(*tmp) * (strlen(dest) + strlen(src) + 1));
   else
-    tmp = malloc(sizeof(*tmp) * (strlen(src) + 1));
+    return (src);
   if (tmp == NULL)
     return (NULL);
   while (dest[i] != 0)
