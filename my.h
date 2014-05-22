@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Thu May 22 11:50:44 2014 bourrel
+** Last update Thu May 22 13:22:17 2014 odet
 */
 
 #ifndef __42Sh__
@@ -199,5 +199,6 @@ int	fill_tree_bin(char **path, t_arbre *arbre);
 char	*auto_completion(char *test);
 void	display_prompt();
 void	display_sigint();
+void	unset_term();
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Thu May 22 09:41:35 2014 bourrel
+** Last update Thu May 22 12:40:27 2014 odet
 */
 
 #include "my.h"
@@ -42,8 +42,6 @@ int		my_char(char *tmp, char to_copy, int *x)
   a = *x;
 
   write(1, &to_copy, 1);
-  if (tmp == NULL)
-    write(1, "NULL\n", 5);
   tmp[a] = to_copy;
   a++;
   return (a);

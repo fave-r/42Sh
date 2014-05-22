@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Thu May 22 11:50:57 2014 bourrel
+** Last update Thu May 22 13:21:33 2014 odet
 */
 
 #include "my.h"
@@ -38,6 +38,7 @@ void		start(t_token *list, t_env_var env, t_tree *tree, char *tmp)
 
 int		exit_42(char *tmp, t_env_var env, int ret)
 {
+  unset_term();
   free(tmp);
   my_delete_envlist(&(env.env));
   return (ret);
@@ -62,7 +63,6 @@ int		main(int ac, char **av, char **envp)
   int	ret;
 
   tree = NULL;
-  tmp = xmalloc(4096 * sizeof(char));
   if (ac > 1 || av[1] != NULL)
     return (0);
   init_main(&env, envp, &ret, &list);
