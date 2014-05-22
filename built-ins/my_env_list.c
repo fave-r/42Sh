@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:56:42 2014 lhomme
-** Last update Wed May 21 16:25:53 2014 bourrel
+** Last update Thu May 22 18:19:27 2014 bourrel
 */
 
 #include "my.h"
@@ -14,7 +14,7 @@ t_env		*my_add_env(t_env *root, char *str)
 {
   t_env		*new_elem;
 
-  new_elem = malloc(sizeof(*new_elem));
+  new_elem = xmalloc(sizeof(*new_elem));
   if (new_elem == NULL)
     return (NULL);
   new_elem->str = str;
@@ -29,7 +29,7 @@ t_env		*my_create_envlist()
 {
   t_env		*root;
 
-  root = malloc(sizeof(*root));
+  root = xmalloc(sizeof(*root));
   if (root == NULL)
     return (NULL);
   root->prev = root;

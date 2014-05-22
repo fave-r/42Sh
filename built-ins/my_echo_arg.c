@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Fri Apr 25 15:26:05 2014 bourrel
-** Last update Wed May 21 14:06:59 2014 bourrel
+** Last update Thu May 22 18:19:02 2014 bourrel
 */
 
 #include "my.h"
@@ -35,7 +35,7 @@ int	convert_hex(char *str, int i, int fd)
 
   j = 0;
   i++;
-  cpy = malloc(sizeof(*cpy) * 4);
+  cpy = xmalloc(sizeof(*cpy) * 4);
   while (j < 2 && (str[i] >= '0' && str[i] <= '9'))
     {
       cpy[j] = str[i];
@@ -55,7 +55,7 @@ int     convert_octal(char *str, int i, int fd)
 
   j = 0;
   i++;
-  cpy = malloc(sizeof(*cpy) * 4);
+  cpy = xmalloc(sizeof(*cpy) * 4);
   while (j < 3 && (str[i] >= '0' && str[i] <= '9'))
     {
       cpy[j] = str[i];

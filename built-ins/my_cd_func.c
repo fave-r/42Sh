@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Mar 21 14:22:18 2014 lhomme
-** Last update Thu May 22 17:42:02 2014 lhomme
+** Last update Thu May 22 18:19:48 2014 bourrel
 */
 
 #include "my.h"
@@ -62,7 +62,7 @@ char	*my_dup_pwd(char *pwd)
 
   i = 2;
   j = 0;
-  tmp = malloc(sizeof(char) * (strlen(pwd) - 1));
+  tmp = xmalloc(sizeof(char) * (strlen(pwd) - 1));
   while (pwd[i] != 0)
     {
       tmp[j] = pwd[i];
