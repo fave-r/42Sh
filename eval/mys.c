@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Thu May 22 14:04:18 2014 lhomme
+** Last update Thu May 22 14:48:26 2014 romaric
 */
 
 #include "my.h"
@@ -166,11 +166,13 @@ int	my_pipe(t_tree *tree, int in, int out, t_env_var *env)
   env->var_close = p[0];
   if (tree->left)
   ret = check_fn(tree->left, in, p[1], env);
+  if (out == 1 && in == 0)
   env->wat = 1;
   close(p[1]);
   env->var_close = -1;
   if (tree->right)
   ret = check_fn(tree->right, p[0], out, env);
+  close(p[0]);
   env->wat = 1;
   return (ret);
 }
