@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Thu May 22 13:53:46 2014 odet
+** Last update Thu May 22 14:05:09 2014 odet
 */
 
 #include "my.h"
@@ -19,12 +19,12 @@ char		*my_tab(char *tmp, char *new, char *result, int *x)
     {
       if (result != NULL)
 	*x += write(1, result, strlen(result));
+      else if (*x > 0)
+	*x = *x - 1;
       tmp = strcat(tmp, result);
       free(result);
       free(new);
     }
-  else if (*x > 0)
-    *x = *x - 1;
   return (tmp);
 }
 
