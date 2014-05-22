@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Mon Mar 31 15:38:57 2014 thibaud
-** Last update Wed May 21 16:21:00 2014 Alex
+** Last update Thu May 22 18:30:58 2014 bourrel
 */
 
 #include "my.h"
@@ -172,7 +172,7 @@ int		fill_tree_bin(char **path, t_arbre *arbre)
 	{
 	  if (ptr != NULL)
 	    while ((entry = readdir(ptr)) != NULL)
-	      add_word(arbre, strdup(entry->d_name));
+	      add_word(arbre, entry->d_name);
 	}
       i++;
     }

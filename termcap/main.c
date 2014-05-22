@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Thu May 22 17:55:51 2014 bourrel
+** Last update Thu May 22 19:02:37 2014 bourrel
 */
 
 #include "my.h"
@@ -44,7 +44,7 @@ char		*glob_complete(char *new, char *tmp)
 
   if ((tmp && new) && (!tmp[0] && !new[0]))
     return (tmp);
-  new = strcat(new, "*");
+  new = my_strcat(new, "*");
   if ((glob(new, GLOB_BRACE | GLOB_NOCHECK | GLOB_TILDE, NULL, &ptr))
       != GLOB_NOMATCH)
     {
