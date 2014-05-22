@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Thu May 22 18:19:13 2014 romaric
+** Last update Thu May 22 19:12:02 2014 bourrel
 */
 
 #include "my.h"
@@ -29,8 +29,11 @@ int	check_exit(t_env *env)
   return (ret);
 }
 
-void		start(t_token *list, t_env_var env, t_tree *tree, char *tmp)
+void		start(t_token *list, t_env_var env, char *tmp)
 {
+  t_tree	*tree;
+
+  tree = NULL;
   list = fill_token(tmp);
   tree = npi(list, tmp, env.env);
   check_fn(tree, 0, 1, &env);
@@ -62,11 +65,9 @@ int		main(void)
 {
   t_token	*list;
   t_env_var	env;
-  t_tree	*tree;
   char		*tmp;
-  int	ret;
+  int		ret;
 
-  tree = NULL;
   init_main(&env, environ, &ret, &list);
   signal(SIGINT, &display_sigint);
   while ((tmp = get_next_line_icanon(0)) != NULL)
@@ -74,7 +75,7 @@ int		main(void)
       tmp = my_epur_str(tmp);
       if (tmp && tmp[0] != 0)
 	{
-	  start(list, env, tree, tmp);
+	  start(list, env, tmp);
 	  if ((ret = check_exit(env.env)) != -1)
 	    return (exit_42(tmp, env, ret));
 	}
