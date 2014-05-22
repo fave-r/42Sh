@@ -5,10 +5,34 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Mon May 19 17:48:25 2014 
+** Last update Thu May 22 15:29:10 2014 bourrel
 */
 
 #include "my.h"
+
+int	print_oldpwd(t_env *env)
+{
+  t_env	*oldpwd;
+  t_env	*tmp;
+  int	i;
+
+  i = 6;
+  oldpwd = env->next;
+  tmp = env->prev;
+  while (strncmp(oldpwd->str, "OLDPWD", 6) != 0)
+    {
+      if (oldpwd == tmp)
+	return (0);
+      oldpwd = oldpwd->next;
+    }
+  if (oldpwd->str[i])
+    {
+      while (oldpwd->str[++i])
+	my_putchar(oldpwd->str[i], 1);
+      my_putchar('\n', 1);
+    }
+  return (1);
+}
 
 t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
 {
@@ -47,7 +71,10 @@ int	my_cd(t_env *env, char **tab)
   if (tab[1])
     {
       if (tab[1][0] == '-')
-	return (my_oldpwd(env));
+	{
+	  print_oldpwd(env);
+	  return (my_oldpwd(env));
+	}
       if (opendir(tab[1]) == NULL)
 	{
 	  printf("cd: %s: Not a directory\n", tab[1]);
