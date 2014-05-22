@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Thu May 22 14:05:09 2014 odet
+** Last update Thu May 22 14:18:15 2014 odet
 */
 
 #include "my.h"
@@ -44,7 +44,6 @@ int		my_char(char *tmp, char to_copy, int *x)
   int	a;
 
   a = *x;
-
   write(1, &to_copy, 1);
   tmp[a] = to_copy;
   a++;
@@ -65,13 +64,7 @@ void		my_delete(char *tmp, int *x)
 char		*get_next_line_icanon(const int fd)
 {
   t_gnl_icanon	p;
-  static int	x = 0;
 
-  if (x == 0)
-    {
-      x = 1;
-      init();
-    }
   init_value(&p);
   while ((read(fd, p.buffer, BUFF_SIZE)))
     {
