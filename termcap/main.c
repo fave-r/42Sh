@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Wed May 21 19:37:56 2014 bourrel
+** Last update Thu May 22 09:41:35 2014 bourrel
 */
 
 #include "my.h"
@@ -15,8 +15,8 @@ char		*my_tab(char *tmp, char *new, char *result, int *x)
 {
   tmp[*x] = 0;
   new = dup_last_word(tmp);
-  //if ((result = auto_completion(new)))
-  //tmp = strcat(tmp, result);
+  if ((result = auto_completion(new)))
+    tmp = strcat(tmp, result);
   if (result != NULL)
     *x += write(1, result, strlen(result));
   else if (x > 0)
