@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Thu May 22 13:59:44 2014 lhomme
+** Last update Thu May 22 13:56:08 2014 odet
 */
 
 #include "my.h"
@@ -75,8 +75,8 @@ int		main(int ac, char **av, char **envp)
 	  start(list, env, tree, tmp);
 	  if ((ret = check_exit(env.env)) != -1)
 	    return (exit_42(tmp, env, ret));
-	  display_prompt();
 	}
+      display_prompt();
     }
   write(1, "\n", 1);
   return (exit_42(tmp, env, 0));

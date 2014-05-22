@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Thu May 22 13:44:08 2014 odet
+** Last update Thu May 22 13:53:46 2014 odet
 */
 
 #include "my.h"
@@ -15,10 +15,14 @@ char		*my_tab(char *tmp, char *new, char *result, int *x)
 {
   tmp[*x] = 0;
   new = dup_last_word(tmp);
-  if ((result = auto_completion(new)))
-    tmp = strcat(tmp, result);
-  if (result != NULL)
-    *x += write(1, result, strlen(result));
+  if ((result = auto_completion(new)) != NULL)
+    {
+      if (result != NULL)
+	*x += write(1, result, strlen(result));
+      tmp = strcat(tmp, result);
+      free(result);
+      free(new);
+    }
   else if (*x > 0)
     *x = *x - 1;
   return (tmp);
@@ -69,7 +73,7 @@ char		*get_next_line_icanon(const int fd)
       init();
     }
   init_value(&p);
-  while ((read(fd, p.buffer, 1024)))
+  while ((read(fd, p.buffer, BUFF_SIZE)))
     {
       if (p.buffer[0] == '\t')
 	p.tmp = my_tab(p.tmp, NULL, NULL, &(p.x));
