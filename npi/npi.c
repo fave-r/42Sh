@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Thu May 22 14:58:38 2014 lhomme
+** Last update Thu May 22 15:02:21 2014 lhomme
 */
 
 #include "my.h"
@@ -13,6 +13,7 @@
 t_token	*exotic_and_var(t_token *token, t_env *env)
 {
   token = check_exotic(token);
+  token = check_varenv(token, env);
   return (token);
 }
 
