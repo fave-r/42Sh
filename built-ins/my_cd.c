@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Thu May 22 15:37:49 2014 bourrel
+** Last update Thu May 22 17:45:23 2014 lhomme
 */
 
 #include "my.h"
@@ -63,6 +63,18 @@ t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
   return (env);
 }
 
+int	empty_pwd(t_env *env)
+{
+  t_env	*tmp;
+
+  tmp = env->next;
+  while (tmp != env && strncmp(tmp->str, "PWD=", 4) != 0)
+    tmp = tmp->next;
+  if (tmp != env)
+    tmp->str[4] = 0;
+  return (0);
+}
+
 int	my_cd(t_env *env, char **tab)
 {
   t_env		*tmp;
@@ -70,6 +82,8 @@ int	my_cd(t_env *env, char **tab)
   tmp = env->next;
   if (tab[1])
     {
+      if (tab[1][0] == '/')
+	empty_pwd(env);
       if (tab[1][0] == '-')
 	{
 	  print_oldpwd(env);
