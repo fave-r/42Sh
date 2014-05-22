@@ -8,7 +8,7 @@
 ** Last update Wed May 21 19:20:56 2014 bourrel
 */
 
-#include "../my.h"
+#include "my.h"
 #include "struct.h"
 
 void			init()
