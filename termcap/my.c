@@ -5,17 +5,34 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Thu May 22 14:57:51 2014 odet
-** Last update Thu May 22 15:18:47 2014 odet
+** Last update Thu May 22 17:54:11 2014 bourrel
 */
 
 #include "my.h"
 #include "struct.h"
 
+int		match(char *tmp, int len)
+{
+  int		result;
+  int		x;
+
+  x = len;
+  result = strlen (tmp);
+  while (tmp[len])
+    {
+      write(1, &tmp[len], 1);
+      len++;
+    }
+  return (result - x);
+}
+
 char		*my_tab(char *tmp, char *new, char *result, int *x)
 {
+  int		len;
 
   tmp[*x] = 0;
   new = dup_last_word(tmp);
+  len = strlen(new);
   if ((result = auto_completion(new)) != NULL)
     {
       if (result != NULL)
@@ -28,8 +45,11 @@ char		*my_tab(char *tmp, char *new, char *result, int *x)
     }
   if (result == NULL)
     {
-      if ((tmp = glob_complete(new, tmp)))
-	*x += write(1, tmp, strlen(tmp));
+      if ((result = glob_complete(new, tmp)))
+	{
+	  *x += write(1, result + len, strlen(result) - len);
+ 	  tmp = strcat(tmp, result + len);
+	}
     }
   return (tmp);
 }
@@ -40,7 +60,6 @@ char		*my_entry(char *tmp, char *new, char *result, int *x)
   tmp[*x] = 0;
   *x = 0;
   new = my_dupstr(tmp, 1024);
-  bzero(tmp, 1024);
   write(1, "\n", 1);
   return (new);
 }
