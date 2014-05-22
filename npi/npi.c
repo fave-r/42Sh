@@ -5,51 +5,15 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Wed May 21 15:49:41 2014 lhomme
+** Last update Thu May 22 14:55:25 2014 lhomme
 */
 
 #include "my.h"
 
-int	exotic(t_token **token, t_token **tmp)
+t_token	*exotic_and_var(t_token *token)
 {
-  char **tab;
-  int	i;
-
-  i = 0;
-  tab = my_str_to_wordtab((*token)->next->token, ' ');
-  if (tab[1])
-    (*tmp) = add_token((*tmp), strdup(tab[1]));
-  while ((*token)->next->token[i] && (*token)->next->token[i] != ' ')
-    i++;
-  (*token)->next->token[i] = 0;
-  (*tmp) = add_token((*tmp), (*token)->token);
-  (*token) = (*token)->next;
-  free(tab);
-  return (0);
-}
-
-t_token	*check_exotic(t_token *token)
-{
-  t_token	*tmp;
-
-  tmp = NULL;
-  if ((token->token[0] == '>' || token->token[0] == '<'))
-    exotic(&token, &tmp);
-  while (token)
-    {
-      if (token->next &&
-	  (token->next->token[0] == '>' || token->next->token[0] == '<') &&
-	  (token->token[0] == ';' || token->token[0] == '|'
-	   || token->token[0] == '&'))
-	{
-	  tmp = add_token(tmp, token->token);
-	  exotic(&token->next, &tmp);
-	}
-      else
-	tmp = add_token(tmp, token->token);
-      token = token->next;
-    }
-  return (tmp);
+  token = check_exotic(token);
+  return (token);
 }
 
 void	my_stack(char *token, t_list **stack, t_list **output)
@@ -79,7 +43,7 @@ t_tree	*npi(t_token *token, char *str)
     return (NULL);
   if (!token->next)
     return (createNode(NULL, token->token));
-  token = check_exotic(token);
+  token = exotic_and_var(token);
   while (token)
     {
       my_stack(token->token, &stack, &output);

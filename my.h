@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Thu May 22 13:22:17 2014 odet
+** Last update Thu May 22 14:55:59 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -200,5 +200,6 @@ char	*auto_completion(char *test);
 void	display_prompt();
 void	display_sigint();
 void	unset_term();
+t_token	*check_exotic(t_token *token);
 
 #endif

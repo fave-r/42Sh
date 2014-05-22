@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Thu May 22 13:20:54 2014 odet
+## Last update Thu May 22 14:56:18 2014 lhomme
 ##
 
 CC=		gcc
@@ -44,6 +44,7 @@ SRCS=		main.c \
 		npi/make_tree.c \
 		npi/priority.c \
 		npi/check_full_tree.c \
+		npi/check_exotic.c \
 		eval/my_str_to_wordtab.c \
 		eval/env.c \
 		eval/check.c \
