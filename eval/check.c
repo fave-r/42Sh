@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Thu May 22 18:18:55 2014 romaric
+** Last update Thu May 22 19:18:08 2014 romaric
 */
 
 #include "my.h"
@@ -19,26 +19,26 @@ int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
   char  *pathforexec;
 
   ret = 1;
-  if (*environ != NULL)
+  //  if (*environ != NULL)
+  // {
+  pathforexec = ((pathutil == NULL) ? cmd : my_strcpyfinal(pathutil, cmd));
+  pid = fork();
+  if (pid == 0)
     {
-      pathforexec = ((pathutil == NULL) ? cmd : my_strcpyfinal(pathutil, cmd));
-      pid = fork();
-      if (pid == 0)
-	{
-	  if (p.out != 1)
-	    dup2(p.out, 1);
-	  if (p.in != 0)
-	    dup2(p.in, 0);
-	  if (p.var_close != -1)
-	    close(p.var_close);
-	  execve(pathforexec, arv, environ);
-	  fprintf(stderr, "42sh: %s: command not found\n", pathforexec);
-	  exit(1);
-	}
-      if (p.wat == 1)
-	waitpid(pid, &ret, 0);
-      free(pathforexec);
+      if (p.out != 1)
+	dup2(p.out, 1);
+      if (p.in != 0)
+	dup2(p.in, 0);
+      if (p.var_close != -1)
+	close(p.var_close);
+      execve(pathforexec, arv, environ);
+      fprintf(stderr, "42sh: %s: command not found\n", pathforexec);
+      exit(1);
     }
+  if (p.wat == 1)
+    waitpid(pid, &ret, 0);
+  free(pathforexec);
+  // }
   return (ret);
 }
 
@@ -72,7 +72,7 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
 
   ret = 1;
   filepath = NULL;
-  if (*environ != NULL && pathsep != NULL)
+  if (/**environ != NULL && */pathsep != NULL)
     filepath = find_lib(pathsep, cmd);
   //  if (filepath != NULL)
     ret = execute(filepath, cmd, str, p);

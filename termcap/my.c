@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Thu May 22 14:57:51 2014 odet
-** Last update Thu May 22 18:13:38 2014 bourrel
+** Last update Thu May 22 19:10:51 2014 romaric
 */
 
 #include "my.h"
@@ -59,6 +59,7 @@ char		*my_entry(char *tmp, char *new, char *result, int *x)
   tmp[*x] = 0;
   *x = 0;
   new = my_dupstr(tmp, 1024);
+  bzero(tmp, BUFF_SIZE);
   write(1, "\n", 1);
   return (new);
 }
