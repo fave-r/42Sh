@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Thu May 22 14:03:11 2014 lhomme
+** Last update Thu May 22 13:44:08 2014 odet
 */
 
 #include "my.h"
@@ -82,6 +82,8 @@ char		*get_next_line_icanon(const int fd)
 	}
       else if (p.buffer[0] == 127)
 	my_delete(p.tmp, &(p.x));
+      else if (p.buffer[0] == 4)
+	return (NULL);
       bzero(p.buffer, 1024);
     }
   return (NULL);
