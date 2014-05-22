@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Thu May 22 14:19:04 2014 odet
+** Last update Thu May 22 14:59:41 2014 lhomme
 */
 
 #include "my.h"
@@ -30,7 +30,7 @@ int	check_exit(t_env *env)
 void		start(t_token *list, t_env_var env, t_tree *tree, char *tmp)
 {
   list = fill_token(tmp);
-  tree = npi(list, tmp);
+  tree = npi(list, tmp, env.env);
   check_fn(tree, 0, 1, &env);
   init();
   free_tree(tree);

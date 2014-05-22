@@ -5,12 +5,12 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Thu May 22 14:55:25 2014 lhomme
+** Last update Thu May 22 14:58:38 2014 lhomme
 */
 
 #include "my.h"
 
-t_token	*exotic_and_var(t_token *token)
+t_token	*exotic_and_var(t_token *token, t_env *env)
 {
   token = check_exotic(token);
   return (token);
@@ -32,7 +32,7 @@ void	my_stack(char *token, t_list **stack, t_list **output)
     npi_add_top(output, token, NULL);
 }
 
-t_tree	*npi(t_token *token, char *str)
+t_tree	*npi(t_token *token, char *str, t_env *env)
 {
   t_list	*stack;
   t_list	*output;
@@ -43,7 +43,7 @@ t_tree	*npi(t_token *token, char *str)
     return (NULL);
   if (!token->next)
     return (createNode(NULL, token->token));
-  token = exotic_and_var(token);
+  token = exotic_and_var(token, env);
   while (token)
     {
       my_stack(token->token, &stack, &output);
