@@ -5,83 +5,73 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Thu May 22 14:18:15 2014 odet
+** Last update Thu May 22 15:19:07 2014 odet
 */
 
 #include "my.h"
 #include "struct.h"
 
-char		*my_tab(char *tmp, char *new, char *result, int *x)
+int		my_len(char **array)
 {
-  tmp[*x] = 0;
-  new = dup_last_word(tmp);
-  if ((result = auto_completion(new)) != NULL)
+  int		i;
+
+  i = 0;
+  while (array != NULL && array[i])
+    i++;
+  return (i);
+}
+
+void		my_display(char **array)
+{
+  int		i;
+
+  i = 0;
+  while (array != NULL && array[i])
     {
-      if (result != NULL)
-	*x += write(1, result, strlen(result));
-      else if (*x > 0)
-	*x = *x - 1;
-      tmp = strcat(tmp, result);
-      free(result);
-      free(new);
+      write(1, array[i], strlen(array[i]));
+      write(1, "\t", 1);
+      i++;
+    }
+  write(1, "\b \b\n", 4);
+  display_prompt();
+}
+
+char		*glob_complete(char *new, char *tmp)
+{
+  glob_t	ptr;
+
+  new = strcat(new, "*");
+  if((glob(new, GLOB_BRACE | GLOB_NOCHECK | GLOB_TILDE, NULL, &ptr)) != GLOB_NOMATCH)
+    {
+      if (my_len(ptr.gl_pathv) == 1)
+	return (ptr.gl_pathv[0]);
+      else
+	my_display(ptr.gl_pathv);
     }
   return (tmp);
 }
 
-char		*my_entry(char *tmp, char *new, char *result, int *x)
-{
-  (void)result;
-  tmp[*x] = 0;
-  *x = 0;
-  new = my_dupstr(tmp, 1024);
-  bzero(tmp, 1024);
-  write(1, "\n", 1);
-  return (new);
-}
+  char		*get_next_line_icanon(const int fd)
+  {
+    t_gnl_icanon	p;
 
-int		my_char(char *tmp, char to_copy, int *x)
-{
-  int	a;
-
-  a = *x;
-  write(1, &to_copy, 1);
-  tmp[a] = to_copy;
-  a++;
-  return (a);
-}
-
-void		my_delete(char *tmp, int *x)
-{
-  tmp[*x] = '\b';
-  if (*x == 0)
-    write(1, "\a", 1);
-  else
-    write(1, "\b \b", 3);
-  if (*x > 0)
-    *x -= 1;
-}
-
-char		*get_next_line_icanon(const int fd)
-{
-  t_gnl_icanon	p;
-
-  init_value(&p);
-  while ((read(fd, p.buffer, BUFF_SIZE)))
-    {
-      if (p.buffer[0] == '\t')
-	p.tmp = my_tab(p.tmp, NULL, NULL, &(p.x));
-      else if (p.buffer[0] >= 32 && p.buffer[0] < 127)
-	p.x = my_char(p.tmp, p.buffer[0], &(p.x));
-      else if (p.buffer[0] == '\n')
-	{
-	  p.new = my_entry(p.tmp, NULL, NULL, &(p.x));
-	  return (p.new);
-	}
-      else if (p.buffer[0] == 127)
-	my_delete(p.tmp, &(p.x));
-      else if (p.buffer[0] == 4)
-	return (NULL);
-      bzero(p.buffer, 1024);
-    }
-  return (NULL);
-}
+    init_value(&p);
+    while ((read(fd, p.buffer, BUFF_SIZE)))
+      {
+	if (p.buffer[0] == '\t')
+	  p.tmp = my_tab(p.tmp, NULL, NULL, &(p.x));
+	else if (p.buffer[0] >= 32 && p.buffer[0] < 127)
+	  p.x = my_char(p.tmp, p.buffer[0], &(p.x));
+	else if (p.buffer[0] == '\n')
+	  {
+	    p.new = my_entry(p.tmp, NULL, NULL, &(p.x));
+	    return (p.new);
+	  }
+	else if (p.buffer[0] == 127)
+	  my_delete(p.tmp, &(p.x));
+	else if (p.buffer[0] == 4)
+	  return (NULL);
+	bzero(p.buffer, 1024);
+      }
+    return (NULL);
+  }

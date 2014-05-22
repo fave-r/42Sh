@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Thu May 22 15:03:28 2014 lhomme
+## Last update Thu May 22 15:21:00 2014 odet
 ##
 
 CC=		gcc
@@ -38,6 +38,7 @@ SRCS=		main.c \
 		termcap/main.c \
 		termcap/init.c \
 		termcap/unset.c \
+		termcap/my.c \
 		npi/npi.c \
 		npi/list_func.c \
 		npi/tree_func.c \
