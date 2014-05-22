@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Thu May 22 15:29:10 2014 bourrel
+** Last update Thu May 22 15:37:49 2014 bourrel
 */
 
 #include "my.h"
@@ -16,13 +16,13 @@ int	print_oldpwd(t_env *env)
   t_env	*tmp;
   int	i;
 
-  i = 6;
+  i = 3;
   oldpwd = env->next;
   tmp = env->prev;
-  while (strncmp(oldpwd->str, "OLDPWD", 6) != 0)
+  while (strncmp(oldpwd->str, "PWD", 3) != 0)
     {
       if (oldpwd == tmp)
-	return (0);
+	return (1);
       oldpwd = oldpwd->next;
     }
   if (oldpwd->str[i])
