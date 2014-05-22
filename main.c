@@ -5,20 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Thu May 22 11:22:37 2014 bourrel
+** Last update Thu May 22 11:50:57 2014 bourrel
 */
 
 #include "my.h"
-
-void		display_prompt()
-{
-  write(1, "$> ", 3);
-}
-
-void		display_sigint()
-{
-  write(1, "\n$> ", 4);
-}
 
 int	check_exit(t_env *env)
 {
@@ -37,28 +27,30 @@ int	check_exit(t_env *env)
   return (ret);
 }
 
-int		start(t_token *list, t_env_var env, t_tree *tree, char *tmp)
+void		start(t_token *list, t_env_var env, t_tree *tree, char *tmp)
 {
-  int	ret;
+  list = fill_token(tmp);
+  tree = npi(list, tmp);
+  check_fn(tree, 0, 1, &env);
+  free_tree(tree);
+  delete_list(&list);
+}
 
-  ret = 0;
-  tmp = my_epur_str(tmp);
-  if (tmp && tmp[0] != 0)
-    {
-      list = fill_token(tmp);
-      tree = npi(list, tmp);
-      check_fn(tree, 0, 1, &env);
-      free_tree(tree);
-      delete_list(&list);
-      if ((ret = check_exit(env.env)) != -1)
-	{
-	  free(tmp);
-	  my_delete_envlist(&(env.env));
-	  return (ret);
-	}
-    }
+int		exit_42(char *tmp, t_env_var env, int ret)
+{
+  free(tmp);
+  my_delete_envlist(&(env.env));
+  return (ret);
+}
+
+void		init_main(t_env_var *env, char **envp, int *ret, t_token **list)
+{
+  *list = NULL;
+  *ret = 0;
+  env->env = my_env_inlist(envp);
+  env->wat = 1;
+  env->var_close = -1;
   display_prompt();
-  return (0);
 }
 
 int		main(int ac, char **av, char **envp)
@@ -67,21 +59,25 @@ int		main(int ac, char **av, char **envp)
   t_env_var	env;
   t_tree	*tree;
   char		*tmp;
+  int	ret;
 
   tree = NULL;
   tmp = xmalloc(4096 * sizeof(char));
   if (ac > 1 || av[1] != NULL)
     return (0);
-  list = NULL;
-  env.env = my_env_inlist(envp);
-  display_prompt();
-  env.wat = 1;
-  env.var_close = -1;
+  init_main(&env, envp, &ret, &list);
   signal(SIGINT, &display_sigint);
   while ((tmp = get_next_line_icanon(0)) != NULL)
-    start(list, env, tree, tmp);
+    {
+      tmp = my_epur_str(tmp);
+      if (tmp && tmp[0] != 0)
+	{
+	  start(list, env, tree, tmp);
+	  if ((ret = check_exit(env.env)) != -1)
+	    return (exit_42(tmp, env, ret));
+	  display_prompt();
+	}
+    }
   write(1, "\n", 1);
-  free(tmp);
-  my_delete_envlist(&(env.env));
-  return (0);
+  return (exit_42(tmp, env, 0));
 }

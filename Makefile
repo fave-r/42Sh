@@ -5,10 +5,10 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Wed May 21 19:31:48 2014 bourrel
+## Last update Thu May 22 11:50:14 2014 bourrel
 ##
 
-CC=		clang
+CC=		gcc
 
 RM=		rm -f
 
@@ -17,6 +17,7 @@ CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I.
 NAME=		42sh
 
 SRCS=		main.c \
+		display.c \
 		lib/xfunction.c \
 		lib/basic.c \
 		lib/my_epur_str.c \
