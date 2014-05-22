@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Thu May 22 14:57:51 2014 odet
-** Last update Thu May 22 17:54:11 2014 bourrel
+** Last update Thu May 22 16:15:36 2014 odet
 */
 
 #include "my.h"
@@ -47,8 +47,11 @@ char		*my_tab(char *tmp, char *new, char *result, int *x)
     {
       if ((result = glob_complete(new, tmp)))
 	{
-	  *x += write(1, result + len, strlen(result) - len);
- 	  tmp = strcat(tmp, result + len);
+	  if (strcmp(result, tmp) != 0)
+	    {
+	      *x += write(1, result + len, strlen(result) - len);
+	      tmp = strcat(tmp, result + len);
+	    }
 	}
     }
   return (tmp);
