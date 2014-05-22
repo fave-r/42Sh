@@ -5,10 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Thu May 22 18:09:32 2014 romaric
+** Last update Thu May 22 18:19:13 2014 romaric
 */
 
 #include "my.h"
+
+extern char	**environ;
 
 int	check_exit(t_env *env)
 {
@@ -56,7 +58,7 @@ void		init_main(t_env_var *env, char **envp, int *ret, t_token **list)
   display_prompt();
 }
 
-int		main(int ac, char **av, char **envp)
+int		main(void)
 {
   t_token	*list;
   t_env_var	env;
@@ -65,9 +67,7 @@ int		main(int ac, char **av, char **envp)
   int	ret;
 
   tree = NULL;
-  if (ac > 1 || av[1] != NULL)
-    return (0);
-  init_main(&env, envp, &ret, &list);
+  init_main(&env, environ, &ret, &list);
   signal(SIGINT, &display_sigint);
   while ((tmp = get_next_line_icanon(0)) != NULL)
     {

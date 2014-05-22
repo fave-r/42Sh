@@ -5,12 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Thu May 22 18:14:48 2014 romaric
+** Last update Thu May 22 18:18:55 2014 romaric
 */
 
 #include "my.h"
 
-extern char **environ;
+extern char	**environ;
 
 int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
 {
