@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 17:48:44 2014 lhomme
-** Last update Thu May 22 19:20:04 2014 lhomme
+** Last update Fri May 23 16:50:33 2014 bourrel
 */
 
 #include "my.h"
@@ -35,7 +35,7 @@ t_env	*my_actualize(t_env *env, char **tab)
     tmp = tmp->next;
   tmp->str[strlen(tab[1]) + 1] = 0;
   if (tab[2])
-    tmp->str = strcat(tmp->str, tab[2]);
+    tmp->str = my_strcat(tmp->str, tab[2]);
   return (env);
 }
 
@@ -51,9 +51,9 @@ t_env	*my_setenv(t_env *env, char **tab)
   if (check_set_exist(env, tab[1]) == 0)
     {
       str = strdup(tab[1]);
-      str = strcat(str, "=");
+      str = my_strcat(str, "=");
       if (tab[2] != NULL)
-	env = my_add_env(env, strcat(str, tab[2]));
+	env = my_add_env(env, my_strcat(str, tab[2]));
       else
 	env = my_add_env(env, str);
     }
