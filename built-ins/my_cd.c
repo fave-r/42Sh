@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Fri May 23 15:45:16 2014 lhomme
+** Last update Fri May 23 15:47:33 2014 lhomme
 */
 
 #include "my.h"
@@ -78,9 +78,9 @@ int	empty_pwd(t_env *env)
 int	cd_error(char *pwd)
 {
   if (errno == EACCES)
-    printf("%s: Permission denied\n", pwd);
+    fprintf(stderr, "cd: %s: Permission denied\n", pwd);
   else
-    printf("%s: No such file or directory\n", pwd);
+    fprintf(stderr, "cd: %s: No such file or directory\n", pwd);
   return (-1);
 }
 
