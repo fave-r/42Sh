@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Fri May 23 06:41:57 2014 odet
+** Last update Fri May 23 15:06:17 2014 lhomme
 */
 
 #include "my.h"
@@ -78,9 +78,9 @@ char		*get_next_line_icanon(const int fd)
       else if (p.buffer[0] == 4)
 	return (NULL);
       else if (p.buffer[0] == 12)
-	return ("clear");
+	return (strdup("clear"));
       else if (p.buffer[0] == 3)
-	return ("display");
+	return (strdup("display"));
       bzero(p.buffer, 1024);
     }
   return (NULL);
