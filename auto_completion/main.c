@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Mon Mar 31 15:38:57 2014 thibaud
-** Last update Thu May 22 18:30:58 2014 bourrel
+** Last update Fri May 23 14:40:03 2014 lhomme
 */
 
 #include "my.h"
@@ -142,7 +142,7 @@ char		*run_auto_completion(t_arbre *arbre, char *str)
   if (i == 0 || i != my_strlen(str))
     return (NULL);
   len = calc_len(cur);
-  if ((result = malloc(sizeof (char) * len + 1)) == NULL)
+  if ((result = malloc(sizeof(char) * len + 1)) == NULL)
       exit(-1);
   result[len] = '\0';
   i = 0;
@@ -163,7 +163,6 @@ int		fill_tree_bin(char **path, t_arbre *arbre)
   int		i;
 
   i = 0;
-
   while (path[i] != NULL)
     {
       if ((ptr = opendir(path[i])) == NULL)
@@ -196,6 +195,16 @@ char		*getpath(char **environ)
   return (PATH);
 }
 
+void	free_arbre(t_arbre *tree)
+{
+  if (tree != NULL)
+    {
+      free_arbre(tree->next);
+      free_arbre(tree->deep);
+      free(tree);
+    }
+}
+
 char		*auto_completion(char *test)
 {
   t_arbre	*arbre;
@@ -214,5 +223,6 @@ char		*auto_completion(char *test)
   path_tab = my_str_to_wordtab(path, ':');
   fill_tree_bin(path_tab, arbre);
   result = run_auto_completion(arbre, test);
+  free_arbre(arbre);
   return (result);
 }
