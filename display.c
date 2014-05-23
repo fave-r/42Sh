@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 **
 ** Started on  Thu May 22 11:49:29 2014 bourrel
-** Last update Fri May 23 18:05:57 2014 romaric
+** Last update Fri May 23 18:09:49 2014 romaric
 */
 
 #include "my.h"
@@ -46,10 +46,10 @@ void            display_prompt(t_env *env)
     {
       my_putstr("\033[34m$", 1);
       my_putstr(user, 1);
-      my_putstr(">\033[0;m ", 1);
+      my_putstr("> \033[0;m", 1);
     }
   else
-    my_putstr("\033[34m$42sh>\033[0;m ", 1);
+    my_putstr("\033[34m$42sh> \033[0;m", 1);
   //  write(1, "$> ", 3);
 }
 
