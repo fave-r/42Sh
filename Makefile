@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Fri May 23 22:38:42 2014 bourrel
+## Last update Fri May 23 22:52:43 2014 bourrel
 ##
 
 CC=		clang
@@ -41,6 +41,7 @@ SRCS=		main.c \
 		termcap/init.c \
 		termcap/unset.c \
 		termcap/my.c \
+		termcap/dup_fct.c \
 		npi/npi.c \
 		npi/list_func.c \
 		npi/tree_func.c \
