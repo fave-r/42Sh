@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Fri May 23 12:08:13 2014 lhomme
+** Last update Fri May 23 12:09:26 2014 lhomme
 */
 
 #include "my.h"
@@ -74,12 +74,10 @@ int		main(void)
   int		ret;
 
   init_main(&env, environ, &ret, &list);
-  //signal(SIGINT, &display_sigint);
   while ((tmp = get_next_line_icanon(0)) != NULL)
     {
-      //      printf("$%s$\n", tmp);
       tmp = my_epur_str(tmp);
-      if (strcmp(tmp, "display") == 0)
+      if (tmp != NULL && strcmp(tmp, "display") == 0)
 	display_sigint();
       else if (tmp && tmp[0] != 0)
 	{
