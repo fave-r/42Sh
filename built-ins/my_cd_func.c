@@ -5,11 +5,10 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Mar 21 14:22:18 2014 lhomme
-** Last update Fri May 23 17:38:45 2014 bourrel
+** Last update Fri May 23 21:20:59 2014 lhomme
 */
 
 #include "my.h"
-#include <errno.h>
 
 void	change_oldpwd(t_env *env, char *pwd)
 {
