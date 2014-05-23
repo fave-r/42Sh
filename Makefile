@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Fri May 23 23:52:17 2014 romaric
+## Last update Fri May 23 23:54:19 2014 romaric
 ##
 
 CC=		clang
@@ -71,18 +71,18 @@ OBJS=		$(SRCS:.c=.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		@echo "\033[32m[Building] \033[0m " | tr -d '\n'
+		@echo "\033[32m[Building] \033[0;m" | tr -d '\n'
 		$(CC) -o $@ $(OBJS) $(LDFLAGS) -lncurses
 
 %.o:		%.c
-		@echo "\033[33m[Doing object] \033[0m " | tr -d '\n'
+		@echo "\033[33m[Doing object] \033[0;m" | tr -d '\n'
 		$(CC) $(LDFLAGS) $(INCLUDES) -c -o $@ $<
 clean:
-		@echo "\033[31m[Cleaning] \033[0m " | tr -d '\n'
+		@echo "\033[31m[Cleaning] \033[0;m" | tr -d '\n'
 		$(RM) $(OBJS)
 
 fclean:		clean
-		@echo "\033[31m[Filecleaning] \033[0m " | tr -d '\n'
+		@echo "\033[31m[Filecleaning] \033[0;m " | tr -d '\n'
 		$(RM) $(NAME)
 
 re:		fclean all
