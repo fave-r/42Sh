@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Fri May 23 21:38:56 2014 bourrel
+## Last update Fri May 23 22:38:42 2014 bourrel
 ##
 
 CC=		clang
@@ -58,7 +58,9 @@ SRCS=		main.c \
 		eval/check_next.c \
 		eval/get_next_line.c \
 		eval/exec.c \
-		auto_completion/main.c \
+		auto_completion/auto_complete.c \
+		auto_completion/func.c \
+		auto_completion/word.c \
 		eval/mys_next.c
 
 OBJS=		$(SRCS:.c=.o)
