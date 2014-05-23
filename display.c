@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu May 22 11:49:29 2014 bourrel
-** Last update Thu May 22 11:49:53 2014 bourrel
+** Last update Fri May 23 04:47:20 2014 odet
 */
 
 #include "my.h"
@@ -17,5 +17,5 @@ void            display_prompt()
 
 void            display_sigint()
 {
-  write(1, "\n$> ", 4);
+  write(1, "^C\n", 3);
 }
