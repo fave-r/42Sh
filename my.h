@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 23 15:44:55 2014 lhomme
+** Last update Fri May 23 17:01:35 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -40,6 +40,14 @@ typedef struct		s_env_var
   int			wat;
   int			var_close;
 }			t_env_var;
+
+typedef struct		s_lft
+{
+  int			ret;
+  int			fd;
+  int			i;
+  char			*str;
+}			t_lft;
 
 typedef struct		s_token
 {
@@ -212,5 +220,6 @@ t_token	*check_exotic(t_token *token);
 t_token *check_varenv(t_token *list, t_env *env);
 int	my_char(char *tmp, char to_copy, int *x);
 char	*glob_complete(char *new, char *tmp);
+void	doble_left_next(int *i, int *ret, int *fd);
 
 #endif

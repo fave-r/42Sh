@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Fri May 23 14:40:13 2014 romaric
+** Last update Fri May 23 17:02:39 2014 romaric
 */
 
 #include "my.h"
@@ -91,38 +91,31 @@ int	redir_left(t_tree *tree, int in, int out, t_env_var *env)
 int	doble_left(t_tree *tree, __attribute__((unused))int in
 		   , int out, t_env_var *env)
 {
-  int	ret;
-  int	fd;
-  int	i;
-  char	*str;
+  t_lft	p;
 
-  i = 0;
-  ret = 0;
-  //  unset_term();
-  fd = xopen(".dobleleft", O_RDWR | O_CREAT | O_TRUNC, 0666);
-  if (fd == -1)
+  doble_left_next(&(p.i), &(p.ret), &(p.fd));
+  if (p.fd == -1)
     return (-1);
   write(1, ">", 1);
-  while ((str = get_next_line(0)) && strcmp(str, tree->right->data) != 0)
+  while ((p.str = get_next_line(0)) && strcmp(p.str, tree->right->data) != 0)
     {
-      my_putstr(str, fd);
-      write(fd, "\n", 1);
-      i++;
+      my_putstr(p.str, p.fd);
+      write(p.fd, "\n", 1);
+      p.i = p.i + 1;
       write(1, ">", 1);
     }
-  if (str == NULL)
+  if (p.str == NULL)
     {
       fprintf(stderr, "42sh: warning: here-document at ");
-      fprintf(stderr, "line %d delimited ", i + 1);
+      fprintf(stderr, "line %d delimited ", p.i + 1);
       fprintf(stderr, "by end-of-file (wanted `%s')\n"
 	      , strdup(tree->right->data));
     }
-  close(fd);
-  fd = xopen(".dobleleft", O_RDONLY | O_CREAT, 0666);
+  close(p.fd);
+  p.fd = xopen(".dobleleft", O_RDONLY | O_CREAT, 0666);
   if (tree->left)
-    ret = check_fn(tree->left, fd, out, env);
-  //init();
-  return (ret);
+    p.ret = check_fn(tree->left, p.fd, out, env);
+  return (p.ret);
 }
 
 int	my_pipe(t_tree *tree, int in, int out, t_env_var *env)
