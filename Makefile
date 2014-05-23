@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Fri May 23 18:21:48 2014 bourrel
+## Last update Fri May 23 11:08:50 2014 odet
 ##
 
 CC=		gcc
@@ -18,6 +18,8 @@ NAME=		42sh
 
 SRCS=		main.c \
 		display.c \
+		istty.c \
+		my_get_line.c \
 		lib/xfunction.c \
 		lib/basic.c \
 		lib/my_epur_str.c \

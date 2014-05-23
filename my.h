@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 23 18:21:30 2014 bourrel
+** Last update Fri May 23 11:10:45 2014 odet
 */
 
 #ifndef __42Sh__
@@ -221,5 +221,9 @@ t_token *check_varenv(t_token *list, t_env *env);
 int	my_char(char *tmp, char to_copy, int *x);
 char	*glob_complete(char *new, char *tmp);
 void	doble_left_next(int *i, int *ret, int *fd);
+char	*my_istty(const int fd);
+char	*my_strdup_new(char *src);
+char	*copy_char(char *old, char *new, int *i, int *j);
+char	*my_get_next_line(const int fd);
 
 #endif
