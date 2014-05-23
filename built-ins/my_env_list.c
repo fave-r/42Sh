@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Tue Feb 25 15:56:42 2014 lhomme
-** Last update Thu May 22 18:19:27 2014 bourrel
+** Last update Fri May 23 12:12:17 2014 lhomme
 */
 
 #include "my.h"
@@ -73,7 +73,6 @@ t_env		*my_env_inlist(char **env)
 
   i = 0;
   env_tmp = my_create_envlist();
-  env_tmp = my_add_env(env_tmp, "EXIT_VALUE=0");
   while (env[i] != NULL)
     {
       env_tmp = my_add_env(env_tmp, env[i]);
