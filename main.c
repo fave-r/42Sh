@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Fri May 23 12:09:26 2014 lhomme
+** Last update Fri May 23 07:01:23 2014 odet
 */
 
 #include "my.h"
@@ -76,14 +76,17 @@ int		main(void)
   init_main(&env, environ, &ret, &list);
   while ((tmp = get_next_line_icanon(0)) != NULL)
     {
-      tmp = my_epur_str(tmp);
       if (tmp != NULL && strcmp(tmp, "display") == 0)
 	display_sigint();
-      else if (tmp && tmp[0] != 0)
+      else
 	{
-	  start(list, env, tmp);
-	  if ((ret = check_exit(env.env)) != -1)
-	    return (exit_42(tmp, env, ret));
+	  tmp = my_epur_str(tmp);
+	  if (tmp && tmp[0] != 0)
+	    {
+	      start(list, env, tmp);
+	      if ((ret = check_exit(env.env)) != -1)
+		return (exit_42(tmp, env, ret));
+	    }
 	}
       display_prompt();
     }

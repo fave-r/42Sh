@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Fri May 23 04:46:19 2014 odet
+** Last update Fri May 23 06:41:57 2014 odet
 */
 
 #include "my.h"
@@ -42,6 +42,7 @@ char		*glob_complete(char *new, char *tmp)
 {
   glob_t	ptr;
 
+  //printf("\nnew = %s$\n", new);
   if ((tmp && new) && (!tmp[0] && !new[0]))
     return (tmp);
   new = my_strcat(new, "*");
