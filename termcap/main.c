@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Fri May 23 17:57:24 2014 romaric
+** Last update Fri May 23 21:53:20 2014 bourrel
 */
 
 #include "my.h"
@@ -34,7 +34,6 @@ void		my_display(char **array, char *tmp)
       i++;
     }
   write(1, "\b \b\n", 4);
-  //  display_prompt();
   write(1, tmp, strlen(tmp));
 }
 
@@ -57,11 +56,11 @@ char		*glob_complete(char *new, char *tmp)
   return (tmp);
 }
 
-char		*get_next_line_icanon(const int fd)
+char		*get_next_line_icanon(const int fd, t_env_var env)
 {
   t_gnl_icanon	p;
 
-  init_value(&p);
+  init_value(&p, env);
   while ((read(fd, p.buffer, BUFF_SIZE)))
     {
       if (p.buffer[0] == '\t')

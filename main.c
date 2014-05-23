@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Fri May 23 10:50:24 2014 odet
+** Last update Fri May 23 21:33:58 2014 bourrel
 */
 
 #include "my.h"
@@ -74,7 +74,7 @@ int		main(void)
   int		ret;
 
   init_main(&env, environ, &ret, &list);
-  while ((tmp = my_istty(0)) != NULL)
+  while ((tmp = my_istty(0, env)) != NULL)
     {
       if (tmp != NULL && strcmp(tmp, "display") == 0)
 	display_sigint();

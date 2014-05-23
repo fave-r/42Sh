@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 23 11:10:45 2014 odet
+** Last update Fri May 23 21:45:21 2014 bourrel
 */
 
 #ifndef __42Sh__
@@ -188,7 +188,7 @@ char	*my_strcat(char *dest, char *src);
 t_env	*my_swap_old(t_env *env);
 void	change_oldpwd(t_env *env, char *pwd);
 int	doble_left(t_tree *tree, int in, int out, t_env_var *env);
-char	*get_next_line(const int fd);
+char	*get_next_line(const int fd, t_env_var env);
 char	*my_strdup_new(char *src);
 int	my_pipe(t_tree *tree, int in, int out, t_env_var *env);
 int     my_exec(char *cmd, int in, int out, t_env_var *env);
@@ -198,12 +198,12 @@ void	echo_vh(char **cmd, int fd);
 char	*my_tab(char *tmp, char *new, char *result, int *x);
 char	*my_entry(char *tmp, char *new, char *result, int *x);
 void	my_delete(char *tmp, int *x);
-char	*get_next_line_icanon(const int fd);
+char	*get_next_line_icanon(const int fd, t_env_var env);
 void	init();
 int	xtgetent(const char *name);
 char	*my_dupstr(char *src, int len);
 char	*dup_last_word(char *src);
-void	init_value(t_gnl_icanon *ptr);
+void	init_value(t_gnl_icanon *ptr, t_env_var env);
 t_arbre	*make_root(void);
 t_arbre	*add_char(char c);
 t_arbre	*creat_word(char *str);
@@ -221,7 +221,7 @@ t_token *check_varenv(t_token *list, t_env *env);
 int	my_char(char *tmp, char to_copy, int *x);
 char	*glob_complete(char *new, char *tmp);
 void	doble_left_next(int *i, int *ret, int *fd);
-char	*my_istty(const int fd);
+char	*my_istty(const int fd, t_env_var env);
 char	*my_strdup_new(char *src);
 char	*copy_char(char *old, char *new, int *i, int *j);
 char	*my_get_next_line(const int fd);

@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Fri May 23 18:18:48 2014 bourrel
+** Last update Fri May 23 22:18:19 2014 bourrel
 */
 
 #include "my.h"
@@ -62,9 +62,37 @@ char	*dup_last_word(char *src)
   return (new);
 }
 
-void		init_value(t_gnl_icanon *ptr)
+char		*find_term(t_env_var env)
 {
-  ptr->x = xtgetent("xterm");
+  t_env		*tmp;
+  char		*str;
+  int		i;
+  int		j;
+
+  i = 0;
+  j = 5;
+  tmp = env.env->next;
+  str = NULL;
+  while (strncmp(tmp->str, "TERM=", 5))
+    {
+      if (!tmp->next->str)
+        return (NULL);
+      tmp = tmp->next;
+    }
+  str = malloc(sizeof(char) * (strlen(tmp->str) - 5));
+  while (tmp->str[j] != '\0')
+    {
+      str[i] = tmp->str[j];
+      j++;
+      i++;
+    }
+  str[i] = '\0';
+  return (str);
+}
+
+void		init_value(t_gnl_icanon *ptr, t_env_var env)
+{
+  ptr->x = xtgetent(find_term(env));
   ptr->x = 0;
   ptr->tmp = xmalloc(sizeof(char) * BUFF_SIZE);
   ptr->new = NULL;

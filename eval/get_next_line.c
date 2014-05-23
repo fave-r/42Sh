@@ -5,16 +5,16 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 20 11:54:44 2014 romaric
-** Last update Fri May 23 14:41:59 2014 romaric
+** Last update Fri May 23 21:39:25 2014 bourrel
 */
 
 #include "my.h"
 
-char		*get_next_line(const int fd)
+char		*get_next_line(const int fd, t_env_var env)
 {
   t_gnl_icanon	p;
 
-  init_value(&p);
+  init_value(&p, env);
   while ((read(fd, p.buffer, BUFF_SIZE)))
     {
       if ((p.buffer[0] >= 32 && p.buffer[0] < 127) || p.buffer[0] == '\t')
