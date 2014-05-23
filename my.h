@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 23 17:01:35 2014 romaric
+** Last update Fri May 23 17:52:14 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -213,7 +213,7 @@ int	calc_len(t_arbre *cur);
 char	*run_auto_completion(t_arbre *arbre, char *str);
 int	fill_tree_bin(char **path, t_arbre *arbre);
 char	*auto_completion(char *test);
-void	display_prompt();
+void	display_prompt(t_env *env);
 void	display_sigint();
 void	unset_term();
 t_token	*check_exotic(t_token *token);

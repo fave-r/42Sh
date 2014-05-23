@@ -1,18 +1,56 @@
 /*
 ** display.c for 42sh in /home/leo/rendu/42Sh
-** 
+**
 ** Made by bourrel
 ** Login   <leo@epitech.net>
-** 
+**
 ** Started on  Thu May 22 11:49:29 2014 bourrel
-** Last update Fri May 23 04:47:20 2014 odet
+** Last update Fri May 23 18:05:57 2014 romaric
 */
 
 #include "my.h"
 
-void            display_prompt()
+char		*check_user(t_env **env)
 {
-  write(1, "$> ", 3);
+  int		x;
+  t_env		*tmp;
+
+  tmp = (*env)->next;
+  x = 1;
+  while ((*env) != tmp)
+    {
+      if (tmp->str != NULL)
+	x = strncmp("USER=", tmp->str, 5);
+      if (x == 0)
+	return (strdup(tmp->str));
+      tmp = tmp->next;
+    }
+  return (NULL);
+}
+
+void            display_prompt(t_env *env)
+{
+  char		*user;
+
+  user = NULL;
+  if ((env))
+    {
+      if (env->next != env)
+	{
+	user = check_user(&env);
+	user = rmpath(user, user);
+	}
+    }
+  //  printf("user :")
+  if (user != NULL)
+    {
+      my_putstr("\033[34m$", 1);
+      my_putstr(user, 1);
+      my_putstr(">\033[0;m ", 1);
+    }
+  else
+    my_putstr("\033[34m$42sh>\033[0;m ", 1);
+  //  write(1, "$> ", 3);
 }
 
 void            display_sigint()

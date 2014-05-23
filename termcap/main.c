@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Fri May 23 16:37:35 2014 bourrel
+** Last update Fri May 23 17:57:24 2014 romaric
 */
 
 #include "my.h"
@@ -34,7 +34,7 @@ void		my_display(char **array, char *tmp)
       i++;
     }
   write(1, "\b \b\n", 4);
-  display_prompt();
+  //  display_prompt();
   write(1, tmp, strlen(tmp));
 }
 

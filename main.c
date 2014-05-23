@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Fri May 23 07:01:23 2014 odet
+** Last update Fri May 23 17:52:39 2014 romaric
 */
 
 #include "my.h"
@@ -63,7 +63,7 @@ void		init_main(t_env_var *env, char **envp, int *ret, t_token **list)
   env->env = my_env_inlist(envp);
   env->wat = 1;
   env->var_close = -1;
-  display_prompt();
+  display_prompt(env->env);
 }
 
 int		main(void)
@@ -88,7 +88,7 @@ int		main(void)
 		return (exit_42(tmp, env, ret));
 	    }
 	}
-      display_prompt();
+      display_prompt(env.env);
     }
   write(1, "\n", 1);
   return (exit_42(tmp, env, 0));
