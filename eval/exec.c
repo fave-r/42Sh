@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Thu May 22 14:02:48 2014 lhomme
+** Last update Fri May 23 12:05:36 2014 lhomme
 */
 
 #include "my.h"
@@ -31,10 +31,15 @@ int	my_exit(char **tab, t_env *env)
   t_env	*tmp;
 
   tmp = env->next;
-  if (strncmp(tmp->str, "EXIT_VALUE", 10) != 0)
-    return (-1);
+  while (tmp != env && strncmp(tmp->str, "EXIT_VALUE", 10) != 0)
+    tmp = tmp->next;
   if (tab[1] && (check_exit_value(tab[1]) == -1))
     return (-1);
+   if (tmp == env)
+     {
+       my_add_env(env,"EXIT_VALUE=0");
+       return (my_exit(tab, env));
+    }
   if (tab[1] && (my_getnbr(tab[1]) != 0))
     tmp->str = my_strcat(tmp->str, tab[1]);
   else

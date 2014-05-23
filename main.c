@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Fri May 23 04:45:44 2014 odet
+** Last update Fri May 23 12:08:13 2014 lhomme
 */
 
 #include "my.h"
@@ -14,12 +14,17 @@ extern char	**environ;
 
 int	check_exit(t_env *env)
 {
+  t_env	*tmp;
   int	ret;
 
-  if (env->next->str[12] == 0
-      || strncmp(env->next->str, "EXIT_VALUE", 10) != 0)
+  tmp = env->next;
+  while (tmp != env && strncmp(tmp->str, "EXIT_VALUE", 10) != 0)
+    tmp = tmp->next;
+  if (tmp == env)
     return (-1);
-  ret = my_getnbr(env->next->str + 12);
+  if (tmp->str[12] == 0)
+    return (-1);
+  ret = my_getnbr(tmp->str + 12);
   if (ret > 0)
     return (ret % 256);
   if (ret == 0)
