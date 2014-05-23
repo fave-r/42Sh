@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Fri May 23 14:22:48 2014 lhomme
+** Last update Fri May 23 15:37:33 2014 lhomme
 */
 
 #include "my.h"
@@ -58,6 +58,7 @@ t_tree	*npi(t_token *token, char *str, t_env *env)
   npi.tree = npi.output->tree;
   npi_delete_list(&npi.stack);
   npi_delete_list(&npi.output);
+  aff(npi.tree, 0);
   if (check_full_tree(npi.tree) == 1)
     return (npi.tree);
   fprintf(stderr, "'%s': syntax error\n", str);
