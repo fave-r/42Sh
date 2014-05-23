@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Mon Dec  9 11:54:04 2013 lhomme
-** Last update Thu May 22 18:22:03 2014 bourrel
+** Last update Fri May 23 17:51:20 2014 bourrel
 */
 
 #include "my.h"
@@ -35,6 +35,6 @@ char	*my_strcat(char *dest, char *src)
       j = j + 1;
       i = i + 1;
     }
-  tmp[i] = 0;
+    tmp[i] = 0;
   return (tmp);
 }

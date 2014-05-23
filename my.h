@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 23 17:52:14 2014 romaric
+** Last update Fri May 23 18:21:30 2014 bourrel
 */
 
 #ifndef __42Sh__
@@ -200,7 +200,7 @@ char	*my_entry(char *tmp, char *new, char *result, int *x);
 void	my_delete(char *tmp, int *x);
 char	*get_next_line_icanon(const int fd);
 void	init();
-int	xtgetent(char *bp, const char *name);
+int	xtgetent(const char *name);
 char	*my_dupstr(char *src, int len);
 char	*dup_last_word(char *src);
 void	init_value(t_gnl_icanon *ptr);
