@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Fri May 23 23:38:34 2014 romaric
+## Last update Fri May 23 23:41:21 2014 romaric
 ##
 
 CC=		clang
@@ -78,9 +78,11 @@ $(NAME):	$(OBJS)
 		@echo "\033[33m[Doing object] \033[0m" | tr -d '\n'
 		$(CC) $(LDFLAGS) $(INCLUDES) -c -o $@ $<
 clean:
+		@echo "\033[34m[Cleaning] \033[0m" | tr -d '\n'
 		$(RM) $(OBJS)
 
 fclean:		clean
+		@echo "\033[34m[Filecleaning] \033[0m" | tr -d '\n'
 		$(RM) $(NAME)
 
 re:		fclean all
