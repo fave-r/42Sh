@@ -5,10 +5,10 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Fri May 23 13:44:47 2014 romaric
+## Last update Fri May 23 13:55:59 2014 romaric
 ##
 
-CC=		gcc
+CC=		clang
 
 RM=		rm -f
 

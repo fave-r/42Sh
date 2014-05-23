@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Fri May 23 13:48:46 2014 romaric
+** Last update Fri May 23 14:04:39 2014 romaric
 */
 
 #include "my.h"
@@ -98,6 +98,7 @@ int	doble_left(t_tree *tree, __attribute__((unused))int in
 
   i = 0;
   ret = 0;
+  unset_term();
   fd = xopen(".dobleleft", O_RDWR | O_CREAT | O_TRUNC, 0666);
   if (fd == -1)
     return (-1);
@@ -120,6 +121,7 @@ int	doble_left(t_tree *tree, __attribute__((unused))int in
   fd = xopen(".dobleleft", O_RDONLY | O_CREAT, 0666);
   if (tree->left)
     ret = check_fn(tree->left, fd, out, env);
+  init();
   return (ret);
 }
 
