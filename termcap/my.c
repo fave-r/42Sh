@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Thu May 22 14:57:51 2014 odet
-** Last update Thu May 22 19:10:51 2014 romaric
+** Last update Fri May 23 22:44:35 2014 romaric
 */
 
 #include "my.h"
@@ -26,31 +26,31 @@ int		match(char *tmp, int len)
   return (result - x);
 }
 
-char		*my_tab(char *tmp, char *new, char *result, int *x)
+char		*my_tab(t_gnl_icanon *p, char *new, char *result, t_env_var *env)
 {
   int		len;
 
-  tmp[*x] = 0;
-  new = dup_last_word(tmp);
+  p->tmp[p->x] = 0;
+  new = dup_last_word(p->tmp);
   len = strlen(new);
   if ((result = auto_completion(new)) != NULL)
     {
       if (result != NULL)
-	*x += write(1, result, strlen(result));
-      else if (*x > 0)
-	*x = *x - 1;
-      tmp = strcat(tmp, result);
+	p->x += write(1, result, strlen(result));
+      else if (p->x > 0)
+	p->x = p->x - 1;
+      p->tmp = strcat(p->tmp, result);
       free(result);
       free(new);
     }
   if (result == NULL)
-    if ((result = glob_complete(new, tmp)))
-      if (strcmp(result, tmp) != 0)
+    if ((result = glob_complete(new, p->tmp, env)))
+      if (strcmp(result, p->tmp) != 0)
 	{
-	  *x += write(1, result + len, strlen(result) - len);
-	  tmp = strcat(tmp, result + len);
+	  p->x += write(1, result + len, strlen(result) - len);
+	  p->tmp = strcat(p->tmp, result + len);
 	}
-  return (tmp);
+  return (p->tmp);
 }
 
 char		*my_entry(char *tmp, char *new, char *result, int *x)

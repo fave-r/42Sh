@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Fri May 23 21:53:20 2014 bourrel
+** Last update Fri May 23 22:43:45 2014 romaric
 */
 
 #include "my.h"
@@ -21,7 +21,7 @@ int		my_len(char **array)
   return (i);
 }
 
-void		my_display(char **array, char *tmp)
+void		my_display(char **array, char *tmp, t_env_var *env)
 {
   int		i;
 
@@ -34,10 +34,11 @@ void		my_display(char **array, char *tmp)
       i++;
     }
   write(1, "\b \b\n", 4);
+  display_prompt(env->env);
   write(1, tmp, strlen(tmp));
 }
 
-char		*glob_complete(char *new, char *tmp)
+char		*glob_complete(char *new, char *tmp, t_env_var *env)
 {
   glob_t	ptr;
 
@@ -51,7 +52,7 @@ char		*glob_complete(char *new, char *tmp)
       if (my_len(ptr.gl_pathv) == 1)
 	return (ptr.gl_pathv[0]);
       else
-	my_display(ptr.gl_pathv, tmp);
+	my_display(ptr.gl_pathv, tmp, env);
     }
   return (tmp);
 }
@@ -64,7 +65,7 @@ char		*get_next_line_icanon(const int fd, t_env_var env)
   while ((read(fd, p.buffer, BUFF_SIZE)))
     {
       if (p.buffer[0] == '\t')
-	p.tmp = my_tab(p.tmp, NULL, NULL, &(p.x));
+	p.tmp = my_tab(&p, NULL, NULL, &env);
       else if (p.buffer[0] >= 32 && p.buffer[0] < 127)
 	p.x = my_char(p.tmp, p.buffer[0], &(p.x));
       else if (p.buffer[0] == '\n')
