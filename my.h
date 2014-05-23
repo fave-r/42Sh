@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 23 21:45:21 2014 bourrel
+** Last update Fri May 23 22:23:22 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -156,7 +156,7 @@ int     npi_add_top(t_list **list, void *data, t_tree *tree);
 int     npi_delete_top(t_list **list);
 int     npi_delete_last(t_list **list);
 int     my_priority(char *d1, char *d2);
-int     check_full_tree(t_tree *tree);
+int     check_full_tree(t_tree *tree, char *str);
 void    aff(t_tree *tree, int pos);
 void    addNode(t_tree **tree, void *data, int pos);
 void    make_tree(t_list **output, void *op);

@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Fri May 23 21:20:19 2014 lhomme
+** Last update Fri May 23 22:22:21 2014 lhomme
 */
 
 #include "my.h"
@@ -33,6 +33,12 @@ void	my_stack(char *token, t_list **stack, t_list **output)
     npi_add_top(output, token, NULL);
 }
 
+void	delete_npi(t_list *stack, t_list *output)
+{
+  npi_delete_list(&stack);
+  npi_delete_list(&output);
+}
+
 t_tree	*npi(t_token *token, char *str, t_env *env)
 {
   t_npi		npi;
@@ -56,10 +62,8 @@ t_tree	*npi(t_token *token, char *str, t_env *env)
       npi.stack = npi.stack->next;
     }
   npi.tree = npi.output->tree;
-  npi_delete_list(&npi.stack);
-  npi_delete_list(&npi.output);
-  if (check_full_tree(npi.tree) == 1)
+  delete_npi(npi.stack, npi.output);
+  if (check_full_tree(npi.tree, str) == 1)
     return (npi.tree);
-  fprintf(stderr, "'%s': syntax error\n", str);
   return (NULL);
 }
