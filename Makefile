@@ -8,7 +8,7 @@
 ## Last update Fri May 23 16:54:17 2014 bourrel
 ##
 
-CC=		gcc
+CC=		clang
 
 RM=		rm -f
 
