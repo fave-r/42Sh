@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Fri May 23 15:28:47 2014 lhomme
+** Last update Fri May 23 15:45:16 2014 lhomme
 */
 
 #include "my.h"
@@ -75,6 +75,15 @@ int	empty_pwd(t_env *env)
   return (0);
 }
 
+int	cd_error(char *pwd)
+{
+  if (errno == EACCES)
+    printf("%s: Permission denied\n", pwd);
+  else
+    printf("%s: No such file or directory\n", pwd);
+  return (-1);
+}
+
 int	my_cd(t_env *env, char **tab)
 {
   t_env		*tmp;
@@ -90,10 +99,7 @@ int	my_cd(t_env *env, char **tab)
 	  return (my_oldpwd(env));
 	}
       if (opendir(tab[1]) == NULL)
-	{
-	  printf("cd: %s: Not a directory\n", tab[1]);
-	  return (-1);
-	}
+	return (cd_error(tab[1]));
       chdir(tab[1]);
       env = my_swap_old(env);
       env = my_change_pwd(env, tab[1], 0);

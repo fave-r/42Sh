@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 23 14:18:25 2014 lhomme
+** Last update Fri May 23 15:44:55 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -21,6 +21,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <dirent.h>
+#include <errno.h>
 
 #define BUFF_SIZE 1024
 #define TERM "xterm"
