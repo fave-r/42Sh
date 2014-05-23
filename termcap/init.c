@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Fri May 23 16:37:29 2014 bourrel
+** Last update Fri May 23 18:18:48 2014 bourrel
 */
 
 #include "my.h"
@@ -23,11 +23,11 @@ void			init()
   tcsetattr(1, 0, &p);
 }
 
-int			xtgetent(char *bp, const char *name)
+int			xtgetent(const char *name)
 {
   int			x;
 
-  x = tgetent(bp, name);
+  x = tgetent(NULL, name);
   if (x != 1)
     {
       printf("error termcaps.\n");
@@ -64,7 +64,7 @@ char	*dup_last_word(char *src)
 
 void		init_value(t_gnl_icanon *ptr)
 {
-  ptr->x = xtgetent(NULL, "xterm");
+  ptr->x = xtgetent("xterm");
   ptr->x = 0;
   ptr->tmp = xmalloc(sizeof(char) * BUFF_SIZE);
   ptr->new = NULL;

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Fri May 23 17:09:58 2014 romaric
+** Last update Fri May 23 17:43:38 2014 bourrel
 */
 
 #include "my.h"
@@ -39,11 +39,11 @@ int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
   return (ret);
 }
 
-char    *find_lib(char **path, char *cmd)
+char		*find_lib(char **path, char *cmd)
 {
-  DIR   *ptr;
-  struct dirent *entry;
-  int   i;
+  DIR		*ptr;
+  struct dirent	*entry;
+  int		i;
 
   i = 0;
   if ((path))
