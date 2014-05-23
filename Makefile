@@ -5,14 +5,12 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Fri May 23 23:54:19 2014 romaric
+## Last update Sat May 24 00:18:46 2014 romaric
 ##
 
 CC=		clang
 
 RM=		rm -f
-
-INCLUDES=	-I.
 
 CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I.
 
@@ -41,9 +39,9 @@ SRCS=		main.c \
 		built-ins/echo_vh.c \
 		termcap/main.c \
 		termcap/init.c \
-		termcap/dup_fct.c \
 		termcap/unset.c \
 		termcap/my.c \
+		termcap/dup_fct.c \
 		npi/npi.c \
 		npi/list_func.c \
 		npi/tree_func.c \
@@ -71,18 +69,12 @@ OBJS=		$(SRCS:.c=.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		@echo "\033[32m[Building] \033[0;m" | tr -d '\n'
-		$(CC) -o $@ $(OBJS) $(LDFLAGS) -lncurses
+		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS) -lncurses
 
-%.o:		%.c
-		@echo "\033[33m[Doing object] \033[0;m" | tr -d '\n'
-		$(CC) $(LDFLAGS) $(INCLUDES) -c -o $@ $<
 clean:
-		@echo "\033[31m[Cleaning] \033[0;m" | tr -d '\n'
 		$(RM) $(OBJS)
 
 fclean:		clean
-		@echo "\033[31m[Filecleaning] \033[0;m " | tr -d '\n'
 		$(RM) $(NAME)
 
 re:		fclean all
