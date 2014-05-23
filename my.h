@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 23 13:38:33 2014 lhomme
+** Last update Fri May 23 14:18:25 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -98,6 +98,13 @@ typedef struct		s_arbre
   struct s_arbre	*next;
   struct s_arbre	*deep;
 }			t_arbre;
+
+typedef struct		s_npi
+{
+  t_list		*stack;
+  t_list		*output;
+  t_tree		*tree;
+}			t_npi;
 
 int	print_token(t_token *list);
 t_token	*add_token(t_token *list, char *token);

@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Thu May 22 17:33:45 2014 lhomme
+** Last update Fri May 23 14:22:48 2014 lhomme
 */
 
 #include "my.h"
@@ -35,11 +35,11 @@ void	my_stack(char *token, t_list **stack, t_list **output)
 
 t_tree	*npi(t_token *token, char *str, t_env *env)
 {
-  t_list	*stack;
-  t_list	*output;
+  t_npi		npi;
 
-  stack = NULL;
-  output = NULL;
+  npi.tree = NULL;
+  npi.stack = NULL;
+  npi.output = NULL;
   token = exotic_and_var(token, env);
   if (!token)
     return (NULL);
@@ -47,17 +47,19 @@ t_tree	*npi(t_token *token, char *str, t_env *env)
     return (createNode(NULL, token->token));
   while (token)
     {
-      my_stack(token->token, &stack, &output);
+      my_stack(token->token, &npi.stack, &npi.output);
       token = token->next;
     }
-  while (stack)
+  while (npi.stack)
     {
-      make_tree(&output, stack->data);
-      stack = stack->next;
+      make_tree(&npi.output, npi.stack->data);
+      npi.stack = npi.stack->next;
     }
-  npi_delete_list(&stack);
-  if (check_full_tree(output->tree) == 1)
-    return (output->tree);
+  npi.tree = npi.output->tree;
+  npi_delete_list(&npi.stack);
+  npi_delete_list(&npi.output);
+  if (check_full_tree(npi.tree) == 1)
+    return (npi.tree);
   fprintf(stderr, "'%s': syntax error\n", str);
   return (NULL);
 }
