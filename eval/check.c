@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Fri May 23 13:44:19 2014 romaric
+** Last update Fri May 23 17:09:58 2014 romaric
 */
 
 #include "my.h"
@@ -46,18 +46,21 @@ char    *find_lib(char **path, char *cmd)
   int   i;
 
   i = 0;
-  while (path[i] != NULL)
+  if ((path))
     {
-      if ((ptr = opendir(path[i])) == NULL)
-        i++;
-      else
-        if (ptr != NULL)
-          {
-	    while ((entry = readdir(ptr)))
-              if (strcmp(cmd, entry->d_name) == 0)
-		return (strdup(path[i]));
-          }
-      i++;
+      while (path[i] != NULL)
+	{
+	  if ((ptr = opendir(path[i])) == NULL)
+	    i++;
+	  else
+	    if (ptr != NULL)
+	      {
+		while ((entry = readdir(ptr)))
+		  if (strcmp(cmd, entry->d_name) == 0)
+		    return (strdup(path[i]));
+	      }
+	  i++;
+	}
     }
   return (NULL);
 }
@@ -71,7 +74,7 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
   filepath = NULL;
   if (pathsep != NULL)
     filepath = find_lib(pathsep, cmd);
-    ret = execute(filepath, cmd, str, p);
+  ret = execute(filepath, cmd, str, p);
   free(str);
   free(filepath);
   free(pathsep);
