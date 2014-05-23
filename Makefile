@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Thu May 22 15:21:00 2014 odet
+## Last update Fri May 23 13:44:47 2014 romaric
 ##
 
 CC=		gcc
@@ -56,7 +56,8 @@ SRCS=		main.c \
 		eval/check_next.c \
 		eval/get_next_line.c \
 		eval/exec.c \
-		auto_completion/main.c
+		auto_completion/main.c \
+		eval/mys_next.c
 
 OBJS=		$(SRCS:.c=.o)
 

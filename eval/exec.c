@@ -1,11 +1,11 @@
 /*
 ** exec.c for 42Sh in /home/leo/rendu/42Sh/eval
-** 
+**
 ** Made by bourrel
 ** Login   <leo@epitech.net>
-** 
+**
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Fri May 23 12:05:36 2014 lhomme
+** Last update Fri May 23 13:45:40 2014 romaric
 */
 
 #include "my.h"
@@ -37,7 +37,7 @@ int	my_exit(char **tab, t_env *env)
     return (-1);
    if (tmp == env)
      {
-       my_add_env(env,"EXIT_VALUE=0");
+       my_add_env(env, "EXIT_VALUE=0");
        return (my_exit(tab, env));
     }
   if (tab[1] && (my_getnbr(tab[1]) != 0))
@@ -52,7 +52,8 @@ int     built(char **tab, t_env **env, int out)
   if (strncmp(tab[0], "setenv", 6) == 0 && !tab[0][6])
     *env = my_setenv(*env, tab);
   else if (strncmp(tab[0], "cd", 2) == 0
-           && (!tab[0][2] || tab[0][2] == '-' || (tab[0][2] == '.' && !tab[0][4])))
+           && (!tab[0][2] || tab[0][2] == '-'
+	       || (tab[0][2] == '.' && !tab[0][4])))
     return (my_cd(*env, tab));
   else if (strncmp(tab[0], "unsetenv", 8) == 0 && !tab[0][8])
     *env = my_unsetenv(*env, tab);

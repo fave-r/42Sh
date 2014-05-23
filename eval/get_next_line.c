@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 20 11:54:44 2014 romaric
-** Last update Wed May 21 11:48:04 2014 romaric
+** Last update Fri May 23 13:46:06 2014 romaric
 */
 
 #include "my.h"
@@ -14,7 +14,8 @@ char		*my_strdup_new(char *src)
 {
   char		*dest;
 
-  dest = calloc((strlen(src) + 2) * sizeof(char), (strlen(src) + 2) * sizeof(char));
+  dest = calloc((strlen(src) + 2) * sizeof(char),
+		(strlen(src) + 2) * sizeof(char));
   if (dest == NULL)
       return (NULL);
   my_strcpy(dest, src);

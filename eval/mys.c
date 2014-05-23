@@ -5,43 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Thu May 22 18:03:44 2014 romaric
+** Last update Fri May 23 13:48:46 2014 romaric
 */
 
 #include "my.h"
-
-int	my_semi_col(t_tree *tree, int in, int out, t_env_var *env)
-{
-  if (!tree->right)
-    return (check_fn(tree->left, in, out, env));
-  if (tree->left)
-    check_fn(tree->left, in, out, env);
-  return (check_fn(tree->right, in, out, env));
-}
-
-int	my_and(t_tree *tree, int in, int out, t_env_var *env)
-{
-  int	ret;
-
-  ret = 1;
-  if (tree->left)
-  ret = check_fn(tree->left, in, out, env);
-  if (ret == 0 && tree->right)
-    ret = check_fn(tree->right, in, out, env);
-  return (ret);
-}
-
-int	my_or(t_tree *tree, int in, int out, t_env_var *env)
-{
-  int	ret;
-
-  ret = 0;
-  if (tree->left)
-  ret = check_fn(tree->left, in, out, env);
-  if (ret != 0 && tree->right)
-    ret = check_fn(tree->right, in, out, env);
-  return (ret);
-}
 
 int	redir_right(t_tree *tree, int in, int out, t_env_var *env)
 {
@@ -121,7 +88,8 @@ int	redir_left(t_tree *tree, int in, int out, t_env_var *env)
   return (ret);
 }
 
-int	doble_left(t_tree *tree, __attribute__((unused))int in, int out, t_env_var *env)
+int	doble_left(t_tree *tree, __attribute__((unused))int in
+		   , int out, t_env_var *env)
 {
   int	ret;
   int	fd;
@@ -143,7 +111,8 @@ int	doble_left(t_tree *tree, __attribute__((unused))int in, int out, t_env_var *
     }
   if (str == NULL)
     {
-      fprintf(stderr, "42sh: warning: here-document at line %d delimited ", i+1);
+      fprintf(stderr, "42sh: warning: here-document at ");
+      fprintf(stderr, "line %d delimited ", i + 1);
       fprintf(stderr, "by end-of-file (wanted `%s')\n"
 	      , strdup(tree->right->data));
     }
@@ -168,14 +137,11 @@ int	my_pipe(t_tree *tree, int in, int out, t_env_var *env)
   env->var_close = p[0];
   if (tree->left)
     ret = check_fn(tree->left, in, p[1], env);
-  //  if (out == 1 && in == 0)
-  //env->wat = 1;
   close(p[1]);
   env->var_close = -1;
   env->wat = i;
   if (tree->right)
     ret = check_fn(tree->right, p[0], out, env);
-  //env->wat = 1;
   close(p[0]);
   return (ret);
 }
