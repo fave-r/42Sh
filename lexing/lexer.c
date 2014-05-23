@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Wed May 14 14:50:06 2014 
+** Last update Fri May 23 13:02:04 2014 lhomme
 */
 
 #include "my.h"
@@ -38,14 +38,13 @@ int		get_operator(char *str, int i, int save[2])
 
 int		get_other(char *str, int i, int save[2])
 {
-  while ((str[i] == '-' || save[1] == save[0] || !is_spe(str[i]))
-	 && str[i] != '\0')
+  while (str[i] && (str[i] == '-' || save[1] == save[0] || !is_spe(str[i])))
     {
-      while (str[i] != '\t' && str[i] != ' ' && str[i] != '\0' && str[i] != ';'
+      while (str[i] && str[i] != '\t' && str[i] != ' ' && str[i] != ';'
 	     && str[i] != '|' && str[i] != '&' && str[i] != '>' && str[i] != '<')
 	i++;
       save[1] = i;
-      while (((str[i] == '\t' || str[i] == ' ') && str[i] != '\0'))
+      while (str[i] && (str[i] == '\t' || str[i] == ' '))
 	i++;
     }
   return (i);
