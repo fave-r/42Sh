@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Fri May 23 16:14:25 2014 bourrel
+** Last update Fri May 23 16:37:35 2014 bourrel
 */
 
 #include "my.h"
@@ -69,10 +69,7 @@ char		*get_next_line_icanon(const int fd)
       else if (p.buffer[0] >= 32 && p.buffer[0] < 127)
 	p.x = my_char(p.tmp, p.buffer[0], &(p.x));
       else if (p.buffer[0] == '\n')
-	{
-	  p.new = my_entry(p.tmp, NULL, NULL, &(p.x));
-	  return (p.new);
-	}
+	return (p.new = my_entry(p.tmp, NULL, NULL, &(p.x)));
       else if (p.buffer[0] == 127)
 	my_delete(p.tmp, &(p.x));
       else if (p.buffer[0] == 4)
