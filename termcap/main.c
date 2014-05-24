@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Sat May 24 19:53:01 2014 thibaud
+** Last update Sat May 24 10:46:41 2014 odet
 */
 
 #include "my.h"
@@ -60,12 +60,18 @@ char		*glob_complete(char *new, char *tmp, t_env_var *env)
 char		*get_next_line_icanon(const int fd, t_env_var env)
 {
   t_gnl_icanon	p;
+  char		*save;
 
   init_value(&p, env);
+  save = "";
   while ((read(fd, p.buffer, BUFF_SIZE)))
     {
       if (p.buffer[0] == '\t')
-	p.tmp = my_tab(&p, NULL, NULL, &env);
+	{
+	  if (strcmp(save, p.tmp) != 0)
+	    p.tmp = my_tab(&p, NULL, NULL, &env);
+	  save = p.tmp;
+	}
       else if (p.buffer[0] >= 32 && p.buffer[0] < 127)
 	p.x = my_char(p.tmp, p.buffer[0], &(p.x));
       else if (p.buffer[0] == '\n')
@@ -73,14 +79,9 @@ char		*get_next_line_icanon(const int fd, t_env_var env)
       else if (p.buffer[0] == 127)
 	my_delete(p.tmp, &(p.x));
       else if (p.buffer[0] == 4)
-	{
-	  free (p.tmp);
-	  return (NULL);
-	}
+	return (NULL);
       else if (p.buffer[0] == 12)
 	return (strdup("clear"));
-      else if (p.buffer[0] == 3)
-	return (strdup("display"));
       bzero(p.buffer, 1024);
     }
   return (NULL);

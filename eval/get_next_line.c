@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 20 11:54:44 2014 romaric
-** Last update Fri May 23 21:39:25 2014 bourrel
+** Last update Sat May 24 07:57:02 2014 odet
 */
 
 #include "my.h"
@@ -17,7 +17,7 @@ char		*get_next_line(const int fd, t_env_var env)
   init_value(&p, env);
   while ((read(fd, p.buffer, BUFF_SIZE)))
     {
-      if ((p.buffer[0] >= 32 && p.buffer[0] < 127) || p.buffer[0] == '\t')
+      if ((p.buffer[0] >= 32 && p.buffer[0] < 127))
         p.x = my_char(p.tmp, p.buffer[0], &(p.x));
       else if (p.buffer[0] == '\n')
         {

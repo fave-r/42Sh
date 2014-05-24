@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Sat May 24 16:58:21 2014 lhomme
+** Last update Sat May 24 09:20:14 2014 odet
 */
 
 #include "my.h"
@@ -57,6 +57,7 @@ int		exit_42(char *tmp, t_env_var env, int ret)
 
 void		init_main(t_env_var *env, char **envp, int *ret, t_token **list)
 {
+  signal(SIGINT, &display_sigint);
   init();
   *list = NULL;
   *ret = 0;
@@ -73,20 +74,16 @@ int		main(void)
   char		*tmp;
   int		ret;
 
+  signal(SIGINT, &display_sigint);
   init_main(&env, environ, &ret, &list);
   while ((tmp = my_istty(0, env)) != NULL)
     {
-      if (tmp != NULL && strcmp(tmp, "display") == 0)
-	display_sigint();
-      else
+      tmp = my_epur_str(tmp);
+      if (tmp && tmp[0] != 0)
 	{
-	  tmp = my_epur_str(tmp);
-	  if (tmp && tmp[0] != 0)
-	    {
-	      start(list, env, tmp);
-	      if ((ret = check_exit(env.env)) != -1)
-		return (exit_42(tmp, env, ret));
-	    }
+	  start(list, env, tmp);
+	  if ((ret = check_exit(env.env)) != -1)
+	    return (exit_42(tmp, env, ret));
 	}
       display_prompt(env.env);
     }

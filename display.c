@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 **
 ** Started on  Thu May 22 11:49:29 2014 bourrel
-** Last update Sat May 24 14:35:24 2014 romaric
+** Last update Sat May 24 09:17:07 2014 odet
 */
 
 #include "my.h"
@@ -55,4 +55,5 @@ void            display_prompt(t_env *env)
 void            display_sigint()
 {
   write(1, "^C\n", 3);
+  display_prompt(NULL);
 }
