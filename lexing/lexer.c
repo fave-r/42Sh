@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Sat May 24 16:19:39 2014 lhomme
+** Last update Sat May 24 16:28:20 2014 lhomme
 */
 
 #include "my.h"
@@ -45,12 +45,10 @@ int		get_other(char *str, int i, int save[2])
     {
       while ((str[i] && str[i] != '\t' && str[i] != ' ' && str[i] != ';'
 	     && str[i] != '|' && str[i] != '&' && str[i] != '>' && str[i] != '<')
-	     || quote % 2 != 0)
+	     || (str[i] && quote % 2 != 0))
 	{
-	  if (str[i] == 34 && quote >= 0)
+	  if (str[i] == 34 || str[i] == 39)
 	    quote++;
-	  else if (str[i] == 39 && quote <= 0)
-	    quote--;
 	  i++;
 	}
       save[1] = i;
@@ -86,5 +84,6 @@ t_token		*fill_token(char *str)
       	  list = add_token(list, my_strxdup(str + s[0], s[1] - s[0] + 1));
 	}
     }
+  printf("%s\n", list->token);
   return (list);
 }
