@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Sat May 24 09:17:49 2014 odet
+** Last update Sat May 24 11:35:33 2014 odet
 */
 
 #include "my.h"
@@ -76,6 +76,7 @@ void			init_value(t_gnl_icanon *ptr, t_env_var env)
   ptr->tmp = xmalloc(sizeof(char) * BUFF_SIZE);
   ptr->new = NULL;
   ptr->result = NULL;
+  ptr->save = "";
   bzero(ptr->buffer, BUFF_SIZE);
   bzero(ptr->tmp, BUFF_SIZE);
   //free (str);
