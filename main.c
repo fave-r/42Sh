@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Sun May 25 00:28:26 2014 lhomme
+** Last update Sun May 25 00:41:10 2014 lhomme
 */
 
 #include "my.h"
@@ -74,7 +74,6 @@ int		main(void)
   char		*tmp;
   int		ret;
 
-  signal(SIGINT, &display_sigint);
   init_main(&env, environ, &ret, &list);
   while ((tmp = my_istty(0, env)) != NULL)
     {
