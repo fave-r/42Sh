@@ -5,18 +5,18 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Fri May 23 17:43:38 2014 bourrel
+** Last update Sat May 24 13:52:34 2014 bourrel
 */
 
 #include "my.h"
 
 extern char	**environ;
 
-int	execute(char *pathutil, char *cmd, char **arv, t_inp p)
+int		execute(char *pathutil, char *cmd, char **arv, t_inp p)
 {
-  int   pid;
-  int	ret;
-  char  *pathforexec;
+  int		pid;
+  int		ret;
+  char		*pathforexec;
 
   ret = 1;
   pathforexec = ((pathutil == NULL) ? cmd : my_strcpyfinal(pathutil, cmd));
@@ -65,10 +65,10 @@ char		*find_lib(char **path, char *cmd)
   return (NULL);
 }
 
-int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
+int		check_path(char **pathsep, char *cmd, char **str, t_inp p)
 {
-  int	ret;
-  char	*filepath;
+  int		ret;
+  char		*filepath;
 
   ret = 1;
   filepath = NULL;
@@ -85,7 +85,7 @@ int	check_path(char **pathsep, char *cmd, char **str, t_inp p)
 ** fonction eval
 */
 
-int	check_fn(t_tree *tree, int in, int out, t_env_var *env)
+int		check_fn(t_tree *tree, int in, int out, t_env_var *env)
 {
   if (!tree)
     return (-1);

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Dec 18 13:38:53 2013 romaric
-** Last update Sun May 11 18:05:01 2014 romaric
+** Last update Sat May 24 14:05:42 2014 bourrel
 */
 
 #include "my.h"
@@ -36,9 +36,8 @@ char	**my_str_to_wordtab(char *str, char sep)
   w.i = 0;
   w.nbwords = countword(str, sep);
   w.strpar = xmalloc(sizeof(char*) * (w.nbwords + 1) + my_strlen_n(str) + 1);
-  w.ptr = (char*)w.strpar;
-  w.ptr += sizeof(char*) * (w.nbwords + 1);
-  w.ptr = strdup(str);
+  w.ptr = (char*)w.strpar + sizeof(char*) * (w.nbwords + 1);
+  w.ptr = strcpy(w.ptr, str);
   while (*(w.ptr) != '\0')
     {
       while ((*(w.ptr) == sep || *(w.ptr) == '\t') && *(w.ptr) != '\0')
