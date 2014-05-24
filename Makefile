@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sun May 25 04:47:17 2014 romaric
+## Last update Sun May 25 07:17:49 2014 romaric
 ##
 
 CC=		gcc
@@ -38,6 +38,7 @@ SRCS=		main.c \
 		built-ins/my_echo.c \
 		built-ins/my_echo_arg.c \
 		built-ins/echo_vh.c \
+		built-ins/cd_next.c \
 		npi/npi.c \
 		npi/list_func.c \
 		npi/tree_func.c \
