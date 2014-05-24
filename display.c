@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 **
 ** Started on  Thu May 22 11:49:29 2014 bourrel
-** Last update Sun May 25 00:15:46 2014 lhomme
+** Last update Sun May 25 00:28:52 2014 lhomme
 */
 
 #include "my.h"
@@ -47,13 +47,14 @@ void            display_prompt(t_env *env)
       my_putstr("\033[32m$", 1);
       my_putstr(user, 1);
       my_putstr("> \033[0;m", 1);
+      free(user);
     }
   else
     my_putstr("\033[32m$42sh> \033[0;m", 1);
-  free(user);
 }
 
 void            display_sigint()
 {
   write(1, "^C\n", 3);
+  display_prompt(NULL);
 }
