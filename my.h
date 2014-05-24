@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Fri May 23 22:52:35 2014 romaric
+** Last update Sat May 24 16:16:09 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -119,7 +119,6 @@ int	print_token(t_token *list);
 t_token	*add_token(t_token *list, char *token);
 char	*my_strxdup(char *source, int len);
 int	get_operator(char *str, int i, int save[2]);
-int	get_other(char *str, int i, int save[2]);
 t_token	*fill_token(char *str);
 int	fill_type(t_token *list);
 int	is_alpha(char c);
