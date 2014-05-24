@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Fri May 23 15:47:33 2014 lhomme
+** Last update Sat May 24 18:54:37 2014 romaric
 */
 
 #include "my.h"
@@ -59,7 +59,7 @@ t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
       tmp2->str = strcat(tmp2->str, tmp->str + 5);
       return (env);
     }
-  printf("cd : 'HOME' non défini\n");
+  fprintf(stderr, "42sh: cd: 'HOME' not set\n");
   return (env);
 }
 

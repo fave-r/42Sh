@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Fri Mar 21 14:22:18 2014 lhomme
-** Last update Fri May 23 21:20:59 2014 lhomme
+** Last update Sat May 24 18:54:53 2014 romaric
 */
 
 #include "my.h"
@@ -39,7 +39,7 @@ int	my_oldpwd(t_env *env)
     oldpwd = oldpwd->next;
   if (oldpwd == env)
     {
-      printf("cd : 'OLDPWD' non défini\n");
+      fprintf(stderr, "42sh: cd: 'OLDPWD' not set\n");
       return (-1);
     }
   chdir(oldpwd->str + 7);
