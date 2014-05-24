@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Sat May 24 13:45:03 2014 bourrel
+** Last update Sun May 25 00:20:03 2014 lhomme
 */
 
 #include "my.h"
@@ -78,5 +78,5 @@ void			init_value(t_gnl_icanon *ptr, t_env_var env)
   ptr->result = NULL;
   bzero(ptr->buffer, BUFF_SIZE);
   bzero(ptr->tmp, BUFF_SIZE);
-  free (str);
+  free(str);
 }

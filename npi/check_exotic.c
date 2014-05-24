@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Thu May 22 14:55:03 2014 lhomme
-** Last update Thu May 22 14:55:55 2014 lhomme
+** Last update Sun May 25 00:23:13 2014 lhomme
 */
 
 #include "my.h"
@@ -49,5 +49,6 @@ t_token	*check_exotic(t_token *token)
 	tmp = add_token(tmp, token->token);
       token = token->next;
     }
+  delete_list(&token);
   return (tmp);
 }

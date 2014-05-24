@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Sat May 24 19:53:01 2014 thibaud
+** Last update Sun May 25 00:21:07 2014 lhomme
 */
 
 #include "my.h"
@@ -74,7 +74,7 @@ char		*get_next_line_icanon(const int fd, t_env_var env)
 	my_delete(p.tmp, &(p.x));
       else if (p.buffer[0] == 4)
 	{
-	  free (p.tmp);
+	  free(p.tmp);
 	  return (NULL);
 	}
       else if (p.buffer[0] == 12)

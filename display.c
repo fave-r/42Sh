@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 **
 ** Started on  Thu May 22 11:49:29 2014 bourrel
-** Last update Sat May 24 14:35:24 2014 romaric
+** Last update Sun May 25 00:15:46 2014 lhomme
 */
 
 #include "my.h"
@@ -50,6 +50,7 @@ void            display_prompt(t_env *env)
     }
   else
     my_putstr("\033[32m$42sh> \033[0;m", 1);
+  free(user);
 }
 
 void            display_sigint()
