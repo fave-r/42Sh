@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Fri May 23 23:10:47 2014 bourrel
+** Last update Sat May 24 13:45:03 2014 bourrel
 */
 
 #include "my.h"
@@ -36,22 +36,22 @@ int			xtgetent(const char *name)
   return (x);
 }
 
-char			*find_term(t_env_var env)
+char			*find_term(t_env_var env, char *str)
 {
   t_env			*tmp;
-  char			*str;
   int			i;
   int			j;
 
   i = 0;
   j = 5;
+  env.env = env.env->next;
   if (!env.env->str)
-    return (NULL);
-  tmp = env.env->next;
+    return (TERM);
+  tmp = env.env;
   while (strncmp(tmp->str, "TERM=", 5))
     {
       if (!tmp->next->str)
-	return (NULL);
+	return (TERM);
       tmp = tmp->next;
     }
   str = malloc(sizeof(char) * (strlen(tmp->str) - 4));
@@ -67,11 +67,16 @@ char			*find_term(t_env_var env)
 
 void			init_value(t_gnl_icanon *ptr, t_env_var env)
 {
-  ptr->x = xtgetent(find_term(env));
+  char			*str;
+
+  str = NULL;
+  str = find_term(env, str);
+  ptr->x = xtgetent(str);
   ptr->x = 0;
   ptr->tmp = xmalloc(sizeof(char) * BUFF_SIZE);
   ptr->new = NULL;
   ptr->result = NULL;
   bzero(ptr->buffer, BUFF_SIZE);
   bzero(ptr->tmp, BUFF_SIZE);
+  free (str);
 }

@@ -5,17 +5,17 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Fri May 23 21:33:58 2014 bourrel
+** Last update Fri May 23 23:15:13 2014 bourrel
 */
 
 #include "my.h"
 
 extern char	**environ;
 
-int	check_exit(t_env *env)
+int		check_exit(t_env *env)
 {
-  t_env	*tmp;
-  int	ret;
+  t_env		*tmp;
+  int		ret;
 
   tmp = env->next;
   while (tmp != env && strncmp(tmp->str, "EXIT_VALUE", 10) != 0)
