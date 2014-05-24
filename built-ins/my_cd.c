@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Sat May 24 18:54:37 2014 romaric
+** Last update Sat May 24 19:53:58 2014 lhomme
 */
 
 #include "my.h"
@@ -54,6 +54,8 @@ t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
   if (tmp != env)
     {
       chdir(tmp->str + 5);
+      if (tmp2 == env)
+	return (env);
       change_oldpwd(env, tmp2->str + 5);
       tmp2->str[4] = 0;
       tmp2->str = strcat(tmp2->str, tmp->str + 5);
