@@ -5,7 +5,7 @@
 ** Login   <odet_a@epitech.net>
 ** 
 ** Started on  Mon May 19 22:57:58 2014 
-** Last update Sat May 24 13:47:28 2014 bourrel
+** Last update Sat May 24 19:53:01 2014 thibaud
 */
 
 #include "my.h"
@@ -46,7 +46,7 @@ char		*glob_complete(char *new, char *tmp, t_env_var *env)
     return (tmp);
   if (new[strlen(new) - 1] != '*' && new[strlen(new) - 1] != ' ')
     new = my_strcat(new, "*");
-  if ((glob(new, GLOB_BRACE | GLOB_NOCHECK | GLOB_TILDE, NULL, &ptr))
+  if ((glob(new, GLOB_BRACE | GLOB_TILDE, NULL, &ptr))
       != GLOB_NOMATCH)
     {
       if (my_len(ptr.gl_pathv) == 1)
