@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Sat May 24 13:52:34 2014 bourrel
+** Last update Sat May 24 15:53:15 2014 bourrel
 */
 
 #include "my.h"
@@ -35,7 +35,6 @@ int		execute(char *pathutil, char *cmd, char **arv, t_inp p)
     }
   if (p.wat == 1)
     waitpid(pid, &ret, 0);
-  free(pathforexec);
   return (ret);
 }
 
