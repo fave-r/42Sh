@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 **
 ** Started on  Thu May 22 11:49:29 2014 bourrel
-** Last update Sat May 24 13:46:15 2014 bourrel
+** Last update Sat May 24 14:35:24 2014 romaric
 */
 
 #include "my.h"
@@ -22,7 +22,7 @@ char		*check_user(t_env **env)
       if (tmp->str != NULL)
 	x = strncmp("USER=", tmp->str, 5);
       if (x == 0)
-	return (tmp->str);
+	return (strdup(tmp->str));
       tmp = tmp->next;
     }
   return (NULL);
