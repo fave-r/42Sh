@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sun May 25 06:59:17 2014 romaric
+** Last update Sat May 24 17:20:06 2014 odet
 */
 
 #ifndef __42Sh__
@@ -116,6 +116,30 @@ typedef struct		s_npi
   t_tree		*tree;
 }			t_npi;
 
+typedef struct		s_lev
+{
+  int			first_len;
+  int			second_len;
+  int			x;
+  int			y;
+  int			last;
+  int			old;
+  int			*array;
+}			t_lev;
+
+typedef struct		s_bin
+{
+  char			*bin;
+  struct s_bin		*next;
+}			t_bin;
+
+typedef struct		s_correc
+{
+  char			*str;
+  int			diff;
+  struct s_correc	*next;
+}			t_correc;
+
 int			print_token(t_token *list);
 t_token			*add_token(t_token *list, char *token);
 char			*my_strxdup(char *source, int len);
@@ -195,8 +219,8 @@ int			my_exec(char *cmd, int in, int out, t_env_var *env);
 int			my_getnbr(char*);
 int			check_path(char **pathsep, char *cmd, char **str, t_inp p);
 void			echo_vh(char **cmd, int fd);
-char			*my_tab(t_gnl_icanon *p, char *new
-				, char *result, t_env_var *env);
+char			*my_tab(t_gnl_icanon *p, char *new,
+				char *result, t_env_var *env);
 char			*my_entry(char *tmp, char *new, char *result, int *x);
 void			my_delete(char *tmp, int *x);
 char			*get_next_line_icanon(const int fd, t_env_var env);
@@ -224,10 +248,24 @@ char			*glob_complete(char *new, char *tmp, t_env_var *env);
 void			doble_left_next(int *i, int *ret, int *fd);
 char			*my_istty(const int fd, t_env_var env);
 char			*my_strdup_new(char *src);
-char			*copy_char(char *old, char *new, int *i, int *j);
+//char			*copy_char(char *old, char *new, int *i, int *j);
 char			*my_get_next_line(const int fd);
 char			*getpath(char **environ);
 void			free_arbre(t_arbre *tree);
 char			*delete_varenv(char *str, char *var);
+int			my_levenshtein(char *s1, char *s2);
+void			init_lev(t_lev *ptr, char *s1, char *s2);
+int			identic_char(char a, char b);
+int			find_littlest_num(int a, int b, int c);
+t_bin			*fill_bin(char **path, t_bin *list);
+t_bin			*init_bin();
+char			*find(char *str);
+char			*find_good_elem(t_correc *list, char *ret);
+void			free_correc(t_correc *list);
+void			free_bin(t_bin *list);
+t_bin			*fill_bin_list(t_bin *list, char *bin);
+t_bin			*bin_node(char *bin);
+t_correc		*correc_node(char *str, int diff);
+t_correc		*correc_list(t_correc *list, char *str, int diff);
 
 #endif

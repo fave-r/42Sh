@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sat May 24 17:04:33 2014 lhomme
+## Last update Sat May 24 17:24:01 2014 odet
 ##
 
 CC=		gcc
@@ -65,6 +65,10 @@ SRCS=		main.c \
 		auto_completion/auto_complete.c \
 		auto_completion/func.c \
 		auto_completion/word.c \
+		auto_correction/find.c \
+		auto_correction/free_list.c \
+		auto_correction/levenshtein.c \
+		auto_correction/lev_list.c \
 		eval/mys_next.c
 
 OBJS=		$(SRCS:.c=.o)
