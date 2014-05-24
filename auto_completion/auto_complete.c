@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Mon Mar 31 15:38:57 2014 thibaud
-** Last update Fri May 23 22:41:05 2014 bourrel
+** Last update Sat May 24 18:56:27 2014 thibaud
 */
 
 #include "my.h"
@@ -88,9 +88,7 @@ int		fill_tree_bin(char **path, t_arbre *arbre)
   i = 0;
   while (path[i] != NULL)
     {
-      if ((ptr = opendir(path[i])) == NULL)
-	i++;
-      else
+      if ((ptr = opendir(path[i])) != NULL)
 	{
 	  if (ptr != NULL)
 	    while ((entry = readdir(ptr)) != NULL)
