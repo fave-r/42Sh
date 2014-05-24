@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Thu May 22 15:02:29 2014 lhomme
-** Last update Thu May 22 17:49:42 2014 lhomme
+** Last update Sat May 24 17:05:29 2014 lhomme
 */
 
 #include "my.h"
@@ -99,10 +99,7 @@ t_token	*check_varenv(t_token *list, t_env *env)
 	  if ((var_env = is_in_env(var + 1, env)) != NULL)
 	    tmp->token = swap_var(tmp->token, var, var_env);
 	  else
-	    {
-	      fprintf(stderr, "%s: Not in the environment\n", var);
-	      return (NULL);
-	    }
+	    tmp->token = delete_varenv(tmp->token, var);
 	}
       tmp = tmp->next;
     }

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sat May 24 16:16:09 2014 lhomme
+** Last update Sat May 24 17:03:46 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -226,5 +226,6 @@ char	*copy_char(char *old, char *new, int *i, int *j);
 char	*my_get_next_line(const int fd);
 char	*getpath(char **environ);
 void	free_arbre(t_arbre *tree);
+char	*delete_varenv(char *str, char *var);
 
 #endif
