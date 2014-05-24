@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Sat May 24 16:28:20 2014 lhomme
+** Last update Sat May 24 16:58:57 2014 lhomme
 */
 
 #include "my.h"
@@ -84,6 +84,5 @@ t_token		*fill_token(char *str)
       	  list = add_token(list, my_strxdup(str + s[0], s[1] - s[0] + 1));
 	}
     }
-  printf("%s\n", list->token);
   return (list);
 }

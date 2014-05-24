@@ -5,38 +5,12 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Sat May 24 16:39:20 2014 romaric
+** Last update Sat May 24 16:58:21 2014 lhomme
 */
 
 #include "my.h"
 
 extern char	**environ;
-
-void	aff(t_tree *tree, int pos)
-{
-  int	i;
-
-  i = -5;
-  if (tree)
-    {
-      while (i < pos)
-	{
-	  printf("_");
-	  i++;
-	}
-      printf("%d %s\n", pos, strdup(tree->data));
-      if (tree->left)
-	{
-	  printf("left ");
-	  aff(tree->left, pos - 2);
-	}
-      if (tree->right)
-	{
-	  printf("right ");
-	  aff(tree->right, pos + 3);
-	}
-    }
-}
 
 int		check_exit(t_env *env)
 {

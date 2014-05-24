@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 **
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Fri May 23 13:45:40 2014 romaric
+** Last update Sat May 24 16:57:02 2014 lhomme
 */
 
 #include "my.h"
@@ -68,7 +68,7 @@ int     built(char **tab, t_env **env, int out)
       fprintf(stderr, "%s : command not found\n", tab[0]);
       return (-1);
     }
-  return (1);
+  return (0);
 }
 
 int	exec_builtins(char *cmd, char **tab, t_env  **env, t_inp p)
