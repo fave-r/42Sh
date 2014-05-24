@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Sun May 25 07:35:35 2014 romaric
+** Last update Sat May 24 17:52:14 2014 odet
 */
 
 #include "my.h"
@@ -81,27 +81,27 @@ int	cd_error(char *pwd)
   return (-1);
 }
 
-int	my_cd(t_env *env, char **tab)
+int	my_cd(t_env *env, char **array)
 {
   t_env		*tmp;
 
   tmp = env->next;
-  if (tab[1])
+  if (array[1])
     {
-      if (tab[1][0] == '/')
+      if (array[1][0] == '/')
 	empty_pwd(env);
-      if (tab[1][0] == '-')
+      if (array[1][0] == '-')
 	{
 	  print_oldpwd(env);
 	  return (my_oldpwd(env));
 	}
-      if (opendir(tab[1]) == NULL)
-	return (cd_error(tab[1]));
-      chdir(tab[1]);
+      if (opendir(array[1]) == NULL)
+	return (cd_error(array[1]));
+      chdir(array[1]);
       env = my_swap_old(env);
-      env = my_change_pwd(env, tab[1], 0);
+      env = my_change_pwd(env, array[1], 0);
       return (0);
     }
-  env = my_cd_thereturn(env, tmp, tab[0] + 2);
+  env = my_cd_thereturn(env, tmp, array[0] + 2);
   return (0);
 }

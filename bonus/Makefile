@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sun May 25 07:36:09 2014 romaric
+## Last update Sat May 24 20:21:01 2014 odet
 ##
 
 CC=		gcc
@@ -30,7 +30,6 @@ SRCS=		main.c \
 		list/my_token_list.c \
 		lexing/lexer.c \
 		lexing/lexer_fct.c \
-		built-ins/my_cd.c \
 		built-ins/my_cd_func.c \
 		built-ins/my_env_list.c \
 		built-ins/my_env.c \
@@ -40,6 +39,7 @@ SRCS=		main.c \
 		built-ins/my_echo_arg.c \
 		built-ins/echo_vh.c \
 		built-ins/my_cd.c \
+		built-ins/cd_next.c \
 		termcap/main.c \
 		termcap/init.c \
 		termcap/dup_fct.c \
@@ -66,11 +66,8 @@ SRCS=		main.c \
 		auto_completion/auto_complete.c \
 		auto_completion/func.c \
 		auto_completion/word.c \
-		auto_correction/find.c \
-		auto_correction/free_list.c \
-		auto_correction/levenshtein.c \
-		auto_correction/lev_list.c \
-		eval/mys_next.c
+		eval/mys_next.c \
+		eval/send_to_glob.c
 
 OBJS=		$(SRCS:.c=.o)
 

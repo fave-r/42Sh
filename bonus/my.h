@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sun May 25 07:36:55 2014 romaric
+** Last update Sat May 24 20:23:20 2014 odet
 */
 
 #ifndef __42Sh__
@@ -26,6 +26,8 @@
 #define BUFF_SIZE 1024
 #define TERM "xterm"
 #define PATH "/usr/lib64/mpi/gcc/openmpi/bin:/home/leo/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/X11R6/bin:/usr/games:/usr/netsoul/sbin:/usr/netsoul/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/arla/sbin:/usr/arla/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/site/sbin:/usr/site/bin:/usr/netsoul/sbin:/usr/netsoul/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/arla/sbin:/usr/arla/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/site/sbin:/usr/site/bin"
+#define GLOBSEP "{}[]*?"
+#define GLOBFLAG GLOB_NOMATCH | GLOB_TILDE | GLOB_BRACE
 
 typedef struct		s_env
 {
@@ -120,25 +122,25 @@ typedef struct		s_lev
 {
   int			first_len;
   int			second_len;
+  int			*array;
   int			x;
   int			y;
-  int			last;
   int			old;
-  int			*array;
+  int			last;
 }			t_lev;
+
+typedef struct		s_correc
+{
+  char			*str;
+  int			diff;
+  struct s_correc      	*next;
+}			t_correc;
 
 typedef struct		s_bin
 {
   char			*bin;
   struct s_bin		*next;
 }			t_bin;
-
-typedef struct		s_correc
-{
-  char			*str;
-  int			diff;
-  struct s_correc	*next;
-}			t_correc;
 
 int			print_token(t_token *list);
 t_token			*add_token(t_token *list, char *token);
@@ -219,8 +221,8 @@ int			my_exec(char *cmd, int in, int out, t_env_var *env);
 int			my_getnbr(char*);
 int			check_path(char **pathsep, char *cmd, char **str, t_inp p);
 void			echo_vh(char **cmd, int fd);
-char			*my_tab(t_gnl_icanon *p, char *new,
-				char *result, t_env_var *env);
+char			*my_tab(t_gnl_icanon *p, char *new
+				, char *result, t_env_var *env);
 char			*my_entry(char *tmp, char *new, char *result, int *x);
 void			my_delete(char *tmp, int *x);
 char			*get_next_line_icanon(const int fd, t_env_var env);
@@ -248,25 +250,16 @@ char			*glob_complete(char *new, char *tmp, t_env_var *env);
 void			doble_left_next(int *i, int *ret, int *fd);
 char			*my_istty(const int fd, t_env_var env);
 char			*my_strdup_new(char *src);
-//char			*copy_char(char *old, char *new, int *i, int *j);
+char			*copy_char(char *old, int *i, t_get *ptr, int *a);
 char			*my_get_next_line(const int fd);
 char			*getpath(char **environ);
 void			free_arbre(t_arbre *tree);
 char			*delete_varenv(char *str, char *var);
-int			my_levenshtein(char *s1, char *s2);
-void			init_lev(t_lev *ptr, char *s1, char *s2);
-int			identic_char(char a, char b);
-int			find_littlest_num(int a, int b, int c);
-t_bin			*fill_bin(char **path, t_bin *list);
-t_bin			*init_bin();
-char			*find(char *str);
-char			*find_good_elem(t_correc *list, char *ret);
-void			free_correc(t_correc *list);
-void			free_bin(t_bin *list);
-t_bin			*fill_bin_list(t_bin *list, char *bin);
-t_bin			*bin_node(char *bin);
-t_correc		*correc_node(char *str, int diff);
-t_correc		*correc_list(t_correc *list, char *str, int diff);
 int			my_cd_next(char *arg);
+char			*find_good_elem(t_correc *list, char *ret);
+void			sfree(char **array);
+int			len_tab(char **array);
+char			**my_strscat(char **array, char *str);
+char			**send_to_glob(char **arv);
 
 #endif
