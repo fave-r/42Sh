@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sat May 24 17:20:06 2014 odet
+** Last update Sun May 25 07:36:55 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -267,5 +267,6 @@ t_bin			*fill_bin_list(t_bin *list, char *bin);
 t_bin			*bin_node(char *bin);
 t_correc		*correc_node(char *str, int diff);
 t_correc		*correc_list(t_correc *list, char *str, int diff);
+int			my_cd_next(char *arg);
 
 #endif

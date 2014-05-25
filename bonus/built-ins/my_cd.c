@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 ** 
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Sat May 24 19:53:58 2014 lhomme
+** Last update Sun May 25 07:35:35 2014 romaric
 */
 
 #include "my.h"
@@ -40,13 +40,8 @@ t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
 
   tmp2 = env->next;
   if (arg)
-    {
-      if (strcmp(arg, "..") == 0)
-	{
-	  chdir("..");
-	  return (my_change_pwd(env, "..", 0));
-	}
-    }
+    if (my_cd_next(arg) == 1)
+      return (my_change_pwd(env, "..", 0));
   while (tmp != env && strncmp(tmp->str, "HOME=", 5) != 0)
     tmp = tmp->next;
   while (tmp2 != env && strncmp(tmp2->str, "PWD=", 4) != 0)

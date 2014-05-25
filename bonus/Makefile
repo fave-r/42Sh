@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sat May 24 17:24:01 2014 odet
+## Last update Sun May 25 07:36:09 2014 romaric
 ##
 
 CC=		gcc
@@ -39,6 +39,7 @@ SRCS=		main.c \
 		built-ins/my_echo.c \
 		built-ins/my_echo_arg.c \
 		built-ins/echo_vh.c \
+		built-ins/my_cd.c \
 		termcap/main.c \
 		termcap/init.c \
 		termcap/dup_fct.c \
