@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Sat May 24 15:53:15 2014 bourrel
+** Last update Sun May 25 06:18:07 2014 romaric
 */
 
 #include "my.h"
@@ -49,9 +49,7 @@ char		*find_lib(char **path, char *cmd)
     {
       while (path[i] != NULL)
 	{
-	  if ((ptr = opendir(path[i])) == NULL)
-	    i++;
-	  else
+	  if ((ptr = opendir(path[i])) != NULL)
 	    if (ptr != NULL)
 	      {
 		while ((entry = readdir(ptr)))
