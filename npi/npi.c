@@ -5,19 +5,19 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Sat May 24 16:59:03 2014 lhomme
+** Last update Sun May 25 21:26:56 2014 romaric
 */
 
 #include "my.h"
 
-t_token	*exotic_and_var(t_token *token, t_env *env)
+t_token		*exotic_and_var(t_token *token, t_env *env)
 {
   token = check_exotic(token);
   token = check_varenv(token, env);
   return (token);
 }
 
-void	my_stack(char *token, t_list **stack, t_list **output)
+void		my_stack(char *token, t_list **stack, t_list **output)
 {
   if (token[0] == ';' || token[0] == '|'
       || token[0] == '>' || token[0] == '<' || token[0] == '&')
@@ -33,13 +33,13 @@ void	my_stack(char *token, t_list **stack, t_list **output)
     npi_add_top(output, token, NULL);
 }
 
-void	delete_npi(t_list *stack, t_list *output)
+void		delete_npi(t_list *stack, t_list *output)
 {
   npi_delete_list(&stack);
   npi_delete_list(&output);
 }
 
-t_tree	*npi(t_token *token, char *str, t_env *env)
+t_tree		*npi(t_token *token, char *str, t_env *env)
 {
   t_npi		npi;
 
@@ -50,7 +50,7 @@ t_tree	*npi(t_token *token, char *str, t_env *env)
   if (!token)
     return (NULL);
   if (!token->next)
-    return (createNode(NULL, token->token));
+    return (createnode(NULL, token->token));
   while (token)
     {
       my_stack(token->token, &npi.stack, &npi.output);

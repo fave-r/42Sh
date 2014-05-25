@@ -1,11 +1,11 @@
 /*
 ** basic.c for basic in /home/alex-odet/work/42Sh/lib
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Thu Apr  3 14:06:29 2014 alex-odet
-** Last update Fri May 16 11:39:00 2014 
+** Last update Sun May 25 21:49:28 2014 romaric
 */
 
 #include "my.h"

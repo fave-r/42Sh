@@ -5,14 +5,14 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Dec 18 14:03:00 2013 romaric
-** Last update Sun May 25 20:08:09 2014 lhomme
+** Last update Sun May 25 21:48:13 2014 romaric
 */
 
 #include "my.h"
 
-int	xopen(const char *pathname, int flags, mode_t mode)
+int		xopen(const char *pathname, int flags, mode_t mode)
 {
-  int	len;
+  int		len;
 
   len = open(pathname, flags, mode);
   if (len == -1)
@@ -20,7 +20,7 @@ int	xopen(const char *pathname, int flags, mode_t mode)
   return (len);
 }
 
-ssize_t	xread(int fd, void *buf, size_t count)
+ssize_t		xread(int fd, void *buf, size_t count)
 {
   ssize_t	len;
 

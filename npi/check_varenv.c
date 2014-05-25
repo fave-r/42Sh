@@ -1,18 +1,18 @@
 /*
 ** check_varenv.c for npi in /home/lhomme_a/rendu/42Sh
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Thu May 22 15:02:29 2014 lhomme
-** Last update Sat May 24 17:05:29 2014 lhomme
+** Last update Sun May 25 21:20:00 2014 romaric
 */
 
 #include "my.h"
 
-char	*check_dollar(char *str)
+char		*check_dollar(char *str)
 {
-  int	i;
+  int		i;
 
   i = 0;
   while (str[i])
@@ -24,10 +24,10 @@ char	*check_dollar(char *str)
   return (NULL);
 }
 
-char	*is_in_env(char *var, t_env *env)
+char		*is_in_env(char *var, t_env *env)
 {
-  int	i;
-  t_env	*tmp;
+  int		i;
+  t_env		*tmp;
 
   tmp = env->next;
   while (tmp != env)
@@ -45,7 +45,7 @@ char	*is_in_env(char *var, t_env *env)
   return (NULL);
 }
 
-char	*swap_var2(char *str, char *token, int i, int k)
+char		*swap_var_next(char *str, char *token, int i, int k)
 {
   k += strlen(str);
   while (token[i])
@@ -59,12 +59,12 @@ char	*swap_var2(char *str, char *token, int i, int k)
   return (str);
 }
 
-char	*swap_var(char *token, char *var, char *var_env)
+char		*swap_var(char *token, char *var, char *var_env)
 {
-  int	i;
-  int	j;
-  int	k;
-  char	*str;
+  int		i;
+  int		j;
+  int		k;
+  char		*str;
 
   i = 0;
   j = 0;
@@ -82,10 +82,10 @@ char	*swap_var(char *token, char *var, char *var_env)
       j++;
     }
   str = my_strcat(str, var_env);
-  return (swap_var2(str, token, i, k));
+  return (swap_var_next(str, token, i, k));
 }
 
-t_token	*check_varenv(t_token *list, t_env *env)
+t_token		*check_varenv(t_token *list, t_env *env)
 {
   t_token	*tmp;
   char		*var;

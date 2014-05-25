@@ -1,11 +1,11 @@
 /*
 ** my_strcat.c for mysh in /home/lhomme_a/rendu/PSU_2013_minishell1
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Mon Dec  9 11:54:04 2013 lhomme
-** Last update Sat May 24 19:35:07 2014 lhomme
+** Last update Sun May 25 21:50:30 2014 romaric
 */
 
 #include "my.h"

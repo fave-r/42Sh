@@ -1,16 +1,16 @@
 /*
-** my_echo_arg2.c for 42sh in /home/leo/rendu/42Sh/built-ins
-** 
+** my_echo_arg2.c for 42sh in /home/leo/rendu/42Sh/bonus/built-ins
+**
 ** Made by bourrel
 ** Login   <leo@epitech.net>
-** 
-** Started on  Sun May 25 20:23:15 2014 bourrel
-** Last update Sun May 25 20:23:30 2014 bourrel
+**
+** Started on  Sun May 25 20:26:25 2014 bourrel
+** Last update Sun May 25 20:47:41 2014 romaric
 */
 
 #include "my.h"
 
-void    unknown_arg(char *text, char *arg, int i, int fd)
+void	unknown_arg(char *text, char *arg, int i, int fd)
 {
   while (arg[i] != '\0')
     {
@@ -21,9 +21,9 @@ void    unknown_arg(char *text, char *arg, int i, int fd)
   print_echo_str(text, fd);
 }
 
-int     check_invalid_arg(char *arg, char *text, int fd)
+int	check_invalid_arg(char *arg, char *text, int fd)
 {
-  int   i;
+  int	i;
 
   i = 0;
   while (arg[i] != '\0')

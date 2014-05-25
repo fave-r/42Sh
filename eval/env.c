@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:29:35 2014 romaric
-** Last update Tue May 13 21:13:58 2014 romaric
+** Last update Sun May 25 21:44:53 2014 romaric
 */
 
 #include "my.h"
@@ -31,7 +31,7 @@ char	**save_env(t_env **env)
 
 char	*checkpath(t_env **env)
 {
-  int   x;
+  int	x;
   t_env *tmp;
 
   tmp = (*env)->next;
@@ -47,19 +47,19 @@ char	*checkpath(t_env **env)
   return (NULL);
 }
 
-char    *pathcpy(char *tmp)
+char	*pathcpy(char *tmp)
 {
-  char  *path;
+  char	*path;
 
   path = xmalloc(my_strlen_n(tmp) * sizeof(char) - 4);
   rmpath(path, tmp);
   return (path);
 }
 
-char    *rmpath(char *dest, char *src)
+char	*rmpath(char *dest, char *src)
 {
-  int   i;
-  int   x;
+  int	i;
+  int	x;
 
   i = 5;
   x = 0;

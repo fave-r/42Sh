@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sun May 25 20:14:00 2014 lhomme
+** Last update Sun May 25 21:52:40 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -150,7 +150,7 @@ char			*my_epur_str(char *str);
 int			is_spe(char c);
 int			is_alpha(char c);
 t_tree			*npi(t_token *token, char *str, t_env *env);
-t_tree			*createNode(t_tree *elem, void *data);
+t_tree			*createnode(t_tree *elem, void *data);
 int			npi_add_end(t_list **list, void *data);
 int			npi_add_top(t_list **list, void *data, t_tree *tree);
 int			npi_delete_top(t_list **list);
@@ -158,7 +158,7 @@ int			npi_delete_last(t_list **list);
 int			my_priority(char *d1, char *d2);
 int			check_full_tree(t_tree *tree, char *str);
 void			aff(t_tree *tree, int pos);
-void			addNode(t_tree **tree, void *data, int pos);
+void			addnode(t_tree **tree, void *data, int pos);
 void			make_tree(t_list **output, void *op);
 int			check_fn(t_tree *tree, int in, int out, t_env_var *env);
 int			my_strlen_n(char *str);

@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 **
 ** Started on  Thu May 22 11:49:29 2014 bourrel
-** Last update Sun May 25 05:17:36 2014 romaric
+** Last update Sun May 25 21:13:41 2014 romaric
 */
 
 #include "my.h"
@@ -28,7 +28,7 @@ char		*check_user(t_env **env)
   return (NULL);
 }
 
-void            display_prompt(t_env *env)
+void		display_prompt(t_env *env)
 {
   char		*user;
 
@@ -53,7 +53,7 @@ void            display_prompt(t_env *env)
     my_putstr("\033[32m$42sh> \033[0;m", 1);
 }
 
-void            display_sigint()
+void		display_sigint()
 {
   write(1, "\n", 1);
   display_prompt(NULL);

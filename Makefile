@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sun May 25 21:10:57 2014 romaric
+## Last update Sun May 25 21:33:33 2014 romaric
 ##
 
 CC=		gcc
@@ -37,7 +37,7 @@ SRCS=		main.c \
 		built-ins/my_unsetenv.c \
 		built-ins/my_echo.c \
 		built-ins/my_echo_arg.c \
-		built-ins/my_echo_arg2.c \
+		built-ins/my_echo_arg_next.c \
 		built-ins/echo_vh.c \
 		built-ins/cd_next.c \
 		npi/npi.c \

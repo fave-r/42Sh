@@ -1,11 +1,11 @@
 /*
 ** my_env_list.c for mysh in /home/lhomme_a/rendu/minishell2
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Tue Feb 25 15:56:42 2014 lhomme
-** Last update Sat May 24 17:00:42 2014 bourrel
+** Last update Sun May 25 21:36:13 2014 romaric
 */
 
 #include "my.h"

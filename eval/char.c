@@ -5,14 +5,14 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:44:49 2014 romaric
-** Last update Sun May 11 18:04:14 2014 romaric
+** Last update Sun May 25 21:42:35 2014 romaric
 */
 
 #include "my.h"
 
-int     my_strlen_n(char *str)
+int	my_strlen_n(char *str)
 {
-  int   x;
+  int	x;
 
   x = 0;
   while (str[x] != '\0' && str[x] != '\n')
@@ -20,9 +20,9 @@ int     my_strlen_n(char *str)
   return (x);
 }
 
-char    *my_strcpy(char *dest, char *src)
+char	*my_strcpy(char *dest, char *src)
 {
-  int   i;
+  int	i;
 
   dest[my_strlen_n(dest)] = '\0';
   i = 0;

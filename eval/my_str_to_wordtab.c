@@ -5,15 +5,15 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Dec 18 13:38:53 2013 romaric
-** Last update Sat May 24 14:05:42 2014 bourrel
+** Last update Sun May 25 21:47:25 2014 romaric
 */
 
 #include "my.h"
 
-int	countword(char *str, char sep)
+int		countword(char *str, char sep)
 {
-  int i;
-  int word;
+  int		i;
+  int		word;
 
   i = 0;
   word = 0;
@@ -29,7 +29,7 @@ int	countword(char *str, char sep)
   return (word);
 }
 
-char	**my_str_to_wordtab(char *str, char sep)
+char		**my_str_to_wordtab(char *str, char sep)
 {
   t_word	w;
 

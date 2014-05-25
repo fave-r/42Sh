@@ -1,19 +1,19 @@
 /*
 ** list_func.c for npi in /home/lhomme_a/rendu/42Sh/NPI
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Thu Mar 27 14:15:33 2014 lhomme
-** Last update Thu May 22 16:25:55 2014 lhomme
+** Last update Sun May 25 21:21:46 2014 romaric
 */
 
 #include "my.h"
 
-int	npi_add_end(t_list **list, void *data)
+int		npi_add_end(t_list **list, void *data)
 {
-  t_list       *elem;
-  t_list       *tmp;
+  t_list	*elem;
+  t_list	*tmp;
 
   tmp = *list;
   elem = malloc(sizeof(t_list));
@@ -32,7 +32,7 @@ int	npi_add_end(t_list **list, void *data)
   return (0);
 }
 
-int	npi_add_top(t_list **list, void *data, t_tree *tree)
+int		npi_add_top(t_list **list, void *data, t_tree *tree)
 {
   t_list	*new;
   t_list	*tmp;
@@ -48,10 +48,10 @@ int	npi_add_top(t_list **list, void *data, t_tree *tree)
   return (0);
 }
 
-void	npi_delete_list(t_list **list)
+void		npi_delete_list(t_list **list)
 {
-  t_list       *tmp;
-  t_list       *tmpnxt;
+  t_list	*tmp;
+  t_list	*tmpnxt;
 
   tmp = *list;
   while (tmp != NULL)
@@ -63,7 +63,7 @@ void	npi_delete_list(t_list **list)
   *list = tmp;
 }
 
-int	npi_delete_last(t_list **list)
+int		npi_delete_last(t_list **list)
 {
   t_list	*tmp;
   t_list	*ptmp;
@@ -88,7 +88,7 @@ int	npi_delete_last(t_list **list)
   return (0);
 }
 
-int	npi_delete_top(t_list **list)
+int		npi_delete_top(t_list **list)
 {
   t_list	*new;
   t_list	*tmp;

@@ -5,16 +5,16 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Sun May 25 07:17:18 2014 romaric
+** Last update Sun May 25 21:32:41 2014 romaric
 */
 
 #include "my.h"
 
-int	print_oldpwd(t_env *env)
+int		print_oldpwd(t_env *env)
 {
-  t_env	*oldpwd;
-  t_env	*tmp;
-  int	i;
+  t_env		*oldpwd;
+  t_env		*tmp;
+  int		i;
 
   i = 3;
   oldpwd = env->next;
@@ -34,35 +34,35 @@ int	print_oldpwd(t_env *env)
   return (1);
 }
 
-t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
+t_env		*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
 {
-  t_env	*tmp2;
+  t_env		*tmp_next;
 
-  tmp2 = env->next;
+  tmp_next = env->next;
   if (arg)
     if (my_cd_next(arg) == 1)
       return (my_change_pwd(env, "..", 0));
   while (tmp != env && strncmp(tmp->str, "HOME=", 5) != 0)
     tmp = tmp->next;
-  while (tmp2 != env && strncmp(tmp2->str, "PWD=", 4) != 0)
-    tmp2 = tmp2->next;
+  while (tmp_next != env && strncmp(tmp_next->str, "PWD=", 4) != 0)
+    tmp_next = tmp_next->next;
   if (tmp != env)
     {
       chdir(tmp->str + 5);
-      if (tmp2 == env)
+      if (tmp_next == env)
 	return (env);
-      change_oldpwd(env, tmp2->str + 5);
-      tmp2->str[4] = 0;
-      tmp2->str = strcat(tmp2->str, tmp->str + 5);
+      change_oldpwd(env, tmp_next->str + 5);
+      tmp_next->str[4] = 0;
+      tmp_next->str = strcat(tmp_next->str, tmp->str + 5);
       return (env);
     }
   fprintf(stderr, "42sh: cd: 'HOME' not set\n");
   return (env);
 }
 
-int	empty_pwd(t_env *env)
+int		empty_pwd(t_env *env)
 {
-  t_env	*tmp;
+  t_env		*tmp;
 
   tmp = env->next;
   while (tmp != env && strncmp(tmp->str, "PWD=", 4) != 0)
@@ -72,7 +72,7 @@ int	empty_pwd(t_env *env)
   return (0);
 }
 
-int	cd_error(char *pwd)
+int		cd_error(char *pwd)
 {
   if (errno == EACCES)
     fprintf(stderr, "cd: %s: Permission denied\n", pwd);
@@ -81,7 +81,7 @@ int	cd_error(char *pwd)
   return (-1);
 }
 
-int	my_cd(t_env *env, char **tab)
+int		my_cd(t_env *env, char **tab)
 {
   t_env		*tmp;
 

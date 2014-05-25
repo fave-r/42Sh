@@ -1,11 +1,11 @@
 /*
 ** my_get_line.c for my_get_line in /home/odet/work/42Sh
-** 
+**
 ** Made by odet
 ** Login   <odet@epitech.net>
-** 
+**
 ** Started on  Fri May 23 09:58:43 2014 odet
-** Last update Sun May 25 20:16:21 2014 lhomme
+** Last update Sun May 25 21:16:28 2014 romaric
 */
 
 #include "my.h"
@@ -40,9 +40,9 @@ char		*copy_char(char *old, int *i, t_get *ptr, int *a)
 
 char		*my_get_next_line(const int fd)
 {
-  static char   buff[BUFF_SIZE];
-  static int    i = 0;
-  static int    a = 0;
+  static char	buff[BUFF_SIZE];
+  static int	i = 0;
+  static int	a = 0;
   t_get		l;
 
   l.c = 0;
