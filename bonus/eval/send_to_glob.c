@@ -5,7 +5,11 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Sat May 24 20:06:34 2014 odet
-** Last update Sun May 25 18:45:55 2014 lhomme
+<<<<<<< HEAD
+** Last update Sun May 25 03:00:47 2014 odet
+=======
+** Last update Sun May 25 16:47:46 2014 lhomme
+>>>>>>> b39b0ae7315fcf98e49d0e8931548e19f039f09d
 */
 
 #include "my.h"
