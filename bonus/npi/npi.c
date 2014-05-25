@@ -5,17 +5,15 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Sun May 25 17:31:09 2014 lhomme
+** Last update Sun May 25 18:17:42 2014 lhomme
 */
 
 #include "my.h"
 
-t_token	*exotic_and_var(t_token *token, t_env *env, t_env *history)
+t_token	*exotic_and_var(t_token *token, t_env *env)
 {
   token = check_exotic(token);
   token = check_varenv(token, env);
-  if (history && history->next != history)
-    token = check_last_cmd(token, history);
   return (token);
 }
 
@@ -41,14 +39,14 @@ void	delete_npi(t_list *stack, t_list *output)
   npi_delete_list(&output);
 }
 
-t_tree	*npi(t_token *token, char *str, t_env *env, t_env *history)
+t_tree	*npi(t_token *token, char *str, t_env *env)
 {
   t_npi		npi;
 
   npi.tree = NULL;
   npi.stack = NULL;
   npi.output = NULL;
-  token = exotic_and_var(token, env, history);
+  token = exotic_and_var(token, env);
   if (!token)
     return (NULL);
   if (!token->next)

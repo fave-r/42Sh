@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sun May 25 17:25:44 2014 lhomme
+** Last update Sun May 25 18:18:17 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -180,7 +180,7 @@ t_env			*my_history(t_env *history, char *str);
 char			*my_epur_str(char *str);
 int			is_spe(char c);
 int			is_alpha(char c);
-t_tree			*npi(t_token *token, char *str, t_env *env, t_env *history);
+t_tree			*npi(t_token *token, char *str, t_env *env);
 t_tree			*createNode(t_tree *elem, void *data);
 int			npi_add_end(t_list **list, void *data);
 int			npi_add_top(t_list **list, void *data, t_tree *tree);
@@ -250,7 +250,6 @@ void			display_sigint();
 void			unset_term();
 t_token			*check_exotic(t_token *token);
 t_token			*check_varenv(t_token *list, t_env *env);
-t_token			*check_last_cmd(t_token *list, t_env *history);
 int			my_char(char *tmp, char to_copy, int *x);
 char			*glob_complete(char *new, char *tmp, t_env_var *env);
 void			doble_left_next(int *i, int *ret, int *fd);
