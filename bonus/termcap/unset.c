@@ -5,11 +5,11 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Thu May 22 13:18:05 2014 odet
-** Last update Thu May 22 13:20:13 2014 odet
+** Last update Sun May 25 16:01:10 2014 lhomme
 */
 
-#include "struct.h"
 #include "my.h"
+#include "struct.h"
 
 void			unset_term()
 {
