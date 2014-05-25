@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Fri May 23 09:58:43 2014 odet
-** Last update Sun May 25 05:02:27 2014 romaric
+** Last update Sun May 25 06:55:07 2014 romaric
 */
 
 #include "my.h"
@@ -55,10 +55,7 @@ char		*my_get_next_line(const int fd)
   if (a <= 0)
     return (NULL);
   while (buff[i] != '\n')
-    {
-      l.s = copy_char(buff, &i, &l, &a);
-      //a = 0;
-    }
+    l.s = copy_char(buff, &i, &l, &a);
   i++;
   return (l.s);
 }
