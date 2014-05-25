@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Sun May 25 15:37:21 2014 lhomme
+** Last update Sun May 25 17:16:46 2014 lhomme
 */
 
 #include "my.h"
@@ -41,7 +41,7 @@ void		start(t_token *list, t_env_var env, char *tmp)
   tree = NULL;
   env.history = my_history(env.history, tmp);
   list = fill_token(tmp);
-  tree = npi(list, tmp, env.env);
+  tree = npi(list, tmp, env.env, env.history);
   check_fn(tree, 0, 1, &env);
   init();
   free_tree(tree);

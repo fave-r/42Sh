@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sun May 25 15:54:36 2014 lhomme
+** Last update Sun May 25 17:25:44 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -147,6 +147,7 @@ int			my_print_history(t_env *env, t_env *history, char **tab, int fd);
 t_env			*my_history(t_env *history, char *str);
 int			print_token(t_token *list);
 t_token			*add_token(t_token *list, char *token);
+t_env			*my_create_envlist();
 char			*my_strxdup(char *source, int len);
 int			get_operator(char *str, int i, int save[2]);
 t_token			*fill_token(char *str);
@@ -179,7 +180,7 @@ t_env			*my_history(t_env *history, char *str);
 char			*my_epur_str(char *str);
 int			is_spe(char c);
 int			is_alpha(char c);
-t_tree			*npi(t_token *token, char *str, t_env *env);
+t_tree			*npi(t_token *token, char *str, t_env *env, t_env *history);
 t_tree			*createNode(t_tree *elem, void *data);
 int			npi_add_end(t_list **list, void *data);
 int			npi_add_top(t_list **list, void *data, t_tree *tree);
@@ -249,6 +250,7 @@ void			display_sigint();
 void			unset_term();
 t_token			*check_exotic(t_token *token);
 t_token			*check_varenv(t_token *list, t_env *env);
+t_token			*check_last_cmd(t_token *list, t_env *history);
 int			my_char(char *tmp, char to_copy, int *x);
 char			*glob_complete(char *new, char *tmp, t_env_var *env);
 void			doble_left_next(int *i, int *ret, int *fd);
