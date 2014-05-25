@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sat May 24 11:59:51 2014 odet
+** Last update Sun May 25 06:59:17 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -195,7 +195,8 @@ int			my_exec(char *cmd, int in, int out, t_env_var *env);
 int			my_getnbr(char*);
 int			check_path(char **pathsep, char *cmd, char **str, t_inp p);
 void			echo_vh(char **cmd, int fd);
-char			*my_tab(t_gnl_icanon *p, char *new, char *result, t_env_var *env);
+char			*my_tab(t_gnl_icanon *p, char *new
+				, char *result, t_env_var *env);
 char			*my_entry(char *tmp, char *new, char *result, int *x);
 void			my_delete(char *tmp, int *x);
 char			*get_next_line_icanon(const int fd, t_env_var env);
