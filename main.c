@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Sun May 25 04:45:01 2014 romaric
+** Last update Sun May 25 06:57:15 2014 romaric
 */
 
 #include "my.h"
@@ -74,8 +74,6 @@ int		main(void)
   init_main(&env, environ, &ret, &list);
   while ((tmp = my_get_next_line(0)) != NULL)
     {
-      //      if (signal(SIGINT, NULL))
-      //	return (exit_42(tmp, env, 0));
       tmp = my_epur_str(tmp);
       if (tmp && tmp[0] != 0)
 	{
