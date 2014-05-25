@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 ** 
 ** Started on  Sat May 24 20:06:34 2014 odet
-** Last update Sat May 24 21:34:31 2014 odet
+** Last update Sun May 25 03:00:47 2014 odet
 */
 
 #include "my.h"
@@ -41,7 +41,7 @@ char		**my_strscat(char **array, char *str)
 
   i = 0;
   if (array == NULL)
-      new = xmalloc(sizeof(char *) * 2);
+    new = xmalloc(sizeof(char *) * 2);
   else
     {
       new = xmalloc(sizeof(char *) * (len_tab(array) + 2));
@@ -62,7 +62,7 @@ void		print(char **tabl)
   int		i;
 
   i = 0;
-  while (tabl[i])
+  while (tabl[i] && tabl)
     {
       printf("line : %d\t:%s\n", i, tabl[i]);
       i++;
@@ -81,14 +81,12 @@ char		**send_to_glob(char **arv)
 
   i = 0;
   new = NULL;
-  tmp = NULL;
-  print(arv);
   if (len_tab(arv) == 1)
     return (arv);
-  new = my_strscat(tmp, arv[0]);
+  new = my_strscat(new, arv[0]);
   if (len_tab(arv) > 1)
     if (arv[1][0] == '-' && arv[1] != NULL)
-      new = my_strscat(tmp, arv[1]);
+      new = my_strscat(new, arv[1]);
   while (arv[i] != NULL && arv != NULL && i < len_tab(arv))
     {
       j = 0;
@@ -99,15 +97,14 @@ char		**send_to_glob(char **arv)
 	      if ((glob(arv[i], GLOBFLAG, NULL, &ptr)) != GLOB_NOMATCH)
 		{
 		  k = 0;
-		  print(ptr.gl_pathv);
 		  while (ptr.gl_pathv[k] && ptr.gl_pathv)
 		    {
-		      new = my_strscat(tmp, ptr.gl_pathv[k]);
+		      new = my_strscat(new, ptr.gl_pathv[k]);
 		      k++;
 		    }
+		  new[k] = NULL;
 		  return (new);
 		}
-	      printf("je n'ai trouvé aucun caractère qui glob.\n");
 	    }
 	  j++;
 	}
