@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Sat May 24 16:56:37 2014 lhomme
+** Last update Sun May 25 20:27:26 2014 bourrel
 */
 
 #include "my.h"
@@ -35,24 +35,14 @@ void	print_text(char **tab, int fd)
     }
 }
 
-void	unknown_arg(char *text, char *arg, int i, int fd)
+int	check_echo_args(char **tab, int fd, int x, int i)
 {
-  while (arg[i] != '\0')
-    {
-      print_echo_str(&arg[i], fd);
-      i++;
-    }
-  my_putchar(' ', fd);
-  print_echo_str(text, fd);
-}
-
-int	check_echo_args(char **tab, int fd, int x)
-{
-  int	i;
-
-  i = 0;
+  if (check_invalid_arg(tab[1], tab[2], fd) == 0)
+    return (x);
   if (tab[1][1] == '-')
     echo_vh(tab, fd);
+  if (tab[1][1] == '\0' && tab[2])
+    print_echo_str(tab[2], fd);
   while (tab[1][++i] != '\0')
     {
       if (tab[2] && tab[1][i] == 'e')
@@ -69,8 +59,6 @@ int	check_echo_args(char **tab, int fd, int x)
 	}
       else if (tab[1][i] == 'n')
 	x = 1;
-      else if (tab[2])
-	unknown_arg(tab[2], tab[1], i, fd);
     }
   return (x);
 }
@@ -78,14 +66,16 @@ int	check_echo_args(char **tab, int fd, int x)
 void	my_echo(char **tab, int fd)
 {
   int	x;
+  int	i;
 
+  i = 0;
   x = 0;
   if (tab[1] == NULL)
     x = 0;
   else if (tab[1][0] != '-')
     print_text(tab, fd);
   else
-    x = check_echo_args(tab, fd, x);
+    x = check_echo_args(tab, fd, x, i);
   if (x == 0)
     my_putchar('\n', fd);
 }

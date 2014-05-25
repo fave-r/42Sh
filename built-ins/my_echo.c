@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Sun May 25 17:56:37 2014 bourrel
+** Last update Sun May 25 20:23:34 2014 bourrel
 */
 
 #include "my.h"
@@ -33,37 +33,6 @@ void	print_text(char **tab, int fd)
       print_echo_str(tab[i], fd);
       my_putstr(" ", fd);
     }
-}
-
-void	unknown_arg(char *text, char *arg, int i, int fd)
-{
-  printf("JNJKHUKLN\n");
-  while (arg[i] != '\0')
-    {
-      print_echo_str(&arg[i], fd);
-      i++;
-    }
-  my_putchar(' ', fd);
-  print_echo_str(text, fd);
-}
-
-int	check_invalid_arg(char *arg, char *text, int fd)
-{
-  int	i;
-
-  i = 0;
-  while (arg[i] != '\0')
-    {
-      if (arg[i] != 'e' || arg[i] != 'E' || arg[i] != 'n' || arg[i] != '-')
-	{
-	  print_echo_str(arg, fd);
-	  if (text)
-	    print_echo_str(text, fd);
-	  return (0);
-	}
-      i++;
-    }
-  return (1);
 }
 
 int	check_echo_args(char **tab, int fd, int x, int i)
