@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sat May 24 20:23:20 2014 odet
+** Last update Sun May 25 15:54:36 2014 lhomme
 */
 
 #ifndef __42Sh__
@@ -38,6 +38,7 @@ typedef struct		s_env
 
 typedef struct		s_env_var
 {
+  t_env			*history;
   t_env			*env;
   int			wat;
   int			var_close;
@@ -142,6 +143,8 @@ typedef struct		s_bin
   struct s_bin		*next;
 }			t_bin;
 
+int			my_print_history(t_env *env, t_env *history, char **tab, int fd);
+t_env			*my_history(t_env *history, char *str);
 int			print_token(t_token *list);
 t_token			*add_token(t_token *list, char *token);
 char			*my_strxdup(char *source, int len);
@@ -161,6 +164,7 @@ char			*my_strcat(char*, char*);
 char			*my_strdup(char*);
 char			*my_strndup(char*, int);
 char			*my_strcpy(char*, char*);
+void			my_put_nbr(int nb, int fd);
 void			my_putchar(char c, int fd);
 int			my_putstr(char *str, int fd);
 t_env			*my_env_inlist(char **);

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Sun May 25 06:57:42 2014 romaric
+** Last update Sun May 25 15:37:21 2014 lhomme
 */
 
 #include "my.h"
@@ -39,6 +39,7 @@ void		start(t_token *list, t_env_var env, char *tmp)
   t_tree	*tree;
 
   tree = NULL;
+  env.history = my_history(env.history, tmp);
   list = fill_token(tmp);
   tree = npi(list, tmp, env.env);
   check_fn(tree, 0, 1, &env);
@@ -52,6 +53,7 @@ int		exit_42(char *tmp, t_env_var env, int ret)
   unset_term();
   free(tmp);
   my_delete_envlist(&(env.env));
+  my_delete_envlist(&(env.history));
   return (ret);
 }
 
@@ -64,6 +66,7 @@ void		init_main(t_env_var *env, char **envp, int *ret, t_token **list)
   env->env = my_env_inlist(envp);
   env->wat = 1;
   env->var_close = -1;
+  env->history = my_create_envlist();
   display_prompt(env->env);
 }
 

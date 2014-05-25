@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sat May 24 20:21:01 2014 odet
+## Last update Sun May 25 15:53:42 2014 lhomme
 ##
 
 CC=		gcc
@@ -22,6 +22,8 @@ SRCS=		main.c \
 		display.c \
 		istty.c \
 		my_get_line.c \
+		history/history.c \
+		history/print_history.c \
 		lib/xfunction.c \
 		lib/basic.c \
 		lib/my_epur_str.c \

@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 **
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Sat May 24 16:57:02 2014 lhomme
+** Last update Sun May 25 16:08:42 2014 lhomme
 */
 
 #include "my.h"
@@ -35,10 +35,10 @@ int	my_exit(char **tab, t_env *env)
     tmp = tmp->next;
   if (tab[1] && (check_exit_value(tab[1]) == -1))
     return (-1);
-   if (tmp == env)
-     {
-       my_add_env(env, "EXIT_VALUE=0");
-       return (my_exit(tab, env));
+  if (tmp == env)
+    {
+      my_add_env(env, "EXIT_VALUE=0");
+      return (my_exit(tab, env));
     }
   if (tab[1] && (my_getnbr(tab[1]) != 0))
     tmp->str = my_strcat(tmp->str, tab[1]);
@@ -47,22 +47,24 @@ int	my_exit(char **tab, t_env *env)
   return (1);
 }
 
-int     built(char **tab, t_env **env, int out)
+int     built(char **tab, t_env *env, t_env *history, int out)
 {
   if (strncmp(tab[0], "setenv", 6) == 0 && !tab[0][6])
-    *env = my_setenv(*env, tab);
+    env = my_setenv(env, tab);
   else if (strncmp(tab[0], "cd", 2) == 0
            && (!tab[0][2] || tab[0][2] == '-'
 	       || (tab[0][2] == '.' && !tab[0][4])))
-    return (my_cd(*env, tab));
+    return (my_cd(env, tab));
   else if (strncmp(tab[0], "unsetenv", 8) == 0 && !tab[0][8])
-    *env = my_unsetenv(*env, tab);
+    env = my_unsetenv(env, tab);
   else if (strncmp(tab[0], "env", 3) == 0 && !tab[0][3])
-    *env = my_env(*env, tab, out);
+    env = my_env(env, tab, out);
   else if (strncmp(tab[0], "echo", 4) == 0 && !tab[0][4])
     my_echo(tab, out);
   else if (strncmp(tab[0], "exit", 4) == 0 && !tab[0][4])
-    return (my_exit(tab, *env));
+    return (my_exit(tab, env));
+  else if (strncmp(tab[0], "history", 7) == 0 && !tab[0][7])
+    return (my_print_history(env, history, tab, out));
   else
     {
       fprintf(stderr, "%s : command not found\n", tab[0]);
@@ -71,17 +73,18 @@ int     built(char **tab, t_env **env, int out)
   return (0);
 }
 
-int	exec_builtins(char *cmd, char **tab, t_env  **env, t_inp p)
+int	exec_builtins(char *cmd, char **tab, t_env_var env, t_inp p)
 {
   char  **pathsep;
 
   if (strncmp(cmd, "setenv", 6) == 0 || strncmp(cmd, "cd", 2) == 0
       || strncmp(cmd, "unsetenv", 8) == 0 || strncmp(cmd, "env", 3) == 0
-      || strncmp(cmd, "echo", 4) == 0 || strncmp(cmd, "exit", 4) == 0)
-    return (built(tab, &(*env), p.out));
+      || strncmp(cmd, "echo", 4) == 0 || strncmp(cmd, "exit", 4) == 0
+      || strncmp(cmd, "history", 7) == 0)
+    return (built(tab, env.env, env.history, p.out));
   else
     {
-      pathsep = save_env(&(*env));
+      pathsep = save_env(&(env.env));
       return (check_path(pathsep, tab[0], tab, p));
     }
 }
@@ -105,5 +108,5 @@ int     my_exec(char *cmd, int in, int out, t_env_var *env)
       tab[0] = cmd;
       tab[1] = NULL;
     }
-  return (exec_builtins(cmd, tab, &(env->env), p));
+  return (exec_builtins(cmd, tab, *env, p));
 }
