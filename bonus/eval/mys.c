@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 12 15:48:41 2014 romaric
-** Last update Sun May 25 04:47:02 2014 romaric
+** Last update Fri May 23 21:47:54 2014 bourrel
 */
 
 #include "my.h"
@@ -97,7 +97,7 @@ int	doble_left(t_tree *tree, __attribute__((unused))int in
   if (p.fd == -1)
     return (-1);
   write(1, ">", 1);
-  while ((p.str = my_get_next_line(0)) && strcmp(p.str, tree->right->data))
+  while ((p.str = get_next_line(0, *env)) && strcmp(p.str, tree->right->data))
     {
       my_putstr(p.str, p.fd);
       write(p.fd, "\n", 1);

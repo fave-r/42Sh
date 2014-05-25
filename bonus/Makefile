@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sun May 25 04:47:17 2014 romaric
+## Last update Sat May 24 17:04:33 2014 lhomme
 ##
 
 CC=		gcc
@@ -20,6 +20,7 @@ NAME=		42sh
 
 SRCS=		main.c \
 		display.c \
+		istty.c \
 		my_get_line.c \
 		lib/xfunction.c \
 		lib/basic.c \
@@ -38,6 +39,11 @@ SRCS=		main.c \
 		built-ins/my_echo.c \
 		built-ins/my_echo_arg.c \
 		built-ins/echo_vh.c \
+		termcap/main.c \
+		termcap/init.c \
+		termcap/dup_fct.c \
+		termcap/unset.c \
+		termcap/my.c \
 		npi/npi.c \
 		npi/list_func.c \
 		npi/tree_func.c \
@@ -54,7 +60,11 @@ SRCS=		main.c \
 		eval/xfunction.c \
 		eval/mys.c \
 		eval/check_next.c \
+		eval/get_next_line.c \
 		eval/exec.c \
+		auto_completion/auto_complete.c \
+		auto_completion/func.c \
+		auto_completion/word.c \
 		eval/mys_next.c
 
 OBJS=		$(SRCS:.c=.o)

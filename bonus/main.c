@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Fri Apr  4 11:05:16 2014 alex-odet
-** Last update Sun May 25 04:45:01 2014 romaric
+** Last update Sun May 25 02:58:57 2014 bourrel
 */
 
 #include "my.h"
@@ -42,12 +42,14 @@ void		start(t_token *list, t_env_var env, char *tmp)
   list = fill_token(tmp);
   tree = npi(list, tmp, env.env);
   check_fn(tree, 0, 1, &env);
+  init();
   free_tree(tree);
   delete_list(&list);
 }
 
 int		exit_42(char *tmp, t_env_var env, int ret)
 {
+  unset_term();
   free(tmp);
   my_delete_envlist(&(env.env));
   return (ret);
@@ -56,6 +58,7 @@ int		exit_42(char *tmp, t_env_var env, int ret)
 void		init_main(t_env_var *env, char **envp, int *ret, t_token **list)
 {
   signal(SIGINT, &display_sigint);
+  init();
   *list = NULL;
   *ret = 0;
   env->env = my_env_inlist(envp);
@@ -72,7 +75,7 @@ int		main(void)
   int		ret;
 
   init_main(&env, environ, &ret, &list);
-  while ((tmp = my_get_next_line(0)) != NULL)
+  while ((tmp = my_istty(0, env)) != NULL)
     {
       //      if (signal(SIGINT, NULL))
       //	return (exit_42(tmp, env, 0));

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sun May 25 04:55:56 2014 romaric
+** Last update Sat May 24 11:59:51 2014 odet
 */
 
 #ifndef __42Sh__
@@ -223,7 +223,7 @@ char			*glob_complete(char *new, char *tmp, t_env_var *env);
 void			doble_left_next(int *i, int *ret, int *fd);
 char			*my_istty(const int fd, t_env_var env);
 char			*my_strdup_new(char *src);
-char			*copy_char(char *old, int *i, t_get *ptr, int *a);
+char			*copy_char(char *old, char *new, int *i, int *j);
 char			*my_get_next_line(const int fd);
 char			*getpath(char **environ);
 void			free_arbre(t_arbre *tree);
