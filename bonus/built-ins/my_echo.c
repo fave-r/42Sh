@@ -1,11 +1,11 @@
 /*
 ** my_echo.c for 42Sh in /home/leo/rendu/42Sh/built-ins
-** 
+**
 ** Made by bourrel
 ** Login   <leo@epitech.net>
-** 
+**
 ** Started on  Thu Apr 24 14:30:23 2014 bourrel
-** Last update Sun May 25 20:27:26 2014 bourrel
+** Last update Sun May 25 20:48:55 2014 romaric
 */
 
 #include "my.h"

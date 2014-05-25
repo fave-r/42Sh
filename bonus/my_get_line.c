@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 **
 ** Started on  Fri May 23 09:58:43 2014 odet
-** Last update Sun May 25 06:56:02 2014 romaric
+** Last update Sun May 25 20:31:33 2014 romaric
 */
 
 #include "my.h"
@@ -40,9 +40,9 @@ char		*copy_char(char *old, int *i, t_get *ptr, int *a)
 
 char		*my_get_next_line(const int fd)
 {
-  static char   buff[BUFF_SIZE];
-  static int    i = 0;
-  static int    a = 0;
+  static char	buff[BUFF_SIZE];
+  static int	i = 0;
+  static int	a = 0;
   t_get		l;
 
   l.c = 0;

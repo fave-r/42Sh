@@ -1,16 +1,16 @@
 /*
 ** history.c for history in /home/lhomme_a/rendu/42Sh
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Wed Apr 30 18:33:32 2014 lhomme
-** Last update Sun May 25 14:48:11 2014 lhomme
+** Last update Sun May 25 20:26:41 2014 romaric
 */
 
 #include "my.h"
 
-t_env	*my_history(t_env *history, char *str)
+t_env		*my_history(t_env *history, char *str)
 {
   int		fd;
   static int	line = 1;

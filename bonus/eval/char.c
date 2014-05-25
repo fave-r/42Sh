@@ -5,12 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 25 17:44:49 2014 romaric
-** Last update Sun May 11 18:04:14 2014 romaric
+** Last update Sun May 25 20:55:02 2014 romaric
 */
 
 #include "my.h"
 
-int     my_strlen_n(char *str)
+int	my_strlen_n(char *str)
 {
   int   x;
 
@@ -20,9 +20,9 @@ int     my_strlen_n(char *str)
   return (x);
 }
 
-char    *my_strcpy(char *dest, char *src)
+char	*my_strcpy(char *dest, char *src)
 {
-  int   i;
+  int	i;
 
   dest[my_strlen_n(dest)] = '\0';
   i = 0;
@@ -40,5 +40,5 @@ void	free_doble(char **kill)
 
   i = -1;
   while (kill[++i] != NULL)
-      free(kill[i]);
+    free(kill[i]);
 }

@@ -1,11 +1,11 @@
 /*
 ** my.c for my in /home/odet/work/42Sh/termcap
-** 
+**
 ** Made by odet
 ** Login   <odet@epitech.net>
-** 
+**
 ** Started on  Thu May 22 14:57:51 2014 odet
-** Last update Sat May 24 19:54:00 2014 odet
+** Last update Sun May 25 21:07:04 2014 romaric
 */
 
 #include "my.h"
@@ -84,7 +84,7 @@ char		*my_entry(char *tmp, char *new, char *result, int *x)
 
 int		my_char(char *tmp, char to_copy, int *x)
 {
-  int	a;
+  int		a;
 
   a = *x;
   write(1, &to_copy, 1);

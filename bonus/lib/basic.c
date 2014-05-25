@@ -1,11 +1,11 @@
 /*
 ** basic.c for basic in /home/alex-odet/work/42Sh/lib
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Thu Apr  3 14:06:29 2014 alex-odet
-** Last update Sun May 25 14:48:52 2014 lhomme
+** Last update Sun May 25 21:02:37 2014 romaric
 */
 
 #include "my.h"
@@ -30,9 +30,9 @@ int	my_putstr(char *str, int fd)
   return (write(fd, str, my_strlen(str)));
 }
 
-void    my_put_nbr(int nb, int fd)
+void	my_put_nbr(int nb, int fd)
 {
-  int   neg;
+  int	neg;
 
   neg = 0;
   if (nb < 0)

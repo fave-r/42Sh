@@ -1,18 +1,18 @@
 /*
 ** check_last_cmd.c for npi in /home/lhomme_a/rendu/42Sh/bonus
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Sun May 25 17:17:15 2014 lhomme
-** Last update Sun May 25 18:14:58 2014 lhomme
+** Last update Sun May 25 20:33:20 2014 romaric
 */
 
 #include "my.h"
 
-int	check_exclam(char *str)
+int		check_exclam(char *str)
 {
-  int	i;
+  int		i;
 
   i = 0;
   while (str[i])
@@ -24,7 +24,7 @@ int	check_exclam(char *str)
   return (0);
 }
 
-char	*replace_hist(char *str, char *tmp, t_env *history, int i)
+char		*replace_hist(char *str, char *tmp, t_env *history, int i)
 {
   printf("%s\n", str);
   if (!str[i + 1])
@@ -33,11 +33,11 @@ char	*replace_hist(char *str, char *tmp, t_env *history, int i)
     return (my_strcat(tmp, str + i + 1));
 }
 
-char	*replace_history(char *str, t_env *history)
+char		*replace_history(char *str, t_env *history)
 {
-  char	*tmp;
-  int	i;
-  int	j;
+  char		*tmp;
+  int		i;
+  int		j;
 
   i = 0;
   j = 0;
@@ -77,7 +77,7 @@ char	*replace_history(char *str, t_env *history)
   return (tmp);
 }
 
-t_token	*check_last_cmd(t_token *list, t_env *history)
+t_token		*check_last_cmd(t_token *list, t_env *history)
 {
   t_token	*tmp;
 

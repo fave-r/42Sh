@@ -1,11 +1,11 @@
 /*
-** main.c for main in /home/odet_a/work/42Sh/termcap
-** 
-** Made by 
-** Login   <odet_a@epitech.net>
-** 
-** Started on  Mon May 19 22:57:58 2014 
-** Last update Sun May 25 02:44:33 2014 bourrel
+** main.c for 42sh in /home/blackbird/work/42Sh/bonus/termcap
+**
+** Made by romaric
+** Login   <fave_r@epitech.net>
+**
+** Started on  Sun May 25 21:06:15 2014 romaric
+** Last update Sun May 25 21:06:33 2014 romaric
 */
 
 #include "my.h"

@@ -1,18 +1,18 @@
 /*
 ** tree_func.c for npi in /home/lhomme_a/rendu/42Sh/npi
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Wed Apr 23 15:44:31 2014 lhomme
-** Last update Sat May 24 16:58:31 2014 lhomme
+** Last update Sun May 25 20:44:46 2014 romaric
 */
 
 #include "my.h"
 
-void	aff(t_tree *tree, int pos)
+void		aff(t_tree *tree, int pos)
 {
-  int	i;
+  int		i;
 
   i = -5;
   if (tree)
@@ -36,7 +36,7 @@ void	aff(t_tree *tree, int pos)
     }
 }
 
-void	free_tree(t_tree *tree)
+void		free_tree(t_tree *tree)
 {
   if (tree != NULL)
     {
@@ -46,7 +46,7 @@ void	free_tree(t_tree *tree)
     }
 }
 
-t_tree	*createNode(t_tree *elem, void *data)
+t_tree		*createnode(t_tree *elem, void *data)
 {
   elem = malloc(sizeof(t_tree));
   if (elem == NULL)
@@ -57,38 +57,38 @@ t_tree	*createNode(t_tree *elem, void *data)
   return (elem);
 }
 
-void	Node_add(t_tree *tmpTree, t_tree *elem, int pos)
+void		node_add(t_tree *tmptree, t_tree *elem, int pos)
 {
-  t_tree	*tmpNode;
+  t_tree	*tmpnode;
 
-  while (tmpTree)
+  while (tmptree)
     {
-      tmpNode = tmpTree;
+      tmpnode = tmptree;
       if (pos == 1)
 	{
-	  tmpTree = tmpTree->left;
-	  if (!tmpTree)
-	    tmpNode->left = elem;
+	  tmptree = tmptree->left;
+	  if (!tmptree)
+	    tmpnode->left = elem;
 	}
       else if (pos == 2)
 	{
-	  tmpTree = tmpTree->right;
-	  if (!tmpTree)
-	    tmpNode->right = elem;
+	  tmptree = tmptree->right;
+	  if (!tmptree)
+	    tmpnode->right = elem;
 	}
     }
 }
 
-void	addNode(t_tree **tree, void *data, int pos)
+void		addnode(t_tree **tree, void *data, int pos)
 {
-  t_tree	*tmpTree;
+  t_tree	*tmptree;
   t_tree	*elem;
 
-  tmpTree = *tree;
+  tmptree = *tree;
   elem = NULL;
-  elem = createNode(elem, data);
-  if (!tmpTree)
+  elem = createnode(elem, data);
+  if (!tmptree)
     *tree = elem;
   else
-    Node_add(tmpTree, elem, pos);
+    node_add(tmptree, elem, pos);
 }

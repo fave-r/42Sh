@@ -5,7 +5,7 @@
 ** Login   <lhomme_a@epitech.net>
 **
 ** Started on  Wed Apr 23 16:24:59 2014 lhomme
-** Last update Sun May 25 18:17:42 2014 lhomme
+** Last update Sun May 25 21:10:22 2014 romaric
 */
 
 #include "my.h"
@@ -41,7 +41,7 @@ void	delete_npi(t_list *stack, t_list *output)
 
 t_tree	*npi(t_token *token, char *str, t_env *env)
 {
-  t_npi		npi;
+  t_npi	npi;
 
   npi.tree = NULL;
   npi.stack = NULL;
@@ -50,7 +50,7 @@ t_tree	*npi(t_token *token, char *str, t_env *env)
   if (!token)
     return (NULL);
   if (!token->next)
-    return (createNode(NULL, token->token));
+    return (createnode(NULL, token->token));
   while (token)
     {
       my_stack(token->token, &npi.stack, &npi.output);

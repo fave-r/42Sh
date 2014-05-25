@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sun May 25 20:24:10 2014 bourrel
+## Last update Sun May 25 21:10:57 2014 romaric
 ##
 
 CC=		gcc
@@ -14,7 +14,7 @@ RM=		rm -f
 
 INCLUDES=	-I.
 
-CFLAGS=		-Wall -Wextra -ggdb3 -g3 -I.
+CFLAGS=		-Wall -Wextra -Werror -I.
 
 NAME=		42sh
 

@@ -1,11 +1,11 @@
 /*
 ** my_token_list.c for my_token_list in /home/alex-odet/work/42Sh/list
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Tue Apr 15 18:14:13 2014 alex-odet
-** Last update Sun May 25 00:26:01 2014 lhomme
+** Last update Sun May 25 20:30:51 2014 romaric
 */
 
 #include "my.h"
@@ -27,7 +27,7 @@ t_token		*add_token(t_token *list, char *token)
   return (list);
 }
 
-void    delete_list(t_token **list)
+void		delete_list(t_token **list)
 {
   t_token	*tmp;
   t_token	*tmpnxt;

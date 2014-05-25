@@ -1,16 +1,16 @@
 /*
 ** my_cd_func.c for my_cd in /home/lhomme_a/rendu/PSU_2013_minishell2
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Fri Mar 21 14:22:18 2014 lhomme
-** Last update Sat May 24 19:34:19 2014 lhomme
+** Last update Sun May 25 20:53:00 2014 romaric
 */
 
 #include "my.h"
 
-void	change_oldpwd(t_env *env, char *pwd)
+void		change_oldpwd(t_env *env, char *pwd)
 {
   t_env		*tmp;
 
@@ -26,12 +26,12 @@ void	change_oldpwd(t_env *env, char *pwd)
     env = my_add_env(env, my_strcat("OLDPWD=", pwd));
 }
 
-int	my_oldpwd(t_env *env)
+int		my_oldpwd(t_env *env)
 {
-  t_env	*oldpwd;
-  t_env	*pwd;
-  char	*str;
-  char	*str2;
+  t_env		*oldpwd;
+  t_env		*pwd;
+  char		*str;
+  char		*str2;
 
   oldpwd = env->next;
   pwd = env->next;
@@ -54,11 +54,11 @@ int	my_oldpwd(t_env *env)
   return (0);
 }
 
-char	*my_dup_pwd(char *pwd)
+char		*my_dup_pwd(char *pwd)
 {
-  char	*tmp;
-  int	i;
-  int	j;
+  char		*tmp;
+  int		i;
+  int		j;
 
   i = 2;
   j = 0;
@@ -75,9 +75,9 @@ char	*my_dup_pwd(char *pwd)
   return (tmp);
 }
 
-t_env	*my_change_pwd(t_env *env, char *pwd, int i)
+t_env		*my_change_pwd(t_env *env, char *pwd, int i)
 {
-  t_env	*tmp;
+  t_env		*tmp;
 
   tmp = env->next;
   while (tmp != env && strncmp(tmp->str, "PWD=", 4) != 0)
@@ -103,9 +103,9 @@ t_env	*my_change_pwd(t_env *env, char *pwd, int i)
   return (env);
 }
 
-t_env	*my_swap_old(t_env *env)
+t_env		*my_swap_old(t_env *env)
 {
-  t_env	*tmp;
+  t_env		*tmp;
 
   tmp = env->next;
   while (tmp != env && strncmp(tmp->str, "PWD=", 4) != 0)

@@ -1,11 +1,11 @@
 /*
 ** word.c for 42sh in /home/leo/rendu/42Sh/auto_completion
-** 
+**
 ** Made by bourrel
 ** Login   <leo@epitech.net>
-** 
+**
 ** Started on  Fri May 23 22:35:49 2014 bourrel
-** Last update Fri May 23 22:39:51 2014 bourrel
+** Last update Sun May 25 20:24:46 2014 romaric
 */
 
 #include "my.h"

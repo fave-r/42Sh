@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Wed Apr 30 17:30:19 2014 romaric
-** Last update Sun May 25 02:05:59 2014 odet
+** Last update Sun May 25 20:59:34 2014 romaric
 */
 
 #include "my.h"
@@ -14,7 +14,7 @@ extern char	**environ;
 
 void		show(char **array)
 {
-  int	i;
+  int		i;
 
   i = 0;
   if (array == NULL)
@@ -33,7 +33,6 @@ int		execute(char *pathutil, char *cmd, char **arv, t_inp p)
 
   ret = 1;
   glob = send_to_glob(arv);
-  //show(glob);
   pathforexec = ((pathutil == NULL) ? cmd : my_strcpyfinal(pathutil, cmd));
   pid = fork();
   if (pid == 0)
@@ -53,29 +52,29 @@ int		execute(char *pathutil, char *cmd, char **arv, t_inp p)
   return (ret);
 }
 
-  char		*find_lib(char **path, char *cmd)
-  {
-    DIR		*ptr;
-    struct dirent	*entry;
-    int		i;
+char		*find_lib(char **path, char *cmd)
+{
+  DIR		*ptr;
+  struct dirent	*entry;
+  int		i;
 
-    i = 0;
-    if ((path))
-      {
-	while (path[i] != NULL)
-	  {
-	    if ((ptr = opendir(path[i])) != NULL)
-	      if (ptr != NULL)
-		{
-		  while ((entry = readdir(ptr)))
-		    if (strcmp(cmd, entry->d_name) == 0)
-		      return (strdup(path[i]));
-		}
-	    i++;
-	  }
-      }
-    return (NULL);
-  }
+  i = 0;
+  if ((path))
+    {
+      while (path[i] != NULL)
+	{
+	  if ((ptr = opendir(path[i])) != NULL)
+	    if (ptr != NULL)
+	      {
+		while ((entry = readdir(ptr)))
+		  if (strcmp(cmd, entry->d_name) == 0)
+		    return (strdup(path[i]));
+	      }
+	  i++;
+	}
+    }
+  return (NULL);
+}
 
 int		check_path(char **pathsep, char *cmd, char **str, t_inp p)
 {
@@ -93,9 +92,9 @@ int		check_path(char **pathsep, char *cmd, char **str, t_inp p)
   return (ret);
 }
 
-  /*
-  ** fonction eval
-  */
+/*
+** fonction eval
+*/
 
 int		check_fn(t_tree *tree, int in, int out, t_env_var *env)
 {

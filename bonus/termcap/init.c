@@ -1,11 +1,11 @@
 /*
 ** init.c for init in /home/odet/work/42Sh/termcap
-** 
+**
 ** Made by odet
 ** Login   <odet@epitech.net>
-** 
+**
 ** Started on  Tue May 20 14:11:09 2014 odet
-** Last update Sat May 24 11:35:33 2014 odet
+** Last update Sun May 25 21:05:59 2014 romaric
 */
 
 #include "my.h"

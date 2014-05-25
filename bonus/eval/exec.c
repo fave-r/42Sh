@@ -5,7 +5,7 @@
 ** Login   <leo@epitech.net>
 **
 ** Started on  Tue May 20 15:24:47 2014 bourrel
-** Last update Sun May 25 16:08:42 2014 lhomme
+** Last update Sun May 25 20:56:10 2014 romaric
 */
 
 #include "my.h"
@@ -47,7 +47,7 @@ int	my_exit(char **tab, t_env *env)
   return (1);
 }
 
-int     built(char **tab, t_env *env, t_env *history, int out)
+int	built(char **tab, t_env *env, t_env *history, int out)
 {
   if (strncmp(tab[0], "setenv", 6) == 0 && !tab[0][6])
     env = my_setenv(env, tab);
@@ -75,7 +75,7 @@ int     built(char **tab, t_env *env, t_env *history, int out)
 
 int	exec_builtins(char *cmd, char **tab, t_env_var env, t_inp p)
 {
-  char  **pathsep;
+  char	**pathsep;
 
   if (strncmp(cmd, "setenv", 6) == 0 || strncmp(cmd, "cd", 2) == 0
       || strncmp(cmd, "unsetenv", 8) == 0 || strncmp(cmd, "env", 3) == 0
@@ -89,9 +89,9 @@ int	exec_builtins(char *cmd, char **tab, t_env_var env, t_inp p)
     }
 }
 
-int     my_exec(char *cmd, int in, int out, t_env_var *env)
+int	my_exec(char *cmd, int in, int out, t_env_var *env)
 {
-  char  **tab;
+  char	**tab;
   t_inp p;
 
   p.in = in;

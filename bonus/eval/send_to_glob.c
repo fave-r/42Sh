@@ -1,11 +1,11 @@
 /*
 ** send_to_glob.c for send_to_glob in /tmp/42Sh/bonus/eval
-** 
+**
 ** Made by odet
 ** Login   <odet@epitech.net>
-** 
+**
 ** Started on  Sun May 25 04:01:59 2014 odet
-** Last update Sun May 25 04:04:44 2014 odet
+** Last update Sun May 25 21:01:48 2014 romaric
 */
 
 #include "my.h"
@@ -84,4 +84,3 @@ char		**send_to_glob(char **arv)
     }
   return (arv);
 }
-

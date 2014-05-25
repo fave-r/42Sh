@@ -1,16 +1,16 @@
 /*
 ** my_epur_str.c for mysh in /home/lhomme_a/rendu/PSU_2013_minishell2
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Mon Feb 10 17:00:57 2014 lhomme
-** Last update Sat May 24 13:56:46 2014 bourrel
+** Last update Sun May 25 21:03:00 2014 romaric
 */
 
 #include "my.h"
 
-char	*my_epur_str(char *str)
+char		*my_epur_str(char *str)
 {
   t_get		epur;
 

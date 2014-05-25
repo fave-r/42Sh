@@ -1,11 +1,11 @@
 /*
 ** main.c for lexer in /home/thibaud/rendu/42sh
-** 
+**
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
-** 
+**
 ** Started on  Sat Apr 12 03:06:33 2014 thibaud
-** Last update Sat May 24 16:58:57 2014 lhomme
+** Last update Sun May 25 20:27:58 2014 romaric
 */
 
 #include "my.h"
@@ -38,7 +38,7 @@ int		get_operator(char *str, int i, int save[2])
 
 int		get_other(char *str, int i, int save[2])
 {
-  int	quote;
+  int		quote;
 
   quote = 0;
   while (str[i] && (save[1] == save[0] || !is_spe(str[i])))

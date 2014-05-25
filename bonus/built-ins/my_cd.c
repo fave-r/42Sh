@@ -1,20 +1,20 @@
 /*
 ** my_cd.c for mysh in /home/lhomme_a/rendu/PSU_2013_minishell1
-** 
+**
 ** Made by lhomme
 ** Login   <lhomme_a@epitech.net>
-** 
+**
 ** Started on  Wed Dec 11 17:12:31 2013 lhomme
-** Last update Sat May 24 17:52:14 2014 odet
+** Last update Sun May 25 20:46:26 2014 romaric
 */
 
 #include "my.h"
 
-int	print_oldpwd(t_env *env)
+int		print_oldpwd(t_env *env)
 {
-  t_env	*oldpwd;
-  t_env	*tmp;
-  int	i;
+  t_env		*oldpwd;
+  t_env		*tmp;
+  int		i;
 
   i = 3;
   oldpwd = env->next;
@@ -34,9 +34,9 @@ int	print_oldpwd(t_env *env)
   return (1);
 }
 
-t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
+t_env		*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
 {
-  t_env	*tmp2;
+  t_env		*tmp2;
 
   tmp2 = env->next;
   if (arg)
@@ -60,9 +60,9 @@ t_env	*my_cd_thereturn(t_env *env, t_env *tmp, char *arg)
   return (env);
 }
 
-int	empty_pwd(t_env *env)
+int		empty_pwd(t_env *env)
 {
-  t_env	*tmp;
+  t_env		*tmp;
 
   tmp = env->next;
   while (tmp != env && strncmp(tmp->str, "PWD=", 4) != 0)
@@ -72,7 +72,7 @@ int	empty_pwd(t_env *env)
   return (0);
 }
 
-int	cd_error(char *pwd)
+int		cd_error(char *pwd)
 {
   if (errno == EACCES)
     fprintf(stderr, "cd: %s: Permission denied\n", pwd);
@@ -81,7 +81,7 @@ int	cd_error(char *pwd)
   return (-1);
 }
 
-int	my_cd(t_env *env, char **array)
+int		my_cd(t_env *env, char **array)
 {
   t_env		*tmp;
 

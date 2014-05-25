@@ -1,16 +1,16 @@
 /*
 ** echo_vh.c for 42sh in /home/leo/rendu/42Sh/built-ins
-** 
+**
 ** Made by bourrel
 ** Login   <leo@epitech.net>
-** 
+**
 ** Started on  Wed May 21 14:15:06 2014 bourrel
-** Last update Wed May 21 16:03:00 2014 bourrel
+** Last update Sun May 25 20:50:51 2014 romaric
 */
 
 #include "my.h"
 
-void    echo_help(int fd)
+void	echo_help(int fd)
 {
   my_putstr("Usage: /bin/echo [SHORT-OPTION]... [STRING]...\n  or:  /bin", fd);
   my_putstr("/echo LONG-OPTION\nEcho the STRING(s) to standard output.\n", fd);
