@@ -5,7 +5,7 @@
 ## Login   <alex-odet@epitech.net>
 ##
 ## Started on  Tue Apr 15 17:06:27 2014 alex-odet
-## Last update Sun May 25 21:33:33 2014 romaric
+## Last update Tue May 27 13:23:47 2014 romaric
 ##
 
 CC=		gcc
@@ -65,11 +65,11 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 		@echo "[Building] " | tr -d '\n'
-		$(CC) -o $@ $(OBJS) $(LDFLAGS) -lncurses
+		$(CC) -o $@ $(OBJS) $(CFLAGS) -lncurses
 
 %.o:		%.c
 		@echo "[Doing object] " | tr -d '\n'
-		$(CC) $(LDFLAGS) $(INCLUDES) -c -o $@ $<
+		$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 clean:
 		@echo "[Cleaning] " | tr -d '\n'
 		$(RM) $(OBJS)

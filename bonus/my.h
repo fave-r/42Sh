@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Tue Apr 15 17:07:43 2014 alex-odet
-** Last update Sun May 25 21:09:18 2014 romaric
+** Last update Tue May 27 13:35:01 2014 romaric
 */
 
 #ifndef __42Sh__
@@ -266,5 +266,8 @@ void			sfree(char **array);
 int			len_tab(char **array);
 char			**my_strscat(char **array, char *str);
 char			**send_to_glob(char **arv);
+int			check_invalid_arg(char *arg, char *text, int fd);
+void			print_echo_str(char *str, int fd);
+int			my_strchr(char c, char *str);
 
 #endif

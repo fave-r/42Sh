@@ -5,7 +5,7 @@
 ** Login   <odet@epitech.net>
 **
 ** Started on  Sun May 25 04:01:59 2014 odet
-** Last update Sun May 25 21:01:48 2014 romaric
+** Last update Tue May 27 13:31:35 2014 romaric
 */
 
 #include "my.h"
@@ -71,7 +71,7 @@ char		**send_to_glob(char **arv)
   while (arv[++i] != NULL && arv != NULL && i < len_tab(arv))
     {
       j = -1;
-      while (arv[i][++j] != '\0' && arv[i][j] != '\n' && j < strlen(arv[i]))
+      while (arv[i][++j] != '\0' && arv[i][j] != '\n')
 	if (my_strchr(arv[i][j], GLOBSEP) != -1)
 	  if ((glob(arv[i], GLOBFLAG, NULL, &ptr)) != GLOB_NOMATCH)
 	    {
